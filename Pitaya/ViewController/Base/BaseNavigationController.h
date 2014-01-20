@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  BaseNavigationController.h
 //  Pitaya
 //
 //  Created by 魏哲 on 14-1-20.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface BaseNavigationController : UINavigationController
 
 @end
