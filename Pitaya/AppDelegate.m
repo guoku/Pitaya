@@ -8,11 +8,18 @@
 
 #import "AppDelegate.h"
 
+int ddLogLevel;
+
 @implementation AppDelegate
+
+#pragma mark - Life Cycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [self configLog];
+    
+    [self configCustomAppearance];
+    
     return YES;
 }
 							
@@ -41,6 +48,45 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - Private Method
+
+- (void)configLog
+{
+    ddLogLevel = LOG_LEVEL_VERBOSE;
+    
+    // 控制台输出
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    [DDTTYLogger sharedInstance].colorsEnabled = YES;
+    // 设备输出
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    // 文件输出
+    DDFileLogger *fileLogger = [[DDFileLogger alloc] init];
+    fileLogger.rollingFrequency = 60 * 60 * 24; // 24 hour rolling
+    fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
+    [DDLog addLogger:fileLogger];
+}
+
+- (void)configCustomAppearance
+{
+    UIColor *navigationBarBackgroundColor = [UIColor orangeColor];
+    UIFont *navigationBarTitleFone = [UIFont appFontWithSize:20.f];
+    UIColor *navigationBarTitleColor = [UIColor blueColor];
+    UIImage *navigationBarBackButtonImage = [UIImage imageNamed:@"nav_back_btn"];
+    
+    if (iOS7) {
+        [UINavigationBar appearance].barTintColor = navigationBarBackgroundColor;
+        [UINavigationBar appearance].backIndicatorImage = navigationBarBackButtonImage;
+        [UINavigationBar appearance].backIndicatorTransitionMaskImage = navigationBarBackButtonImage;
+    } else {
+        [UINavigationBar appearance].tintColor = navigationBarBackgroundColor;
+    }
+    
+    [UINavigationBar appearance].titleTextAttributes = @{
+                                                         UITextAttributeFont        :   navigationBarTitleFone,
+                                                         UITextAttributeTextColor   :   navigationBarTitleColor
+                                                         };
 }
 
 @end
