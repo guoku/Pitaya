@@ -200,10 +200,10 @@
             </objects>
             <point key="canvasLocation" x="-854" y="-1544"/>
         </scene>
-        <!--Navigation Controller - 消息-->
+        <!--Base Navigation Controller - 消息-->
         <scene sceneID="0UP-9f-FYI">
             <objects>
-                <navigationController title="消息" definesPresentationContext="YES" id="7wP-Tc-fLQ" sceneMemberID="viewController">
+                <navigationController title="消息" definesPresentationContext="YES" id="7wP-Tc-fLQ" customClass="BaseNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="nlw-Uv-FLK"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="trw-C7-UFj">
                         <autoresizingMask key="autoresizingMask"/>
@@ -249,10 +249,10 @@
             </objects>
             <point key="canvasLocation" x="1211" y="1454"/>
         </scene>
-        <!--Navigation Controller - 设置-->
+        <!--Base Navigation Controller - 设置-->
         <scene sceneID="bOi-Nh-N45">
             <objects>
-                <navigationController title="设置" definesPresentationContext="YES" id="ZDv-fh-iZz" sceneMemberID="viewController">
+                <navigationController title="设置" definesPresentationContext="YES" id="ZDv-fh-iZz" customClass="BaseNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="lxL-bu-Hzo"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BVu-7c-Zew">
                         <autoresizingMask key="autoresizingMask"/>
@@ -298,10 +298,10 @@
             </objects>
             <point key="canvasLocation" x="1211" y="2461"/>
         </scene>
-        <!--Navigation Controller - 动态-->
+        <!--Base Navigation Controller - 动态-->
         <scene sceneID="nni-xQ-J2f">
             <objects>
-                <navigationController title="动态" definesPresentationContext="YES" id="1XD-Cy-iUK" sceneMemberID="viewController">
+                <navigationController title="动态" definesPresentationContext="YES" id="1XD-Cy-iUK" customClass="BaseNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="hL4-HI-vx8"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qq0-Wv-Owr">
                         <autoresizingMask key="autoresizingMask"/>
@@ -314,10 +314,10 @@
             </objects>
             <point key="canvasLocation" x="191" y="454"/>
         </scene>
-        <!--Navigation Controller - 发现-->
+        <!--Base Navigation Controller - 发现-->
         <scene sceneID="ReT-j9-dRf">
             <objects>
-                <navigationController title="发现" definesPresentationContext="YES" id="nN4-U3-32q" sceneMemberID="viewController">
+                <navigationController title="发现" definesPresentationContext="YES" id="nN4-U3-32q" customClass="BaseNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="lIb-wl-yu4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xJf-Jk-44c">
                         <autoresizingMask key="autoresizingMask"/>
@@ -330,10 +330,10 @@
             </objects>
             <point key="canvasLocation" x="191" y="-542"/>
         </scene>
-        <!--Navigation Controller - 首页-->
+        <!--Base Navigation Controller - 首页-->
         <scene sceneID="tu6-Vs-xUF">
             <objects>
-                <navigationController title="首页" definesPresentationContext="YES" id="gwl-cG-UjT" sceneMemberID="viewController">
+                <navigationController title="首页" definesPresentationContext="YES" id="gwl-cG-UjT" customClass="BaseNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="ZGz-rS-tEK"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kBp-Co-6Ou">
                         <autoresizingMask key="autoresizingMask"/>
