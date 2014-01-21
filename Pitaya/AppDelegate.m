@@ -12,9 +12,13 @@ int ddLogLevel;
 
 @implementation AppDelegate
 
+#pragma mark - Life Cycle
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self configLog];
+    
+    [self configCustomAppearance];
     
     return YES;
 }
@@ -62,6 +66,27 @@ int ddLogLevel;
     fileLogger.rollingFrequency = 60 * 60 * 24; // 24 hour rolling
     fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
     [DDLog addLogger:fileLogger];
+}
+
+- (void)configCustomAppearance
+{
+    UIColor *navigationBarBackgroundColor = [UIColor orangeColor];
+    UIFont *navigationBarTitleFone = [UIFont appFontWithSize:20.f];
+    UIColor *navigationBarTitleColor = [UIColor blueColor];
+    UIImage *navigationBarBackButtonImage = [UIImage imageNamed:@"nav_back_btn"];
+    
+    if (iOS7) {
+        [UINavigationBar appearance].barTintColor = navigationBarBackgroundColor;
+        [UINavigationBar appearance].backIndicatorImage = navigationBarBackButtonImage;
+        [UINavigationBar appearance].backIndicatorTransitionMaskImage = navigationBarBackButtonImage;
+    } else {
+        [UINavigationBar appearance].tintColor = navigationBarBackgroundColor;
+    }
+    
+    [UINavigationBar appearance].titleTextAttributes = @{
+                                                         UITextAttributeFont        :   navigationBarTitleFone,
+                                                         UITextAttributeTextColor   :   navigationBarTitleColor
+                                                         };
 }
 
 @end
