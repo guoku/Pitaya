@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B61B10D8188E35B90090FC38 /* MasterTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B61B10D7188E35B90090FC38 /* MasterTableHeaderView.m */; };
 		B6603BDD188CE7AE00F52946 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6603BDC188CE7AE00F52946 /* Foundation.framework */; };
 		B6603BDF188CE7AE00F52946 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6603BDE188CE7AE00F52946 /* CoreGraphics.framework */; };
 		B6603BE1188CE7AE00F52946 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6603BE0188CE7AE00F52946 /* UIKit.framework */; };
@@ -103,6 +104,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B61B10D6188E35B90090FC38 /* MasterTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterTableHeaderView.h; sourceTree = "<group>"; };
+		B61B10D7188E35B90090FC38 /* MasterTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterTableHeaderView.m; sourceTree = "<group>"; };
 		B6603BD9188CE7AE00F52946 /* Pitaya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pitaya.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6603BDC188CE7AE00F52946 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B6603BDE188CE7AE00F52946 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -435,14 +438,16 @@
 		B6603C1D188CEBA200F52946 /* BaseLayout */ = {
 			isa = PBXGroup;
 			children = (
-				B6603C1E188CEBA200F52946 /* DetailViewController.h */,
-				B6603C1F188CEBA200F52946 /* DetailViewController.m */,
-				B6603C20188CEBA200F52946 /* MasterTableViewCell.h */,
-				B6603C21188CEBA200F52946 /* MasterTableViewCell.m */,
-				B6603C22188CEBA200F52946 /* MasterViewController.h */,
-				B6603C23188CEBA200F52946 /* MasterViewController.m */,
 				B6603C24188CEBA200F52946 /* RootViewController.h */,
 				B6603C25188CEBA200F52946 /* RootViewController.m */,
+				B6603C22188CEBA200F52946 /* MasterViewController.h */,
+				B6603C23188CEBA200F52946 /* MasterViewController.m */,
+				B6603C20188CEBA200F52946 /* MasterTableViewCell.h */,
+				B6603C21188CEBA200F52946 /* MasterTableViewCell.m */,
+				B61B10D6188E35B90090FC38 /* MasterTableHeaderView.h */,
+				B61B10D7188E35B90090FC38 /* MasterTableHeaderView.m */,
+				B6603C1E188CEBA200F52946 /* DetailViewController.h */,
+				B6603C1F188CEBA200F52946 /* DetailViewController.m */,
 			);
 			path = BaseLayout;
 			sourceTree = "<group>";
@@ -798,6 +803,7 @@
 				B6603CB1188D151800F52946 /* SDWebImageManager.m in Sources */,
 				B6603CF1188D153300F52946 /* GKDevice.m in Sources */,
 				B6603CEC188D153300F52946 /* GKAPI.m in Sources */,
+				B61B10D8188E35B90090FC38 /* MasterTableHeaderView.m in Sources */,
 				B6603C44188D150A00F52946 /* UIDevice+Hardware.m in Sources */,
 				B6603CE7188D153300F52946 /* GKEntityCategory.m in Sources */,
 				B6603CA8188D151800F52946 /* DDTTYLogger.m in Sources */,

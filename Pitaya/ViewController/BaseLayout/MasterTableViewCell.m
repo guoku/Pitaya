@@ -10,11 +10,18 @@
 
 @implementation MasterTableViewCell
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    self.titleLabel.textColor = self.selected ? [UIColor blueColor] : [UIColor darkGrayColor];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    
+    [self setNeedsLayout];
 }
 
 @end

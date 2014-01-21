@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MasterTableHeaderView.h"
 @class MasterViewController;
 
 @protocol MasterViewControllerDelegate <NSObject>
@@ -17,6 +18,8 @@
 @end
 
 @interface MasterViewController : UIViewController
+
+@property (nonatomic, strong) IBOutlet MasterTableHeaderView *headerView;
 
 @property (nonatomic, weak) id<MasterViewControllerDelegate> delegate;
 

@@ -51,7 +51,7 @@
     
     if (self.interfaceOrientation == 1 || self.interfaceOrientation == 2) {
         // 竖屏
-        self.horizontalSpace.constant = -200.f;
+        self.horizontalSpace.constant = -220.f;
     } else {
         // 横屏
         self.horizontalSpace.constant = 0.f;
