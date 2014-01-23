@@ -70,10 +70,10 @@ int ddLogLevel;
 
 - (void)configCustomAppearance
 {
-    UIColor *navigationBarBackgroundColor = [UIColor orangeColor];
+    UIColor *navigationBarBackgroundColor = [UIColor whiteColor];
     UIImage *navigationBarBackButtonImage = [UIImage imageNamed:@"nav_back_btn"];
-    UIFont *navigationBarTitleFone = [UIFont appFontWithSize:20.f];
-    UIColor *navigationBarTitleColor = [UIColor blueColor];
+    UIFont *navigationBarTitleFont = [UIFont appFontWithSize:20.f];
+    UIColor *navigationBarTitleColor = UIColorFromRGB(0x555555);
     UIColor *navigationBarTitleShadowColor = [UIColor clearColor];
     CGFloat navigationBarTitleShadowOffset = 0.f;
     
@@ -86,7 +86,7 @@ int ddLogLevel;
     }
     
     [UINavigationBar appearance].titleTextAttributes = @{
-                                                         UITextAttributeFont             : navigationBarTitleFone,
+                                                         UITextAttributeFont             : navigationBarTitleFont,
                                                          UITextAttributeTextColor        : navigationBarTitleColor,
                                                          UITextAttributeTextShadowColor  : navigationBarTitleShadowColor,
                                                          UITextAttributeTextShadowOffset : @(navigationBarTitleShadowOffset),

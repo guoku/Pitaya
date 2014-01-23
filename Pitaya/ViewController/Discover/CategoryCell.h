@@ -10,9 +10,7 @@
 
 @interface CategoryCell : UICollectionViewCell
 
-@property (nonatomic, strong) IBOutlet UIButton *imageButton;
+@property (nonatomic, strong) IBOutlet UIImageView *imageView;
 @property (nonatomic, strong) IBOutlet UILabel *titleLabel;
-
-- (IBAction)tap:(UIButton *)button;
 
 @end

@@ -10,9 +10,4 @@
 
 @implementation CategoryCell
 
-- (void)tap:(UIButton *)button
-{
-    NSLog(@"tap");
-}
-
 @end

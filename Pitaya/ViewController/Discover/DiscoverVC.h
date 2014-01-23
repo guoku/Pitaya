@@ -11,5 +11,6 @@
 @interface DiscoverVC : BaseViewController
 
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 
 @end

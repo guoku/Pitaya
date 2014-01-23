@@ -10,6 +10,7 @@
 		B61B10D8188E35B90090FC38 /* MasterTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B61B10D7188E35B90090FC38 /* MasterTableHeaderView.m */; };
 		B61B10DD188E777E0090FC38 /* DiscoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B61B10DC188E777E0090FC38 /* DiscoverVC.m */; };
 		B61B10E0188E7A810090FC38 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B61B10DF188E7A810090FC38 /* CategoryCell.m */; };
+		B64ACF921890DB1900D88459 /* DiscoverSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B64ACF911890DB1900D88459 /* DiscoverSectionHeaderView.m */; };
 		B64F951A188F8AEB00531FCA /* HomepageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B64F9519188F8AEB00531FCA /* HomepageVC.m */; };
 		B64F951D188F8AF900531FCA /* FeedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B64F951C188F8AF900531FCA /* FeedVC.m */; };
 		B64F9520188F8B0600531FCA /* MessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B64F951F188F8B0600531FCA /* MessageVC.m */; };
@@ -116,6 +117,8 @@
 		B61B10DC188E777E0090FC38 /* DiscoverVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverVC.m; sourceTree = "<group>"; };
 		B61B10DE188E7A810090FC38 /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
 		B61B10DF188E7A810090FC38 /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
+		B64ACF901890DB1900D88459 /* DiscoverSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverSectionHeaderView.h; sourceTree = "<group>"; };
+		B64ACF911890DB1900D88459 /* DiscoverSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverSectionHeaderView.m; sourceTree = "<group>"; };
 		B64F9518188F8AEB00531FCA /* HomepageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepageVC.h; sourceTree = "<group>"; };
 		B64F9519188F8AEB00531FCA /* HomepageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepageVC.m; sourceTree = "<group>"; };
 		B64F951B188F8AF900531FCA /* FeedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedVC.h; sourceTree = "<group>"; };
@@ -317,6 +320,8 @@
 			children = (
 				B61B10DB188E777E0090FC38 /* DiscoverVC.h */,
 				B61B10DC188E777E0090FC38 /* DiscoverVC.m */,
+				B64ACF901890DB1900D88459 /* DiscoverSectionHeaderView.h */,
+				B64ACF911890DB1900D88459 /* DiscoverSectionHeaderView.m */,
 				B61B10DE188E7A810090FC38 /* CategoryCell.h */,
 				B61B10DF188E7A810090FC38 /* CategoryCell.m */,
 			);
@@ -892,6 +897,7 @@
 				B6603CB0188D151800F52946 /* SDWebImageDownloaderOperation.m in Sources */,
 				B6603C9B188D151800F52946 /* AFHTTPRequestOperation.m in Sources */,
 				B6603C9D188D151800F52946 /* AFImageRequestOperation.m in Sources */,
+				B64ACF921890DB1900D88459 /* DiscoverSectionHeaderView.m in Sources */,
 				B6603CB7188D151800F52946 /* UIImageView+WebCache.m in Sources */,
 				B6603CB3188D151800F52946 /* UIButton+WebCache.m in Sources */,
 				B6603C2D188CEBA200F52946 /* MasterViewController.m in Sources */,
