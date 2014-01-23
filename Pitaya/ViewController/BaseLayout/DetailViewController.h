@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 Guoku. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import <UIKit/UIKit.h>
 
 @interface DetailViewController : UITabBarController
 

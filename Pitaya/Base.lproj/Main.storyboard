@@ -36,15 +36,26 @@
                                     <segue destination="fi4-I3-YaO" kind="embed" id="BoQ-eT-maw"/>
                                 </connections>
                             </containerView>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hcF-io-iLS" userLabel="Shadow View">
+                                <rect key="frame" x="290" y="0.0" width="10" height="768"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="10" id="9lb-zX-gsx"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PlP-ZE-Yzz" firstAttribute="top" secondItem="r7G-q5-E3E" secondAttribute="top" id="6Rn-Ru-x5q"/>
                             <constraint firstItem="PlP-ZE-Yzz" firstAttribute="leading" secondItem="r7G-q5-E3E" secondAttribute="leading" id="GhA-EK-4Cs"/>
                             <constraint firstAttribute="bottom" secondItem="WoF-Og-htf" secondAttribute="bottom" id="ObE-eH-Ahv"/>
+                            <constraint firstItem="jzj-PC-JcY" firstAttribute="top" secondItem="hcF-io-iLS" secondAttribute="bottom" id="TCC-eb-jBW"/>
                             <constraint firstItem="WoF-Og-htf" firstAttribute="top" secondItem="r7G-q5-E3E" secondAttribute="top" id="Unn-Ji-ReZ"/>
+                            <constraint firstItem="WoF-Og-htf" firstAttribute="leading" secondItem="hcF-io-iLS" secondAttribute="trailing" id="cTJ-rM-cND"/>
                             <constraint firstAttribute="trailing" secondItem="WoF-Og-htf" secondAttribute="trailing" id="fEd-qN-afL"/>
                             <constraint firstAttribute="bottom" secondItem="PlP-ZE-Yzz" secondAttribute="bottom" id="quA-Ta-K4F"/>
+                            <constraint firstItem="hcF-io-iLS" firstAttribute="top" secondItem="r7G-q5-E3E" secondAttribute="top" id="r5c-Fw-liw"/>
                             <constraint firstItem="WoF-Og-htf" firstAttribute="leading" secondItem="PlP-ZE-Yzz" secondAttribute="trailing" id="zh7-tZ-Yoh"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -181,9 +192,9 @@
         <!--Detail View Controller-->
         <scene sceneID="neh-HQ-NgU">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="fi4-I3-YaO" customClass="DetailViewController" sceneMemberID="viewController">
+                <tabBarController definesPresentationContext="YES" hidesBottomBarWhenPushed="YES" id="fi4-I3-YaO" customClass="DetailViewController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="LXj-xn-c4G">
+                    <tabBar key="tabBar" hidden="YES" contentMode="scaleToFill" id="LXj-xn-c4G">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -216,10 +227,10 @@
             </objects>
             <point key="canvasLocation" x="191" y="1454"/>
         </scene>
-        <!--View Controller - 消息-->
+        <!--MessageVC - 消息-->
         <scene sceneID="JJ7-SK-Cuj">
             <objects>
-                <viewController id="vZU-wL-b6P" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="vZU-wL-b6P" customClass="MessageVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8t5-OQ-yWd"/>
                         <viewControllerLayoutGuide type="bottom" id="ppB-px-LSJ"/>
@@ -243,7 +254,10 @@
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" title="消息" id="G80-QK-6S8"/>
+                    <navigationItem key="navigationItem" title="消息" id="G80-QK-6S8">
+                        <barButtonItem key="backBarButtonItem" title=" " id="wF8-XA-gCV"/>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MHP-3h-Om0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -265,10 +279,10 @@
             </objects>
             <point key="canvasLocation" x="191" y="2461"/>
         </scene>
-        <!--View Controller - 设置-->
+        <!--SettingVC - 设置-->
         <scene sceneID="Y1f-i8-eDn">
             <objects>
-                <viewController id="gMw-fs-YyS" sceneMemberID="viewController">
+                <viewController id="gMw-fs-YyS" customClass="SettingVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Tdo-q7-VNf"/>
                         <viewControllerLayoutGuide type="bottom" id="DQz-02-Bw9"/>
@@ -292,7 +306,9 @@
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" title="设置" id="dpJ-MJ-Z2s"/>
+                    <navigationItem key="navigationItem" title="设置" id="dpJ-MJ-Z2s">
+                        <barButtonItem key="backBarButtonItem" title=" " id="ygC-Gw-Id8"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WcT-Rr-6yL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -346,10 +362,10 @@
             </objects>
             <point key="canvasLocation" x="191" y="-1544"/>
         </scene>
-        <!--View Controller - 首页-->
+        <!--HomepageVC - 首页-->
         <scene sceneID="LOh-PQ-aNq">
             <objects>
-                <viewController id="rcC-GH-cgb" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="rcC-GH-cgb" customClass="HomepageVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3M3-bG-67S"/>
                         <viewControllerLayoutGuide type="bottom" id="6pn-FG-lnf"/>
@@ -373,16 +389,19 @@
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" title="首页" id="iJy-wU-WCX"/>
+                    <navigationItem key="navigationItem" title="首页" id="iJy-wU-WCX">
+                        <barButtonItem key="backBarButtonItem" title=" " id="UvW-0w-PFc"/>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FkS-Ar-YY0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1211" y="-1544"/>
         </scene>
-        <!--View Controller - 发现-->
+        <!--DiscoverVC - 发现-->
         <scene sceneID="d1o-6h-dYc">
             <objects>
-                <viewController id="bgN-5d-p5w" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="bgN-5d-p5w" customClass="DiscoverVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ex9-3A-52o"/>
                         <viewControllerLayoutGuide type="bottom" id="abT-Ho-srR"/>
@@ -391,31 +410,90 @@
                         <rect key="frame" x="0.0" y="0.0" width="724" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="AG0-qG-8GN">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rXu-tq-Mvl">
                                 <rect key="frame" x="0.0" y="0.0" width="724" height="768"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="Zn8-hu-GMO">
+                                    <size key="itemSize" width="100" height="120"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="40" minY="20" maxX="40" maxY="20"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCell" id="SeS-nz-7iH" customClass="CategoryCell">
+                                        <rect key="frame" x="40" y="64" width="100" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="120"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0QY-Bf-2Zk">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="eqA-1m-O2G"/>
+                                                        <constraint firstAttribute="width" constant="100" id="yO4-9l-yj0"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="tap:" destination="SeS-nz-7iH" eventType="touchUpInside" id="Fg2-g6-KGJ"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLO-Ui-Wbh">
+                                                    <rect key="frame" x="0.0" y="100" width="100" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="centerX" secondItem="0QY-Bf-2Zk" secondAttribute="centerX" id="2MR-2d-FCg"/>
+                                            <constraint firstItem="0QY-Bf-2Zk" firstAttribute="top" secondItem="SeS-nz-7iH" secondAttribute="top" id="OW3-YJ-HjJ"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageButton" destination="0QY-Bf-2Zk" id="38Z-JR-0Sv"/>
+                                            <outlet property="titleLabel" destination="CLO-Ui-Wbh" id="nqt-BY-sRW"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="bgN-5d-p5w" id="muD-1w-F7d"/>
+                                    <outlet property="delegate" destination="bgN-5d-p5w" id="mnb-Va-l5j"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="AG0-qG-8GN" secondAttribute="bottom" id="T6t-aP-o9a"/>
-                            <constraint firstItem="AG0-qG-8GN" firstAttribute="leading" secondItem="9Wd-Pb-ajY" secondAttribute="leading" id="pdm-yd-qH4"/>
-                            <constraint firstItem="AG0-qG-8GN" firstAttribute="top" secondItem="9Wd-Pb-ajY" secondAttribute="top" id="xlO-N7-YkM"/>
-                            <constraint firstAttribute="trailing" secondItem="AG0-qG-8GN" secondAttribute="trailing" id="zcD-Dk-C6L"/>
+                            <constraint firstItem="rXu-tq-Mvl" firstAttribute="leading" secondItem="9Wd-Pb-ajY" secondAttribute="leading" id="QoO-LY-DHW"/>
+                            <constraint firstItem="rXu-tq-Mvl" firstAttribute="top" secondItem="9Wd-Pb-ajY" secondAttribute="top" id="WPN-Ad-HTU"/>
+                            <constraint firstAttribute="bottom" secondItem="rXu-tq-Mvl" secondAttribute="bottom" id="fkc-Sg-JQK"/>
+                            <constraint firstAttribute="trailing" secondItem="rXu-tq-Mvl" secondAttribute="trailing" id="hO7-n4-tHT"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" title="发现" id="cWW-m6-oyQ"/>
+                    <navigationItem key="navigationItem" title="发现" id="cWW-m6-oyQ">
+                        <barButtonItem key="backBarButtonItem" title=" " id="uH3-qo-jyL"/>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="collectionView" destination="rXu-tq-Mvl" id="zCb-vO-etP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tVy-bv-Oyt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1211" y="-542"/>
         </scene>
-        <!--View Controller - 动态-->
+        <!--FeedVC - 动态-->
         <scene sceneID="McO-zS-AVc">
             <objects>
-                <viewController id="AvC-3r-xx0" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="AvC-3r-xx0" customClass="FeedVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Uhh-0K-ZAx"/>
                         <viewControllerLayoutGuide type="bottom" id="eaI-AL-UZ2"/>
@@ -439,7 +517,10 @@
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" title="动态" id="XzF-K0-vJZ"/>
+                    <navigationItem key="navigationItem" title="动态" id="XzF-K0-vJZ">
+                        <barButtonItem key="backBarButtonItem" title=" " id="xFA-Eu-Bbm"/>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kvl-AH-IhC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
