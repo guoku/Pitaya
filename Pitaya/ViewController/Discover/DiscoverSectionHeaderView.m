@@ -10,4 +10,22 @@
 
 @implementation DiscoverSectionHeaderView
 
+#pragma mark - Getter And Setter
+
+- (void)setGroupDict:(NSDictionary *)groupDict
+{
+    _groupDict = groupDict;
+    
+    [self setNeedsLayout];
+}
+
+#pragma mark - Life Cycle
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    self.titleLabel.text = self.groupDict[GroupNameKey];
+}
+
 @end

@@ -10,7 +10,10 @@
 
 @interface DiscoverSectionHeaderView : UICollectionReusableView
 
+@property (nonatomic, strong) NSDictionary *groupDict;
+
 @property (nonatomic, strong) IBOutlet UILabel *titleLabel;
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
+@property (nonatomic, strong) IBOutlet UIButton *tapButton;
 
 @end

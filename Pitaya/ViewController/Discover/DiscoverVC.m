@@ -9,6 +9,8 @@
 #import "DiscoverVC.h"
 #import "DiscoverSectionHeaderView.h"
 #import "CategoryCell.h"
+#import "GroupVC.h"
+#import "CategoryVC.h"
 
 @interface DiscoverVC () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -39,13 +41,6 @@
 
 #pragma mark - Selector Method
 
-- (void)tapSectionHeaderView
-{
-    BaseViewController *vc = [[BaseViewController alloc] init];
-    vc.view.backgroundColor = [UIColor lightGrayColor];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -64,8 +59,7 @@
     CategoryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CategoryCell" forIndexPath:indexPath];
     
     GKEntityCategory *category = self.categoryGroupArray[indexPath.section][CategoryArrayKey][indexPath.row];
-    [cell.imageView setImageWithURL:category.iconURL];
-    cell.titleLabel.text = [category.categoryName componentsSeparatedByString:@"-"].firstObject;
+    cell.category = category;
     
     return cell;
 }
@@ -76,11 +70,10 @@
     
     if (kind == UICollectionElementKindSectionHeader) {
         DiscoverSectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"DiscoverSectionHeaderView" forIndexPath:indexPath];
-        headerView.imageView.backgroundColor = [UIColor redColor];
-        headerView.titleLabel.text = self.categoryGroupArray[indexPath.section][GroupNameKey];
         
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapSectionHeaderView)];
-        [headerView addGestureRecognizer:tap];
+        headerView.groupDict = self.categoryGroupArray[indexPath.section];
+        headerView.imageView.backgroundColor = [UIColor redColor];
+        headerView.tapButton.tag = indexPath.section;
         
         reusableview = headerView;
     }
@@ -90,12 +83,6 @@
 
 #pragma mark - UICollectionViewDelegate
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    BaseViewController *vc = [[BaseViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
 #pragma mark - Life Cycle
 
 - (void)viewDidLoad
@@ -103,6 +90,21 @@
     [super viewDidLoad];
     
     [self refresh];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [super prepareForSegue:segue sender:sender];
+    
+    if ([segue.destinationViewController isKindOfClass:[GroupVC class]]) {
+        UIButton *button = (UIButton *)sender;
+        GroupVC *vc = (GroupVC *)segue.destinationViewController;
+        vc.groupDict = self.categoryGroupArray[button.tag];
+    } else if ([segue.destinationViewController isKindOfClass:[CategoryVC class]]) {
+        CategoryCell *cell = (CategoryCell *)sender;
+        CategoryVC *vc = (CategoryVC *)segue.destinationViewController;
+        vc.category = cell.category;
+    }
 }
 
 - (void)didReceiveMemoryWarning
