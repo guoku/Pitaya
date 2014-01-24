@@ -25,7 +25,9 @@
 {
     [super layoutSubviews];
     
-    self.titleLabel.text = self.groupDict[GroupNameKey];
+    if (self.groupDict) {
+        self.titleLabel.text = self.groupDict[GroupNameKey];
+    }
 }
 
 @end

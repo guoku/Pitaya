@@ -18,6 +18,9 @@
 @property (nonatomic, strong) NSMutableArray *filteredCategoryArray;
 @property (nonatomic, strong) NSMutableArray *categoryGroupArray;
 
+@property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+
 @end
 
 @implementation DiscoverVC
@@ -28,9 +31,9 @@
 {
     [GKDataManager getAllCategoryFromNetwork:YES result:^(NSArray *categoryGroupArray, NSArray *fullCategoryGroupArray, NSArray *allCategoryArray) {
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            self.categoryGroupArray = [NSMutableArray arrayWithArray:categoryGroupArray];
-            [self.categoryGroupArray sortUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"Status" ascending:NO]]];
             self.allCategoryArray = [allCategoryArray mutableCopy];
+            self.categoryGroupArray = [categoryGroupArray mutableCopy];
+            [self.categoryGroupArray sortUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"Status" ascending:NO]]];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.collectionView reloadData];
                 [self.activityIndicatorView stopAnimating];

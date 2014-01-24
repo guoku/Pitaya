@@ -20,7 +20,7 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = self.category.categoryName;
+    self.navigationItem.title = [self.category.categoryName componentsSeparatedByString:@"-"].firstObject;
 }
 
 - (void)didReceiveMemoryWarning

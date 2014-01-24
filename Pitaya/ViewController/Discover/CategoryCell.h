@@ -12,7 +12,4 @@
 
 @property (nonatomic, strong) GKEntityCategory *category;
 
-@property (nonatomic, strong) IBOutlet UIImageView *imageView;
-@property (nonatomic, strong) IBOutlet UILabel *titleLabel;
-
 @end

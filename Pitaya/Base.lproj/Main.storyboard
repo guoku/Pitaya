@@ -445,7 +445,7 @@
                                                         <constraint firstAttribute="height" constant="20" id="aCZ-h8-JHo"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -487,12 +487,13 @@
                                                 <constraint firstAttribute="height" constant="20" id="dT1-aP-5Dz"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tjq-uA-kg8">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tjq-uA-kg8">
                                             <rect key="frame" x="0.0" y="0.0" width="724" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <state key="normal">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -646,14 +647,14 @@
                                                         <constraint firstAttribute="width" constant="45" id="yEq-T2-5PH"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="品类名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2R-SC-UCb">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="品类名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2R-SC-UCb">
                                                     <rect key="frame" x="0.0" y="80" width="110" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="ZT7-WA-GnR"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -663,13 +664,16 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="f2R-SC-UCb" secondAttribute="trailing" id="7OK-F3-Ji6"/>
                                             <constraint firstItem="f2R-SC-UCb" firstAttribute="leading" secondItem="ihe-Ap-5EF" secondAttribute="leading" id="HSs-c7-C66"/>
+                                            <constraint firstAttribute="centerY" secondItem="f2R-SC-UCb" secondAttribute="centerY" priority="899" id="Mjn-L4-w7J"/>
                                             <constraint firstAttribute="centerX" secondItem="Ltn-fS-vB7" secondAttribute="centerX" id="Ndz-xb-aCN"/>
                                             <constraint firstItem="Ltn-fS-vB7" firstAttribute="top" secondItem="ihe-Ap-5EF" secondAttribute="top" constant="20" id="RdK-5n-U2B"/>
-                                            <constraint firstAttribute="bottom" secondItem="f2R-SC-UCb" secondAttribute="bottom" constant="10" id="ict-65-wAw"/>
+                                            <constraint firstAttribute="bottom" secondItem="f2R-SC-UCb" secondAttribute="bottom" priority="900" constant="10" id="ict-65-wAw"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="Ltn-fS-vB7" id="RO1-hg-bcA"/>
                                             <outlet property="titleLabel" destination="f2R-SC-UCb" id="mlP-3J-NmC"/>
+                                            <outlet property="verticalCenter" destination="Mjn-L4-w7J" id="qtJ-l6-vDh"/>
+                                            <segue destination="DMe-7T-GSK" kind="push" id="sEW-tX-dQl"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -685,6 +689,7 @@
                                                 <constraint firstAttribute="height" constant="20" id="T0a-SW-jho"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -710,7 +715,12 @@
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" id="eXp-Uh-tkV"/>
+                    <navigationItem key="navigationItem" id="eXp-Uh-tkV">
+                        <barButtonItem key="backBarButtonItem" title=" " id="lP8-KP-1Xz"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="Fx2-0c-8gg" id="xHK-hQ-fxV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S71-hD-MdV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -722,4 +732,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="sEW-tX-dQl"/>
+    </inferredMetricsTieBreakers>
 </document>
