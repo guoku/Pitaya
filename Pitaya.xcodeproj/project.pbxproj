@@ -17,6 +17,7 @@
 		B64F951D188F8AF900531FCA /* FeedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B64F951C188F8AF900531FCA /* FeedVC.m */; };
 		B64F9520188F8B0600531FCA /* MessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B64F951F188F8B0600531FCA /* MessageVC.m */; };
 		B64F9523188F8B1400531FCA /* SettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B64F9522188F8B1400531FCA /* SettingVC.m */; };
+		B651165B1893B86200B40016 /* EntityCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B651165A1893B86200B40016 /* EntityCollectionCell.m */; };
 		B6603BDD188CE7AE00F52946 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6603BDC188CE7AE00F52946 /* Foundation.framework */; };
 		B6603BDF188CE7AE00F52946 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6603BDE188CE7AE00F52946 /* CoreGraphics.framework */; };
 		B6603BE1188CE7AE00F52946 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6603BE0188CE7AE00F52946 /* UIKit.framework */; };
@@ -133,6 +134,8 @@
 		B64F951F188F8B0600531FCA /* MessageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageVC.m; sourceTree = "<group>"; };
 		B64F9521188F8B1400531FCA /* SettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingVC.h; sourceTree = "<group>"; };
 		B64F9522188F8B1400531FCA /* SettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingVC.m; sourceTree = "<group>"; };
+		B65116591893B86200B40016 /* EntityCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityCollectionCell.h; sourceTree = "<group>"; };
+		B651165A1893B86200B40016 /* EntityCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityCollectionCell.m; sourceTree = "<group>"; };
 		B6603BD9188CE7AE00F52946 /* Pitaya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pitaya.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6603BDC188CE7AE00F52946 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B6603BDE188CE7AE00F52946 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -374,6 +377,23 @@
 			path = Feed;
 			sourceTree = "<group>";
 		};
+		B65116571893B7DC00B40016 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B65116581893B81F00B40016 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B65116581893B81F00B40016 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B65116591893B86200B40016 /* EntityCollectionCell.h */,
+				B651165A1893B86200B40016 /* EntityCollectionCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		B6603BD0188CE7AE00F52946 = {
 			isa = PBXGroup;
 			children = (
@@ -419,6 +439,7 @@
 				B6603C12188CEBA200F52946 /* Category */,
 				B6603CDA188D153300F52946 /* Util */,
 				B6603C16188CEBA200F52946 /* ThirdParty */,
+				B65116571893B7DC00B40016 /* View */,
 				B6603C17188CEBA200F52946 /* ViewController */,
 				B6603BE3188CE7AE00F52946 /* Supporting Files */,
 			);
@@ -890,6 +911,7 @@
 				B6603CB1188D151800F52946 /* SDWebImageManager.m in Sources */,
 				B6603CF1188D153300F52946 /* GKDevice.m in Sources */,
 				B6603CEC188D153300F52946 /* GKAPI.m in Sources */,
+				B651165B1893B86200B40016 /* EntityCollectionCell.m in Sources */,
 				B61B10D8188E35B90090FC38 /* MasterTableHeaderView.m in Sources */,
 				B64F951A188F8AEB00531FCA /* HomepageVC.m in Sources */,
 				B6603C44188D150A00F52946 /* UIDevice+Hardware.m in Sources */,

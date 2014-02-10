@@ -13,9 +13,9 @@
 
 @interface GroupVC () <UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
-
 @property (nonatomic, strong) NSMutableArray *categoryArray;
+
+@property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
 
 @end
 
