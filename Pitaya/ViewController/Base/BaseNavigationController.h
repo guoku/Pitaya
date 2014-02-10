@@ -10,4 +10,6 @@
 
 @interface BaseNavigationController : UINavigationController
 
+@property (nonatomic, strong) UISwipeGestureRecognizer *backGesture;
+
 @end

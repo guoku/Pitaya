@@ -10,15 +10,24 @@
 
 @interface BaseNavigationController ()
 
-@property (nonatomic, strong) UISwipeGestureRecognizer *backGesture;
-
 @end
 
 @implementation BaseNavigationController
 
+#pragma mark - Private Method
+
 - (void)backSwape
 {
     [self popViewControllerAnimated:YES];
+}
+
+#pragma mark - Override
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    [super pushViewController:viewController animated:animated];
+    
+    self.backGesture.enabled = NO;
 }
 
 #pragma mark - Life Cycle
@@ -30,6 +39,13 @@
     _backGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(backSwape)];
     self.backGesture.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:self.backGesture];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    self.backGesture.enabled = YES;
 }
 
 - (void)didReceiveMemoryWarning
