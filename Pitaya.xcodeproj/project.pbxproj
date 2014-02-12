@@ -101,6 +101,8 @@
 		B6603CFE188D179B00F52946 /* YLActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6603CFD188D179B00F52946 /* YLActivityIndicatorView.m */; };
 		B6603D00188D193D00F52946 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6603CFF188D193D00F52946 /* SystemConfiguration.framework */; };
 		B6603D02188D194A00F52946 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6603D01188D194A00F52946 /* MobileCoreServices.framework */; };
+		B664EFA918A9EC280005E635 /* AKSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B664EFA818A9EC280005E635 /* AKSegmentedControl.m */; };
+		B664EFAC18AA38F30005E635 /* NoteCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B664EFAB18AA38F30005E635 /* NoteCollectionCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -296,6 +298,10 @@
 		B6603CFD188D179B00F52946 /* YLActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLActivityIndicatorView.m; sourceTree = "<group>"; };
 		B6603CFF188D193D00F52946 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B6603D01188D194A00F52946 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		B664EFA718A9EC280005E635 /* AKSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKSegmentedControl.h; sourceTree = "<group>"; };
+		B664EFA818A9EC280005E635 /* AKSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKSegmentedControl.m; sourceTree = "<group>"; };
+		B664EFAA18AA38F30005E635 /* NoteCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCollectionCell.h; sourceTree = "<group>"; };
+		B664EFAB18AA38F30005E635 /* NoteCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCollectionCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -390,6 +396,8 @@
 			children = (
 				B65116591893B86200B40016 /* EntityCollectionCell.h */,
 				B651165A1893B86200B40016 /* EntityCollectionCell.m */,
+				B664EFAA18AA38F30005E635 /* NoteCollectionCell.h */,
+				B664EFAB18AA38F30005E635 /* NoteCollectionCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -504,6 +512,7 @@
 			isa = PBXGroup;
 			children = (
 				B6603C49188D151700F52946 /* AFNetworking */,
+				B664EFA618A9EC280005E635 /* AKSegmentedControl */,
 				B6603CF7188D171500F52946 /* GKRotateLoadingView */,
 				B6603CFB188D179B00F52946 /* HTLoadingView */,
 				B6603C5E188D151800F52946 /* JSONKit */,
@@ -784,6 +793,15 @@
 			path = HTLoadingView;
 			sourceTree = "<group>";
 		};
+		B664EFA618A9EC280005E635 /* AKSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				B664EFA718A9EC280005E635 /* AKSegmentedControl.h */,
+				B664EFA818A9EC280005E635 /* AKSegmentedControl.m */,
+			);
+			path = AKSegmentedControl;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -891,6 +909,7 @@
 				B6603C43188D150A00F52946 /* NSString+App.m in Sources */,
 				B6603C28188CEBA200F52946 /* UIView+DEFrameAdditions.m in Sources */,
 				B6603CFA188D171500F52946 /* GKRotateLoadingView.m in Sources */,
+				B664EFA918A9EC280005E635 /* AKSegmentedControl.m in Sources */,
 				B6603C48188D150A00F52946 /* UIView+App.m in Sources */,
 				B6603CEA188D153300F52946 /* GKUser.m in Sources */,
 				B6603CE9188D153300F52946 /* GKPurchase.m in Sources */,
@@ -899,6 +918,7 @@
 				B6603CBC188D151800F52946 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				B6603C46188D150A00F52946 /* UIImage+App.m in Sources */,
 				B6603BE9188CE7AE00F52946 /* main.m in Sources */,
+				B664EFAC18AA38F30005E635 /* NoteCollectionCell.m in Sources */,
 				B6603CED188D153300F52946 /* GKDataManager.m in Sources */,
 				B6603CEE188D153300F52946 /* GKEntity+ImageURLFixes.m in Sources */,
 				B6603CFE188D179B00F52946 /* YLActivityIndicatorView.m in Sources */,

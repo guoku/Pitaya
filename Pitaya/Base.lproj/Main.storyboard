@@ -527,13 +527,19 @@
                                     <outlet property="delegate" destination="bgN-5d-p5w" id="mnb-Va-l5j"/>
                                 </connections>
                             </collectionView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="tFX-n1-A8u">
-                                <rect key="frame" x="352" y="374" width="20" height="20"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="tFX-n1-A8u">
+                                <rect key="frame" x="352" y="80" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="68K-1w-ubK"/>
+                                    <constraint firstAttribute="height" constant="20" id="cYn-ng-BXH"/>
+                                </constraints>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="tFX-n1-A8u" firstAttribute="top" secondItem="ex9-3A-52o" secondAttribute="bottom" constant="36" id="Bby-JL-NHW"/>
+                            <constraint firstAttribute="centerX" secondItem="tFX-n1-A8u" secondAttribute="centerX" id="Jev-xJ-Bkq"/>
                             <constraint firstItem="rXu-tq-Mvl" firstAttribute="leading" secondItem="9Wd-Pb-ajY" secondAttribute="leading" id="QoO-LY-DHW"/>
                             <constraint firstItem="rXu-tq-Mvl" firstAttribute="top" secondItem="9Wd-Pb-ajY" secondAttribute="top" id="WPN-Ad-HTU"/>
                             <constraint firstAttribute="bottom" secondItem="rXu-tq-Mvl" secondAttribute="bottom" id="fkc-Sg-JQK"/>
@@ -609,13 +615,13 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="QzP-Ak-8bw">
                                     <size key="itemSize" width="200" height="280"/>
-                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="50" height="44"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EntityCollectionCell" id="1Im-V6-9wo" customClass="EntityCollectionCell">
-                                        <rect key="frame" x="20" y="114" width="200" height="280"/>
+                                        <rect key="frame" x="20" y="108" width="200" height="280"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="280"/>
@@ -654,6 +660,9 @@
                                                         <color key="titleColor" red="0.46666666865348816" green="0.46666666865348816" blue="0.46666666865348816" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="tapLikeButton:" destination="DMe-7T-GSK" eventType="touchUpInside" id="iTD-Ha-XDm"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -674,28 +683,48 @@
                                             <outlet property="priceLabel" destination="sIv-6B-JBa" id="CLV-uy-Vuh"/>
                                         </connections>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NoteCollectionCell" id="jJI-45-gxt" customClass="NoteCollectionCell">
+                                        <rect key="frame" x="262" y="108" width="200" height="280"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="280"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategorySectionHeaderView" id="E0l-Xs-vJ6">
-                                    <rect key="frame" x="0.0" y="44" width="724" height="50"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategorySectionHeaderView" id="lOb-gM-Cwx">
+                                    <rect key="frame" x="0.0" y="44" width="724" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="DMe-7T-GSK" id="mr6-gK-HXR"/>
                                     <outlet property="delegate" destination="DMe-7T-GSK" id="J0C-cY-dCs"/>
                                 </connections>
                             </collectionView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="8ms-FB-PkG">
+                                <rect key="frame" x="352" y="130" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="flR-al-6GL"/>
+                                    <constraint firstAttribute="width" constant="20" id="yKP-1a-pTW"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="tL8-jQ-1b3" secondAttribute="trailing" id="CSo-ga-k7H"/>
-                            <constraint firstItem="tL8-jQ-1b3" firstAttribute="top" secondItem="XGk-cS-ky6" secondAttribute="top" id="Lhq-3U-WDm"/>
-                            <constraint firstItem="tL8-jQ-1b3" firstAttribute="leading" secondItem="XGk-cS-ky6" secondAttribute="leading" id="PLB-VJ-epu"/>
-                            <constraint firstItem="58T-Zb-c1Z" firstAttribute="top" secondItem="tL8-jQ-1b3" secondAttribute="bottom" id="hnc-f2-2jU"/>
+                            <constraint firstAttribute="trailing" secondItem="tL8-jQ-1b3" secondAttribute="trailing" id="0Nd-Kc-d1d"/>
+                            <constraint firstItem="58T-Zb-c1Z" firstAttribute="top" secondItem="tL8-jQ-1b3" secondAttribute="bottom" id="7Jj-MU-Mb4"/>
+                            <constraint firstAttribute="centerX" secondItem="8ms-FB-PkG" secondAttribute="centerX" id="Hc5-nO-5Pf"/>
+                            <constraint firstItem="tL8-jQ-1b3" firstAttribute="top" secondItem="XGk-cS-ky6" secondAttribute="top" id="h0p-6I-3IG"/>
+                            <constraint firstItem="tL8-jQ-1b3" firstAttribute="leading" secondItem="XGk-cS-ky6" secondAttribute="leading" id="vaK-G6-KU4"/>
+                            <constraint firstItem="8ms-FB-PkG" firstAttribute="top" secondItem="NOK-Wh-1C7" secondAttribute="bottom" constant="86" id="xeE-MT-paW"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="yaw-5z-kWR"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="8ms-FB-PkG" id="VFO-JV-eLt"/>
                         <outlet property="collectionView" destination="tL8-jQ-1b3" id="gMO-kb-mDV"/>
                     </connections>
                 </viewController>
@@ -827,6 +856,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="sEW-tX-dQl"/>
+        <segue reference="kHF-kd-qUr"/>
     </inferredMetricsTieBreakers>
 </document>

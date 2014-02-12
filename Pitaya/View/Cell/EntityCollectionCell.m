@@ -14,7 +14,6 @@
 @property (nonatomic, strong) IBOutlet UILabel *contentLabel;
 @property (nonatomic, strong) IBOutlet UILabel *priceLabel;
 @property (nonatomic, strong) IBOutlet UIButton *likeButton;
-//@property (nonatomic, strong) IBOutlet UIImageView *imageView;
 
 @end
 
