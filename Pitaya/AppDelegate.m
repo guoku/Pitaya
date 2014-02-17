@@ -20,6 +20,11 @@ int ddLogLevel;
     
     [self configCustomAppearance];
     
+    _alertWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.alertWindow.windowLevel = 100;
+    UIViewController *vc = [[UIViewController alloc] init];
+    self.alertWindow.rootViewController = vc;
+    
     return YES;
 }
 							
@@ -83,6 +88,9 @@ int ddLogLevel;
         [UINavigationBar appearance].backIndicatorTransitionMaskImage = navigationBarBackButtonImage;
     } else {
         [UINavigationBar appearance].tintColor = navigationBarBackgroundColor;
+        // TODO:  使用一张带下边线的navBar背景图
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
+        [UINavigationBar appearance].shadowImage = [UIImage imageWithColor:[UIColor lightGrayColor]];
     }
     
     [UINavigationBar appearance].titleTextAttributes = @{
