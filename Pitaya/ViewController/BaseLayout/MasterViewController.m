@@ -54,6 +54,15 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
 
 #pragma mark - Life Cycle
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+        [self addObserver];
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -65,17 +74,70 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
                         @"设置"];
     
     CGRect frame = self.headerView.frame;
-    frame.size.height = iOS7 ? 80.f : 60;
+    frame.size.height = 60.f;
+    if (iOS7) {
+        frame.size.height += kStatusBarHeight;
+    }
     self.headerView.frame = frame;
+    
+    if (k_isLogin) {
+        [self.headerView.avatarButton setImageWithURL:[Passport sharedInstance].user.avatarURL_s forState:UIControlStateNormal];
+        self.headerView.nicknameLabel.text = [Passport sharedInstance].user.nickname;
+    } else {
+        self.headerView.avatarButton.backgroundColor = [UIColor blueColor];
+        self.headerView.nicknameLabel.text = @"未登录";
+    }
     
     self.tableView.tableFooterView = [UIView new];
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+}
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if (k_isLogin) {
+        NSLog(@"修改头像？");
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - KVO
+
+- (void)addObserver
+{
+    [[Passport sharedInstance].user addObserver:self forKeyPath:@"avatarURL" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+    [[Passport sharedInstance].user addObserver:self forKeyPath:@"nickname" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)removeObserver
+{
+    if ([Passport sharedInstance].user.observationInfo) {
+        [[Passport sharedInstance].user removeObserver:self forKeyPath:@"avatarURL"];
+        [[Passport sharedInstance].user removeObserver:self forKeyPath:@"nickname"];
+    }
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"avatarURL"]) {
+        GKUser *user = (GKUser *)object;
+        [self.headerView.avatarButton setBackgroundImageWithURL:user.avatarURL forState:UIControlStateNormal];
+    } else if ([keyPath isEqualToString:@"nickname"]) {
+        GKUser *user = (GKUser *)object;
+        self.headerView.nicknameLabel.text = user.nickname;
+    }
+}
+
+- (void)dealloc
+{
+    [self removeObserver];
 }
 
 @end

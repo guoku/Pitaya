@@ -19,7 +19,41 @@
 
 #pragma mark - Helper
 
+// Screen Height
+#ifndef kScreenHeight
+#define kScreenHeight CGRectGetHeight([UIScreen mainScreen].bounds)
+#endif
+
+// Screen Width
+#ifndef kScreenWidth
+#define kScreenWidth CGRectGetWidth([UIScreen mainScreen].bounds)
+#endif
+
+// Status Bar Height
+#ifndef kStatusBarHeight
+#define kStatusBarHeight 20.f
+#endif
+
+// Navigation Bar Height
+#ifndef kNavigationBarHeight
+#define kNavigationBarHeight 44.f
+#endif
+
+// Tool Bar Height
+#ifndef kToolBarHeight
+#define kToolBarHeight 44.f
+#endif
+
+// Tab Bar Height
+#ifndef kTabBarHeight
+#define kTabBarHeight 49.f
+#endif
+
 #define kAppDelegate ((AppDelegate *)([UIApplication sharedApplication].delegate))
+
+#ifndef k_isLogin
+#define k_isLogin [Passport sharedInstance].user
+#endif
 
 #ifndef iOS7
 #define iOS7 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)

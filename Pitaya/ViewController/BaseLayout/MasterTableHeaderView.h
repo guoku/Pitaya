@@ -13,6 +13,4 @@
 @property (nonatomic, strong) IBOutlet UIButton *avatarButton;
 @property (nonatomic, strong) IBOutlet UILabel *nicknameLabel;
 
- - (IBAction)tapAvatarButton:(UIButton *)button;
-
 @end

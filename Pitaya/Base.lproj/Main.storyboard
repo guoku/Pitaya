@@ -89,7 +89,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="80"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCl-Zo-xwL">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCl-Zo-xwL">
                                             <rect key="frame" x="80" y="30" width="200" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <constraints>
@@ -113,7 +113,6 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="tapAvatarButton:" destination="8HV-bb-3b3" eventType="touchUpInside" id="38A-9a-NAd"/>
                                                 <segue destination="PlW-XQ-n2R" kind="modal" id="Hwz-Qh-EcO"/>
                                             </connections>
                                         </button>
@@ -299,6 +298,9 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="tapLoginButton:" destination="vtd-7S-tjo" eventType="touchUpInside" id="2c0-l6-aAX"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -334,7 +336,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="emailTextField" destination="FeK-sm-8IL" id="54n-id-wfo"/>
                         <outlet property="leftBarButtonItem" destination="Q1S-b6-yXc" id="sU1-RY-NZ3"/>
+                        <outlet property="passwordTextField" destination="YTU-0l-be3" id="klh-30-hdf"/>
                         <outlet property="rightBarButtonItem" destination="WJj-NR-hHj" id="f6r-Bn-vAM"/>
                         <segue destination="QNA-YN-9dd" kind="push" id="OMh-cf-yHP"/>
                     </connections>
