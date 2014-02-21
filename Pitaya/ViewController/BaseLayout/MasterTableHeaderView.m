@@ -10,11 +10,4 @@
 
 @implementation MasterTableHeaderView
 
-#pragma mark - Selector Method
-
-- (void)tapAvatarButton:(UIButton *)button
-{
-    NSLog(@"tap avatar button");
-}
-
 @end

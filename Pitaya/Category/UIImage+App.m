@@ -9,6 +9,12 @@
 #import "UIImage+App.h"
 
 @implementation UIImage (App)
+
++ (UIImage *)imageWithColor:(UIColor *)color
+{
+    return [UIImage imageWithColor:color andSize:CGSizeMake(1.f, 1.f)];
+}
+
 + (UIImage *)imageWithColor:(UIColor *)color andSize:(CGSize)size
 {
     UIImage *img = nil;
