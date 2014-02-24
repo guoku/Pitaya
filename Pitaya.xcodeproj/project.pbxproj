@@ -12,6 +12,9 @@
 		B61B10D8188E35B90090FC38 /* MasterTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B61B10D7188E35B90090FC38 /* MasterTableHeaderView.m */; };
 		B61B10DD188E777E0090FC38 /* DiscoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B61B10DC188E777E0090FC38 /* DiscoverVC.m */; };
 		B61B10E0188E7A810090FC38 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B61B10DF188E7A810090FC38 /* CategoryCell.m */; };
+		B61EE31B18B731A200585C9A /* SelectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B61EE31A18B731A200585C9A /* SelectionVC.m */; };
+		B61EE31E18B731B300585C9A /* HotVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B61EE31D18B731B300585C9A /* HotVC.m */; };
+		B61EE32118B7356000585C9A /* SelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B61EE32018B7356000585C9A /* SelectionCell.m */; };
 		B63156A918ADE5BF003D802E /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63156A818ADE5BF003D802E /* BaseTableViewController.m */; };
 		B64ACF921890DB1900D88459 /* DiscoverSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B64ACF911890DB1900D88459 /* DiscoverSectionHeaderView.m */; };
 		B64ACF991891361800D88459 /* GroupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B64ACF981891361800D88459 /* GroupVC.m */; };
@@ -130,6 +133,12 @@
 		B61B10DC188E777E0090FC38 /* DiscoverVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverVC.m; sourceTree = "<group>"; };
 		B61B10DE188E7A810090FC38 /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
 		B61B10DF188E7A810090FC38 /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
+		B61EE31918B731A200585C9A /* SelectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectionVC.h; sourceTree = "<group>"; };
+		B61EE31A18B731A200585C9A /* SelectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectionVC.m; sourceTree = "<group>"; };
+		B61EE31C18B731B300585C9A /* HotVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotVC.h; sourceTree = "<group>"; };
+		B61EE31D18B731B300585C9A /* HotVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotVC.m; sourceTree = "<group>"; };
+		B61EE31F18B7356000585C9A /* SelectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectionCell.h; sourceTree = "<group>"; };
+		B61EE32018B7356000585C9A /* SelectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectionCell.m; sourceTree = "<group>"; };
 		B63156A718ADE5BF003D802E /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		B63156A818ADE5BF003D802E /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		B64ACF901890DB1900D88459 /* DiscoverSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverSectionHeaderView.h; sourceTree = "<group>"; };
@@ -370,6 +379,26 @@
 			path = Discover;
 			sourceTree = "<group>";
 		};
+		B61EE31718B7317600585C9A /* Selection */ = {
+			isa = PBXGroup;
+			children = (
+				B61EE31918B731A200585C9A /* SelectionVC.h */,
+				B61EE31A18B731A200585C9A /* SelectionVC.m */,
+				B61EE31F18B7356000585C9A /* SelectionCell.h */,
+				B61EE32018B7356000585C9A /* SelectionCell.m */,
+			);
+			path = Selection;
+			sourceTree = "<group>";
+		};
+		B61EE31818B7317600585C9A /* Hot */ = {
+			isa = PBXGroup;
+			children = (
+				B61EE31C18B731B300585C9A /* HotVC.h */,
+				B61EE31D18B731B300585C9A /* HotVC.m */,
+			);
+			path = Hot;
+			sourceTree = "<group>";
+		};
 		B64F9514188F8AB400531FCA /* Homepage */ = {
 			isa = PBXGroup;
 			children = (
@@ -553,9 +582,11 @@
 		B6603C17188CEBA200F52946 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B6011E9618AD02300034DD52 /* LoginAndRegister */,
 				B6603C18188CEBA200F52946 /* Base */,
 				B6603C1D188CEBA200F52946 /* BaseLayout */,
+				B61EE31718B7317600585C9A /* Selection */,
+				B61EE31818B7317600585C9A /* Hot */,
+				B6011E9618AD02300034DD52 /* LoginAndRegister */,
 				B64F9514188F8AB400531FCA /* Homepage */,
 				B61B10DA188E77150090FC38 /* Discover */,
 				B64F9517188F8AB400531FCA /* Feed */,
@@ -976,6 +1007,7 @@
 				B6603CAC188D151800F52946 /* SDImageCache.m in Sources */,
 				B6603C41188D150A00F52946 /* NSDate+App.m in Sources */,
 				B63156A918ADE5BF003D802E /* BaseTableViewController.m in Sources */,
+				B61EE32118B7356000585C9A /* SelectionCell.m in Sources */,
 				B6603CB0188D151800F52946 /* SDWebImageDownloaderOperation.m in Sources */,
 				B6603C9B188D151800F52946 /* AFHTTPRequestOperation.m in Sources */,
 				B6603C9D188D151800F52946 /* AFImageRequestOperation.m in Sources */,
@@ -990,6 +1022,7 @@
 				B6603CF2188D153300F52946 /* Passport.m in Sources */,
 				B651E48118AF3DB800AF077B /* RegisterVC.m in Sources */,
 				B6603C2C188CEBA200F52946 /* MasterTableViewCell.m in Sources */,
+				B61EE31B18B731A200585C9A /* SelectionVC.m in Sources */,
 				B6603CF3188D153300F52946 /* SettingManager.m in Sources */,
 				B6603CAA188D151800F52946 /* DispatchQueueLogFormatter.m in Sources */,
 				B6603CE5188D153300F52946 /* GKComment.m in Sources */,
@@ -1008,6 +1041,7 @@
 				B6603CA9188D151800F52946 /* ContextFilterLogFormatter.m in Sources */,
 				B6603CB8188D151800F52946 /* SevenSwitch.m in Sources */,
 				B6603C9F188D151800F52946 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				B61EE31E18B731B300585C9A /* HotVC.m in Sources */,
 				B6603C2B188CEBA200F52946 /* DetailViewController.m in Sources */,
 				B6603CAB188D151800F52946 /* NSData+GIF.m in Sources */,
 				B6603C45188D150A00F52946 /* UIFont+App.m in Sources */,

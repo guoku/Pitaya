@@ -68,6 +68,8 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
     [super viewDidLoad];
     
     self.titleArray = @[@"首页",
+                        @"精选",
+                        @"热门",
                         @"发现",
                         @"动态",
                         @"消息",
