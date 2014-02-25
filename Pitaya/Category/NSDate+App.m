@@ -47,7 +47,7 @@ static NSDateFormatter *dateFormatter;
     } else {
         if (!dateFormatter) {
             dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setDateFormat:@"yyyy年MM月dd日"];
+            [dateFormatter setDateFormat:@"yyyy.MM.dd"];
             [dateFormatter setLocale:[NSLocale currentLocale]];
         }
         return [dateFormatter stringFromDate:self];
