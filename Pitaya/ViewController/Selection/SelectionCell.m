@@ -66,7 +66,7 @@
     [self.imageView setImageWithURL:self.entity.imageURL_310x310];
     
     // 点评内容
-    self.noteLabel.text = self.note.text;
+    self.noteLabel.text = [self.note.text stringByAppendingString:@"\n\n\n\n\n\n\n\n"];
     
     // 喜爱按钮
     [self.likeButton setTitle:[NSString stringWithFormat:@"喜爱 %d", self.entity.likeCount] forState:UIControlStateNormal];

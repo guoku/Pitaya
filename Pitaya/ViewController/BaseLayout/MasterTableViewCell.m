@@ -16,7 +16,23 @@
     
     self.backgroundColor = [UIColor clearColor];
     
-    self.titleLabel.textColor = self.selected ? UIColorFromRGB(0x5E90C8) : UIColorFromRGB(0x666666);
+    self.titleLabel.textColor = self.isSelected ? UIColorFromRGB(0x5E90C8) : UIColorFromRGB(0x666666);
+    
+    NSDictionary *dict = @{
+                           @"首页":@"menu_icon_homepage",
+                           @"精选":@"menu_icon_selection",
+                           @"热门":@"menu_icon_activity",
+                           @"发现":@"menu_icon_tuzi",
+                           @"动态":@"menu_icon_activity",
+                           @"消息":@"menu_icon_message",
+                           @"设置":@"menu_icon_setting",
+                           };
+    
+    NSString *imageName = dict[self.titleLabel.text];
+    if (self.isSelected) {
+        imageName = [imageName stringByAppendingString:@"_press"];
+    }
+    self.iconImageView.image = [UIImage imageNamed:imageName];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

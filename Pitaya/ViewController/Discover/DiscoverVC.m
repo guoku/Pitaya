@@ -75,7 +75,7 @@
         DiscoverSectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"DiscoverSectionHeaderView" forIndexPath:indexPath];
         
         headerView.groupDict = self.categoryGroupArray[indexPath.section];
-        headerView.imageView.backgroundColor = [UIColor redColor];
+        headerView.imageView.image = [UIImage imageNamed:@"icon_next"];
         headerView.tapButton.tag = indexPath.section;
         
         reusableview = headerView;
