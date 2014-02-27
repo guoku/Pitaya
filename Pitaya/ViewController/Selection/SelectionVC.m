@@ -103,11 +103,6 @@
 
 #pragma mark - UICollectionViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 50.f;
-}
-
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -166,7 +161,7 @@
     if (self) {
         _selectionArray = @[].mutableCopy;
         _categoryTitleArray = @[@"全部", @"女装", @"男装", @"孩童", @"配饰", @"美容", @"科技", @"居家", @"户外", @"文化", @"美食", @"玩乐"];
-    }
+    }__weak __typeof(&*self)weakSelf = self;
     return self;
 }
 

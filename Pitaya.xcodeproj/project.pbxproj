@@ -110,6 +110,7 @@
 		B6603D02188D194A00F52946 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6603D01188D194A00F52946 /* MobileCoreServices.framework */; };
 		B664EFA918A9EC280005E635 /* AKSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B664EFA818A9EC280005E635 /* AKSegmentedControl.m */; };
 		B664EFAC18AA38F30005E635 /* NoteCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B664EFAB18AA38F30005E635 /* NoteCollectionCell.m */; };
+		B6673FB618BE099D0038F9F2 /* HotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6673FB518BE099D0038F9F2 /* HotCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -323,6 +324,8 @@
 		B664EFA818A9EC280005E635 /* AKSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKSegmentedControl.m; sourceTree = "<group>"; };
 		B664EFAA18AA38F30005E635 /* NoteCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCollectionCell.h; sourceTree = "<group>"; };
 		B664EFAB18AA38F30005E635 /* NoteCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCollectionCell.m; sourceTree = "<group>"; };
+		B6673FB418BE099D0038F9F2 /* HotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotCell.h; sourceTree = "<group>"; };
+		B6673FB518BE099D0038F9F2 /* HotCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,6 +398,8 @@
 			children = (
 				B61EE31C18B731B300585C9A /* HotVC.h */,
 				B61EE31D18B731B300585C9A /* HotVC.m */,
+				B6673FB418BE099D0038F9F2 /* HotCell.h */,
+				B6673FB518BE099D0038F9F2 /* HotCell.m */,
 			);
 			path = Hot;
 			sourceTree = "<group>";
@@ -1015,6 +1020,7 @@
 				B64ACF921890DB1900D88459 /* DiscoverSectionHeaderView.m in Sources */,
 				B6603CB7188D151800F52946 /* UIImageView+WebCache.m in Sources */,
 				B6603CB3188D151800F52946 /* UIButton+WebCache.m in Sources */,
+				B6673FB618BE099D0038F9F2 /* HotCell.m in Sources */,
 				B6603C2D188CEBA200F52946 /* MasterViewController.m in Sources */,
 				B6603CAF188D151800F52946 /* SDWebImageDownloader.m in Sources */,
 				B6603CA6188D151800F52946 /* DDFileLogger.m in Sources */,
