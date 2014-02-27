@@ -21,8 +21,8 @@
     NSDictionary *dict = @{
                            @"首页":@"menu_icon_homepage",
                            @"精选":@"menu_icon_selection",
-                           @"热门":@"menu_icon_activity",
-                           @"发现":@"menu_icon_tuzi",
+                           @"热门":@"menu_icon_hot",
+                           @"发现":@"menu_icon_search",
                            @"动态":@"menu_icon_activity",
                            @"消息":@"menu_icon_message",
                            @"设置":@"menu_icon_setting",
