@@ -10,7 +10,7 @@
 #import "SVPullToRefresh.h"
 #import "SelectionCell.h"
 
-@interface SelectionVC () <UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface SelectionVC () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *selectionArray;
 @property (nonatomic, assign) NSInteger currentCategoryIndex;
@@ -103,6 +103,25 @@
 
 #pragma mark - UICollectionViewDelegate
 
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    CGFloat top, left, bottom, right;
+    if (self.interfaceOrientation == 1 || self.interfaceOrientation == 2) {
+        // 竖屏
+        left = 23.f;
+    } else {
+        // 横屏
+        left = 48.f;
+    }
+    
+    top = bottom = 25.f;
+    right = left;
+    
+    return UIEdgeInsetsMake(top, left, bottom, right);
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -161,7 +180,7 @@
     if (self) {
         _selectionArray = @[].mutableCopy;
         _categoryTitleArray = @[@"全部", @"女装", @"男装", @"孩童", @"配饰", @"美容", @"科技", @"居家", @"户外", @"文化", @"美食", @"玩乐"];
-    }__weak __typeof(&*self)weakSelf = self;
+    }
     return self;
 }
 
@@ -209,5 +228,14 @@
 //        vc.category = cell.category;
 //    }
 //}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    double delayInSeconds = 0.1;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.collectionView reloadData];
+    });
+}
 
 @end
