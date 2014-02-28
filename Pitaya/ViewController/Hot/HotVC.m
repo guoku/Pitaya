@@ -28,10 +28,11 @@
     NSInteger segIndex = self.segmentedControl.selectedSegmentIndex;
     
     void (^successBlock)(NSArray *dataArray) = ^(NSArray *dataArray) {
+        [self.collectionView.pullToRefreshView stopAnimating];
+        
         [self.dataArray[segIndex] removeAllObjects];
         [self.dataArray[segIndex] addObjectsFromArray:dataArray];
         [self.collectionView reloadData];
-        [self.collectionView.pullToRefreshView stopAnimating];
     };
     
     void (^failureBlock)(NSInteger stateCode) = ^(NSInteger stateCode) {
@@ -55,8 +56,6 @@
     NSArray *currentEntityArray = self.dataArray[segIndex];
     if (currentEntityArray.count == 0) {
         [self.collectionView triggerPullToRefresh];
-    } else {
-        [self.collectionView setContentOffset:CGPointZero animated:NO];
     }
 }
 
@@ -84,6 +83,25 @@
 
 #pragma mark - UICollectionViewDelegate
 
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    CGFloat top, left, bottom, right;
+    if (self.interfaceOrientation == 1 || self.interfaceOrientation == 2) {
+        // 竖屏
+        left = 23.f;
+    } else {
+        // 横屏
+        left = 45.f;
+    }
+    
+    top = bottom = 25.f;
+    right = left;
+    
+    return UIEdgeInsetsMake(top, left, bottom, right);
+}
+
 #pragma mark - Life Cycle
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -110,12 +128,23 @@
     [self.collectionView addPullToRefreshWithActionHandler:^{
         [weakSelf refresh];
     }];
+    
+    [self tapSegmentedControl:nil];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    double delayInSeconds = 0.1;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.collectionView reloadData];
+    });
 }
 
 @end

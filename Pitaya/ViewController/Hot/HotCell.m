@@ -22,7 +22,7 @@
 - (void)setEntity:(GKEntity *)entity
 {
     _entity = entity;
-
+    
     [self setNeedsLayout];
 }
 
@@ -31,16 +31,16 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-
+    
     self.layer.borderColor = UIColorFromRGB(0xEEEEEE).CGColor;
-
+    
     if (!self.entity) {
         return;
     }
-
+    
     // 商品图
     [self.imageView setImageWithURL:self.entity.imageURL_310x310];
-
+    
     // 喜爱按钮
     [self.likeButton setTitle:[NSString stringWithFormat:@"喜爱 %d", self.entity.likeCount] forState:UIControlStateNormal];
     if (self.entity.isLiked) {

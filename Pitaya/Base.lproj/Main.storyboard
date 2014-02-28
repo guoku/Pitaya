@@ -570,10 +570,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="758" height="768"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewLayout key="collectionViewLayout" id="Asz-s0-w3d" customClass="SelectionLayout"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="25" minimumInteritemSpacing="0.0" id="Mct-vC-U0r">
+                                    <size key="itemSize" width="320" height="435"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="48" minY="25" maxX="48" maxY="25"/>
+                                </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SelectionCell" id="qwO-Wa-mta" customClass="SelectionCell">
-                                        <rect key="frame" x="0.0" y="44" width="320" height="435"/>
+                                        <rect key="frame" x="48" y="69" width="320" height="435"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="435"/>
@@ -674,7 +679,6 @@
                                             <constraint firstItem="6h6-Ak-gcz" firstAttribute="leading" secondItem="qwO-Wa-mta" secondAttribute="leading" constant="10" id="usX-4a-lAJ"/>
                                             <constraint firstAttribute="trailing" secondItem="96Y-7V-WqN" secondAttribute="trailing" id="x0Y-lq-TkR"/>
                                         </constraints>
-                                        <size key="customSize" width="320" height="435"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                                 <integer key="value" value="1"/>
@@ -762,37 +766,72 @@
                                 <rect key="frame" x="0.0" y="0.0" width="758" height="768"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="e9P-aB-JNK">
-                                    <size key="itemSize" width="200" height="250"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="18" minimumInteritemSpacing="0.0" id="hB2-ky-JbX">
+                                    <size key="itemSize" width="210" height="250"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="45" minY="25" maxX="45" maxY="25"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HotCell" id="Ag7-ya-Dci" customClass="HotCell">
-                                        <rect key="frame" x="20" y="44" width="200" height="250"/>
+                                        <rect key="frame" x="45" y="69" width="210" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="200" height="250"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="210" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jbo-Ho-NvS">
-                                                    <rect key="frame" x="20" y="20" width="160" height="160"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jbo-Ho-NvS">
+                                                    <rect key="frame" x="10" y="10" width="190" height="190"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="190" id="caA-Bh-Zfj"/>
+                                                        <constraint firstAttribute="height" constant="190" id="hm8-0f-S9p"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nsx-bN-XsZ">
-                                                    <rect key="frame" x="20" y="200" width="46" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nsx-bN-XsZ">
+                                                    <rect key="frame" x="10" y="210" width="190" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="Iaf-l6-aGh"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <state key="normal" title="喜爱 88" image="like_btn">
+                                                        <color key="titleColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.53725490196078429" alpha="1" colorSpace="deviceRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <state key="selected" image="like_btn"/>
+                                                    <state key="highlighted" image="like_btn_highlighted"/>
                                                 </button>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehf-Iv-mlR">
+                                                    <rect key="frame" x="0.0" y="210" width="210" height="1"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="deviceRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="dsI-oI-toC"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Nsx-bN-XsZ" secondAttribute="trailing" constant="10" id="6mA-n5-Kz8"/>
+                                            <constraint firstAttribute="bottom" secondItem="Nsx-bN-XsZ" secondAttribute="bottom" id="HF9-xj-GWX"/>
+                                            <constraint firstItem="Nsx-bN-XsZ" firstAttribute="leading" secondItem="Ag7-ya-Dci" secondAttribute="leading" constant="10" id="MM0-Fk-OgE"/>
+                                            <constraint firstItem="ehf-Iv-mlR" firstAttribute="top" secondItem="jbo-Ho-NvS" secondAttribute="bottom" constant="10" id="dct-1N-vfH"/>
+                                            <constraint firstItem="jbo-Ho-NvS" firstAttribute="leading" secondItem="Ag7-ya-Dci" secondAttribute="leading" constant="10" id="enT-f4-ubt"/>
+                                            <constraint firstItem="ehf-Iv-mlR" firstAttribute="leading" secondItem="Ag7-ya-Dci" secondAttribute="leading" id="oEg-SK-7hE"/>
+                                            <constraint firstAttribute="trailing" secondItem="ehf-Iv-mlR" secondAttribute="trailing" id="qoQ-xI-grN"/>
+                                            <constraint firstItem="jbo-Ho-NvS" firstAttribute="top" secondItem="Ag7-ya-Dci" secondAttribute="top" constant="10" id="y0q-fW-d2x"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="imageView" destination="jbo-Ho-NvS" id="9Kn-74-8pd"/>
-                                            <outlet property="likeButton" destination="Nsx-bN-XsZ" id="8OR-lz-ZLI"/>
+                                            <outlet property="likeButton" destination="Nsx-bN-XsZ" id="jfV-Df-fQY"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1490,7 +1529,6 @@
     </scenes>
     <resources>
         <image name="like_btn" width="18" height="18"/>
-        <image name="like_btn_highlighted" width="18" height="18"/>
         <image name="like_btn_highlighted" width="18" height="18"/>
         <image name="login_icon_avatar" width="30" height="30"/>
         <image name="nav_back_btn" width="32" height="24"/>

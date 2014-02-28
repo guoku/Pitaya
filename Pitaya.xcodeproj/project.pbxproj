@@ -111,7 +111,6 @@
 		B664EFA918A9EC280005E635 /* AKSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B664EFA818A9EC280005E635 /* AKSegmentedControl.m */; };
 		B664EFAC18AA38F30005E635 /* NoteCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B664EFAB18AA38F30005E635 /* NoteCollectionCell.m */; };
 		B6673FB618BE099D0038F9F2 /* HotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6673FB518BE099D0038F9F2 /* HotCell.m */; };
-		B6E08FCC18BF60ED0050C868 /* SelectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E08FCB18BF60ED0050C868 /* SelectionLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -327,8 +326,6 @@
 		B664EFAB18AA38F30005E635 /* NoteCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCollectionCell.m; sourceTree = "<group>"; };
 		B6673FB418BE099D0038F9F2 /* HotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotCell.h; sourceTree = "<group>"; };
 		B6673FB518BE099D0038F9F2 /* HotCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotCell.m; sourceTree = "<group>"; };
-		B6E08FCA18BF60ED0050C868 /* SelectionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectionLayout.h; sourceTree = "<group>"; };
-		B6E08FCB18BF60ED0050C868 /* SelectionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectionLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -392,8 +389,6 @@
 				B61EE31A18B731A200585C9A /* SelectionVC.m */,
 				B61EE31F18B7356000585C9A /* SelectionCell.h */,
 				B61EE32018B7356000585C9A /* SelectionCell.m */,
-				B6E08FCA18BF60ED0050C868 /* SelectionLayout.h */,
-				B6E08FCB18BF60ED0050C868 /* SelectionLayout.m */,
 			);
 			path = Selection;
 			sourceTree = "<group>";
@@ -987,7 +982,6 @@
 				B6603CBC188D151800F52946 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				B6603C46188D150A00F52946 /* UIImage+App.m in Sources */,
 				B6603BE9188CE7AE00F52946 /* main.m in Sources */,
-				B6E08FCC18BF60ED0050C868 /* SelectionLayout.m in Sources */,
 				B664EFAC18AA38F30005E635 /* NoteCollectionCell.m in Sources */,
 				B6603CED188D153300F52946 /* GKDataManager.m in Sources */,
 				B6603CEE188D153300F52946 /* GKEntity+ImageURLFixes.m in Sources */,
