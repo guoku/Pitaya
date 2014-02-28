@@ -111,6 +111,7 @@
 		B664EFA918A9EC280005E635 /* AKSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B664EFA818A9EC280005E635 /* AKSegmentedControl.m */; };
 		B664EFAC18AA38F30005E635 /* NoteCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B664EFAB18AA38F30005E635 /* NoteCollectionCell.m */; };
 		B6673FB618BE099D0038F9F2 /* HotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6673FB518BE099D0038F9F2 /* HotCell.m */; };
+		B6F1B9C618C0BB7A001E1A64 /* UISegmentedControl+Flat.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F1B9C518C0BB7A001E1A64 /* UISegmentedControl+Flat.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -326,6 +327,8 @@
 		B664EFAB18AA38F30005E635 /* NoteCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCollectionCell.m; sourceTree = "<group>"; };
 		B6673FB418BE099D0038F9F2 /* HotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotCell.h; sourceTree = "<group>"; };
 		B6673FB518BE099D0038F9F2 /* HotCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotCell.m; sourceTree = "<group>"; };
+		B6F1B9C418C0BB7A001E1A64 /* UISegmentedControl+Flat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISegmentedControl+Flat.h"; sourceTree = "<group>"; };
+		B6F1B9C518C0BB7A001E1A64 /* UISegmentedControl+Flat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISegmentedControl+Flat.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -563,6 +566,8 @@
 				B6603C40188D150A00F52946 /* UIView+App.m */,
 				B6603C13188CEBA200F52946 /* UIView+DEFrameAdditions.h */,
 				B6603C14188CEBA200F52946 /* UIView+DEFrameAdditions.m */,
+				B6F1B9C418C0BB7A001E1A64 /* UISegmentedControl+Flat.h */,
+				B6F1B9C518C0BB7A001E1A64 /* UISegmentedControl+Flat.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1034,6 +1039,7 @@
 				B6603CE5188D153300F52946 /* GKComment.m in Sources */,
 				B6603CE8188D153300F52946 /* GKNote.m in Sources */,
 				B6603CB6188D151800F52946 /* UIImage+WebP.m in Sources */,
+				B6F1B9C618C0BB7A001E1A64 /* UISegmentedControl+Flat.m in Sources */,
 				B6603CF0188D153300F52946 /* BBProgressHUD.m in Sources */,
 				B64ACF991891361800D88459 /* GroupVC.m in Sources */,
 				B6603C9E188D151800F52946 /* AFJSONRequestOperation.m in Sources */,

@@ -119,6 +119,15 @@
 	// Do any additional setup after loading the view.
 }
 
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    if (!iOS7) {
+        [self.segmentedControl setupFlat];
+    }
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
