@@ -10,7 +10,7 @@
 #import "SVPullToRefresh.h"
 #import "SelectionCell.h"
 
-@interface SelectionVC () <UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface SelectionVC () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *selectionArray;
 @property (nonatomic, assign) NSInteger currentCategoryIndex;
@@ -103,9 +103,23 @@
 
 #pragma mark - UICollectionViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return 50.f;
+    CGFloat top, left, bottom, right;
+    if (self.interfaceOrientation == 1 || self.interfaceOrientation == 2) {
+        // 竖屏
+        left = 23.f;
+    } else {
+        // 横屏
+        left = 48.f;
+    }
+    
+    top = bottom = 25.f;
+    right = left;
+    
+    return UIEdgeInsetsMake(top, left, bottom, right);
 }
 
 #pragma mark - UITableViewDataSource
@@ -214,5 +228,14 @@
 //        vc.category = cell.category;
 //    }
 //}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    double delayInSeconds = 0.1;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.collectionView reloadData];
+    });
+}
 
 @end

@@ -37,8 +37,6 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
     MasterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellReuseIdentifier];
     
     cell.titleLabel.text = self.titleArray[indexPath.row];
-    CGFloat f = 1.f/(indexPath.row + 0.1);
-    cell.iconImageView.backgroundColor = [UIColor colorWithRed:f green:f blue:f alpha:1];
     
     return cell;
 }

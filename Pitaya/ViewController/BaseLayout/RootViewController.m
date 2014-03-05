@@ -13,6 +13,7 @@
 @interface RootViewController () <MasterViewControllerDelegate>
 
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint *horizontalSpace;
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint *masterWidth;
 
 @property (nonatomic, strong) MasterViewController *masterVC;
 @property (nonatomic, strong) DetailViewController *detailVC;
@@ -50,8 +51,9 @@
     [super updateViewConstraints];
     
     if (self.interfaceOrientation == 1 || self.interfaceOrientation == 2) {
-        // 竖屏
-        self.horizontalSpace.constant = -220.f;
+        // 竖屏 左边栏宽60.f
+        CGFloat width = 60.f;
+        self.horizontalSpace.constant = width - self.masterWidth.constant;
     } else {
         // 横屏
         self.horizontalSpace.constant = 0.f;
