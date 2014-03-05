@@ -20,4 +20,6 @@
 
 @property (nonatomic, weak) id<CategorySectionHeaderViewDelegate> delegate;
 
+- (void)setEntityCount:(NSInteger)entityCount noteCount:(NSInteger)noteCount likeCount:(NSInteger)likeCount;
+
 @end

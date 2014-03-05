@@ -167,6 +167,7 @@
     if (kind == UICollectionElementKindSectionHeader) {
         CategorySectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"CategorySectionHeaderView" forIndexPath:indexPath];
         headerView.delegate = self;
+        [headerView setEntityCount:self.category.entityCount noteCount:self.category.noteCount likeCount:self.category.likeCount];
         
         reusableView = headerView;
     }
@@ -218,6 +219,7 @@
     }];
     
     if (((NSMutableArray *)self.dataArray[self.selectedIndex]).count == 0) {
+        [GKDataManager getCategoryStatByCategoryId:self.category.categoryId success:Nil failure:nil];
         [self refresh];
     }
 }
