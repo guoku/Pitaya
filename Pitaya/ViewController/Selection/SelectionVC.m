@@ -116,7 +116,7 @@
         left = 48.f;
     }
     
-    top = bottom = 25.f;
+    top = bottom = 23.f;
     right = left;
     
     return UIEdgeInsetsMake(top, left, bottom, right);
