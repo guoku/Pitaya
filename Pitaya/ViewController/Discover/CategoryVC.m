@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
+@property (nonatomic, strong) IBOutlet UIButton *navTitleButton;
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 @property (nonatomic, assign) NSInteger selectedIndex;
@@ -246,7 +247,10 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = [self.category.categoryName componentsSeparatedByString:@"-"].firstObject;
+    NSString *title = [self.category.categoryName componentsSeparatedByString:@"-"].firstObject;
+    [self.navTitleButton setTitle:title forState:UIControlStateNormal];
+    self.navTitleButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.navTitleButton setImageWithURL:self.category.iconURL forState:UIControlStateNormal];
 }
 
 - (void)viewDidAppear:(BOOL)animated
