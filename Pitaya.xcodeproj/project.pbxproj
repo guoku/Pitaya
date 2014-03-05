@@ -15,6 +15,7 @@
 		B61EE31B18B731A200585C9A /* SelectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B61EE31A18B731A200585C9A /* SelectionVC.m */; };
 		B61EE31E18B731B300585C9A /* HotVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B61EE31D18B731B300585C9A /* HotVC.m */; };
 		B61EE32118B7356000585C9A /* SelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B61EE32018B7356000585C9A /* SelectionCell.m */; };
+		B6252BBB18C5E1DD00E5F489 /* CategorySectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6252BBA18C5E1DD00E5F489 /* CategorySectionHeaderView.m */; };
 		B63156A918ADE5BF003D802E /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63156A818ADE5BF003D802E /* BaseTableViewController.m */; };
 		B64ACF921890DB1900D88459 /* DiscoverSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B64ACF911890DB1900D88459 /* DiscoverSectionHeaderView.m */; };
 		B64ACF991891361800D88459 /* GroupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B64ACF981891361800D88459 /* GroupVC.m */; };
@@ -108,7 +109,6 @@
 		B6603CFE188D179B00F52946 /* YLActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6603CFD188D179B00F52946 /* YLActivityIndicatorView.m */; };
 		B6603D00188D193D00F52946 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6603CFF188D193D00F52946 /* SystemConfiguration.framework */; };
 		B6603D02188D194A00F52946 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6603D01188D194A00F52946 /* MobileCoreServices.framework */; };
-		B664EFA918A9EC280005E635 /* AKSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B664EFA818A9EC280005E635 /* AKSegmentedControl.m */; };
 		B664EFAC18AA38F30005E635 /* NoteCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B664EFAB18AA38F30005E635 /* NoteCollectionCell.m */; };
 		B6673FB618BE099D0038F9F2 /* HotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6673FB518BE099D0038F9F2 /* HotCell.m */; };
 		B6F1B9C618C0BB7A001E1A64 /* UISegmentedControl+Flat.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F1B9C518C0BB7A001E1A64 /* UISegmentedControl+Flat.m */; };
@@ -141,6 +141,8 @@
 		B61EE31D18B731B300585C9A /* HotVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotVC.m; sourceTree = "<group>"; };
 		B61EE31F18B7356000585C9A /* SelectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectionCell.h; sourceTree = "<group>"; };
 		B61EE32018B7356000585C9A /* SelectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectionCell.m; sourceTree = "<group>"; };
+		B6252BB918C5E1DD00E5F489 /* CategorySectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategorySectionHeaderView.h; sourceTree = "<group>"; };
+		B6252BBA18C5E1DD00E5F489 /* CategorySectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategorySectionHeaderView.m; sourceTree = "<group>"; };
 		B63156A718ADE5BF003D802E /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		B63156A818ADE5BF003D802E /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		B64ACF901890DB1900D88459 /* DiscoverSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverSectionHeaderView.h; sourceTree = "<group>"; };
@@ -321,8 +323,6 @@
 		B6603CFD188D179B00F52946 /* YLActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLActivityIndicatorView.m; sourceTree = "<group>"; };
 		B6603CFF188D193D00F52946 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B6603D01188D194A00F52946 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		B664EFA718A9EC280005E635 /* AKSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKSegmentedControl.h; sourceTree = "<group>"; };
-		B664EFA818A9EC280005E635 /* AKSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKSegmentedControl.m; sourceTree = "<group>"; };
 		B664EFAA18AA38F30005E635 /* NoteCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCollectionCell.h; sourceTree = "<group>"; };
 		B664EFAB18AA38F30005E635 /* NoteCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCollectionCell.m; sourceTree = "<group>"; };
 		B6673FB418BE099D0038F9F2 /* HotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotCell.h; sourceTree = "<group>"; };
@@ -381,6 +381,8 @@
 				B64ACF981891361800D88459 /* GroupVC.m */,
 				B64ACF9A1891372400D88459 /* CategoryVC.h */,
 				B64ACF9B1891372400D88459 /* CategoryVC.m */,
+				B6252BB918C5E1DD00E5F489 /* CategorySectionHeaderView.h */,
+				B6252BBA18C5E1DD00E5F489 /* CategorySectionHeaderView.m */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -576,7 +578,6 @@
 			isa = PBXGroup;
 			children = (
 				B6603C49188D151700F52946 /* AFNetworking */,
-				B664EFA618A9EC280005E635 /* AKSegmentedControl */,
 				B6603CF7188D171500F52946 /* GKRotateLoadingView */,
 				B6603CFB188D179B00F52946 /* HTLoadingView */,
 				B6603C5E188D151800F52946 /* JSONKit */,
@@ -862,15 +863,6 @@
 			path = HTLoadingView;
 			sourceTree = "<group>";
 		};
-		B664EFA618A9EC280005E635 /* AKSegmentedControl */ = {
-			isa = PBXGroup;
-			children = (
-				B664EFA718A9EC280005E635 /* AKSegmentedControl.h */,
-				B664EFA818A9EC280005E635 /* AKSegmentedControl.m */,
-			);
-			path = AKSegmentedControl;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -978,7 +970,6 @@
 				B6603C43188D150A00F52946 /* NSString+App.m in Sources */,
 				B6603C28188CEBA200F52946 /* UIView+DEFrameAdditions.m in Sources */,
 				B6603CFA188D171500F52946 /* GKRotateLoadingView.m in Sources */,
-				B664EFA918A9EC280005E635 /* AKSegmentedControl.m in Sources */,
 				B6603C48188D150A00F52946 /* UIView+App.m in Sources */,
 				B6603CEA188D153300F52946 /* GKUser.m in Sources */,
 				B6603CE9188D153300F52946 /* GKPurchase.m in Sources */,
@@ -1004,6 +995,7 @@
 				B651165B1893B86200B40016 /* EntityCollectionCell.m in Sources */,
 				B61B10D8188E35B90090FC38 /* MasterTableHeaderView.m in Sources */,
 				B64F951A188F8AEB00531FCA /* HomepageVC.m in Sources */,
+				B6252BBB18C5E1DD00E5F489 /* CategorySectionHeaderView.m in Sources */,
 				B6603C44188D150A00F52946 /* UIDevice+Hardware.m in Sources */,
 				B6603CE7188D153300F52946 /* GKEntityCategory.m in Sources */,
 				B6603CA8188D151800F52946 /* DDTTYLogger.m in Sources */,
