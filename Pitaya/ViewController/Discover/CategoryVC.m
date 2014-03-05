@@ -177,6 +177,46 @@
 
 #pragma mark - UICollectionViewDelegate
 
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    CGFloat top, left, bottom, right;
+    if (self.interfaceOrientation == 1 || self.interfaceOrientation == 2) {
+        // 竖屏
+        left = 23.f;
+    } else {
+        // 横屏
+        left = 48.f;
+    }
+    
+    top = bottom = 16.f;
+    right = left;
+    
+    return UIEdgeInsetsMake(top, left, bottom, right);
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (self.selectedIndex) {
+        case 0:
+            return CGSizeMake(210.f, 250.f);
+            break;
+            
+        case 1:
+            return CGSizeMake(700.f, 280.f);
+            break;
+            
+        case 2:
+            return CGSizeMake(210.f, 250.f);
+            break;
+            
+        default:
+            return CGSizeZero;
+            break;
+    }
+}
+
 #pragma mark - CategorySectionHeaderViewDelegate
 
 - (void)headerView:(CategorySectionHeaderView *)headerView didSelectedIndex:(NSInteger)index
@@ -228,6 +268,15 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    double delayInSeconds = 0.1;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.collectionView reloadData];
+    });
 }
 
 @end

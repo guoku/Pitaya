@@ -11,7 +11,6 @@
 @interface EntityCollectionCell ()
 
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
-@property (nonatomic, strong) IBOutlet UILabel *contentLabel;
 @property (nonatomic, strong) IBOutlet UILabel *priceLabel;
 @property (nonatomic, strong) IBOutlet UIButton *likeButton;
 
@@ -34,29 +33,21 @@
 {
     [super layoutSubviews];
     
-    // 商品图
-    self.imageView.layer.borderWidth = 1.f;
-    self.imageView.layer.borderColor = UIColorFromRGB(0xEEEEEE).CGColor;
-    [self.imageView setImageWithURL:self.entity.imageURL_310x310];
+    self.layer.borderColor = UIColorFromRGB(0xEEEEEE).CGColor;
     
-    // 商品品牌+标题
-    if (self.entity.brand.length > 0) {
-        self.contentLabel.text = [self.entity.brand stringByAppendingFormat:@" - %@\n ", self.entity.title];
-    } else {
-        self.contentLabel.text = [self.entity.title stringByAppendingFormat:@"\n "];
-    }
+    // 商品图
+    [self.imageView setImageWithURL:self.entity.imageURL_310x310];
     
     // 价格
     self.priceLabel.text = [NSString stringWithFormat:@"¥%.2f", self.entity.lowestPrice];
     
     // 喜爱按钮
-    self.likeButton.imageEdgeInsets = UIEdgeInsetsMake(0.f, 0.f, 0.f, 15.f);
-    self.likeButton.titleEdgeInsets = UIEdgeInsetsMake(0.f, 0.f, 0.f, 10.f);
     if (self.entity.isLiked) {
         [self.likeButton setImage:[UIImage imageNamed:@"like_btn_highlighted"] forState:UIControlStateNormal];
     } else {
         [self.likeButton setImage:[UIImage imageNamed:@"like_btn"] forState:UIControlStateNormal];
     }
+    [self.likeButton setTitle:[NSString stringWithFormat:@"喜爱 %d", self.entity.likeCount] forState:UIControlStateNormal];
 }
 
 @end
