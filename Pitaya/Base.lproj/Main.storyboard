@@ -766,7 +766,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="758" height="768"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="18" minimumInteritemSpacing="0.0" id="hB2-ky-JbX">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="0.0" id="hB2-ky-JbX">
                                     <size key="itemSize" width="210" height="250"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -797,7 +797,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     <state key="normal" title="喜爱 88" image="like_btn">
-                                                        <color key="titleColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.53725490196078429" alpha="1" colorSpace="deviceRGB"/>
+                                                        <color key="titleColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="deviceRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="selected" image="like_btn"/>
@@ -859,6 +859,7 @@
                                 <segment title="24小时热门"/>
                                 <segment title="7天热门"/>
                             </segments>
+                            <color key="tintColor" red="0.25882352941176467" green="0.49411764705882355" blue="0.75294117647058822" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <action selector="tapSegmentedControl:" destination="Blb-Bu-ubv" eventType="valueChanged" id="FSC-jF-XL7"/>
                             </connections>
