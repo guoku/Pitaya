@@ -38,11 +38,12 @@
         case 0:
         {
             [GKDataManager getEntityListWithCategoryId:self.category.categoryId sort:@"" reverse:YES offset:0 count:kRequestSize success:^(NSArray *entityArray) {
+                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+                [weakSelf.activityIndicatorView stopAnimating];
+                
                 [weakSelf.dataArray[index] removeAllObjects];
                 [weakSelf.dataArray[index] addObjectsFromArray:[entityArray mutableCopy]];
                 [weakSelf.collectionView reloadData];
-                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
-                [weakSelf.activityIndicatorView stopAnimating];
             } failure:^(NSInteger stateCode) {
                 [weakSelf.collectionView.infiniteScrollingView stopAnimating];
                 [weakSelf.activityIndicatorView stopAnimating];
@@ -54,11 +55,12 @@
         case 1:
         {
             [GKDataManager getNoteListWithCategoryId:self.category.categoryId sort:@"" reverse:YES offset:0 count:kRequestSize success:^(NSArray *dataArray) {
+                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+                [weakSelf.activityIndicatorView stopAnimating];
+                
                 [weakSelf.dataArray[index] removeAllObjects];
                 [weakSelf.dataArray[index] addObjectsFromArray:[dataArray mutableCopy]];
                 [weakSelf.collectionView reloadData];
-                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
-                [weakSelf.activityIndicatorView stopAnimating];
             } failure:^(NSInteger stateCode) {
                 [weakSelf.collectionView.infiniteScrollingView stopAnimating];
                 [weakSelf.activityIndicatorView stopAnimating];
@@ -83,9 +85,10 @@
         case 0:
         {
             [GKDataManager getEntityListWithCategoryId:self.category.categoryId sort:@"" reverse:YES offset:((NSMutableArray *)self.dataArray[index]).count count:kRequestSize success:^(NSArray *entityArray) {
+                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+                
                 [weakSelf.dataArray[index] addObjectsFromArray:entityArray];
                 [weakSelf.collectionView reloadData];
-                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
             } failure:^(NSInteger stateCode) {
                 [weakSelf.collectionView.infiniteScrollingView stopAnimating];
             }];
@@ -95,6 +98,15 @@
             
         case 1:
         {
+            [GKDataManager getNoteListWithCategoryId:self.category.categoryId sort:@"" reverse:YES offset:((NSMutableArray *)self.dataArray[index]).count count:kRequestSize success:^(NSArray *dataArray) {
+                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+                
+                [weakSelf.dataArray[index] addObjectsFromArray:[dataArray mutableCopy]];
+                [weakSelf.collectionView reloadData];
+            } failure:^(NSInteger stateCode) {
+                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+            }];
+            
             break;
         }
             
@@ -185,10 +197,28 @@
     CGFloat top, left, bottom, right;
     if (self.interfaceOrientation == 1 || self.interfaceOrientation == 2) {
         // 竖屏
-        left = 23.f;
+        if (self.selectedIndex == 0) {
+            // 商品
+            left = 23.f;
+        } else if (self.selectedIndex == 1) {
+            // 点评
+            left = 20.f;
+        } else {
+            // 喜爱
+            left = 23.f;
+        }
     } else {
         // 横屏
-        left = 48.f;
+        if (self.selectedIndex == 0) {
+            // 商品
+            left = 48.f;
+        } else if (self.selectedIndex == 1) {
+            // 点评
+            left = 45.f;
+        } else {
+            // 喜爱
+            left = 48.f;
+        }
     }
     
     top = bottom = 16.f;
@@ -197,24 +227,53 @@
     return UIEdgeInsetsMake(top, left, bottom, right);
 }
 
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    if (self.selectedIndex == 0) {
+        // 商品
+        return 16.f;
+    } else if (self.selectedIndex == 1) {
+        // 点评
+        return 0.f;
+    } else {
+        // 喜爱
+        return 16.f;
+    }
+}
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (self.selectedIndex) {
         case 0:
+        {
+            // 商品
             return CGSizeMake(210.f, 250.f);
             break;
-            
+        }
+        
         case 1:
-            return CGSizeMake(700.f, 280.f);
+        {
+            // 点评
+            GKNote *note = self.dataArray[1][indexPath.row][@"note"];
+            CGSize cellSize = [note.text sizeWithFont:[UIFont systemFontOfSize:15.f] constrainedToSize:CGSizeMake(608.f, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+            cellSize.width = 668.f;
+            cellSize.height += 200.f;
+            return cellSize;
             break;
+        }
             
         case 2:
+        {
+            // 喜爱
             return CGSizeMake(210.f, 250.f);
             break;
+        }
             
         default:
+        {
             return CGSizeZero;
             break;
+        }
     }
 }
 
