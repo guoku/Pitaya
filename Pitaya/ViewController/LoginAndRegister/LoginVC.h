@@ -10,4 +10,6 @@
 
 @interface LoginVC : BaseTableViewController
 
+@property (nonatomic, copy) void (^successBlock)();
+
 @end

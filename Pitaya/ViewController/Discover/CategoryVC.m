@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
+@property (nonatomic, strong) IBOutlet UIButton *navTitleButton;
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 @property (nonatomic, assign) NSInteger selectedIndex;
@@ -37,11 +38,12 @@
         case 0:
         {
             [GKDataManager getEntityListWithCategoryId:self.category.categoryId sort:@"" reverse:YES offset:0 count:kRequestSize success:^(NSArray *entityArray) {
+                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+                [weakSelf.activityIndicatorView stopAnimating];
+                
                 [weakSelf.dataArray[index] removeAllObjects];
                 [weakSelf.dataArray[index] addObjectsFromArray:[entityArray mutableCopy]];
                 [weakSelf.collectionView reloadData];
-                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
-                [weakSelf.activityIndicatorView stopAnimating];
             } failure:^(NSInteger stateCode) {
                 [weakSelf.collectionView.infiniteScrollingView stopAnimating];
                 [weakSelf.activityIndicatorView stopAnimating];
@@ -53,11 +55,12 @@
         case 1:
         {
             [GKDataManager getNoteListWithCategoryId:self.category.categoryId sort:@"" reverse:YES offset:0 count:kRequestSize success:^(NSArray *dataArray) {
+                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+                [weakSelf.activityIndicatorView stopAnimating];
+                
                 [weakSelf.dataArray[index] removeAllObjects];
                 [weakSelf.dataArray[index] addObjectsFromArray:[dataArray mutableCopy]];
                 [weakSelf.collectionView reloadData];
-                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
-                [weakSelf.activityIndicatorView stopAnimating];
             } failure:^(NSInteger stateCode) {
                 [weakSelf.collectionView.infiniteScrollingView stopAnimating];
                 [weakSelf.activityIndicatorView stopAnimating];
@@ -68,6 +71,18 @@
             
         case 2:
         {
+            [GKDataManager getLikeEntityListWithCategoryId:self.category.categoryId userId:[Passport sharedInstance].user.userId sort:@"" reverse:YES offset:0 count:kRequestSize success:^(NSArray *entityArray) {
+                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+                [weakSelf.activityIndicatorView stopAnimating];
+                
+                [weakSelf.dataArray[index] removeAllObjects];
+                [weakSelf.dataArray[index] addObjectsFromArray:[entityArray mutableCopy]];
+                [weakSelf.collectionView reloadData];
+            } failure:^(NSInteger stateCode) {
+                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+                [weakSelf.activityIndicatorView stopAnimating];
+            }];
+            
             break;
         }
     }
@@ -82,9 +97,10 @@
         case 0:
         {
             [GKDataManager getEntityListWithCategoryId:self.category.categoryId sort:@"" reverse:YES offset:((NSMutableArray *)self.dataArray[index]).count count:kRequestSize success:^(NSArray *entityArray) {
+                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+                
                 [weakSelf.dataArray[index] addObjectsFromArray:entityArray];
                 [weakSelf.collectionView reloadData];
-                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
             } failure:^(NSInteger stateCode) {
                 [weakSelf.collectionView.infiniteScrollingView stopAnimating];
             }];
@@ -94,11 +110,29 @@
             
         case 1:
         {
+            [GKDataManager getNoteListWithCategoryId:self.category.categoryId sort:@"" reverse:YES offset:((NSMutableArray *)self.dataArray[index]).count count:kRequestSize success:^(NSArray *dataArray) {
+                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+                
+                [weakSelf.dataArray[index] addObjectsFromArray:[dataArray mutableCopy]];
+                [weakSelf.collectionView reloadData];
+            } failure:^(NSInteger stateCode) {
+                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+            }];
+            
             break;
         }
             
         case 2:
         {
+            [GKDataManager getLikeEntityListWithCategoryId:self.category.categoryId userId:[Passport sharedInstance].user.userId sort:@"" reverse:YES offset:((NSMutableArray *)self.dataArray[index]).count count:kRequestSize success:^(NSArray *entityArray) {
+                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+                
+                [weakSelf.dataArray[index] addObjectsFromArray:[entityArray mutableCopy]];
+                [weakSelf.collectionView reloadData];
+            } failure:^(NSInteger stateCode) {
+                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+            }];
+            
             break;
         }
     }
@@ -177,6 +211,93 @@
 
 #pragma mark - UICollectionViewDelegate
 
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    CGFloat top, left, bottom, right;
+    if (self.interfaceOrientation == 1 || self.interfaceOrientation == 2) {
+        // 竖屏
+        if (self.selectedIndex == 0) {
+            // 商品
+            left = 23.f;
+        } else if (self.selectedIndex == 1) {
+            // 点评
+            left = 20.f;
+        } else {
+            // 喜爱
+            left = 23.f;
+        }
+    } else {
+        // 横屏
+        if (self.selectedIndex == 0) {
+            // 商品
+            left = 48.f;
+        } else if (self.selectedIndex == 1) {
+            // 点评
+            left = 45.f;
+        } else {
+            // 喜爱
+            left = 48.f;
+        }
+    }
+    
+    top = bottom = 16.f;
+    right = left;
+    
+    return UIEdgeInsetsMake(top, left, bottom, right);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    if (self.selectedIndex == 0) {
+        // 商品
+        return 16.f;
+    } else if (self.selectedIndex == 1) {
+        // 点评
+        return 0.f;
+    } else {
+        // 喜爱
+        return 16.f;
+    }
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (self.selectedIndex) {
+        case 0:
+        {
+            // 商品
+            return CGSizeMake(210.f, 250.f);
+            break;
+        }
+        
+        case 1:
+        {
+            // 点评
+            GKNote *note = self.dataArray[1][indexPath.row][@"note"];
+            CGSize cellSize = [note.text sizeWithFont:[UIFont systemFontOfSize:15.f] constrainedToSize:CGSizeMake(608.f, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+            cellSize.width = 668.f;
+            cellSize.height += 200.f;
+            return cellSize;
+            break;
+        }
+            
+        case 2:
+        {
+            // 喜爱
+            return CGSizeMake(210.f, 250.f);
+            break;
+        }
+            
+        default:
+        {
+            return CGSizeZero;
+            break;
+        }
+    }
+}
+
 #pragma mark - CategorySectionHeaderViewDelegate
 
 - (void)headerView:(CategorySectionHeaderView *)headerView didSelectedIndex:(NSInteger)index
@@ -185,8 +306,19 @@
     [self.collectionView reloadData];
     
     self.selectedIndex = index;
-    if (((NSMutableArray *)self.dataArray[index]).count == 0) {
-        [self refresh];
+    
+    if (index == 2 && !k_isLogin) {
+        __weak __typeof(&*self)weakSelf = self;
+        NSUInteger categoryId = self.category.categoryId;
+        [Passport loginWithSuccessBloack:^{
+            [GKDataManager getCategoryStatByCategoryId:categoryId success:^(NSInteger likeCount, NSInteger noteCount, NSInteger entityCount) {
+                [weakSelf refresh];
+            } failure:nil];
+        }];
+    } else {
+        if (((NSMutableArray *)self.dataArray[index]).count == 0) {
+            [self refresh];
+        }
     }
 }
 
@@ -206,7 +338,10 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = [self.category.categoryName componentsSeparatedByString:@"-"].firstObject;
+    NSString *title = [self.category.categoryName componentsSeparatedByString:@"-"].firstObject;
+    [self.navTitleButton setTitle:title forState:UIControlStateNormal];
+    self.navTitleButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.navTitleButton setImageWithURL:self.category.iconURL forState:UIControlStateNormal];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -228,6 +363,15 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    double delayInSeconds = 0.1;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.collectionView reloadData];
+    });
 }
 
 @end

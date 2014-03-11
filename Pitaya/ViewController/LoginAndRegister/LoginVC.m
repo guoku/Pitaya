@@ -46,9 +46,15 @@
     }
     
     [BBProgressHUD show];
+    __weak __typeof(&*self)weakSelf = self;
     [GKDataManager loginWithEmail:email password:password success:^(GKUser *user, NSString *session) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [Passport sharedInstance].user = user;
+        [Passport sharedInstance].session = session;
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
         [BBProgressHUD dismiss];
+        if (weakSelf.successBlock) {
+            weakSelf.successBlock();
+        }
     } failure:^(NSInteger stateCode, NSString *type, NSString *message) {
         switch (stateCode) {
             case 500:

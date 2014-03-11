@@ -93,10 +93,10 @@
         left = 23.f;
     } else {
         // 横屏
-        left = 45.f;
+        left = 48.f;
     }
     
-    top = bottom = 25.f;
+    top = bottom = 23.f;
     right = left;
     
     return UIEdgeInsetsMake(top, left, bottom, right);
