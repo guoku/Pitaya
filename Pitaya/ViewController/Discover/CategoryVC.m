@@ -71,6 +71,18 @@
             
         case 2:
         {
+            [GKDataManager getLikeEntityListWithCategoryId:self.category.categoryId userId:[Passport sharedInstance].user.userId sort:@"" reverse:YES offset:0 count:kRequestSize success:^(NSArray *entityArray) {
+                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+                [weakSelf.activityIndicatorView stopAnimating];
+                
+                [weakSelf.dataArray[index] removeAllObjects];
+                [weakSelf.dataArray[index] addObjectsFromArray:[entityArray mutableCopy]];
+                [weakSelf.collectionView reloadData];
+            } failure:^(NSInteger stateCode) {
+                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+                [weakSelf.activityIndicatorView stopAnimating];
+            }];
+            
             break;
         }
     }
@@ -112,6 +124,15 @@
             
         case 2:
         {
+            [GKDataManager getLikeEntityListWithCategoryId:self.category.categoryId userId:[Passport sharedInstance].user.userId sort:@"" reverse:YES offset:((NSMutableArray *)self.dataArray[index]).count count:kRequestSize success:^(NSArray *entityArray) {
+                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+                
+                [weakSelf.dataArray[index] addObjectsFromArray:[entityArray mutableCopy]];
+                [weakSelf.collectionView reloadData];
+            } failure:^(NSInteger stateCode) {
+                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+            }];
+            
             break;
         }
     }
@@ -285,8 +306,19 @@
     [self.collectionView reloadData];
     
     self.selectedIndex = index;
-    if (((NSMutableArray *)self.dataArray[index]).count == 0) {
-        [self refresh];
+    
+    if (index == 2 && !k_isLogin) {
+        __weak __typeof(&*self)weakSelf = self;
+        NSUInteger categoryId = self.category.categoryId;
+        [Passport loginWithSuccessBloack:^{
+            [GKDataManager getCategoryStatByCategoryId:categoryId success:^(NSInteger likeCount, NSInteger noteCount, NSInteger entityCount) {
+                [weakSelf refresh];
+            } failure:nil];
+        }];
+    } else {
+        if (((NSMutableArray *)self.dataArray[index]).count == 0) {
+            [self refresh];
+        }
     }
 }
 

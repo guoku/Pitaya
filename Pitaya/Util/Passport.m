@@ -17,7 +17,15 @@
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] init];
     });
-    return  sharedInstance;
+    return sharedInstance;
+}
+
++ (void)loginWithSuccessBloack:(void (^)())successBlock
+{
+    BaseNavigationController *nav = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginNav"];
+    ((LoginVC *)nav.viewControllers.firstObject).successBlock = successBlock;
+    nav.modalPresentationStyle = UIModalPresentationFormSheet;
+    [kAppDelegate.window.rootViewController presentViewController:nav animated:YES completion:nil];
 }
 
 + (void)logout

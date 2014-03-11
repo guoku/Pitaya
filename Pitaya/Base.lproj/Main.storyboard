@@ -184,7 +184,7 @@
         <!--LoginVC - 登录-->
         <scene sceneID="T3x-gF-N2F">
             <objects>
-                <tableViewController id="vtd-7S-tjo" customClass="LoginVC" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="LoginVC" id="vtd-7S-tjo" customClass="LoginVC" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2kn-a8-3dE">
                         <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -517,7 +517,7 @@
         <!--Base Navigation Controller-->
         <scene sceneID="YLe-dS-mYF">
             <objects>
-                <navigationController definesPresentationContext="YES" modalPresentationStyle="formSheet" id="PlW-XQ-n2R" customClass="BaseNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginNav" definesPresentationContext="YES" modalPresentationStyle="formSheet" id="PlW-XQ-n2R" customClass="BaseNavigationController" sceneMemberID="viewController">
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qQf-Ws-d77">
                         <autoresizingMask key="autoresizingMask"/>

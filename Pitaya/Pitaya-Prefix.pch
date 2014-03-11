@@ -49,5 +49,6 @@
     #import "BaseViewController.h"
     #import "BaseNavigationController.h"
     #import "AppDelegate.h"
+    #import "LoginVC.h"
 
 #endif
