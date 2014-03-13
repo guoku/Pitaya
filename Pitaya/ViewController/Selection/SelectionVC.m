@@ -9,6 +9,7 @@
 #import "SelectionVC.h"
 #import "SVPullToRefresh.h"
 #import "SelectionCell.h"
+#import "EntityDetailVC.h"
 
 @interface SelectionVC () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate>
 
@@ -195,6 +196,13 @@
     self.currentCategoryIndex = 0;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.collectionView reloadData];
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -214,20 +222,17 @@
     }
 }
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    [super prepareForSegue:segue sender:sender];
-//    
-//    if ([segue.destinationViewController isKindOfClass:[GroupVC class]]) {
-//        UIButton *button = (UIButton *)sender;
-//        GroupVC *vc = (GroupVC *)segue.destinationViewController;
-//        vc.groupDict = self.categoryGroupArray[button.tag];
-//    } else if ([segue.destinationViewController isKindOfClass:[CategoryVC class]]) {
-//        CategoryCell *cell = (CategoryCell *)sender;
-//        CategoryVC *vc = (CategoryVC *)segue.destinationViewController;
-//        vc.category = cell.category;
-//    }
-//}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [super prepareForSegue:segue sender:sender];
+    
+    if ([segue.destinationViewController isKindOfClass:[EntityDetailVC class]]) {
+        SelectionCell *cell = (SelectionCell *)sender;
+        EntityDetailVC *vc = (EntityDetailVC *)segue.destinationViewController;
+        vc.entity = cell.entity;
+        vc.note = cell.note;
+    }
+}
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
