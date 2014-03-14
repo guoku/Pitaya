@@ -18,6 +18,8 @@
 
 - (void)backSwape
 {
+    self.backGesture.enabled = NO;
+    
     [self popViewControllerAnimated:YES];
 }
 
