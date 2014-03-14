@@ -1084,7 +1084,7 @@
         <!--Entity DetailVC - 详情-->
         <scene sceneID="Pxh-RE-zBP">
             <objects>
-                <viewController id="C9Z-0J-GF4" customClass="EntityDetailVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EntityDetailVC" id="C9Z-0J-GF4" customClass="EntityDetailVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M2l-9D-7Tc"/>
                         <viewControllerLayoutGuide type="bottom" id="02j-jk-1uZ"/>
@@ -1190,12 +1190,20 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9mL-1l-YZy">
+                                                    <rect key="frame" x="0.0" y="430" width="668" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstItem="9mL-1l-YZy" firstAttribute="leading" secondItem="2H6-ou-Vj6" secondAttribute="leading" id="36W-ps-wYc"/>
                                                 <constraint firstAttribute="bottom" secondItem="mDB-9l-II2" secondAttribute="bottom" constant="100" id="5Xj-jt-OgW"/>
+                                                <constraint firstAttribute="trailing" secondItem="9mL-1l-YZy" secondAttribute="trailing" id="7bp-Tn-OVb"/>
                                                 <constraint firstAttribute="bottom" secondItem="O2m-kZ-nHf" secondAttribute="bottom" id="8d3-od-6j8"/>
                                                 <constraint firstAttribute="width" constant="668" id="AqP-MA-aQC"/>
+                                                <constraint firstItem="9mL-1l-YZy" firstAttribute="top" secondItem="mDB-9l-II2" secondAttribute="bottom" id="B2Q-ef-Sd8"/>
                                                 <constraint firstItem="O2m-kZ-nHf" firstAttribute="leading" secondItem="2H6-ou-Vj6" secondAttribute="leading" id="GZl-cH-Nw7"/>
                                                 <constraint firstItem="5od-dk-PM5" firstAttribute="leading" secondItem="IhA-B7-MfT" secondAttribute="leading" id="HXg-tl-Ru4"/>
                                                 <constraint firstAttribute="trailing" secondItem="O2m-kZ-nHf" secondAttribute="trailing" id="J1C-5g-Nfw"/>
@@ -1206,6 +1214,7 @@
                                                 <constraint firstItem="mDB-9l-II2" firstAttribute="top" secondItem="eZF-ZM-RKd" secondAttribute="bottom" id="aCb-5j-xSG"/>
                                                 <constraint firstAttribute="trailing" secondItem="Qd6-e0-789" secondAttribute="trailing" constant="20" id="b4f-ZF-Ny3"/>
                                                 <constraint firstItem="IhA-B7-MfT" firstAttribute="top" secondItem="2H6-ou-Vj6" secondAttribute="top" constant="20" id="cck-vh-Kis"/>
+                                                <constraint firstItem="O2m-kZ-nHf" firstAttribute="top" secondItem="9mL-1l-YZy" secondAttribute="bottom" id="poj-yI-evc"/>
                                                 <constraint firstItem="eZF-ZM-RKd" firstAttribute="leading" secondItem="2H6-ou-Vj6" secondAttribute="leading" constant="20" id="qb0-j9-s1e"/>
                                                 <constraint firstItem="mDB-9l-II2" firstAttribute="leading" secondItem="2H6-ou-Vj6" secondAttribute="leading" id="tXa-XZ-Pst"/>
                                                 <constraint firstItem="5od-dk-PM5" firstAttribute="bottom" secondItem="IhA-B7-MfT" secondAttribute="bottom" id="uPu-tI-Zd8"/>
@@ -1378,13 +1387,32 @@
                                             <outlet property="starImageView" destination="2NB-0g-Eh1" id="B4p-D5-G5b"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Nd0-pQ-K6l">
-                                        <rect key="frame" x="0.0" y="794" width="758" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="RecommendEntityCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="RecommendEntityCell" rowHeight="477" id="Nd0-pQ-K6l" customClass="RecommendEntityCell">
+                                        <rect key="frame" x="0.0" y="794" width="758" height="477"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nd0-pQ-K6l" id="nuQ-2Q-ZsN">
-                                            <rect key="frame" x="0.0" y="0.0" width="758" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="758" height="477"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zZ4-Sw-QK6">
+                                                    <rect key="frame" x="45" y="0.0" width="668" height="477"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="668" id="Yak-eg-6Jz"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="zZ4-Sw-QK6" secondAttribute="centerX" id="5Pd-Kf-qhg"/>
+                                                <constraint firstAttribute="bottom" secondItem="zZ4-Sw-QK6" secondAttribute="bottom" id="I1h-zc-VjD"/>
+                                                <constraint firstItem="zZ4-Sw-QK6" firstAttribute="top" secondItem="nuQ-2Q-ZsN" secondAttribute="top" id="elr-UE-0Uh"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="backView" destination="zZ4-Sw-QK6" id="l7q-i6-oRd"/>
+                                            <outlet property="delegate" destination="C9Z-0J-GF4" id="f3Y-Lw-djj"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1413,6 +1441,7 @@
                         <outlet property="imagePageControl" destination="5od-dk-PM5" id="2Fr-Vy-fpA"/>
                         <outlet property="imageScrollView" destination="IhA-B7-MfT" id="tZc-uY-b5k"/>
                         <outlet property="likeButton" destination="eZF-ZM-RKd" id="NVl-vf-wJO"/>
+                        <outlet property="likeUserView" destination="9mL-1l-YZy" id="QK2-5F-e7Y"/>
                         <outlet property="priceButton" destination="Qd6-e0-789" id="t5u-KP-6h2"/>
                         <outlet property="tableView" destination="Q6F-YV-v9Y" id="aLX-lw-rOK"/>
                     </connections>

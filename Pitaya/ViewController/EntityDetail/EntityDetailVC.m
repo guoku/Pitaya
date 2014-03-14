@@ -8,18 +8,21 @@
 
 #import "EntityDetailVC.h"
 #import "NoteCell.h"
+#import "RecommendEntityCell.h"
 
-@interface EntityDetailVC () <UITableViewDataSource, UITableViewDelegate>
+@interface EntityDetailVC () <UITableViewDataSource, UITableViewDelegate, RecommendEntityCellDelegate>
 
 @property (nonatomic, assign) BOOL hasLoadData;
 @property (nonatomic, strong) NSMutableArray *noteArray;
 @property (nonatomic, strong) NSMutableArray *likeUserArray;
+@property (nonatomic, strong) NSMutableArray *recommendEntityArray;
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) IBOutlet UIView *headerView;
 @property (nonatomic, strong) IBOutlet UIScrollView *imageScrollView;
 @property (nonatomic, strong) IBOutlet UIPageControl *imagePageControl;
+@property (nonatomic, strong) IBOutlet UIView *likeUserView;
 @property (nonatomic, strong) IBOutlet UIButton *likeButton;
 @property (nonatomic, strong) IBOutlet UIButton *priceButton;
 @property (nonatomic, strong) IBOutlet UIButton *categoryButton;
@@ -72,7 +75,7 @@
         
         CGRect frame;
         frame.origin.x = 20.f + (idx * (buttonLength + 15.f));
-        frame.origin.y = 437.f;
+        frame.origin.y = 7.f;
         frame.size.width = buttonLength;
         frame.size.height = buttonLength;
         
@@ -83,7 +86,7 @@
         avatarButton.tag = user.userId;
         [avatarButton setImageWithURL:user.avatarURL_s forState:UIControlStateNormal];
         [avatarButton addTarget:self action:@selector(tapLikeUserButton:) forControlEvents:UIControlEventTouchUpInside];
-        [self.headerView addSubview:avatarButton];
+        [self.likeUserView addSubview:avatarButton];
     }];
 }
 
@@ -105,6 +108,15 @@
     // TODO: push个人页
 }
 
+#pragma mark - RecommendEntityCellDelegate
+
+- (void)recommendEntityCell:(RecommendEntityCell *)cell didSelectedEntity:(GKEntity *)entity
+{
+    EntityDetailVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"EntityDetailVC"];
+    vc.entity = entity;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -117,7 +129,7 @@
     if (section == 0) {
         return self.noteArray.count;
     } else {
-        return 2;
+        return 1;
     }
 }
 
@@ -131,13 +143,10 @@
         
         return cell;
     } else {
-        static NSString *CellIdentifier = @"EntityCell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        }
+        static NSString *CellIdentifier = @"RecommendEntityCell";
+        RecommendEntityCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
-        cell.backgroundColor = [UIColor redColor];
+        cell.entityArray = self.recommendEntityArray;
         
         return cell;
     }
@@ -153,7 +162,7 @@
         
         return contentLabelSize.height + 85.f;
     } else {
-        return 100.f;
+        return 477.f;
     }
 }
 
@@ -241,6 +250,11 @@
             
             [weakSelf.tableView reloadData];
             [weakSelf refreshLikeUser];
+        } failure:nil];
+        
+        [GKDataManager getRandomEntityListByCategoryId:self.entity.categoryId count:6 success:^(NSArray *entityArray) {
+            weakSelf.recommendEntityArray = [entityArray mutableCopy];
+            [weakSelf.tableView reloadData];
         } failure:nil];
     }
 }
