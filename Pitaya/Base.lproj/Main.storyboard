@@ -834,6 +834,7 @@
                                         <connections>
                                             <outlet property="imageView" destination="jbo-Ho-NvS" id="9Kn-74-8pd"/>
                                             <outlet property="likeButton" destination="Nsx-bN-XsZ" id="jfV-Df-fQY"/>
+                                            <segue destination="C9Z-0J-GF4" kind="push" id="ZY5-RF-E04"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -854,6 +855,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="hLc-Jj-EHh">
                         <nil key="title"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="fZ9-E7-28p"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="fEt-Po-BzG">
                             <rect key="frame" x="235" y="7" width="289" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1189,6 +1191,9 @@
                                                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <segue destination="DMe-7T-GSK" kind="push" id="r0j-eJ-qcD"/>
+                                                    </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9mL-1l-YZy">
                                                     <rect key="frame" x="0.0" y="430" width="668" height="50"/>
@@ -1655,11 +1660,11 @@
                         <viewControllerLayoutGuide type="bottom" id="58T-Zb-c1Z"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XGk-cS-ky6">
-                        <rect key="frame" x="0.0" y="0.0" width="758" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="758" height="1768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tL8-jQ-1b3">
-                                <rect key="frame" x="0.0" y="0.0" width="758" height="768"/>
+                                <rect key="frame" x="0.0" y="0.0" width="758" height="1768"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="16" id="QzP-Ak-8bw">
@@ -1746,6 +1751,7 @@
                                             <outlet property="imageView" destination="OVz-Om-AQj" id="Jqa-IQ-QlV"/>
                                             <outlet property="likeButton" destination="iF6-7t-RFk" id="YuR-Yz-hNY"/>
                                             <outlet property="priceLabel" destination="sIv-6B-JBa" id="CLV-uy-Vuh"/>
+                                            <segue destination="C9Z-0J-GF4" kind="push" id="Khu-wf-qNG"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NoteCollectionCell" id="jJI-45-gxt" customClass="NoteCollectionCell">
@@ -1796,6 +1802,9 @@
                                                         <color key="titleColor" red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="deviceRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <segue destination="DMe-7T-GSK" kind="push" id="dAT-Zw-Q4q"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点评了" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yE1-FX-pAq">
                                                     <rect key="frame" x="120" y="10" width="60" height="40"/>
@@ -2020,6 +2029,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="yaw-5z-kWR">
                         <nil key="title"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="8FX-98-fh7"/>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" id="KgQ-75-VUu">
                             <rect key="frame" x="279" y="8" width="200" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2040,7 +2050,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eo2-pH-YzA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3058" y="618"/>
+            <point key="canvasLocation" x="3214" y="5810"/>
         </scene>
         <!--GroupVC-->
         <scene sceneID="J49-Gb-912">
@@ -2182,6 +2192,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kHF-kd-qUr"/>
+        <segue reference="ZY5-RF-E04"/>
+        <segue reference="r0j-eJ-qcD"/>
     </inferredMetricsTieBreakers>
 </document>

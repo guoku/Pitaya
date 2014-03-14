@@ -9,6 +9,7 @@
 #import "HotVC.h"
 #import "HotCell.h"
 #import "SVPullToRefresh.h"
+#import "EntityDetailVC.h"
 
 @interface HotVC ()
 
@@ -139,6 +140,17 @@
     }];
     
     [self tapSegmentedControl:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [super prepareForSegue:segue sender:sender];
+    
+    if ([segue.destinationViewController isKindOfClass:[EntityDetailVC class]]) {
+        HotCell *cell = (HotCell *)sender;
+        EntityDetailVC *vc = (EntityDetailVC *)segue.destinationViewController;
+        vc.entity = cell.entity;
+    }
 }
 
 - (void)didReceiveMemoryWarning

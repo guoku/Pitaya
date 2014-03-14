@@ -9,6 +9,7 @@
 #import "EntityDetailVC.h"
 #import "NoteCell.h"
 #import "RecommendEntityCell.h"
+#import "CategoryVC.h"
 
 @interface EntityDetailVC () <UITableViewDataSource, UITableViewDelegate, RecommendEntityCellDelegate>
 
@@ -204,7 +205,9 @@
     [self.likeButton setTitle:[NSString stringWithFormat:@"喜爱 %d", self.entity.likeCount] forState:UIControlStateNormal];
     [self.priceButton setTitle:[NSString stringWithFormat:@"¥%.2f", self.entity.lowestPrice] forState:UIControlStateNormal];
     GKEntityCategory *category = [GKEntityCategory modelFromDictionary:@{@"categoryId":@(self.entity.categoryId)}];
-    [self.categoryButton setTitle:[NSString stringWithFormat:@"来自 [%@]", category.categoryName] forState:UIControlStateNormal];
+    NSString *categoryName = [category.categoryName componentsSeparatedByString:@"-"].firstObject;
+    [self.categoryButton setTitle:[NSString stringWithFormat:@"来自 [%@]", categoryName] forState:UIControlStateNormal];
+    self.categoryButton.tag = category.categoryId;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -256,6 +259,18 @@
             weakSelf.recommendEntityArray = [entityArray mutableCopy];
             [weakSelf.tableView reloadData];
         } failure:nil];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [super prepareForSegue:segue sender:sender];
+    
+    if ([segue.destinationViewController isKindOfClass:[CategoryVC class]]) {
+        UIButton *categoryButton = (UIButton *)sender;
+        CategoryVC *vc = (CategoryVC *)segue.destinationViewController;
+        NSUInteger categoryId = categoryButton.tag;
+        vc.category = [GKEntityCategory modelFromDictionary:@{@"categoryId":@(categoryId)}];
     }
 }
 

@@ -58,6 +58,7 @@
     // 分类
     GKEntityCategory *category = [GKEntityCategory modelFromDictionary:@{@"categoryId":@(self.note.categoryId)}];
     [self.categoryButton setTitle:[NSString stringWithFormat:@"[%@]", category.categoryName] forState:UIControlStateNormal];
+    self.categoryButton.tag = category.categoryId;
     
     // 商品图
     [self.entityImageView setImageWithURL:self.entity.imageURL_240x240];

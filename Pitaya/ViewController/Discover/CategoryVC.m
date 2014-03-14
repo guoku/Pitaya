@@ -11,6 +11,7 @@
 #import "EntityCollectionCell.h"
 #import "NoteCollectionCell.h"
 #import "CategorySectionHeaderView.h"
+#import "EntityDetailVC.h"
 
 @interface CategoryVC () <UICollectionViewDataSource, UICollectionViewDelegate, CategorySectionHeaderViewDelegate>
 
@@ -356,6 +357,22 @@
     if (((NSMutableArray *)self.dataArray[self.selectedIndex]).count == 0) {
         [GKDataManager getCategoryStatByCategoryId:self.category.categoryId success:Nil failure:nil];
         [self refresh];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [super prepareForSegue:segue sender:sender];
+    
+    if ([segue.destinationViewController isKindOfClass:[EntityDetailVC class]]) {
+        EntityCollectionCell *cell = (EntityCollectionCell *)sender;
+        EntityDetailVC *vc = (EntityDetailVC *)segue.destinationViewController;
+        vc.entity = cell.entity;
+    } else if ([segue.destinationViewController isKindOfClass:[CategoryVC class]]) {
+        UIButton *categoryButton = (UIButton *)sender;
+        CategoryVC *vc = (CategoryVC *)segue.destinationViewController;
+        NSUInteger categoryId = categoryButton.tag;
+        vc.category = [GKEntityCategory modelFromDictionary:@{@"categoryId":@(categoryId)}];
     }
 }
 
