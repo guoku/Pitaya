@@ -198,7 +198,11 @@
     UIBarButtonItem *noteButtonItem = [[UIBarButtonItem alloc] initWithCustomView:noteButton];
     self.navigationItem.rightBarButtonItems = @[moreButtonItem, noteButtonItem];
     
-    self.brandAndTitleLabel.text = [NSString stringWithFormat:@"%@ - %@", self.entity.brand, self.entity.title];
+    if (self.entity.brand.length > 0) {
+        self.brandAndTitleLabel.text = [NSString stringWithFormat:@"%@ - %@", self.entity.brand, self.entity.title];
+    } else {
+        self.brandAndTitleLabel.text = self.entity.title;
+    }
     
     // headerView
     self.headerView.layer.borderColor = UIColorFromRGB(0xE9E9E9).CGColor;
