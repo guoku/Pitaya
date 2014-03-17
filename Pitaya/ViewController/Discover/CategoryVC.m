@@ -13,7 +13,7 @@
 #import "CategorySectionHeaderView.h"
 #import "EntityDetailVC.h"
 
-@interface CategoryVC () <UICollectionViewDataSource, UICollectionViewDelegate, CategorySectionHeaderViewDelegate>
+@interface CategoryVC () <UICollectionViewDataSource, UICollectionViewDelegate, CategorySectionHeaderViewDelegate, NoteCollectionCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
@@ -172,6 +172,8 @@
         case 1:
         {
             NoteCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"NoteCollectionCell" forIndexPath:indexPath];
+            cell.delegate = self;
+            
             GKEntity *entity = self.dataArray[self.selectedIndex][indexPath.row][@"entity"];
             GKNote *note = self.dataArray[self.selectedIndex][indexPath.row][@"note"];
             cell.entity = entity;
@@ -321,6 +323,15 @@
             [self refresh];
         }
     }
+}
+
+#pragma mark - NoteCollectionCellDelegate
+
+- (void)noteCollectionCell:(NoteCollectionCell *)cell didSelectEntity:(GKEntity *)entity
+{
+    EntityDetailVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"EntityDetailVC"];
+    vc.entity = entity;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - Life Cycle

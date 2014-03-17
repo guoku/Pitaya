@@ -1964,6 +1964,7 @@
                                             <outlet property="categoryButton" destination="Mrc-ex-UKJ" id="DOx-Q8-sie"/>
                                             <outlet property="commentCountLabel" destination="iIn-4s-mo0" id="453-XP-T6C"/>
                                             <outlet property="dateLabel" destination="wVq-r0-kf3" id="mCS-ZS-Rpa"/>
+                                            <outlet property="entityBackView" destination="6oM-RP-imU" id="hlc-Q7-tGP"/>
                                             <outlet property="entityImageView" destination="2ip-ys-ZmM" id="4Kb-qy-eF6"/>
                                             <outlet property="likeCountLabel" destination="u0J-uG-l6z" id="FAR-cG-3J7"/>
                                             <outlet property="nicknameButton" destination="SFF-Xy-GZ9" id="6Rg-dY-518"/>

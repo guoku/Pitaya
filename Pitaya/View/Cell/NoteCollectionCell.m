@@ -13,6 +13,7 @@
 @property (nonatomic, strong) IBOutlet UIButton *avatarButton;
 @property (nonatomic, strong) IBOutlet UIButton *nicknameButton;
 @property (nonatomic, strong) IBOutlet UIButton *categoryButton;
+@property (nonatomic, strong) IBOutlet UIView *entityBackView;
 @property (nonatomic, strong) IBOutlet UIImageView *entityImageView;
 @property (nonatomic, strong) IBOutlet UILabel *brandLabel;
 @property (nonatomic, strong) IBOutlet UILabel *titleLabel;
@@ -22,6 +23,8 @@
 @property (nonatomic, strong) IBOutlet UILabel *noteLabel;
 @property (nonatomic, strong) IBOutlet UIButton *pokeButton;
 @property (nonatomic, strong) IBOutlet UILabel *dateLabel;
+
+@property (nonatomic, strong) UITapGestureRecognizer *entityTapGesture;
 
 @end
 
@@ -43,6 +46,15 @@
     [self setNeedsLayout];
 }
 
+#pragma mark - Selector Method
+
+- (void)tapEntityBackView
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(noteCollectionCell:didSelectEntity:)]) {
+        [self.delegate noteCollectionCell:self didSelectEntity:self.entity];
+    }
+}
+
 #pragma mark - Life Cycle
 
 - (void)layoutSubviews
@@ -59,6 +71,12 @@
     GKEntityCategory *category = [GKEntityCategory modelFromDictionary:@{@"categoryId":@(self.note.categoryId)}];
     [self.categoryButton setTitle:[NSString stringWithFormat:@"[%@]", category.categoryName] forState:UIControlStateNormal];
     self.categoryButton.tag = category.categoryId;
+    
+    // 商品点击手势
+    if (!self.entityTapGesture) {
+        _entityTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapEntityBackView)];
+        [self.entityBackView addGestureRecognizer:self.entityTapGesture];
+    }
     
     // 商品图
     [self.entityImageView setImageWithURL:self.entity.imageURL_240x240];
