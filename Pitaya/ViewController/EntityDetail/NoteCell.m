@@ -23,12 +23,25 @@
 
 @implementation NoteCell
 
+#pragma mark - Getter And Setter
+
 - (void)setNote:(GKNote *)note
 {
     _note = note;
     
     [self setNeedsLayout];
 }
+
+#pragma mark - Selector Method
+
+- (IBAction)tapAvatarButton:(id)sender
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(noteCell:didSelectUser:)]) {
+        [self.delegate noteCell:self didSelectUser:self.note.creator];
+    }
+}
+
+#pragma mark - Life Cycle
 
 - (void)layoutSubviews
 {

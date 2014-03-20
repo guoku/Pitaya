@@ -10,8 +10,9 @@
 #import "SVPullToRefresh.h"
 #import "SelectionCell.h"
 #import "EntityDetailVC.h"
+#import "UserVC.h"
 
-@interface SelectionVC () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate>
+@interface SelectionVC () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate, SelectionCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *selectionArray;
 @property (nonatomic, assign) NSInteger currentCategoryIndex;
@@ -76,6 +77,15 @@
     _popover = [[UIPopoverController alloc] initWithContentViewController:contentVC];
     self.popover.popoverContentSize = self.popoverTableView.frame.size;
     [self.popover presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+}
+
+#pragma mark - SelectionCellDelegate
+
+- (void)selectionCell:(SelectionCell *)cell didSelectUser:(GKUser *)user
+{
+    UserVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UserVC"];
+    vc.user = user;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UICollectionViewDataSource

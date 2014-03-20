@@ -43,6 +43,15 @@
     [self setNeedsLayout];
 }
 
+#pragma mark - Selector Method
+
+- (IBAction)tapAvatarButton:(id)sender
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(selectionCell:didSelectUser:)]) {
+        [self.delegate selectionCell:self didSelectUser:self.note.creator];
+    }
+}
+
 #pragma mark - Life Cycle
 
 - (void)setNeedsLayout

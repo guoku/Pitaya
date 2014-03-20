@@ -7,8 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+@class SelectionCell;
+
+@protocol SelectionCellDelegate <NSObject>
+
+@optional
+- (void)selectionCell:(SelectionCell *)cell didSelectUser:(GKUser *)user;
+
+@end
 
 @interface SelectionCell : UICollectionViewCell
+
+@property (nonatomic, weak) IBOutlet id<SelectionCellDelegate> delegate;
 
 @property (nonatomic, strong) GKEntity *entity;
 @property (nonatomic, strong) GKNote *note;

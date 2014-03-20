@@ -653,6 +653,9 @@
                                                             <integer key="value" value="15"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="tapAvatarButton:" destination="qwO-Wa-mta" eventType="touchUpInside" id="92g-YU-uO9"/>
+                                                    </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96Y-7V-WqN">
                                                     <rect key="frame" x="0.0" y="320" width="320" height="1"/>
@@ -692,6 +695,7 @@
                                         <connections>
                                             <outlet property="avatarButton" destination="IQb-Pi-dew" id="Zqm-iz-3JC"/>
                                             <outlet property="dateLabel" destination="oPW-W9-FEm" id="iPq-9k-uML"/>
+                                            <outlet property="delegate" destination="w2V-Ya-NJL" id="Apz-aA-Lig"/>
                                             <outlet property="imageView" destination="gXX-mE-rL0" id="OGS-s3-JAp"/>
                                             <outlet property="likeButton" destination="6h6-Ak-gcz" id="y23-Mn-aa0"/>
                                             <outlet property="noteLabel" destination="iT6-MD-dPw" id="PhB-y7-h4s"/>
@@ -868,7 +872,7 @@
                                 <segment title="24小时热门"/>
                                 <segment title="7天热门"/>
                             </segments>
-                            <color key="tintColor" red="0.25882352941176467" green="0.49411764705882355" blue="0.75294117647058822" alpha="1" colorSpace="deviceRGB"/>
+                            <color key="tintColor" red="0.25882352941176473" green="0.49411764705882355" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="tapSegmentedControl:" destination="Blb-Bu-ubv" eventType="valueChanged" id="FSC-jF-XL7"/>
                             </connections>
@@ -1274,6 +1278,9 @@
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="tapAvatarButton:" destination="PmY-61-4L1" eventType="touchUpInside" id="1Qw-sm-s9L"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VVg-A3-WiX">
                                                             <rect key="frame" x="68" y="0.0" width="60" height="40"/>
@@ -1392,6 +1399,7 @@
                                             <outlet property="commentButton" destination="L5W-bF-qwK" id="sb3-Xg-XD6"/>
                                             <outlet property="contentLabel" destination="kLL-iD-4f9" id="gQV-HF-O9E"/>
                                             <outlet property="dateLabel" destination="i2V-mq-fnZ" id="5zB-fa-pUp"/>
+                                            <outlet property="delegate" destination="C9Z-0J-GF4" id="tds-hr-Gjz"/>
                                             <outlet property="nicknameButton" destination="VVg-A3-WiX" id="M8V-na-Ve2"/>
                                             <outlet property="pokeButton" destination="OUh-0c-yAb" id="A7v-Il-fKU"/>
                                             <outlet property="starImageView" destination="2NB-0g-Eh1" id="B4p-D5-G5b"/>
@@ -2000,6 +2008,9 @@
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="tapAvatarButton:" destination="jJI-45-gxt" eventType="touchUpInside" id="lmM-6Z-GYY"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFF-Xy-GZ9">
                                                     <rect key="frame" x="50" y="10" width="60" height="40"/>
@@ -2440,7 +2451,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="210" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rvx-zM-BzE">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rvx-zM-BzE">
                                                     <rect key="frame" x="10" y="10" width="190" height="190"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <constraints>
@@ -2946,7 +2957,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="eak-sn-aEm"/>
+        <segue reference="ZY5-RF-E04"/>
         <segue reference="r0j-eJ-qcD"/>
     </inferredMetricsTieBreakers>
 </document>
