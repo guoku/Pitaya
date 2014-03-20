@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B600CA0D18D81C0E00AB8FD7 /* UserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B600CA0C18D81C0E00AB8FD7 /* UserVC.m */; };
+		B600CA1018D8618600AB8FD7 /* UserSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B600CA0F18D8618600AB8FD7 /* UserSectionHeaderView.m */; };
 		B6011E9518AD00BD0034DD52 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B6011E9418AD00BC0034DD52 /* CustomTextField.m */; };
 		B6011E9918AD02B30034DD52 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B6011E9818AD02B30034DD52 /* LoginVC.m */; };
 		B60620CD18D1B97B007C1A95 /* RecommendEntityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B60620CC18D1B97B007C1A95 /* RecommendEntityCell.m */; };
@@ -18,6 +20,7 @@
 		B61EE32118B7356000585C9A /* SelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B61EE32018B7356000585C9A /* SelectionCell.m */; };
 		B6252BBB18C5E1DD00E5F489 /* CategorySectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6252BBA18C5E1DD00E5F489 /* CategorySectionHeaderView.m */; };
 		B63156A918ADE5BF003D802E /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63156A818ADE5BF003D802E /* BaseTableViewController.m */; };
+		B647727618DAAC2900F662FD /* TagCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B647727518DAAC2900F662FD /* TagCollectionCell.m */; };
 		B64ACF921890DB1900D88459 /* DiscoverSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B64ACF911890DB1900D88459 /* DiscoverSectionHeaderView.m */; };
 		B64ACF991891361800D88459 /* GroupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B64ACF981891361800D88459 /* GroupVC.m */; };
 		B64ACF9C1891372400D88459 /* CategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B64ACF9B1891372400D88459 /* CategoryVC.m */; };
@@ -128,6 +131,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B600CA0B18D81C0E00AB8FD7 /* UserVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserVC.h; sourceTree = "<group>"; };
+		B600CA0C18D81C0E00AB8FD7 /* UserVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserVC.m; sourceTree = "<group>"; };
+		B600CA0E18D8618600AB8FD7 /* UserSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSectionHeaderView.h; sourceTree = "<group>"; };
+		B600CA0F18D8618600AB8FD7 /* UserSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSectionHeaderView.m; sourceTree = "<group>"; };
 		B6011E9318AD00BC0034DD52 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
 		B6011E9418AD00BC0034DD52 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
 		B6011E9718AD02B30034DD52 /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
@@ -150,6 +157,8 @@
 		B6252BBA18C5E1DD00E5F489 /* CategorySectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategorySectionHeaderView.m; sourceTree = "<group>"; };
 		B63156A718ADE5BF003D802E /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		B63156A818ADE5BF003D802E /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
+		B647727418DAAC2900F662FD /* TagCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCollectionCell.h; sourceTree = "<group>"; };
+		B647727518DAAC2900F662FD /* TagCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCollectionCell.m; sourceTree = "<group>"; };
 		B64ACF901890DB1900D88459 /* DiscoverSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverSectionHeaderView.h; sourceTree = "<group>"; };
 		B64ACF911890DB1900D88459 /* DiscoverSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverSectionHeaderView.m; sourceTree = "<group>"; };
 		B64ACF971891361800D88459 /* GroupVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupVC.h; sourceTree = "<group>"; };
@@ -366,6 +375,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B600CA0A18D81BF300AB8FD7 /* UserVC */ = {
+			isa = PBXGroup;
+			children = (
+				B600CA0B18D81C0E00AB8FD7 /* UserVC.h */,
+				B600CA0C18D81C0E00AB8FD7 /* UserVC.m */,
+				B600CA0E18D8618600AB8FD7 /* UserSectionHeaderView.h */,
+				B600CA0F18D8618600AB8FD7 /* UserSectionHeaderView.m */,
+			);
+			path = UserVC;
+			sourceTree = "<group>";
+		};
 		B6011E9618AD02300034DD52 /* LoginAndRegister */ = {
 			isa = PBXGroup;
 			children = (
@@ -471,6 +491,8 @@
 				B651165A1893B86200B40016 /* EntityCollectionCell.m */,
 				B664EFAA18AA38F30005E635 /* NoteCollectionCell.h */,
 				B664EFAB18AA38F30005E635 /* NoteCollectionCell.m */,
+				B647727418DAAC2900F662FD /* TagCollectionCell.h */,
+				B647727518DAAC2900F662FD /* TagCollectionCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -613,6 +635,7 @@
 				B64F9517188F8AB400531FCA /* Feed */,
 				B64F9515188F8AB400531FCA /* Message */,
 				B64F9516188F8AB400531FCA /* Setting */,
+				B600CA0A18D81BF300AB8FD7 /* UserVC */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1029,6 +1052,7 @@
 				B6603CF6188D167600F52946 /* BaseNavigationController.m in Sources */,
 				B6603CB4188D151800F52946 /* UIImage+GIF.m in Sources */,
 				B6603CA5188D151800F52946 /* DDASLLogger.m in Sources */,
+				B600CA1018D8618600AB8FD7 /* UserSectionHeaderView.m in Sources */,
 				B6603C9C188D151800F52946 /* AFHTTPRequestOperationLogger.m in Sources */,
 				B6603CAC188D151800F52946 /* SDImageCache.m in Sources */,
 				B6603C41188D150A00F52946 /* NSDate+App.m in Sources */,
@@ -1037,6 +1061,7 @@
 				B6603CB0188D151800F52946 /* SDWebImageDownloaderOperation.m in Sources */,
 				B6603C9B188D151800F52946 /* AFHTTPRequestOperation.m in Sources */,
 				B6603C9D188D151800F52946 /* AFImageRequestOperation.m in Sources */,
+				B647727618DAAC2900F662FD /* TagCollectionCell.m in Sources */,
 				B64ACF9C1891372400D88459 /* CategoryVC.m in Sources */,
 				B64ACF921890DB1900D88459 /* DiscoverSectionHeaderView.m in Sources */,
 				B6603CB7188D151800F52946 /* UIImageView+WebCache.m in Sources */,
@@ -1045,6 +1070,7 @@
 				B6673FB618BE099D0038F9F2 /* HotCell.m in Sources */,
 				B6603C2D188CEBA200F52946 /* MasterViewController.m in Sources */,
 				B6603CAF188D151800F52946 /* SDWebImageDownloader.m in Sources */,
+				B600CA0D18D81C0E00AB8FD7 /* UserVC.m in Sources */,
 				B6603CA6188D151800F52946 /* DDFileLogger.m in Sources */,
 				B6603C2E188CEBA200F52946 /* RootViewController.m in Sources */,
 				B6603CF2188D153300F52946 /* Passport.m in Sources */,

@@ -1,30 +1,33 @@
 //
-//  CategoryVC.m
+//  UserVC.m
 //  Pitaya
 //
-//  Created by 魏哲 on 14-1-23.
+//  Created by 魏哲 on 14-3-18.
 //  Copyright (c) 2014年 Guoku. All rights reserved.
 //
 
-#import "CategoryVC.h"
+#import "UserVC.h"
 #import "SVPullToRefresh.h"
 #import "EntityCollectionCell.h"
 #import "NoteCollectionCell.h"
-#import "CategorySectionHeaderView.h"
+#import "UserSectionHeaderView.h"
 #import "EntityDetailVC.h"
+#import "CategoryVC.h"
+#import "TagCollectionCell.h"
 
-@interface CategoryVC () <UICollectionViewDataSource, UICollectionViewDelegate, CategorySectionHeaderViewDelegate, NoteCollectionCellDelegate>
+@interface UserVC () <UICollectionViewDataSource, UICollectionViewDelegate, UserSectionHeaderViewDelegate, NoteCollectionCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
-@property (nonatomic, strong) IBOutlet UIButton *navTitleButton;
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+@property (nonatomic, strong) IBOutlet UIButton *rightButton;
 @property (nonatomic, assign) NSInteger selectedIndex;
+@property (nonatomic, assign) NSTimeInterval likeTimestamp;
 
 @end
 
-@implementation CategoryVC
+@implementation UserVC
 
 #pragma mark - Private Method
 
@@ -34,19 +37,22 @@
     
     __weak __typeof(&*self)weakSelf = self;
     
+    [GKDataManager getUserDetailWithUserId:self.user.userId success:nil failure:nil];
+    
     NSInteger index = self.selectedIndex;
     switch (index) {
         case 0:
         {
-            [GKDataManager getEntityListWithCategoryId:self.category.categoryId sort:@"" reverse:YES offset:0 count:kRequestSize success:^(NSArray *entityArray) {
-                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+            [GKDataManager getUserLikeEntityListWithUserId:self.user.userId timestamp:[[NSDate date] timeIntervalSince1970] count:kRequestSize success:^(NSTimeInterval timestamp, NSArray *entityArray) {
+                [weakSelf.collectionView.pullToRefreshView stopAnimating];
                 [weakSelf.activityIndicatorView stopAnimating];
                 
                 [weakSelf.dataArray[index] removeAllObjects];
-                [weakSelf.dataArray[index] addObjectsFromArray:[entityArray mutableCopy]];
+                [weakSelf.dataArray[index] addObjectsFromArray:entityArray];
+                weakSelf.likeTimestamp = timestamp;
                 [weakSelf.collectionView reloadData];
             } failure:^(NSInteger stateCode) {
-                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+                [weakSelf.collectionView.pullToRefreshView stopAnimating];
                 [weakSelf.activityIndicatorView stopAnimating];
             }];
             
@@ -55,15 +61,15 @@
             
         case 1:
         {
-            [GKDataManager getNoteListWithCategoryId:self.category.categoryId sort:@"" reverse:YES offset:0 count:kRequestSize success:^(NSArray *dataArray) {
-                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+            [GKDataManager getUserNoteListWithUserId:self.user.userId timestamp:[[NSDate date] timeIntervalSince1970] count:kRequestSize success:^(NSArray *dataArray) {
+                [weakSelf.collectionView.pullToRefreshView stopAnimating];
                 [weakSelf.activityIndicatorView stopAnimating];
                 
                 [weakSelf.dataArray[index] removeAllObjects];
-                [weakSelf.dataArray[index] addObjectsFromArray:[dataArray mutableCopy]];
+                [weakSelf.dataArray[index] addObjectsFromArray:dataArray];
                 [weakSelf.collectionView reloadData];
             } failure:^(NSInteger stateCode) {
-                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+                [weakSelf.collectionView.pullToRefreshView stopAnimating];
                 [weakSelf.activityIndicatorView stopAnimating];
             }];
             
@@ -72,15 +78,15 @@
             
         case 2:
         {
-            [GKDataManager getLikeEntityListWithCategoryId:self.category.categoryId userId:[Passport sharedInstance].user.userId sort:@"" reverse:YES offset:0 count:kRequestSize success:^(NSArray *entityArray) {
-                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+            [GKDataManager getTagListWithUserId:self.user.userId offset:0 count:kRequestSize success:^(GKUser *user, NSArray *tagArray) {
+                [weakSelf.collectionView.pullToRefreshView stopAnimating];
                 [weakSelf.activityIndicatorView stopAnimating];
                 
                 [weakSelf.dataArray[index] removeAllObjects];
-                [weakSelf.dataArray[index] addObjectsFromArray:[entityArray mutableCopy]];
+                [weakSelf.dataArray[index] addObjectsFromArray:tagArray];
                 [weakSelf.collectionView reloadData];
             } failure:^(NSInteger stateCode) {
-                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+                [weakSelf.collectionView.pullToRefreshView stopAnimating];
                 [weakSelf.activityIndicatorView stopAnimating];
             }];
             
@@ -97,10 +103,14 @@
     switch (index) {
         case 0:
         {
-            [GKDataManager getEntityListWithCategoryId:self.category.categoryId sort:@"" reverse:YES offset:((NSMutableArray *)self.dataArray[index]).count count:kRequestSize success:^(NSArray *entityArray) {
+            GKEntity *entity = ((NSMutableArray *)self.dataArray[index]).lastObject;
+            NSTimeInterval likeTimestamp = entity ? self.likeTimestamp : [[NSDate date] timeIntervalSince1970];
+            
+            [GKDataManager getUserLikeEntityListWithUserId:self.user.userId timestamp:likeTimestamp count:kRequestSize success:^(NSTimeInterval timestamp, NSArray *entityArray) {
                 [weakSelf.collectionView.infiniteScrollingView stopAnimating];
                 
                 [weakSelf.dataArray[index] addObjectsFromArray:entityArray];
+                weakSelf.likeTimestamp = timestamp;
                 [weakSelf.collectionView reloadData];
             } failure:^(NSInteger stateCode) {
                 [weakSelf.collectionView.infiniteScrollingView stopAnimating];
@@ -111,13 +121,16 @@
             
         case 1:
         {
-            [GKDataManager getNoteListWithCategoryId:self.category.categoryId sort:@"" reverse:YES offset:((NSMutableArray *)self.dataArray[index]).count count:kRequestSize success:^(NSArray *dataArray) {
-                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+            GKNote *note = ((NSMutableArray *)self.dataArray[index]).lastObject[@"note"];
+            NSTimeInterval timestamp = note ? note.createdTime : [[NSDate date] timeIntervalSince1970];
+            
+            [GKDataManager getUserNoteListWithUserId:self.user.userId timestamp:timestamp count:kRequestSize success:^(NSArray *dataArray) {
+                [weakSelf.collectionView.pullToRefreshView stopAnimating];
                 
-                [weakSelf.dataArray[index] addObjectsFromArray:[dataArray mutableCopy]];
+                [weakSelf.dataArray[index] addObjectsFromArray:dataArray];
                 [weakSelf.collectionView reloadData];
             } failure:^(NSInteger stateCode) {
-                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+                [weakSelf.collectionView.pullToRefreshView stopAnimating];
             }];
             
             break;
@@ -125,25 +138,11 @@
             
         case 2:
         {
-            [GKDataManager getLikeEntityListWithCategoryId:self.category.categoryId userId:[Passport sharedInstance].user.userId sort:@"" reverse:YES offset:((NSMutableArray *)self.dataArray[index]).count count:kRequestSize success:^(NSArray *entityArray) {
-                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
-                
-                [weakSelf.dataArray[index] addObjectsFromArray:[entityArray mutableCopy]];
-                [weakSelf.collectionView reloadData];
-            } failure:^(NSInteger stateCode) {
-                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
-            }];
+            [weakSelf.collectionView.infiniteScrollingView stopAnimating];
             
             break;
         }
     }
-}
-
-#pragma mark - Selector Method
-
-- (IBAction)tapLikeButton:(id)sender
-{
-    NSLog(@"tapLikeButton");
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -183,9 +182,10 @@
             
         case 2:
         {
-            EntityCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"EntityCollectionCell" forIndexPath:indexPath];
-            GKEntity *entity = self.dataArray[self.selectedIndex][indexPath.row];
-            cell.entity = entity;
+            TagCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TagCollectionCell" forIndexPath:indexPath];
+            NSString *tagName = self.dataArray[self.selectedIndex][indexPath.row][@"tagName"];
+            NSInteger entityCount = [self.dataArray[self.selectedIndex][indexPath.row][@"entityCount"] integerValue];
+            cell.tagName = tagName;
             return cell;
         }
             
@@ -202,10 +202,9 @@
     UICollectionReusableView *reusableView = nil;
     
     if (kind == UICollectionElementKindSectionHeader) {
-        CategorySectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"CategorySectionHeaderView" forIndexPath:indexPath];
+        UserSectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UserSectionHeaderView" forIndexPath:indexPath];
         headerView.delegate = self;
-        [headerView setEntityCount:self.category.entityCount noteCount:self.category.noteCount likeCount:self.category.likeCount];
-        
+        headerView.user = self.user;
         reusableView = headerView;
     }
     
@@ -229,7 +228,7 @@
             left = 20.f;
         } else {
             // 喜爱
-            left = 23.f;
+            left = 20.f;
         }
     } else {
         // 横屏
@@ -241,7 +240,7 @@
             left = 45.f;
         } else {
             // 喜爱
-            left = 48.f;
+            left = 45.f;
         }
     }
     
@@ -261,7 +260,7 @@
         return 0.f;
     } else {
         // 喜爱
-        return 16.f;
+        return 0.f;
     }
 }
 
@@ -274,7 +273,7 @@
             return CGSizeMake(210.f, 250.f);
             break;
         }
-        
+            
         case 1:
         {
             // 点评
@@ -289,7 +288,7 @@
         case 2:
         {
             // 喜爱
-            return CGSizeMake(210.f, 250.f);
+            return CGSizeMake(668.f, 50.f);
             break;
         }
             
@@ -301,27 +300,18 @@
     }
 }
 
-#pragma mark - CategorySectionHeaderViewDelegate
+#pragma mark - UserSectionHeaderViewDelegate
 
-- (void)headerView:(CategorySectionHeaderView *)headerView didSelectedIndex:(NSInteger)index
+- (void)headerView:(UserSectionHeaderView *)headerView didSelectedIndex:(NSInteger)index
 {
-    [self.activityIndicatorView stopAnimating];
-    [self.collectionView reloadData];
-    
     self.selectedIndex = index;
     
-    if (index == 2 && !k_isLogin) {
-        __weak __typeof(&*self)weakSelf = self;
-        NSUInteger categoryId = self.category.categoryId;
-        [Passport loginWithSuccessBlock:^{
-            [GKDataManager getCategoryStatByCategoryId:categoryId success:^(NSInteger likeCount, NSInteger noteCount, NSInteger entityCount) {
-                [weakSelf refresh];
-            } failure:nil];
-        }];
+    [self.activityIndicatorView stopAnimating];
+    
+    if (((NSMutableArray *)self.dataArray[index]).count == 0) {
+        [self.collectionView triggerPullToRefresh];
     } else {
-        if (((NSMutableArray *)self.dataArray[index]).count == 0) {
-            [self refresh];
-        }
+        [self.collectionView reloadData];
     }
 }
 
@@ -349,11 +339,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSString *title = [self.category.categoryName componentsSeparatedByString:@"-"].firstObject;
-    [self.navTitleButton setTitle:title forState:UIControlStateNormal];
-    self.navTitleButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.navTitleButton setImageWithURL:self.category.iconURL forState:UIControlStateNormal];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -361,13 +346,63 @@
     [super viewDidAppear:animated];
     
     __weak __typeof(&*self)weakSelf = self;
+    [self.collectionView addPullToRefreshWithActionHandler:^{
+        [weakSelf refresh];
+    }];
     [self.collectionView addInfiniteScrollingWithActionHandler:^{
         [weakSelf loadMore];
     }];
     
     if (((NSMutableArray *)self.dataArray[self.selectedIndex]).count == 0) {
-        [GKDataManager getCategoryStatByCategoryId:self.category.categoryId success:Nil failure:nil];
-        [self refresh];
+        [self.collectionView triggerPullToRefresh];
+    }
+    
+    switch (self.user.relation) {
+        case GKUserRelationTypeNone:
+        {
+            self.self.rightButton.backgroundColor = UIColorFromRGB(0x427ec0);
+            [self.rightButton setTitleColor:UIColorFromRGB(0xffffff) forState:UIControlStateNormal];
+            [self.rightButton setTitle:@"关注" forState:UIControlStateNormal];
+            break;
+        }
+            
+        case GKUserRelationTypeFollowing:
+        {
+            self.rightButton.backgroundColor = UIColorFromRGB(0xf1f1f1);
+            [self.rightButton setTitleColor:UIColorFromRGB(0x427ec0) forState:UIControlStateNormal];
+            [self.rightButton setTitle:@"已关注" forState:UIControlStateNormal];
+            break;
+        }
+            
+        case GKUserRelationTypeFan:
+        {
+            self.rightButton.backgroundColor = UIColorFromRGB(0x427ec0);
+            [self.rightButton setTitleColor:UIColorFromRGB(0xffffff) forState:UIControlStateNormal];
+            [self.rightButton setTitle:@"关注" forState:UIControlStateNormal];
+            break;
+        }
+            
+        case GKUserRelationTypeBoth:
+        {
+            self.rightButton.backgroundColor = UIColorFromRGB(0xf1f1f1);
+            [self.rightButton setTitleColor:UIColorFromRGB(0x427ec0) forState:UIControlStateNormal];
+            [self.rightButton setTitle:@"已关注" forState:UIControlStateNormal];
+            break;
+        }
+            
+        case GKUserRelationTypeSelf:
+        {
+            self.rightButton.backgroundColor = UIColorFromRGB(0xf1f1f1);
+            [self.rightButton setTitleColor:UIColorFromRGB(0x427ec0) forState:UIControlStateNormal];
+            [self.rightButton setTitle:@"自己" forState:UIControlStateNormal];
+            break;
+        }
+        default:
+        {
+            [self.rightButton setTitle:@"" forState:UIControlStateNormal];
+            [self.rightButton setImage:nil forState:UIControlStateNormal];
+            break;
+        }
     }
 }
 

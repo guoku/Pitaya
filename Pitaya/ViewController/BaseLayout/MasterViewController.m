@@ -20,6 +20,22 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
 
 @implementation MasterViewController
 
+#pragma mark - Selector Method
+
+- (IBAction)tapAvatarButton:(id)sender
+{
+    if (k_isLogin) {
+        if (_delegate && [_delegate respondsToSelector:@selector(masterViewController:didSelectRowAtIndexPath:)]) {
+            [self.delegate masterViewController:self didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:self.titleArray.count inSection:0]];
+        }
+    } else {
+        [Passport loginWithSuccessBlock:^{
+            [self addObserver];
+            [self.headerView setNeedsLayout];
+        }];
+    }
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -55,7 +71,9 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
-        [self addObserver];
+        if (k_isLogin) {
+            [self addObserver];
+        }
     }
     
     return self;
@@ -90,16 +108,6 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
     
     self.tableView.tableFooterView = [UIView new];
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
-}
-
-- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
-{
-    if (k_isLogin) {
-        NSLog(@"修改头像？");
-        return NO;
-    } else {
-        return YES;
-    }
 }
 
 - (void)didReceiveMemoryWarning

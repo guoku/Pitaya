@@ -10,6 +10,7 @@
 #import "NoteCell.h"
 #import "RecommendEntityCell.h"
 #import "CategoryVC.h"
+#import "UserVC.h"
 
 @interface EntityDetailVC () <UITableViewDataSource, UITableViewDelegate, RecommendEntityCellDelegate>
 
@@ -106,7 +107,9 @@
 - (void)tapLikeUserButton:(UIButton *)button
 {
     GKUser *user = [GKUser modelFromDictionary:@{@"userId":@(button.tag)}];
-    // TODO: push个人页
+    UserVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UserVC"];
+    vc.user = user;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - RecommendEntityCellDelegate
