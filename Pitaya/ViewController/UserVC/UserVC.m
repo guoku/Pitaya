@@ -324,6 +324,13 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)noteCollectionCell:(NoteCollectionCell *)cell didSelectUser:(GKUser *)user
+{
+    UserVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UserVC"];
+    vc.user = user;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 #pragma mark - Life Cycle
 
 - (void)loadView

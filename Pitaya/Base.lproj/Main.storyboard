@@ -624,6 +624,9 @@
                                                     </state>
                                                     <state key="selected" image="like_btn_highlighted"/>
                                                     <state key="highlighted" image="like_btn_highlighted"/>
+                                                    <connections>
+                                                        <action selector="tapLikeButton:" destination="qwO-Wa-mta" eventType="touchUpInside" id="QgE-tA-o3c"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2014.12.30" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPW-W9-FEm">
                                                     <rect key="frame" x="237" y="399" width="73" height="21"/>
@@ -813,6 +816,9 @@
                                                     </state>
                                                     <state key="selected" image="like_btn"/>
                                                     <state key="highlighted" image="like_btn_highlighted"/>
+                                                    <connections>
+                                                        <action selector="tapLikeButton:" destination="Ag7-ya-Dci" eventType="touchUpInside" id="CdF-fb-oUs"/>
+                                                    </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehf-Iv-mlR">
                                                     <rect key="frame" x="0.0" y="210" width="210" height="1"/>
@@ -1667,6 +1673,9 @@
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="tapAvatarButton:" destination="bGl-d5-stF" eventType="touchUpInside" id="KCW-Ow-qdc"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2z-Ct-3Kq">
                                             <rect key="frame" x="50" y="10" width="60" height="40"/>
@@ -1941,8 +1950,9 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="selected" image="like_btn"/>
-                                                    <state key="highlighted" title="喜爱 1000" image="like_btn_highlighted"/>
+                                                    <state key="highlighted" image="like_btn_highlighted"/>
                                                     <connections>
+                                                        <action selector="tapLikeButton:" destination="1Im-V6-9wo" eventType="touchUpInside" id="Vge-Hk-xuU"/>
                                                         <action selector="tapLikeButton:" destination="DMe-7T-GSK" eventType="touchUpInside" id="iTD-Ha-XDm"/>
                                                     </connections>
                                                 </button>
@@ -2408,7 +2418,7 @@
         <!--Base Navigation Controller - 个人页-->
         <scene sceneID="paM-4P-cO5">
             <objects>
-                <navigationController storyboardIdentifier="LoginNav" title="个人页" definesPresentationContext="YES" id="8hj-9G-dDY" customClass="BaseNavigationController" sceneMemberID="viewController">
+                <navigationController title="个人页" definesPresentationContext="YES" id="8hj-9G-dDY" customClass="BaseNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="DWC-BE-jyd"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VQg-9G-gz5">
                         <autoresizingMask key="autoresizingMask"/>
@@ -2482,6 +2492,7 @@
                                                     <state key="selected" image="like_btn"/>
                                                     <state key="highlighted" image="like_btn_highlighted"/>
                                                     <connections>
+                                                        <action selector="tapLikeButton:" destination="AAi-RV-9f2" eventType="touchUpInside" id="Enu-5h-AN4"/>
                                                         <action selector="tapLikeButton:" destination="DMe-7T-GSK" eventType="touchUpInside" id="noc-Vz-hb2"/>
                                                     </connections>
                                                 </button>
@@ -2547,6 +2558,9 @@
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="tapAvatarButton:" destination="0uw-8o-GS8" eventType="touchUpInside" id="0PG-4B-hpc"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTI-3m-Ebd">
                                                     <rect key="frame" x="50" y="10" width="60" height="40"/>
@@ -2572,6 +2586,9 @@
                                                         <color key="titleColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="deviceRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <segue destination="DMe-7T-GSK" kind="push" id="wpr-89-GNd"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点评了" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VaU-Me-sSb">
                                                     <rect key="frame" x="120" y="10" width="60" height="40"/>
@@ -2958,6 +2975,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="ZY5-RF-E04"/>
-        <segue reference="r0j-eJ-qcD"/>
+        <segue reference="p0H-nL-S1o"/>
     </inferredMetricsTieBreakers>
 </document>

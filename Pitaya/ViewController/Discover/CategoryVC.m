@@ -361,7 +361,12 @@
     NSString *title = [self.category.categoryName componentsSeparatedByString:@"-"].firstObject;
     [self.navTitleButton setTitle:title forState:UIControlStateNormal];
     self.navTitleButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.navTitleButton setImageWithURL:self.category.iconURL forState:UIControlStateNormal];
+    if (self.category.iconURL) {
+        [self.navTitleButton setImageWithURL:self.category.iconURL forState:UIControlStateNormal];
+    } else {
+        self.navTitleButton.titleEdgeInsets = UIEdgeInsetsZero;
+        [self.navTitleButton setImage:nil forState:UIControlStateNormal];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated

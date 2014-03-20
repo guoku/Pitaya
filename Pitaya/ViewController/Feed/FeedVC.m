@@ -11,6 +11,7 @@
 #import "NoteCollectionCell.h"
 #import "EntityDetailVC.h"
 #import "CategoryVC.h"
+#import "UserVC.h"
 
 @interface FeedVC () <UICollectionViewDataSource, UICollectionViewDelegate, NoteCollectionCellDelegate>
 
@@ -116,6 +117,13 @@
 {
     EntityDetailVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"EntityDetailVC"];
     vc.entity = entity;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)noteCollectionCell:(NoteCollectionCell *)cell didSelectUser:(GKUser *)user
+{
+    UserVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UserVC"];
+    vc.user = user;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
