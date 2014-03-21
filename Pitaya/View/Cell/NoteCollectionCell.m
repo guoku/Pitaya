@@ -55,6 +55,13 @@
     }
 }
 
+- (IBAction)tapAvatarButton:(id)sender
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(noteCollectionCell:didSelectUser:)]) {
+        [self.delegate noteCollectionCell:self didSelectUser:self.note.creator];
+    }
+}
+
 #pragma mark - Life Cycle
 
 - (void)layoutSubviews

@@ -24,8 +24,11 @@
 
 - (void)setEntity:(GKEntity *)entity
 {
+    if (self.entity) {
+        [self removeObserver];
+    }
     _entity = entity;
-    
+    [self addObserver];
     [self setNeedsLayout];
 }
 
@@ -41,6 +44,43 @@
     _date = date;
     
     [self setNeedsLayout];
+}
+
+#pragma mark - Selector Method
+
+- (IBAction)tapAvatarButton:(id)sender
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(selectionCell:didSelectUser:)]) {
+        [self.delegate selectionCell:self didSelectUser:self.note.creator];
+    }
+}
+
+- (IBAction)tapLikeButton:(id)sender
+{
+    if (k_isLogin) {
+        [BBProgressHUD show];
+        [GKDataManager likeEntityWithEntityId:self.entity.entityId isLike:!self.entity.isLiked success:^(BOOL liked) {
+            if (liked) {
+                [BBProgressHUD showSuccessWithText:@"喜爱成功"];
+            } else {
+                [BBProgressHUD dismiss];
+            }
+        } failure:^(NSInteger stateCode) {
+            [BBProgressHUD showErrorWithText:@"喜爱失败!"];
+        }];
+    } else {
+        [Passport loginWithSuccessBlock:^{
+            [GKDataManager likeEntityWithEntityId:self.entity.entityId isLike:!self.entity.isLiked success:^(BOOL liked) {
+                if (liked) {
+                    [BBProgressHUD showSuccessWithText:@"喜爱成功"];
+                } else {
+                    [BBProgressHUD dismiss];
+                }
+            } failure:^(NSInteger stateCode) {
+                [BBProgressHUD showErrorWithText:@"喜爱失败!"];
+            }];
+        }];
+    }
 }
 
 #pragma mark - Life Cycle
@@ -81,6 +121,30 @@
     
     // 时间
     self.dateLabel.text = [self.date stringWithDefaultFormat];
+}
+
+#pragma mark - KVO
+
+- (void)addObserver
+{
+    [self.entity addObserver:self forKeyPath:@"liked" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+    [self.entity addObserver:self forKeyPath:@"likeCount" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)removeObserver
+{
+    [self.entity removeObserver:self forKeyPath:@"liked"];
+    [self.entity removeObserver:self forKeyPath:@"likeCount"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    [self setNeedsLayout];
+}
+
+- (void)dealloc
+{
+    [self removeObserver];
 }
 
 @end

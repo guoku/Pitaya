@@ -10,8 +10,9 @@
 #import "NoteCell.h"
 #import "RecommendEntityCell.h"
 #import "CategoryVC.h"
+#import "UserVC.h"
 
-@interface EntityDetailVC () <UITableViewDataSource, UITableViewDelegate, RecommendEntityCellDelegate>
+@interface EntityDetailVC () <UITableViewDataSource, UITableViewDelegate, RecommendEntityCellDelegate, NoteCellDelegate>
 
 @property (nonatomic, assign) BOOL hasLoadData;
 @property (nonatomic, strong) NSMutableArray *noteArray;
@@ -106,7 +107,9 @@
 - (void)tapLikeUserButton:(UIButton *)button
 {
     GKUser *user = [GKUser modelFromDictionary:@{@"userId":@(button.tag)}];
-    // TODO: push个人页
+    UserVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UserVC"];
+    vc.user = user;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - RecommendEntityCellDelegate
@@ -115,6 +118,15 @@
 {
     EntityDetailVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"EntityDetailVC"];
     vc.entity = entity;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - NoteCellDelegate
+
+- (void)noteCell:(NoteCell *)cell didSelectUser:(GKUser *)user
+{
+    UserVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UserVC"];
+    vc.user = user;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

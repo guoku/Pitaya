@@ -9,6 +9,7 @@
 #import "RootViewController.h"
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "UserVC.h"
 
 @interface RootViewController () <MasterViewControllerDelegate>
 
@@ -26,6 +27,12 @@
 
 - (void)masterViewController:(MasterViewController *)masterVC didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    BaseNavigationController *nav = self.detailVC.viewControllers[indexPath.row];
+    
+    if ([nav.viewControllers.firstObject isKindOfClass:[UserVC class]] && k_isLogin) {
+        UserVC *vc = nav.viewControllers.firstObject;
+        vc.user = [Passport sharedInstance].user;
+    }
     self.detailVC.selectedIndex = indexPath.row;
 }
 

@@ -13,6 +13,7 @@
 
 @optional
 - (void)noteCollectionCell:(NoteCollectionCell *)cell didSelectEntity:(GKEntity *)entity;
+- (void)noteCollectionCell:(NoteCollectionCell *)cell didSelectUser:(GKUser *)user;
 
 @end
 

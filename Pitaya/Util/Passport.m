@@ -20,7 +20,7 @@
     return sharedInstance;
 }
 
-+ (void)loginWithSuccessBloack:(void (^)())successBlock
++ (void)loginWithSuccessBlock:(void (^)())successBlock
 {
     BaseNavigationController *nav = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginNav"];
     ((LoginVC *)nav.viewControllers.firstObject).successBlock = successBlock;

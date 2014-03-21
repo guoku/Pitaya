@@ -22,7 +22,7 @@
 @property (nonatomic, strong) NSDate *sinaExpirationDate;
 
 + (Passport *)sharedInstance;
-+ (void)loginWithSuccessBloack:(void (^)())successBlock;
++ (void)loginWithSuccessBlock:(void (^)())successBlock;
 + (void)logout;
 
 @end

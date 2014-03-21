@@ -10,4 +10,12 @@
 
 @implementation MasterTableHeaderView
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    [self.avatarButton setImageWithURL:[Passport sharedInstance].user.avatarURL forState:UIControlStateNormal];
+    self.nicknameLabel.text = [Passport sharedInstance].user.nickname;
+}
+
 @end
