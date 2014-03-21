@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "GKUser.h"
 
+// Notification
+static NSString *const GKUserDidLoginNotification = @"GKUserDidLoginNotification";
+static NSString *const GKUserDidLogoutNotification = @"GKUserDidLogoutNotification";
+
 @interface Passport : NSObject
 
 @property (nonatomic, strong) GKUser *user;

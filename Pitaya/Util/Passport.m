@@ -23,7 +23,10 @@
 + (void)loginWithSuccessBlock:(void (^)())successBlock
 {
     BaseNavigationController *nav = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginNav"];
-    ((LoginVC *)nav.viewControllers.firstObject).successBlock = successBlock;
+    ((LoginVC *)nav.viewControllers.firstObject).successBlock = ^{
+        successBlock();
+        [[NSNotificationCenter defaultCenter] postNotificationName:GKUserDidLoginNotification object:nil];
+    };
     nav.modalPresentationStyle = UIModalPresentationFormSheet;
     [kAppDelegate.window.rootViewController presentViewController:nav animated:YES completion:nil];
 }
@@ -53,6 +56,8 @@
     
     // TODO: 退出新浪微博
 //    [kAppDelegate.sinaweibo logOut];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:GKUserDidLogoutNotification object:nil];
     
     [[GKBaseModelCenter sharedInstance].modelDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if ([obj isKindOfClass:[GKEntity class]]) {

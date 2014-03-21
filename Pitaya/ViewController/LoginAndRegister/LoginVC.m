@@ -55,6 +55,7 @@
         if (weakSelf.successBlock) {
             weakSelf.successBlock();
         }
+        [[NSNotificationCenter defaultCenter] postNotificationName:GKUserDidLoginNotification object:nil];
     } failure:^(NSInteger stateCode, NSString *type, NSString *message) {
         switch (stateCode) {
             case 500:

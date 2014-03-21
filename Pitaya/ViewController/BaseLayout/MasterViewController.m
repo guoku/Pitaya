@@ -30,10 +30,21 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
         }
     } else {
         [Passport loginWithSuccessBlock:^{
-            [self addObserver];
             [self.headerView setNeedsLayout];
         }];
     }
+}
+
+- (void)didLogin
+{
+    [self addObserver];
+    [self.headerView setNeedsLayout];
+}
+
+- (void)didLogout
+{
+    [self removeObserver];
+    [self.headerView setNeedsLayout];
 }
 
 #pragma mark - UITableViewDataSource
@@ -74,6 +85,9 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
         if (k_isLogin) {
             [self addObserver];
         }
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogin) name:GKUserDidLoginNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogout) name:GKUserDidLogoutNotification object:nil];
     }
     
     return self;
@@ -146,6 +160,8 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
 - (void)dealloc
 {
     [self removeObserver];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:GKUserDidLoginNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:GKUserDidLogoutNotification object:nil];
 }
 
 @end
