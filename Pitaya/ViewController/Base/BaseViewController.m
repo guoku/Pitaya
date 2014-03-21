@@ -25,11 +25,33 @@
     }
 }
 
+#pragma mark - Private Method
+
+- (UIImageView *)findHairlineImageViewUnder:(UIView *)view
+{
+    if ([view isKindOfClass:UIImageView.class] && view.bounds.size.height <= 1.0) {
+        return (UIImageView *)view;
+    }
+    
+    for (UIView *subview in view.subviews) {
+        UIImageView *imageView = [self findHairlineImageViewUnder:subview];
+        if (imageView) {
+            return imageView;
+        }
+    }
+    return nil;
+}
+
 #pragma mark - Life Cycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if (iOS7) {
+        UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
+        navBarHairlineImageView.image = [UIImage imageWithColor:UIColorFromRGB(0xE9E9E9)];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

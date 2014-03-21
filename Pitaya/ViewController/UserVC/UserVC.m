@@ -145,6 +145,129 @@
     }
 }
 
+- (void)refreshFollowButtonState
+{
+    switch (self.user.relation) {
+        case GKUserRelationTypeNone:
+        {
+            self.self.rightButton.backgroundColor = UIColorFromRGB(0x427ec0);
+            [self.rightButton setTitleColor:UIColorFromRGB(0xffffff) forState:UIControlStateNormal];
+            [self.rightButton setTitle:@"关注" forState:UIControlStateNormal];
+            break;
+        }
+            
+        case GKUserRelationTypeFollowing:
+        {
+            self.rightButton.backgroundColor = UIColorFromRGB(0xf1f1f1);
+            [self.rightButton setTitleColor:UIColorFromRGB(0x427ec0) forState:UIControlStateNormal];
+            [self.rightButton setTitle:@"已关注" forState:UIControlStateNormal];
+            break;
+        }
+            
+        case GKUserRelationTypeFan:
+        {
+            self.rightButton.backgroundColor = UIColorFromRGB(0x427ec0);
+            [self.rightButton setTitleColor:UIColorFromRGB(0xffffff) forState:UIControlStateNormal];
+            [self.rightButton setTitle:@"关注" forState:UIControlStateNormal];
+            break;
+        }
+            
+        case GKUserRelationTypeBoth:
+        {
+            self.rightButton.backgroundColor = UIColorFromRGB(0xf1f1f1);
+            [self.rightButton setTitleColor:UIColorFromRGB(0x427ec0) forState:UIControlStateNormal];
+            [self.rightButton setTitle:@"已关注" forState:UIControlStateNormal];
+            break;
+        }
+            
+        case GKUserRelationTypeSelf:
+        {
+            self.rightButton.backgroundColor = UIColorFromRGB(0xf1f1f1);
+            [self.rightButton setTitleColor:UIColorFromRGB(0x427ec0) forState:UIControlStateNormal];
+            [self.rightButton setTitle:@"自己" forState:UIControlStateNormal];
+            break;
+        }
+        default:
+        {
+            [self.rightButton setTitle:@"" forState:UIControlStateNormal];
+            [self.rightButton setImage:nil forState:UIControlStateNormal];
+            break;
+        }
+    }
+}
+
+#pragma mark - Getter And Setter
+
+- (void)setUser:(GKUser *)user
+{
+    if (self.user) {
+        [self removeObserver];
+    }
+    _user = user;
+    [self addObserver];
+}
+
+#pragma mark - Selector Method
+
+- (IBAction)tapFollowButtom:(id)sender
+{
+    if (k_isLogin) {
+        BOOL state;
+        
+        switch (self.user.relation) {
+            case GKUserRelationTypeNone:
+            {
+                state = YES;
+                break;
+            }
+                
+            case GKUserRelationTypeFollowing:
+            {
+                state = NO;
+                break;
+            }
+                
+            case GKUserRelationTypeFan:
+            {
+                state = YES;
+                break;
+            }
+                
+            case GKUserRelationTypeBoth:
+            {
+                state = NO;
+                break;
+            }
+                
+            case GKUserRelationTypeSelf:
+            {
+                return;
+            }
+        }
+        
+        GKUserRelationType oldRelation = self.user.relation;
+        
+        [BBProgressHUD showWithMaskType:SVProgressHUDMaskTypeNone];
+        [GKDataManager followUserId:self.user.userId state:state success:^(GKUserRelationType relation) {
+            self.user.relation = relation;
+            if (oldRelation%2 != relation%2) {
+                if (relation%2 == 1) {
+                    [Passport sharedInstance].user.followingCount += 1;
+                    self.user.fanCount += 1;
+                } else {
+                    [Passport sharedInstance].user.followingCount -= 1;
+                    self.user.fanCount -= 1;
+                }
+            }
+            [BBProgressHUD dismiss];
+        } failure:^(NSInteger stateCode) {
+            [BBProgressHUD dismiss];
+        }];
+    } else {
+        [Passport loginWithSuccessBlock:nil];
+    }
+}
+
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -364,53 +487,7 @@
         [self.collectionView triggerPullToRefresh];
     }
     
-    switch (self.user.relation) {
-        case GKUserRelationTypeNone:
-        {
-            self.self.rightButton.backgroundColor = UIColorFromRGB(0x427ec0);
-            [self.rightButton setTitleColor:UIColorFromRGB(0xffffff) forState:UIControlStateNormal];
-            [self.rightButton setTitle:@"关注" forState:UIControlStateNormal];
-            break;
-        }
-            
-        case GKUserRelationTypeFollowing:
-        {
-            self.rightButton.backgroundColor = UIColorFromRGB(0xf1f1f1);
-            [self.rightButton setTitleColor:UIColorFromRGB(0x427ec0) forState:UIControlStateNormal];
-            [self.rightButton setTitle:@"已关注" forState:UIControlStateNormal];
-            break;
-        }
-            
-        case GKUserRelationTypeFan:
-        {
-            self.rightButton.backgroundColor = UIColorFromRGB(0x427ec0);
-            [self.rightButton setTitleColor:UIColorFromRGB(0xffffff) forState:UIControlStateNormal];
-            [self.rightButton setTitle:@"关注" forState:UIControlStateNormal];
-            break;
-        }
-            
-        case GKUserRelationTypeBoth:
-        {
-            self.rightButton.backgroundColor = UIColorFromRGB(0xf1f1f1);
-            [self.rightButton setTitleColor:UIColorFromRGB(0x427ec0) forState:UIControlStateNormal];
-            [self.rightButton setTitle:@"已关注" forState:UIControlStateNormal];
-            break;
-        }
-            
-        case GKUserRelationTypeSelf:
-        {
-            self.rightButton.backgroundColor = UIColorFromRGB(0xf1f1f1);
-            [self.rightButton setTitleColor:UIColorFromRGB(0x427ec0) forState:UIControlStateNormal];
-            [self.rightButton setTitle:@"自己" forState:UIControlStateNormal];
-            break;
-        }
-        default:
-        {
-            [self.rightButton setTitle:@"" forState:UIControlStateNormal];
-            [self.rightButton setImage:nil forState:UIControlStateNormal];
-            break;
-        }
-    }
+    [self refreshFollowButtonState];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -442,6 +519,30 @@
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [self.collectionView reloadData];
     });
+}
+
+#pragma mark - KVO
+
+- (void)addObserver
+{
+    [self.user addObserver:self forKeyPath:@"relation" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)removeObserver
+{
+    [self.user removeObserver:self forKeyPath:@"relation"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"relation"]) {
+        [self refreshFollowButtonState];
+    }
+}
+
+- (void)dealloc
+{
+    [self removeObserver];
 }
 
 @end
