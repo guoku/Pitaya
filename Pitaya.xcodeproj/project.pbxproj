@@ -20,6 +20,7 @@
 		B61EE32118B7356000585C9A /* SelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B61EE32018B7356000585C9A /* SelectionCell.m */; };
 		B6252BBB18C5E1DD00E5F489 /* CategorySectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6252BBA18C5E1DD00E5F489 /* CategorySectionHeaderView.m */; };
 		B63156A918ADE5BF003D802E /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63156A818ADE5BF003D802E /* BaseTableViewController.m */; };
+		B63F9B4918DC538500D8768E /* HomeSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B63F9B4818DC538500D8768E /* HomeSectionHeaderView.m */; };
 		B647727618DAAC2900F662FD /* TagCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B647727518DAAC2900F662FD /* TagCollectionCell.m */; };
 		B64ACF921890DB1900D88459 /* DiscoverSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B64ACF911890DB1900D88459 /* DiscoverSectionHeaderView.m */; };
 		B64ACF991891361800D88459 /* GroupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B64ACF981891361800D88459 /* GroupVC.m */; };
@@ -117,6 +118,7 @@
 		B6673FB618BE099D0038F9F2 /* HotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6673FB518BE099D0038F9F2 /* HotCell.m */; };
 		B674182218CF11D3009A1407 /* EntityDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B674182118CF11D3009A1407 /* EntityDetailVC.m */; };
 		B674182518CF3A23009A1407 /* NoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B674182418CF3A23009A1407 /* NoteCell.m */; };
+		B6AEAADB18DD68D500548F2A /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AEAADA18DD68D500548F2A /* iCarousel.m */; };
 		B6F1B9C618C0BB7A001E1A64 /* UISegmentedControl+Flat.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F1B9C518C0BB7A001E1A64 /* UISegmentedControl+Flat.m */; };
 /* End PBXBuildFile section */
 
@@ -157,6 +159,8 @@
 		B6252BBA18C5E1DD00E5F489 /* CategorySectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategorySectionHeaderView.m; sourceTree = "<group>"; };
 		B63156A718ADE5BF003D802E /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		B63156A818ADE5BF003D802E /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
+		B63F9B4718DC538500D8768E /* HomeSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSectionHeaderView.h; sourceTree = "<group>"; };
+		B63F9B4818DC538500D8768E /* HomeSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSectionHeaderView.m; sourceTree = "<group>"; };
 		B647727418DAAC2900F662FD /* TagCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCollectionCell.h; sourceTree = "<group>"; };
 		B647727518DAAC2900F662FD /* TagCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCollectionCell.m; sourceTree = "<group>"; };
 		B64ACF901890DB1900D88459 /* DiscoverSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverSectionHeaderView.h; sourceTree = "<group>"; };
@@ -345,6 +349,8 @@
 		B674182118CF11D3009A1407 /* EntityDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityDetailVC.m; sourceTree = "<group>"; };
 		B674182318CF3A23009A1407 /* NoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCell.h; sourceTree = "<group>"; };
 		B674182418CF3A23009A1407 /* NoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCell.m; sourceTree = "<group>"; };
+		B6AEAAD918DD68D500548F2A /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		B6AEAADA18DD68D500548F2A /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		B6F1B9C418C0BB7A001E1A64 /* UISegmentedControl+Flat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISegmentedControl+Flat.h"; sourceTree = "<group>"; };
 		B6F1B9C518C0BB7A001E1A64 /* UISegmentedControl+Flat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISegmentedControl+Flat.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -443,6 +449,8 @@
 			children = (
 				B64F9518188F8AEB00531FCA /* HomepageVC.h */,
 				B64F9519188F8AEB00531FCA /* HomepageVC.m */,
+				B63F9B4718DC538500D8768E /* HomeSectionHeaderView.h */,
+				B63F9B4818DC538500D8768E /* HomeSectionHeaderView.m */,
 			);
 			path = Homepage;
 			sourceTree = "<group>";
@@ -608,6 +616,7 @@
 		B6603C16188CEBA200F52946 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				B6AEAAD818DD68D500548F2A /* iCarousel */,
 				B6603C49188D151700F52946 /* AFNetworking */,
 				B6603CF7188D171500F52946 /* GKRotateLoadingView */,
 				B6603CFB188D179B00F52946 /* HTLoadingView */,
@@ -909,6 +918,15 @@
 			path = EntityDetail;
 			sourceTree = "<group>";
 		};
+		B6AEAAD818DD68D500548F2A /* iCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				B6AEAAD918DD68D500548F2A /* iCarousel.h */,
+				B6AEAADA18DD68D500548F2A /* iCarousel.m */,
+			);
+			path = iCarousel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1058,6 +1076,7 @@
 				B6603C41188D150A00F52946 /* NSDate+App.m in Sources */,
 				B63156A918ADE5BF003D802E /* BaseTableViewController.m in Sources */,
 				B61EE32118B7356000585C9A /* SelectionCell.m in Sources */,
+				B6AEAADB18DD68D500548F2A /* iCarousel.m in Sources */,
 				B6603CB0188D151800F52946 /* SDWebImageDownloaderOperation.m in Sources */,
 				B6603C9B188D151800F52946 /* AFHTTPRequestOperation.m in Sources */,
 				B6603C9D188D151800F52946 /* AFImageRequestOperation.m in Sources */,
@@ -1076,6 +1095,7 @@
 				B6603CF2188D153300F52946 /* Passport.m in Sources */,
 				B651E48118AF3DB800AF077B /* RegisterVC.m in Sources */,
 				B6603C2C188CEBA200F52946 /* MasterTableViewCell.m in Sources */,
+				B63F9B4918DC538500D8768E /* HomeSectionHeaderView.m in Sources */,
 				B61EE31B18B731A200585C9A /* SelectionVC.m in Sources */,
 				B6603CF3188D153300F52946 /* SettingManager.m in Sources */,
 				B6603CAA188D151800F52946 /* DispatchQueueLogFormatter.m in Sources */,

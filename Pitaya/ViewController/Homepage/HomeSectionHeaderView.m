@@ -1,0 +1,151 @@
+//
+//  HomeSectionHeaderView.m
+//  Pitaya
+//
+//  Created by 魏哲 on 14-3-21.
+//  Copyright (c) 2014年 Guoku. All rights reserved.
+//
+
+#import "HomeSectionHeaderView.h"
+#import "iCarousel.h"
+
+#define kHotCategoryButtonTag 100
+
+@interface HomeSectionHeaderView () <iCarouselDataSource, iCarouselDelegate>
+
+@property (nonatomic, strong) IBOutlet iCarousel *banner;
+@property (nonatomic, strong) IBOutlet UIView *hotCategoryView;
+@property (nonatomic, strong) UIButton *allCategoryButton;
+
+@end
+
+@implementation HomeSectionHeaderView
+
+- (void)setBannerArray:(NSMutableArray *)bannerArray
+{
+    _bannerArray = bannerArray;
+    
+    [self setNeedsLayout];
+}
+
+- (void)setHotCategoryArray:(NSMutableArray *)hotCategoryArray
+{
+    _hotCategoryArray = hotCategoryArray;
+    
+    [self setNeedsLayout];
+}
+
+#pragma mark - Selector Method
+
+- (void)tapHotCategoryButton:(UIButton *)button
+{
+    GKEntityCategory *category = nil;
+    if (button != self.allCategoryButton) {
+        category = self.hotCategoryArray[button.tag - kHotCategoryButtonTag];
+    }
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(headerView:didSelectCategory:)]) {
+        [self.delegate headerView:self didSelectCategory:category];
+    }
+}
+
+#pragma mark - iCarouselDataSource
+
+- (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
+{
+    return self.bannerArray.count;
+}
+
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
+{
+    if (!view) {
+        view = [[UIImageView alloc] initWithFrame:CGRectMake(0.f, 0.f, 630.f/1.5, 280.f/1.5)];
+        view.backgroundColor = [UIColor orangeColor];
+    }
+    
+    NSURL *imageURL = self.bannerArray[index][@"img"];
+    [((UIImageView *)view) setImageWithURL:imageURL placeholderImage:[UIImage imageWithColor:[UIColor lightGrayColor] andSize:view.frame.size]];
+    
+    return view;
+}
+
+#pragma mark - iCarouselDelegate
+
+- (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
+{
+    NSString *urlString = self.bannerArray[index][@"url"];
+    if ([urlString hasPrefix:@"guoku://entity/"]) {
+        NSString *entityId = [urlString substringFromIndex:15];
+        GKEntity *entity = [GKEntity modelFromDictionary:@{@"entityId":entityId}];
+        if (_delegate && [_delegate respondsToSelector:@selector(headerView:didSelectEntity:)]) {
+            [self.delegate headerView:self didSelectEntity:entity];
+        }
+    } else if ([urlString hasPrefix:@"guoku://category/"]) {
+        NSInteger categoryId = [[urlString substringFromIndex:17] integerValue];
+        GKEntityCategory *category = [GKEntityCategory modelFromDictionary:@{@"categoryId":@(categoryId)}];
+        if (_delegate && [_delegate respondsToSelector:@selector(headerView:didSelectCategory:)]) {
+            [self.delegate headerView:self didSelectCategory:category];
+        }
+    }
+}
+
+#pragma mark - Life Cycle
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    [self.banner reloadData];
+    
+    [self.hotCategoryView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        UIButton *hotCategoryButton = (UIButton *)[self viewWithTag:kHotCategoryButtonTag + idx];
+        [hotCategoryButton removeFromSuperview];
+    }];
+    
+    [self.hotCategoryArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if (idx < 9) {
+            CGRect frame;
+            frame.origin.x = (110.f + 28.f) * (idx % 5);
+            frame.origin.y = (110.f + 28.f) * (idx / 5);
+            frame.size = CGSizeMake(110.f, 110.f);
+            
+            UIButton *button = [[UIButton alloc] initWithFrame:frame];
+            button.backgroundColor = UIColorFromRGB(0xF8F8F8);
+            button.imageEdgeInsets = UIEdgeInsetsMake(20.f, 32.5f, 45.f, 32.5f);
+            button.titleEdgeInsets = UIEdgeInsetsMake(80.f, -87.5f, 10.f, 0.f);
+            button.tag = kHotCategoryButtonTag + idx;
+            GKEntityCategory *category = self.hotCategoryArray[idx];
+            [button setImageWithURL:category.iconURL forState:UIControlStateNormal];
+            button.titleLabel.font = [UIFont appFontWithSize:14.f];
+            [button setTitleColor:UIColorFromRGB(0xA9A9A9) forState:UIControlStateNormal];
+            NSString *categoryName = [category.categoryName componentsSeparatedByString:@"-"].firstObject;;
+            [button setTitle:categoryName forState:UIControlStateNormal];
+            [button addTarget:self action:@selector(tapHotCategoryButton:) forControlEvents:UIControlEventTouchUpInside];
+            [self.hotCategoryView addSubview:button];
+        }
+        
+        if (idx == self.hotCategoryArray.count - 1 || idx == 8) {
+            *stop = YES;
+            idx++;
+            CGRect frame;
+            frame.origin.x = (110.f + 28.f) * (idx % 5);
+            frame.origin.y = (110.f + 28.f) * (idx / 5);
+            frame.size = CGSizeMake(110.f, 110.f);
+            
+            if (!self.allCategoryButton) {
+                _allCategoryButton = [[UIButton alloc] init];
+                self.allCategoryButton.backgroundColor = UIColorFromRGB(0xF8F8F8);
+                self.allCategoryButton.imageEdgeInsets = UIEdgeInsetsMake(20.f, 32.5f, 45.f, 32.5f);
+                self.allCategoryButton.titleEdgeInsets = UIEdgeInsetsMake(80.f, 0.f, 10.f, 0.f);
+                self.allCategoryButton.titleLabel.font = [UIFont appFontWithSize:14.f];
+                [self.allCategoryButton setTitleColor:UIColorFromRGB(0xA9A9A9) forState:UIControlStateNormal];
+                [self.allCategoryButton setTitle:@"更多品类" forState:UIControlStateNormal];
+                [self.allCategoryButton addTarget:self action:@selector(tapHotCategoryButton:) forControlEvents:UIControlEventTouchUpInside];
+                [self.hotCategoryView addSubview:self.allCategoryButton];
+            }
+            self.allCategoryButton.frame = frame;
+        }
+    }];
+}
+
+@end

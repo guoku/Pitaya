@@ -76,7 +76,10 @@
     [contentVC.view addSubview:self.popoverTableView];
     _popover = [[UIPopoverController alloc] initWithContentViewController:contentVC];
     self.popover.popoverContentSize = self.popoverTableView.frame.size;
-    [self.popover presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    UIButton *button = (UIButton *)sender;
+    CGRect frame = button.frame;
+    frame.origin.y += 20.f;
+    [self.popover presentPopoverFromRect:frame inView:self.navigationController.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
 #pragma mark - SelectionCellDelegate

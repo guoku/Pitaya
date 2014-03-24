@@ -1080,20 +1080,20 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="0.0" id="lRj-Qo-1cJ">
                                     <size key="itemSize" width="210" height="250"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="50" height="550"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="45" minY="25" maxX="45" maxY="25"/>
+                                    <inset key="sectionInset" minX="45" minY="15" maxX="45" maxY="25"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HotCell" id="b2M-fX-jTy" customClass="HotCell">
-                                        <rect key="frame" x="45" y="69" width="210" height="250"/>
+                                        <rect key="frame" x="45" y="609" width="210" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="210" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wrU-0b-z8r">
-                                                    <rect key="frame" x="10" y="10" width="190" height="200"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wrU-0b-z8r">
+                                                    <rect key="frame" x="10" y="10" width="190" height="190"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="190" id="XfS-ck-NXR"/>
@@ -1151,6 +1151,67 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeSectionHeaderView" id="0XV-pK-Pdh" customClass="HomeSectionHeaderView">
+                                    <rect key="frame" x="0.0" y="44" width="758" height="550"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="433-nI-t0O" customClass="iCarousel">
+                                            <rect key="frame" x="48" y="0.0" width="662" height="220"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="220" id="DLZ-J3-oke"/>
+                                                <constraint firstAttribute="width" constant="662" id="ELt-zv-ahd"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="type">
+                                                    <integer key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <outlet property="dataSource" destination="0XV-pK-Pdh" id="6ps-zU-VUL"/>
+                                                <outlet property="delegate" destination="0XV-pK-Pdh" id="K9g-U4-IzM"/>
+                                            </connections>
+                                        </view>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="热门品类" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUj-1w-F1i">
+                                            <rect key="frame" x="48" y="220" width="56" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新品推荐" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cK-0g-htT">
+                                            <rect key="frame" x="48" y="527" width="56" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zUi-1r-GS9">
+                                            <rect key="frame" x="48" y="257" width="662" height="250"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="662" id="i3Y-lg-UBT"/>
+                                                <constraint firstAttribute="height" constant="250" id="zo7-2q-dQ6"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="433-nI-t0O" firstAttribute="leading" secondItem="6cK-0g-htT" secondAttribute="leading" id="2vA-lq-3Px"/>
+                                        <constraint firstItem="433-nI-t0O" firstAttribute="top" secondItem="0XV-pK-Pdh" secondAttribute="top" id="4W5-qB-h0T"/>
+                                        <constraint firstItem="6cK-0g-htT" firstAttribute="top" secondItem="zUi-1r-GS9" secondAttribute="bottom" constant="20" id="4YO-4Y-ckA"/>
+                                        <constraint firstAttribute="centerX" secondItem="433-nI-t0O" secondAttribute="centerX" id="9BK-TP-N82"/>
+                                        <constraint firstAttribute="centerX" secondItem="zUi-1r-GS9" secondAttribute="centerX" id="L2L-pd-mvZ"/>
+                                        <constraint firstItem="qUj-1w-F1i" firstAttribute="top" secondItem="433-nI-t0O" secondAttribute="bottom" id="k0n-3M-Mrv"/>
+                                        <constraint firstItem="zUi-1r-GS9" firstAttribute="top" secondItem="qUj-1w-F1i" secondAttribute="bottom" constant="20" id="mdV-fm-Seu"/>
+                                        <constraint firstItem="433-nI-t0O" firstAttribute="leading" secondItem="qUj-1w-F1i" secondAttribute="leading" id="sYN-N2-8HC"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="banner" destination="433-nI-t0O" id="Snm-Wx-l1Q"/>
+                                        <outlet property="hotCategoryView" destination="zUi-1r-GS9" id="A2R-1C-SaD"/>
+                                    </connections>
+                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="rcC-GH-cgb" id="Qoa-iD-mfb"/>
                                     <outlet property="delegate" destination="rcC-GH-cgb" id="glB-RR-cI2"/>
@@ -1557,7 +1618,7 @@
         <!--DiscoverVC - 发现-->
         <scene sceneID="d1o-6h-dYc">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="bgN-5d-p5w" customClass="DiscoverVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DiscoverVC" hidesBottomBarWhenPushed="YES" id="bgN-5d-p5w" customClass="DiscoverVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ex9-3A-52o"/>
                         <viewControllerLayoutGuide type="bottom" id="abT-Ho-srR"/>
@@ -1974,7 +2035,7 @@
         <!--CategoryVC-->
         <scene sceneID="Ql2-ZP-4Sy">
             <objects>
-                <viewController id="DMe-7T-GSK" customClass="CategoryVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CategoryVC" id="DMe-7T-GSK" customClass="CategoryVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NOK-Wh-1C7"/>
                         <viewControllerLayoutGuide type="bottom" id="58T-Zb-c1Z"/>
@@ -3061,7 +3122,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="kHF-kd-qUr"/>
         <segue reference="MEd-vB-7aQ"/>
-        <segue reference="wpr-89-GNd"/>
     </inferredMetricsTieBreakers>
 </document>

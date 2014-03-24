@@ -7,12 +7,17 @@
 //
 
 #import "HomepageVC.h"
+#import "HomeSectionHeaderView.h"
 #import "HotCell.h"
 #import "SVPullToRefresh.h"
 #import "EntityDetailVC.h"
+#import "CategoryVC.h"
+#import "DiscoverVC.h"
 
-@interface HomepageVC ()
+@interface HomepageVC () <HomeSectionHeaderViewDelegate>
 
+@property (nonatomic, strong) NSMutableArray *bannerArray;
+@property (nonatomic, strong) NSMutableArray *hotCategoryArray;
 @property (nonatomic, strong) NSMutableArray *entityArray;
 
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
@@ -25,6 +30,12 @@
 
 - (void)refresh
 {
+    [GKDataManager getHomepageWithSuccess:^(NSArray *bannerArray, NSArray *hotCategoryArray) {
+        self.bannerArray = [bannerArray mutableCopy];
+        self.hotCategoryArray = [hotCategoryArray mutableCopy];
+        [self.collectionView reloadData];
+    } failure:nil];
+    
     [GKDataManager getNewEntityListWithTimestamp:[[NSDate date] timeIntervalSince1970] cateId:0 count:kRequestSize success:^(NSArray *entityArray) {
         [self.collectionView.pullToRefreshView stopAnimating];
         
@@ -53,6 +64,27 @@
     }];
 }
 
+#pragma mark -HomeSectionHeaderViewDelegate
+
+- (void)headerView:(HomeSectionHeaderView *)headerView didSelectEntity:(GKEntity *)entity
+{
+    EntityDetailVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"EntityDetailVC"];
+    vc.entity = entity;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)headerView:(HomeSectionHeaderView *)headerView didSelectCategory:(GKEntityCategory *)category
+{
+    if (category) {
+        CategoryVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CategoryVC"];
+        vc.category = category;
+        [self.navigationController pushViewController:vc animated:YES];
+    } else {
+        DiscoverVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"DiscoverVC"];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -74,6 +106,22 @@
     return cell;
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *reusableView = nil;
+    
+    if (kind == UICollectionElementKindSectionHeader) {
+        HomeSectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HomeSectionHeaderView" forIndexPath:indexPath];
+        headerView.delegate = self;
+        headerView.bannerArray = self.bannerArray;
+        headerView.hotCategoryArray = self.hotCategoryArray;
+        
+        reusableView = headerView;
+    }
+    
+    return reusableView;
+}
+
 #pragma mark - UICollectionViewDelegate
 
 #pragma mark - UICollectionViewDelegateFlowLayout
@@ -88,8 +136,8 @@
         // 横屏
         left = 48.f;
     }
-    
-    top = bottom = 23.f;
+    top = 13.f;
+    bottom = 23.f;
     right = left;
     
     return UIEdgeInsetsMake(top, left, bottom, right);

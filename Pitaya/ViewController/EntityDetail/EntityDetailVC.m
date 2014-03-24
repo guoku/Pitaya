@@ -36,6 +36,22 @@
 
 #pragma mark - Private Method
 
+- (void)refreshHeaderView
+{
+    if (self.entity.brand.length > 0) {
+        self.brandAndTitleLabel.text = [NSString stringWithFormat:@"%@ - %@", self.entity.brand, self.entity.title];
+    } else {
+        self.brandAndTitleLabel.text = self.entity.title;
+    }
+    
+    [self.likeButton setTitle:[NSString stringWithFormat:@"喜爱 %d", self.entity.likeCount] forState:UIControlStateNormal];
+    [self.priceButton setTitle:[NSString stringWithFormat:@"¥%.2f", self.entity.lowestPrice] forState:UIControlStateNormal];
+    GKEntityCategory *category = [GKEntityCategory modelFromDictionary:@{@"categoryId":@(self.entity.categoryId)}];
+    NSString *categoryName = [category.categoryName componentsSeparatedByString:@"-"].firstObject;
+    [self.categoryButton setTitle:[NSString stringWithFormat:@"来自 [%@]", categoryName] forState:UIControlStateNormal];
+    self.categoryButton.tag = category.categoryId;
+}
+
 - (void)refreshImageScrollView
 {
     for (UIView *view in self.imageScrollView.subviews) {
@@ -210,20 +226,9 @@
     UIBarButtonItem *noteButtonItem = [[UIBarButtonItem alloc] initWithCustomView:noteButton];
     self.navigationItem.rightBarButtonItems = @[moreButtonItem, noteButtonItem];
     
-    if (self.entity.brand.length > 0) {
-        self.brandAndTitleLabel.text = [NSString stringWithFormat:@"%@ - %@", self.entity.brand, self.entity.title];
-    } else {
-        self.brandAndTitleLabel.text = self.entity.title;
-    }
-    
     // headerView
     self.headerView.layer.borderColor = UIColorFromRGB(0xE9E9E9).CGColor;
-    [self.likeButton setTitle:[NSString stringWithFormat:@"喜爱 %d", self.entity.likeCount] forState:UIControlStateNormal];
-    [self.priceButton setTitle:[NSString stringWithFormat:@"¥%.2f", self.entity.lowestPrice] forState:UIControlStateNormal];
-    GKEntityCategory *category = [GKEntityCategory modelFromDictionary:@{@"categoryId":@(self.entity.categoryId)}];
-    NSString *categoryName = [category.categoryName componentsSeparatedByString:@"-"].firstObject;
-    [self.categoryButton setTitle:[NSString stringWithFormat:@"来自 [%@]", categoryName] forState:UIControlStateNormal];
-    self.categoryButton.tag = category.categoryId;
+    [self refreshHeaderView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -267,6 +272,8 @@
                                                    [NSSortDescriptor sortDescriptorWithKey:@"pokeCount" ascending:NO],
                                                    [NSSortDescriptor sortDescriptorWithKey:@"createdTime" ascending:YES]]];
             
+            [weakSelf refreshImageScrollView];
+            [weakSelf refreshHeaderView];
             [weakSelf.tableView reloadData];
             [weakSelf refreshLikeUser];
         } failure:nil];
