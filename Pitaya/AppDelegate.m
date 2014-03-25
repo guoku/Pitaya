@@ -25,6 +25,8 @@ int ddLogLevel;
     UIViewController *vc = [[UIViewController alloc] init];
     self.alertWindow.rootViewController = vc;
     
+    [GKDataManager getAllCategoryFromNetwork:YES result:nil];
+    
     return YES;
 }
 							
