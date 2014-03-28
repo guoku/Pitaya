@@ -7,17 +7,18 @@
 //
 
 #import "MessageCell.h"
+#import "RTLabel.h"
 
 static CGFloat labelWidth = 600.f;
 
-@interface MessageCell ()
+@interface MessageCell () <RTLabelDelegate>
 
 @property (nonatomic, assign) MessageType type;
 
 @property (nonatomic, strong) UIImageView *iconImageView;
 @property (nonatomic, strong) UIButton *photoImageButton;
-@property (nonatomic, strong) UILabel *label;
-@property (nonatomic, strong) UILabel *contentLabel;
+@property (nonatomic, strong) RTLabel *label;
+@property (nonatomic, strong) RTLabel *contentLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
 
 @end
@@ -172,11 +173,11 @@ static CGFloat labelWidth = 600.f;
     GKUser    *user             = self.message[@"content"][@"user"];
     GKComment *replying_comment = self.message[@"content"][@"replying_comment"];
     
-    self.label.text = [NSString stringWithFormat:@"%@回复了你的评论", user.nickname];
-    [self.label fixText];
+    self.label.text = [NSString stringWithFormat:@"<a href='user:%u'><font face='Helvetica-Bold' color='^555555' size=14>%@ </font></a><font face='Helvetica' color='^777777' size=14>回复了你的评论</font>", user.userId, user.nickname];
+    self.label.deFrameHeight = self.label.optimumSize.height + 5.f;
     
-    self.contentLabel.text = replying_comment.text;
-    [self.contentLabel fixText];
+    self.contentLabel.text = [NSString stringWithFormat:@"<font face='Helvetica' color='^777777' size=14>“ %@ ”</font>", replying_comment.text];
+    self.contentLabel.deFrameHeight = self.contentLabel.optimumSize.height + 5.f;
     self.contentLabel.deFrameTop = self.label.deFrameBottom + 10.f;
 }
 
@@ -189,14 +190,14 @@ static CGFloat labelWidth = 600.f;
     GKNote    *note    = self.message[@"content"][@"note"];
     GKComment *comment = self.message[@"content"][@"comment"];
     
-    self.label.text = [NSString stringWithFormat:@"%@ 评论了你对 %@ 的点评", user.nickname, note.title];
-    [self.label fixText];
+    self.label.text = [NSString stringWithFormat:@"<a href='user:%u'><font face='Helvetica-Bold' color='^555555' size=14>%@ </font></a><font face='Helvetica' color='^777777' size=14>评论了你对 </font><a href='entity:%@'><font face='Helvetica-Bold' color='^555555' size=14>%@</font></a><font face='Helvetica' color='^777777' size=14> 的点评</font>", user.userId, user.nickname ,note.entityId,note.title];
+    self.label.deFrameHeight = self.label.optimumSize.height + 5.f;
     
     [self.photoImageButton setImageWithURL:note.entityChiefImage forState:UIControlStateNormal];
     self.photoImageButton.deFrameTop = self.label.deFrameBottom + 10.f;
     
-    self.contentLabel.text = comment.text;
-    [self.contentLabel fixText];
+    self.contentLabel.text = [NSString stringWithFormat:@"<font face='Helvetica' color='^777777' size=14>“ %@ ”</font>", comment.text];
+    self.contentLabel.deFrameHeight = self.contentLabel.optimumSize.height + 5.f;
     self.contentLabel.deFrameTop = self.photoImageButton.deFrameBottom + 10.f;
 }
 
@@ -207,8 +208,8 @@ static CGFloat labelWidth = 600.f;
     
     GKUser *user = self.message[@"content"][@"user"];
     
-    self.label.text = [NSString stringWithFormat:@"%@ 关注了你", user.nickname];
-    [self.label fixText];
+    self.label.text = [NSString stringWithFormat:@"<a href='user:%u'><font face='Helvetica-Bold' color='^555555' size=14>%@ </font></a><font face='Helvetica' color='^777777' size=14>关注了你</font>", user.userId, user.nickname];
+    self.label.deFrameHeight = self.label.optimumSize.height + 5.f;
 }
 
 - (void)setupCellForType_4
@@ -219,8 +220,8 @@ static CGFloat labelWidth = 600.f;
     GKUser *user = self.message[@"content"][@"user"];
     GKNote *note = self.message[@"content"][@"note"];
     
-    self.label.text = [NSString stringWithFormat:@"%@ 赞了你对 %@ 的点评", user.nickname, note.title];
-    [self.label fixText];
+    self.label.text = [NSString stringWithFormat:@"<a href='user:%u'><font face='Helvetica-Bold' color='^555555' size=14>%@ </font></a><font face='Helvetica' color='^777777' size=14>赞了你对 </font><a href='entity:%@'><font face='Helvetica-Bold' color='^555555' size=14>%@</font></a><font face='Helvetica' color='^777777' size=14> 的点评</font>", user.userId, user.nickname ,note.entityId,note.title];
+    self.label.deFrameHeight = self.label.optimumSize.height + 5.f;
 }
 
 - (void)setupCellForType_5
@@ -232,15 +233,15 @@ static CGFloat labelWidth = 600.f;
     GKNote   *note   = self.message[@"content"][@"note"];
     GKUser   *user   = note.creator;
     
-    self.label.text = [NSString stringWithFormat:@"%@ 点评了你推荐的商品", user.nickname];
-    [self.label fixText];
+    self.label.text = [NSString stringWithFormat:@"<a href='user:%u'><font face='Helvetica-Bold' color='^555555' size=14>%@ </font></a><font face='Helvetica' color='^777777' size=14>点评了你推荐的商品</font>", user.userId, user.nickname];
+    self.label.deFrameHeight = self.label.optimumSize.height + 5.f;
     
     [self.photoImageButton setImageWithURL:entity.imageURL_240x240 forState:UIControlStateNormal];
     self.photoImageButton.deFrameTop = self.label.deFrameBottom + 10.f;
     
-    self.contentLabel.text = note.text;
+    self.contentLabel.text = [NSString stringWithFormat:@"<font face='Helvetica' color='^777777' size=14>%@</font>", note.text];
+    self.contentLabel.deFrameHeight = self.contentLabel.optimumSize.height + 5.f;
     self.contentLabel.deFrameTop = self.photoImageButton.deFrameBottom + 10.f;
-    [self.contentLabel fixText];
 }
 
 - (void)setupCellForType_6
@@ -251,8 +252,8 @@ static CGFloat labelWidth = 600.f;
     GKUser   *user   = self.message[@"content"][@"user"];
     GKEntity *entity = self.message[@"content"][@"entity"];
     
-    self.label.text = [NSString stringWithFormat:@"%@ 喜爱了你推荐的商品", user.nickname];
-    [self.label fixText];
+    self.label.text = [NSString stringWithFormat:@"<a href='user:%u'><font face='Helvetica-Bold' color='^555555' size=14>%@ </font></a><font face='Helvetica' color='^777777' size=14>喜爱了你推荐的商品</font>", user.userId, user.nickname];
+    self.label.deFrameHeight = self.label.optimumSize.height + 5.f;
     
     [self.photoImageButton setImageWithURL:entity.imageURL_240x240 forState:UIControlStateNormal];
     self.photoImageButton.deFrameTop = self.label.deFrameBottom + 10.f;
@@ -265,8 +266,8 @@ static CGFloat labelWidth = 600.f;
     
     GKEntity *entity = self.message[@"content"][@"entity"];
     
-    self.label.text = @"你添加的商品被收录精选";
-    [self.label fixText];
+    self.label.text = [NSString stringWithFormat:@"<font face=\'Helvetica\' color=\'^777777\' size=14>你添加的商品被收录精选</font>"];
+    self.label.deFrameHeight = self.label.optimumSize.height + 5.f;
     
     [self.photoImageButton setImageWithURL:entity.imageURL_240x240 forState:UIControlStateNormal];
     self.photoImageButton.deFrameTop = self.label.deFrameBottom + 10.f;
@@ -281,6 +282,29 @@ static CGFloat labelWidth = 600.f;
     _type = [MessageCell typeFromMessage:_message];
     
     [self setNeedsLayout];
+}
+
+#pragma mark - RTLabelDelegate
+
+- (void)rtLabel:(id)rtLabel didSelectLinkWithURL:(NSURL *)url
+{
+    NSArray *array= [url.absoluteString componentsSeparatedByString:@":"];
+    NSString *typeString = array.firstObject;
+    
+    if([typeString isEqualToString:@"user"]) {
+        NSUInteger userId = [array.lastObject integerValue];
+        GKUser *user = [GKUser modelFromDictionary:@{@"userId":@(userId)}];
+        
+        if (_delegate && [_delegate respondsToSelector:@selector(messageCell:didSelectUser:)]) {
+            [self.delegate messageCell:self didSelectUser:user];
+        }
+    } else if([typeString isEqualToString:@"entity"]) {
+        NSString *entityId = array.lastObject;
+        GKEntity *entity = [GKEntity modelFromDictionary:@{@"entityId":entityId}];
+        if (_delegate && [_delegate respondsToSelector:@selector(messageCell:didSelectEntity:)]) {
+            [self.delegate messageCell:self didSelectEntity:entity];
+        }
+    }
 }
 
 #pragma mark - Life Cycle
@@ -306,12 +330,10 @@ static CGFloat labelWidth = 600.f;
     }
     
     if (!self.label) {
-        _label = [[UILabel alloc] initWithFrame:CGRectMake(65.f, 18.f, labelWidth, 0.f)];
-        self.label.font = [UIFont appFontWithSize:15.f];
-        self.label.textColor = UIColorFromRGB(0x666666);
-        self.label.textAlignment = NSTextAlignmentLeft;
-        self.label.lineBreakMode = NSLineBreakByWordWrapping;
-        self.label.numberOfLines = 0;
+        _label = [[RTLabel alloc] initWithFrame:CGRectMake(65.f, 18.f, labelWidth, 0.f)];
+        self.label.paragraphReplacement = @"";
+        self.label.lineSpacing = 4.0;
+        self.label.delegate = self;
         [self.contentView addSubview:self.label];
         
         [self.label addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
@@ -326,12 +348,10 @@ static CGFloat labelWidth = 600.f;
     }
     
     if (!self.contentLabel) {
-        _contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(65.f, 0.f, labelWidth, 0.f)];
-        self.contentLabel.font = [UIFont appFontWithSize:15.f];
-        self.contentLabel.textColor = UIColorFromRGB(0x666666);
-        self.contentLabel.textAlignment = NSTextAlignmentLeft;
-        self.contentLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        self.contentLabel.numberOfLines = 0;
+        _contentLabel = [[RTLabel alloc] initWithFrame:CGRectMake(65.f, 0.f, labelWidth, 0.f)];
+        self.contentLabel.paragraphReplacement = @"";
+        self.contentLabel.lineSpacing = 4.0;
+        self.contentLabel.delegate = self;
         [self.contentView addSubview:self.contentLabel];
         
         [self.contentLabel addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
