@@ -18,6 +18,7 @@
 		B61EE31B18B731A200585C9A /* SelectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B61EE31A18B731A200585C9A /* SelectionVC.m */; };
 		B61EE31E18B731B300585C9A /* HotVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B61EE31D18B731B300585C9A /* HotVC.m */; };
 		B61EE32118B7356000585C9A /* SelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B61EE32018B7356000585C9A /* SelectionCell.m */; };
+		B61FAB1618E15F3B00CD777B /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B61FAB1518E15F3B00CD777B /* MessageCell.m */; };
 		B6252BBB18C5E1DD00E5F489 /* CategorySectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6252BBA18C5E1DD00E5F489 /* CategorySectionHeaderView.m */; };
 		B63156A918ADE5BF003D802E /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63156A818ADE5BF003D802E /* BaseTableViewController.m */; };
 		B63F9B4918DC538500D8768E /* HomeSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B63F9B4818DC538500D8768E /* HomeSectionHeaderView.m */; };
@@ -155,6 +156,8 @@
 		B61EE31D18B731B300585C9A /* HotVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotVC.m; sourceTree = "<group>"; };
 		B61EE31F18B7356000585C9A /* SelectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectionCell.h; sourceTree = "<group>"; };
 		B61EE32018B7356000585C9A /* SelectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectionCell.m; sourceTree = "<group>"; };
+		B61FAB1418E15F3B00CD777B /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
+		B61FAB1518E15F3B00CD777B /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		B6252BB918C5E1DD00E5F489 /* CategorySectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategorySectionHeaderView.h; sourceTree = "<group>"; };
 		B6252BBA18C5E1DD00E5F489 /* CategorySectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategorySectionHeaderView.m; sourceTree = "<group>"; };
 		B63156A718ADE5BF003D802E /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
@@ -460,6 +463,8 @@
 			children = (
 				B64F951E188F8B0600531FCA /* MessageVC.h */,
 				B64F951F188F8B0600531FCA /* MessageVC.m */,
+				B61FAB1418E15F3B00CD777B /* MessageCell.h */,
+				B61FAB1518E15F3B00CD777B /* MessageCell.m */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -1113,6 +1118,7 @@
 				B6603CB2188D151800F52946 /* SDWebImagePrefetcher.m in Sources */,
 				B6603CB5188D151800F52946 /* UIImage+MultiFormat.m in Sources */,
 				B6011E9518AD00BD0034DD52 /* CustomTextField.m in Sources */,
+				B61FAB1618E15F3B00CD777B /* MessageCell.m in Sources */,
 				B6603CAD188D151800F52946 /* SDWebImageCompat.m in Sources */,
 				B6603CA9188D151800F52946 /* ContextFilterLogFormatter.m in Sources */,
 				B6603CB8188D151800F52946 /* SevenSwitch.m in Sources */,
