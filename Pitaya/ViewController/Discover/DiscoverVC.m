@@ -91,8 +91,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
-    [self refresh];
+    if (self.categoryGroupArray.count == 0 && self.allCategoryArray.count == 0) {
+        __weak __typeof(&*self)weakSelf = self;
+        [GKDataManager getAllCategoryFromNetwork:NO result:^(NSArray *categoryGroupArray, NSArray *fullCategoryGroupArray, NSArray *allCategoryArray) {
+            weakSelf.categoryGroupArray = [categoryGroupArray mutableCopy];
+            [weakSelf.categoryGroupArray sortUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"Status" ascending:NO]]];
+            weakSelf.allCategoryArray = [allCategoryArray mutableCopy];
+            if (weakSelf.categoryGroupArray.count == 0 && weakSelf.allCategoryArray.count == 0) {
+                [weakSelf refresh];
+            } else {
+                [weakSelf.activityIndicatorView stopAnimating];
+                [weakSelf.collectionView reloadData];
+            }
+        }];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
