@@ -1023,6 +1023,27 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="aYa-EW-uen">
+                                    <rect key="frame" x="0.0" y="725" width="758" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zRw-r7-xId">
+                                            <rect key="frame" x="349" y="7" width="60" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="注销登录">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="tapLogoutButton:" destination="gMw-fs-YyS" eventType="touchUpInside" id="A3m-dn-76m"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="centerX" secondItem="zRw-r7-xId" secondAttribute="centerX" id="AOr-Ir-LJ9"/>
+                                        <constraint firstAttribute="centerY" secondItem="zRw-r7-xId" secondAttribute="centerY" id="b0E-hA-O0k"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SettingCell00" id="d6m-op-NQw">
                                         <rect key="frame" x="0.0" y="99" width="758" height="44"/>
@@ -1398,6 +1419,7 @@
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="logoutButton" destination="zRw-r7-xId" id="mLP-vW-dAx"/>
                         <outlet property="tableView" destination="U7c-6O-81U" id="lPW-8S-vSS"/>
                     </connections>
                 </viewController>

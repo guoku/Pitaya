@@ -38,12 +38,18 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
 - (void)didLogin
 {
     [self addObserver];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willLogout) name:GKUserWillLogoutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogout) name:GKUserDidLogoutNotification object:nil];
     [self.headerView setNeedsLayout];
+}
+
+- (void)willLogout
+{
+    [self removeObserver];
 }
 
 - (void)didLogout
 {
-    [self removeObserver];
     [self.headerView setNeedsLayout];
 }
 
@@ -84,10 +90,11 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
     if (self = [super initWithCoder:aDecoder]) {
         if (k_isLogin) {
             [self addObserver];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willLogout) name:GKUserWillLogoutNotification object:nil];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogout) name:GKUserDidLogoutNotification object:nil];
+        } else {
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogin) name:GKUserDidLoginNotification object:nil];
         }
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogin) name:GKUserDidLoginNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogout) name:GKUserDidLogoutNotification object:nil];
     }
     
     return self;
@@ -161,6 +168,7 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
 {
     [self removeObserver];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:GKUserDidLoginNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:GKUserWillLogoutNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:GKUserDidLogoutNotification object:nil];
 }
 

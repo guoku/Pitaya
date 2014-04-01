@@ -24,10 +24,59 @@ static NSInteger const VersionLabelTag = 105;
 @property (nonatomic, strong) UISwitch *highQualityImageSwitch;
 @property (nonatomic, strong) UISwitch *hideNoteSwitch;
 @property (nonatomic, strong) UILabel *versionLabel;
+@property (nonatomic, strong) IBOutlet UIButton *logoutButton;
 
 @end
 
 @implementation SettingVC
+
+#pragma mark - Private Method
+
+- (void)refresh
+{
+    if (k_isLogin) {
+        self.logoutButton.hidden = NO;
+    } else {
+        self.logoutButton.hidden = YES;
+    }
+    
+    [self.tableView reloadData];
+}
+
+#pragma mark - Selector Method
+
+- (IBAction)tapLogoutButton:(id)sender
+{
+    if (k_isLogin) {
+        [Passport logout];
+        self.logoutButton.hidden = YES;
+    }
+}
+
+- (void)didLogin
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:GKUserDidLoginNotification object:nil];
+    
+    [self addObserver];
+    [self refresh];
+}
+
+- (void)willLogout
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:GKUserWillLogoutNotification object:nil];
+    
+    [[Passport sharedInstance].user removeObserver:self forKeyPath:@"avatarURL"];
+    [[Passport sharedInstance].user removeObserver:self forKeyPath:@"nickname"];
+    [[Passport sharedInstance].user removeObserver:self forKeyPath:@"email"];
+}
+
+- (void)didLogout
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:GKUserDidLogoutNotification object:nil];
+    
+    [self addObserver];
+    [self refresh];
+}
 
 #pragma mark - UITableViewDataSource
 
@@ -140,6 +189,9 @@ static NSInteger const VersionLabelTag = 105;
     switch (section) {
         case 0:
         {
+            if (!k_isLogin) {
+                return [UIView new];
+            }
             titleLabel.text = @"账号设置";
             break;
         }
@@ -177,6 +229,9 @@ static NSInteger const VersionLabelTag = 105;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if (!k_isLogin && section == 0) {
+        return 0.5f;
+    }
     return 30.f;
 }
 
@@ -185,13 +240,67 @@ static NSInteger const VersionLabelTag = 105;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    if (k_isLogin) {
+        self.logoutButton.hidden = NO;
+    } else {
+        self.logoutButton.hidden = YES;
+    }
+    
+    [self addObserver];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)addObserver
+{
+    if (k_isLogin) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willLogout) name:GKUserWillLogoutNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogout) name:GKUserDidLogoutNotification object:nil];
+        
+        [[Passport sharedInstance].user addObserver:self forKeyPath:@"avatarURL" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+        [[Passport sharedInstance].user addObserver:self forKeyPath:@"nickname" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+        [[Passport sharedInstance].user addObserver:self forKeyPath:@"email" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+        NSLog(@"addObserver willLogout~~~");
+    } else {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogin) name:GKUserDidLoginNotification object:nil];
+        NSLog(@"addObserver didLogin");
+    }
+}
+
+- (void)removeObserver
+{
+    if ([Passport sharedInstance].user.observationInfo) {
+        [[Passport sharedInstance].user removeObserver:self forKeyPath:@"avatarURL"];
+        [[Passport sharedInstance].user removeObserver:self forKeyPath:@"nickname"];
+        [[Passport sharedInstance].user removeObserver:self forKeyPath:@"email"];
+    }
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"avatarURL"]) {
+        GKUser *user = (GKUser *)object;
+        [self.avatarImageView setImageWithURL:user.avatarURL_s];
+    } else if ([keyPath isEqualToString:@"nickname"]) {
+        GKUser *user = (GKUser *)object;
+        self.nicknameLabel.text = user.nickname;
+    } else if ([keyPath isEqualToString:@"email"]) {
+        GKUser *user = (GKUser *)object;
+        self.emailLabel.text = user.email;
+    }
+}
+
+- (void)dealloc
+{
+    [self removeObserver];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
