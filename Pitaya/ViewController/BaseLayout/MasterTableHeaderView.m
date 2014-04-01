@@ -14,7 +14,7 @@
 {
     [super layoutSubviews];
     
-    [self.avatarButton setImageWithURL:[Passport sharedInstance].user.avatarURL forState:UIControlStateNormal];
+    [self.avatarButton setImageWithURL:[Passport sharedInstance].user.avatarURL_s forState:UIControlStateNormal];
     self.nicknameLabel.text = [Passport sharedInstance].user.nickname;
 }
 

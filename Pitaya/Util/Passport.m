@@ -22,6 +22,8 @@
 
 + (void)loginWithSuccessBlock:(void (^)())successBlock
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:GKUserWillLoginNotification object:nil];
+    
     BaseNavigationController *nav = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginNav"];
     ((LoginVC *)nav.viewControllers.firstObject).successBlock = ^{
         successBlock();
@@ -33,6 +35,8 @@
 
 + (void)logout
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:GKUserWillLogoutNotification object:nil];
+    
     [Passport sharedInstance].user = nil;
     [NSObject removeFromUserDefaultsByKey:CurrentUserKey];
     
@@ -57,8 +61,6 @@
     // TODO: 退出新浪微博
 //    [kAppDelegate.sinaweibo logOut];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:GKUserDidLogoutNotification object:nil];
-    
     [[GKBaseModelCenter sharedInstance].modelDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if ([obj isKindOfClass:[GKEntity class]]) {
             GKEntity *entity = obj;
@@ -68,6 +70,8 @@
             note.poked = NO;
         }
     }];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:GKUserDidLogoutNotification object:nil];
 }
 
 - (id)init
