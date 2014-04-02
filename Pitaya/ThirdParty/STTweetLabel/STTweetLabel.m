@@ -437,7 +437,7 @@
     if (!CGRectContainsPoint(_textView.frame, touchLocation))
         return;
 
-    int charIndex = (int)[self charIndexAtLocation:[[touches anyObject] locationInView:_textView]];
+    NSUInteger charIndex = (int)[self charIndexAtLocation:[[touches anyObject] locationInView:_textView]];
     
     [_rangesOfHotWords enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSRange range = [[obj objectForKey:@"range"] rangeValue];
