@@ -11,6 +11,7 @@
 #import "RecommendEntityCell.h"
 #import "CategoryVC.h"
 #import "UserVC.h"
+#import "NoteDetailVC.h"
 
 @interface EntityDetailVC () <UITableViewDataSource, UITableViewDelegate, RecommendEntityCellDelegate, NoteCellDelegate>
 
@@ -294,6 +295,10 @@
         CategoryVC *vc = (CategoryVC *)segue.destinationViewController;
         NSUInteger categoryId = categoryButton.tag;
         vc.category = [GKEntityCategory modelFromDictionary:@{@"categoryId":@(categoryId)}];
+    } else if ([segue.destinationViewController isKindOfClass:[NoteDetailVC class]]) {
+        NoteCell *cell = (NoteCell *)sender;
+        NoteDetailVC *vc = (NoteDetailVC *)segue.destinationViewController;
+        vc.note = cell.note;
     }
 }
 
