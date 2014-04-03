@@ -12,4 +12,6 @@
 
 @property (nonatomic, assign) GKComment *comment;
 
++ (CGFloat)heightForComment:(GKComment *)comment;
+
 @end

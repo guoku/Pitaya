@@ -8,6 +8,7 @@
 
 #import "NoteDetailVC.h"
 #import "NoteDetailHeaderView.h"
+#import "CommentCell.h"
 
 @interface NoteDetailVC () <UITableViewDataSource, UITableViewDelegate>
 
@@ -34,12 +35,18 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"CommentCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    CommentCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell.comment = self.commentArray[indexPath.row];
     
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [CommentCell heightForComment:self.commentArray[indexPath.row]];
+}
 
 #pragma mark - Life Cycle
 
@@ -48,6 +55,15 @@
     [super viewDidLoad];
     
     self.tableHeaderView.note = self.note;
+    
+    __weak __typeof(&*self)weakSelf = self;
+    [GKDataManager getNoteDetailWithNoteId:self.note.noteId success:^(GKNote *note, GKEntity *entity, NSArray *commentArray, NSArray *pokerArray) {
+        weakSelf.note = note;
+        self.commentArray = [commentArray mutableCopy];
+        [self.tableView reloadData];
+    } failure:^(NSInteger stateCode) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning
