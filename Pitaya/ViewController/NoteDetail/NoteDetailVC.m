@@ -169,6 +169,8 @@
 {
     [super viewDidLoad];
     
+    self.navigationItem.title = [NSString stringWithFormat:@"%d 条评论", self.note.commentCount];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
