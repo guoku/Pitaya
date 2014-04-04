@@ -53,7 +53,7 @@
 
     self.nicknameLabel.text = user.nickname;
     
-    [self.categoryButton setTitle:[NSString stringWithFormat:@"⎡%@⎦", category.categoryName] forState:UIControlStateNormal];
+    [self.categoryButton setTitle:[NSString stringWithFormat:@"「%@」", [category.categoryName componentsSeparatedByString:@"-"].firstObject] forState:UIControlStateNormal];
     self.noteLabel.text = note.text;
     
     [self.pokeButton setTitle:@(self.note.pokeCount).stringValue forState:UIControlStateNormal];

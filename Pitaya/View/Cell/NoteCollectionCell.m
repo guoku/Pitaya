@@ -77,7 +77,7 @@
     // 分类
     GKEntityCategory *category = [GKEntityCategory modelFromDictionary:@{@"categoryId":@(self.note.categoryId)}];
     NSString *title = [category.categoryName componentsSeparatedByString:@"-"].firstObject;
-    [self.categoryButton setTitle:[NSString stringWithFormat:@"[%@]", title] forState:UIControlStateNormal];
+    [self.categoryButton setTitle:[NSString stringWithFormat:@"「%@」", title] forState:UIControlStateNormal];
     self.categoryButton.tag = category.categoryId;
     
     // 商品点击手势

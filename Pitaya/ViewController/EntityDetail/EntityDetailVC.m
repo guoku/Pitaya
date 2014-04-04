@@ -49,7 +49,7 @@
     [self.priceButton setTitle:[NSString stringWithFormat:@"¥%.2f", self.entity.lowestPrice] forState:UIControlStateNormal];
     GKEntityCategory *category = [GKEntityCategory modelFromDictionary:@{@"categoryId":@(self.entity.categoryId)}];
     NSString *categoryName = [category.categoryName componentsSeparatedByString:@"-"].firstObject;
-    [self.categoryButton setTitle:[NSString stringWithFormat:@"来自 [%@]", categoryName] forState:UIControlStateNormal];
+    [self.categoryButton setTitle:[NSString stringWithFormat:@"来自 「%@」", categoryName] forState:UIControlStateNormal];
     self.categoryButton.tag = category.categoryId;
 }
 
