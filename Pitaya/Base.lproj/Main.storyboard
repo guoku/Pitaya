@@ -2042,7 +2042,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="iZj-u6-6sd">
-                                <rect key="frame" x="0.0" y="0.0" width="758" height="1768"/>
+                                <rect key="frame" x="0.0" y="0.0" width="758" height="1708"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
@@ -2204,6 +2204,9 @@
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="tapAvatarButton:" destination="tEl-Kf-a6a" eventType="touchUpInside" id="3u5-SQ-9gH"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUm-Kc-DBZ">
                                                             <rect key="frame" x="48" y="10" width="28" height="30"/>
@@ -2242,6 +2245,9 @@
                                                             <state key="normal" image="detail_icon_comment">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="tapReplyButton:" destination="tEl-Kf-a6a" eventType="touchUpInside" id="Ar6-Bs-ou6"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="回复了" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxq-Ea-bWv">
                                                             <rect key="frame" x="84" y="10" width="42" height="30"/>
@@ -2293,6 +2299,7 @@
                                             <outlet property="avatarButton" destination="7Hb-Zv-Dwd" id="UfC-MC-ynW"/>
                                             <outlet property="commentLabel" destination="Guk-Nh-lK4" id="afw-Tk-JsV"/>
                                             <outlet property="dateLabel" destination="MJZ-dl-WUY" id="tca-Qs-k9Q"/>
+                                            <outlet property="delegate" destination="LlK-gC-s4B" id="O5l-ou-I4x"/>
                                             <outlet property="nicknameLabel" destination="nUm-Kc-DBZ" id="kFh-ix-hfW"/>
                                             <outlet property="replyButton" destination="wzb-uB-fAK" id="rhH-8g-arG"/>
                                             <outlet property="replyLabel" destination="Vxq-Ea-bWv" id="Ipd-Mb-NnD"/>
@@ -2305,18 +2312,69 @@
                                     <outlet property="delegate" destination="LlK-gC-s4B" id="h4a-fv-XQd"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hye-oF-nqr">
+                                <rect key="frame" x="0.0" y="1708" width="758" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8e6-N7-MoX">
+                                        <rect key="frame" x="10" y="10" width="678" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="send"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="LlK-gC-s4B" id="Ptj-a4-qnY"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fna-1f-ogh">
+                                        <rect key="frame" x="698" y="10" width="50" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.25882352941176473" green="0.49411764705882355" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="W3y-0t-WWc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="发送">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapSendButton:" destination="LlK-gC-s4B" eventType="touchUpInside" id="alP-2J-1Yr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="8e6-N7-MoX" firstAttribute="top" secondItem="hye-oF-nqr" secondAttribute="top" constant="10" id="3M1-Bh-RUq"/>
+                                    <constraint firstItem="8e6-N7-MoX" firstAttribute="leading" secondItem="hye-oF-nqr" secondAttribute="leading" constant="10" id="B4E-K6-BBV"/>
+                                    <constraint firstAttribute="bottom" secondItem="8e6-N7-MoX" secondAttribute="bottom" constant="10" id="CQR-Yi-odM"/>
+                                    <constraint firstItem="Fna-1f-ogh" firstAttribute="leading" secondItem="8e6-N7-MoX" secondAttribute="trailing" constant="10" id="OJD-uk-esa"/>
+                                    <constraint firstItem="Fna-1f-ogh" firstAttribute="top" secondItem="hye-oF-nqr" secondAttribute="top" constant="10" id="poY-2a-3KQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fna-1f-ogh" secondAttribute="trailing" constant="10" id="yzN-7T-HEo"/>
+                                    <constraint firstAttribute="bottom" secondItem="Fna-1f-ogh" secondAttribute="bottom" constant="10" id="zdD-UI-0sH"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="hye-oF-nqr" firstAttribute="leading" secondItem="tRe-9V-Yql" secondAttribute="leading" id="3Nb-Z3-QPe"/>
+                            <constraint firstAttribute="trailing" secondItem="hye-oF-nqr" secondAttribute="trailing" id="E6K-gh-5MG"/>
                             <constraint firstItem="iZj-u6-6sd" firstAttribute="leading" secondItem="tRe-9V-Yql" secondAttribute="leading" id="QZM-qa-FME"/>
                             <constraint firstItem="iZj-u6-6sd" firstAttribute="top" secondItem="tRe-9V-Yql" secondAttribute="top" id="Uvd-gx-EyC"/>
-                            <constraint firstItem="TFp-Na-QrA" firstAttribute="top" secondItem="iZj-u6-6sd" secondAttribute="bottom" id="oyt-0o-X3z"/>
+                            <constraint firstItem="hye-oF-nqr" firstAttribute="top" secondItem="iZj-u6-6sd" secondAttribute="bottom" id="hap-QD-6sb"/>
+                            <constraint firstItem="TFp-Na-QrA" firstAttribute="top" secondItem="hye-oF-nqr" secondAttribute="bottom" id="km3-3J-IUi"/>
+                            <constraint firstItem="TFp-Na-QrA" firstAttribute="top" secondItem="iZj-u6-6sd" secondAttribute="bottom" constant="60" id="oyt-0o-X3z"/>
                             <constraint firstAttribute="trailing" secondItem="iZj-u6-6sd" secondAttribute="trailing" id="z0c-bt-hcv"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" id="BD9-4L-f9e"/>
+                    <navigationItem key="navigationItem" id="BD9-4L-f9e">
+                        <barButtonItem key="backBarButtonItem" title=" " id="mAM-xY-6Xr"/>
+                    </navigationItem>
                     <connections>
+                        <outlet property="inputBarView" destination="hye-oF-nqr" id="pNh-Ba-cKP"/>
+                        <outlet property="inputTextField" destination="8e6-N7-MoX" id="wMG-53-Edc"/>
+                        <outlet property="sendButton" destination="Fna-1f-ogh" id="Eay-gh-UTk"/>
                         <outlet property="tableHeaderView" destination="y4X-Dr-hD9" id="vgy-1K-6Ft"/>
                         <outlet property="tableView" destination="iZj-u6-6sd" id="jzw-97-BLG"/>
                     </connections>

@@ -41,9 +41,18 @@
     [self setNeedsLayout];
 }
 
+- (IBAction)tapAvatarButton:(id)sender
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(commentCell:didSelectUser:)]) {
+        [self.delegate commentCell:self didSelectUser:self.comment.creator];
+    }
+}
+
 - (IBAction)tapReplyButton:(id)sender
 {
-    NSLog(@"reply");
+    if (_delegate && [_delegate respondsToSelector:@selector(commentCell:replyComment:)]) {
+        [self.delegate commentCell:self replyComment:self.comment];
+    }
 }
 
 - (void)layoutSubviews
@@ -64,6 +73,10 @@
         self.replyNicknameLabel.text = nil;
     }
     
+    self.commentLabel.detectionBlock = ^(STTweetHotWord hotWord, NSString *string, NSString *protocol, NSRange range) {
+        // TODO: push TagVC
+        NSLog(@"push TagVC :%@ hotWord:%d", string, hotWord);
+    };
     self.commentLabel.text = self.comment.text;
     
     self.dateLabel.text = [self.comment.createdDate stringWithDefaultFormat];

@@ -7,8 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CommentCell;
+
+@protocol CommentCellDelegate <NSObject>
+
+@optional
+- (void)commentCell:(CommentCell *)cell didSelectUser:(GKUser *)user;
+- (void)commentCell:(CommentCell *)cell didSelectTag:(NSString *)tag;
+- (void)commentCell:(CommentCell *)cell replyComment:(GKComment *)comment;
+
+@end
 
 @interface CommentCell : UITableViewCell
+
+@property (nonatomic, weak) IBOutlet id<CommentCellDelegate> delegate;
 
 @property (nonatomic, assign) GKComment *comment;
 
