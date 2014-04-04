@@ -11,6 +11,7 @@
 #import "RecommendEntityCell.h"
 #import "CategoryVC.h"
 #import "UserVC.h"
+#import "NoteDetailVC.h"
 
 @interface EntityDetailVC () <UITableViewDataSource, UITableViewDelegate, RecommendEntityCellDelegate, NoteCellDelegate>
 
@@ -48,7 +49,7 @@
     [self.priceButton setTitle:[NSString stringWithFormat:@"¥%.2f", self.entity.lowestPrice] forState:UIControlStateNormal];
     GKEntityCategory *category = [GKEntityCategory modelFromDictionary:@{@"categoryId":@(self.entity.categoryId)}];
     NSString *categoryName = [category.categoryName componentsSeparatedByString:@"-"].firstObject;
-    [self.categoryButton setTitle:[NSString stringWithFormat:@"来自 [%@]", categoryName] forState:UIControlStateNormal];
+    [self.categoryButton setTitle:[NSString stringWithFormat:@"来自 「%@」", categoryName] forState:UIControlStateNormal];
     self.categoryButton.tag = category.categoryId;
 }
 
@@ -294,6 +295,10 @@
         CategoryVC *vc = (CategoryVC *)segue.destinationViewController;
         NSUInteger categoryId = categoryButton.tag;
         vc.category = [GKEntityCategory modelFromDictionary:@{@"categoryId":@(categoryId)}];
+    } else if ([segue.destinationViewController isKindOfClass:[NoteDetailVC class]]) {
+        NoteCell *cell = (NoteCell *)sender;
+        NoteDetailVC *vc = (NoteDetailVC *)segue.destinationViewController;
+        vc.note = cell.note;
     }
 }
 
