@@ -50,8 +50,8 @@
 
 - (void)tapEntityBackView
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(noteCollectionCell:didSelectEntity:)]) {
-        [self.delegate noteCollectionCell:self didSelectEntity:self.entity];
+    if (_delegate && [_delegate respondsToSelector:@selector(noteCollectionCell:didSelectEntity:note:)]) {
+        [self.delegate noteCollectionCell:self didSelectEntity:self.entity note:self.note];
     }
 }
 

@@ -12,7 +12,7 @@
 @protocol NoteCollectionCellDelegate <NSObject>
 
 @optional
-- (void)noteCollectionCell:(NoteCollectionCell *)cell didSelectEntity:(GKEntity *)entity;
+- (void)noteCollectionCell:(NoteCollectionCell *)cell didSelectEntity:(GKEntity *)entity note:(GKNote *)note;
 - (void)noteCollectionCell:(NoteCollectionCell *)cell didSelectUser:(GKUser *)user;
 
 @end

@@ -440,10 +440,11 @@
 
 #pragma mark - NoteCollectionCellDelegate
 
-- (void)noteCollectionCell:(NoteCollectionCell *)cell didSelectEntity:(GKEntity *)entity
+- (void)noteCollectionCell:(NoteCollectionCell *)cell didSelectEntity:(GKEntity *)entity note:(GKNote *)note
 {
     EntityDetailVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"EntityDetailVC"];
     vc.entity = entity;
+    vc.note = note;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
