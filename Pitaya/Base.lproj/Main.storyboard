@@ -1870,16 +1870,6 @@
                                                             <state key="selected" image="detail_icon_poke"/>
                                                             <state key="highlighted" image="detail_icon_poke_highlighted"/>
                                                         </button>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="点评内容" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="580" translatesAutoresizingMaskIntoConstraints="NO" id="kLL-iD-4f9">
-                                                            <rect key="frame" x="68" y="40" width="580" height="18"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="580" id="PBp-p1-0aj"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="deviceRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5W-bF-qwK">
                                                             <rect key="frame" x="123" y="106" width="60" height="44"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1920,12 +1910,24 @@
                                                                 <constraint firstAttribute="height" constant="1" id="gpH-3X-qzL"/>
                                                             </constraints>
                                                         </view>
+                                                        <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Hz-Da-xqi" customClass="GKAttributedLabel">
+                                                            <rect key="frame" x="68" y="40" width="580" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="580" id="jfm-8q-E0v"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="PmY-61-4L1" id="QFv-Tt-1dH"/>
+                                                            </connections>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="668" id="1VZ-P1-Q4f"/>
-                                                        <constraint firstItem="kLL-iD-4f9" firstAttribute="leading" secondItem="VVg-A3-WiX" secondAttribute="leading" id="5dD-4y-DaA"/>
+                                                        <constraint firstItem="6Hz-Da-xqi" firstAttribute="top" secondItem="VVg-A3-WiX" secondAttribute="bottom" id="3Ok-yr-KqP"/>
                                                         <constraint firstAttribute="trailing" secondItem="EsU-hS-HFe" secondAttribute="trailing" id="7E6-Rm-N27"/>
+                                                        <constraint firstItem="6Hz-Da-xqi" firstAttribute="leading" secondItem="VVg-A3-WiX" secondAttribute="leading" id="BLD-NI-PhE"/>
                                                         <constraint firstItem="VVg-A3-WiX" firstAttribute="top" secondItem="y9g-X0-LwY" secondAttribute="top" id="FcH-hN-3jZ"/>
                                                         <constraint firstAttribute="bottom" secondItem="EsU-hS-HFe" secondAttribute="bottom" constant="1" id="GHx-0N-0w0"/>
                                                         <constraint firstItem="i2V-mq-fnZ" firstAttribute="leading" secondItem="2NB-0g-Eh1" secondAttribute="trailing" constant="3" id="N0r-9w-fol"/>
@@ -1939,7 +1941,6 @@
                                                         <constraint firstAttribute="trailing" secondItem="i2V-mq-fnZ" secondAttribute="trailing" constant="20" id="pdD-pB-C3g"/>
                                                         <constraint firstItem="Occ-qS-1lo" firstAttribute="leading" secondItem="y9g-X0-LwY" secondAttribute="leading" constant="20" id="vdm-Wa-x72"/>
                                                         <constraint firstAttribute="bottom" secondItem="OUh-0c-yAb" secondAttribute="bottom" id="vyi-XT-ZNv"/>
-                                                        <constraint firstItem="kLL-iD-4f9" firstAttribute="top" secondItem="VVg-A3-WiX" secondAttribute="bottom" id="wRS-1V-XCg"/>
                                                         <constraint firstItem="2NB-0g-Eh1" firstAttribute="centerY" secondItem="i2V-mq-fnZ" secondAttribute="centerY" constant="-2" id="xkl-gC-sH4"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
@@ -1957,7 +1958,7 @@
                                             <outlet property="avatarButton" destination="Occ-qS-1lo" id="p61-qS-whJ"/>
                                             <outlet property="backView" destination="y9g-X0-LwY" id="TjU-Bm-RzT"/>
                                             <outlet property="commentButton" destination="L5W-bF-qwK" id="sb3-Xg-XD6"/>
-                                            <outlet property="contentLabel" destination="kLL-iD-4f9" id="gQV-HF-O9E"/>
+                                            <outlet property="contentLabel" destination="6Hz-Da-xqi" id="ewf-7y-e5s"/>
                                             <outlet property="dateLabel" destination="i2V-mq-fnZ" id="5zB-fa-pUp"/>
                                             <outlet property="delegate" destination="C9Z-0J-GF4" id="tds-hr-Gjz"/>
                                             <outlet property="nicknameButton" destination="VVg-A3-WiX" id="M8V-na-Ve2"/>

@@ -24,6 +24,7 @@
 		B61EE32118B7356000585C9A /* SelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B61EE32018B7356000585C9A /* SelectionCell.m */; };
 		B61FAB1618E15F3B00CD777B /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B61FAB1518E15F3B00CD777B /* MessageCell.m */; };
 		B6252BBB18C5E1DD00E5F489 /* CategorySectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6252BBA18C5E1DD00E5F489 /* CategorySectionHeaderView.m */; };
+		B626517618F53E9700203ECB /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B626517518F53E9700203ECB /* TTTAttributedLabel.m */; };
 		B63156A918ADE5BF003D802E /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63156A818ADE5BF003D802E /* BaseTableViewController.m */; };
 		B63F9B4918DC538500D8768E /* HomeSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B63F9B4818DC538500D8768E /* HomeSectionHeaderView.m */; };
 		B643CFEF18EBEA270088B18E /* STTweetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B643CFEC18EBEA270088B18E /* STTweetLabel.m */; };
@@ -126,6 +127,7 @@
 		B674182218CF11D3009A1407 /* EntityDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B674182118CF11D3009A1407 /* EntityDetailVC.m */; };
 		B674182518CF3A23009A1407 /* NoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B674182418CF3A23009A1407 /* NoteCell.m */; };
 		B6AEAADB18DD68D500548F2A /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AEAADA18DD68D500548F2A /* iCarousel.m */; };
+		B6BF99F918F6A2200097D9AA /* GKAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF99F818F6A2200097D9AA /* GKAttributedLabel.m */; };
 		B6E6209C18F3F969007D88C4 /* NotePostVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E6209A18F3F969007D88C4 /* NotePostVC.m */; };
 		B6F1B9C618C0BB7A001E1A64 /* UISegmentedControl+Flat.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F1B9C518C0BB7A001E1A64 /* UISegmentedControl+Flat.m */; };
 /* End PBXBuildFile section */
@@ -175,6 +177,8 @@
 		B61FAB1518E15F3B00CD777B /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		B6252BB918C5E1DD00E5F489 /* CategorySectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategorySectionHeaderView.h; sourceTree = "<group>"; };
 		B6252BBA18C5E1DD00E5F489 /* CategorySectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategorySectionHeaderView.m; sourceTree = "<group>"; };
+		B626517418F53E9700203ECB /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
+		B626517518F53E9700203ECB /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		B63156A718ADE5BF003D802E /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		B63156A818ADE5BF003D802E /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		B63F9B4718DC538500D8768E /* HomeSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSectionHeaderView.h; sourceTree = "<group>"; };
@@ -373,6 +377,8 @@
 		B674182418CF3A23009A1407 /* NoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCell.m; sourceTree = "<group>"; };
 		B6AEAAD918DD68D500548F2A /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		B6AEAADA18DD68D500548F2A /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		B6BF99F718F6A2200097D9AA /* GKAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKAttributedLabel.h; sourceTree = "<group>"; };
+		B6BF99F818F6A2200097D9AA /* GKAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKAttributedLabel.m; sourceTree = "<group>"; };
 		B6E6209A18F3F969007D88C4 /* NotePostVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotePostVC.m; sourceTree = "<group>"; };
 		B6E6209B18F3F969007D88C4 /* NotePostVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotePostVC.h; sourceTree = "<group>"; };
 		B6F1B9C418C0BB7A001E1A64 /* UISegmentedControl+Flat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISegmentedControl+Flat.h"; sourceTree = "<group>"; };
@@ -490,6 +496,15 @@
 			path = Hot;
 			sourceTree = "<group>";
 		};
+		B626517318F53E9700203ECB /* TTTAttributedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				B626517418F53E9700203ECB /* TTTAttributedLabel.h */,
+				B626517518F53E9700203ECB /* TTTAttributedLabel.m */,
+			);
+			path = TTTAttributedLabel;
+			sourceTree = "<group>";
+		};
 		B643CFEA18EBEA270088B18E /* STTweetLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -547,6 +562,8 @@
 				B65116581893B81F00B40016 /* Cell */,
 				B6011E9318AD00BC0034DD52 /* CustomTextField.h */,
 				B6011E9418AD00BC0034DD52 /* CustomTextField.m */,
+				B6BF99F718F6A2200097D9AA /* GKAttributedLabel.h */,
+				B6BF99F818F6A2200097D9AA /* GKAttributedLabel.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -675,6 +692,7 @@
 		B6603C16188CEBA200F52946 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				B626517318F53E9700203ECB /* TTTAttributedLabel */,
 				B643CFEA18EBEA270088B18E /* STTweetLabel */,
 				B604BF7818E56D1B00E58A94 /* RTLabel */,
 				B6AEAAD818DD68D500548F2A /* iCarousel */,
@@ -1140,6 +1158,7 @@
 				B6603CA5188D151800F52946 /* DDASLLogger.m in Sources */,
 				B600CA1018D8618600AB8FD7 /* UserSectionHeaderView.m in Sources */,
 				B6603C9C188D151800F52946 /* AFHTTPRequestOperationLogger.m in Sources */,
+				B6BF99F918F6A2200097D9AA /* GKAttributedLabel.m in Sources */,
 				B6603CAC188D151800F52946 /* SDImageCache.m in Sources */,
 				B6603C41188D150A00F52946 /* NSDate+App.m in Sources */,
 				B63156A918ADE5BF003D802E /* BaseTableViewController.m in Sources */,
@@ -1163,6 +1182,7 @@
 				B6603C2E188CEBA200F52946 /* RootViewController.m in Sources */,
 				B6603CF2188D153300F52946 /* Passport.m in Sources */,
 				B651E48118AF3DB800AF077B /* RegisterVC.m in Sources */,
+				B626517618F53E9700203ECB /* TTTAttributedLabel.m in Sources */,
 				B6603C2C188CEBA200F52946 /* MasterTableViewCell.m in Sources */,
 				B63F9B4918DC538500D8768E /* HomeSectionHeaderView.m in Sources */,
 				B61EE31B18B731A200585C9A /* SelectionVC.m in Sources */,

@@ -202,9 +202,7 @@
 {
     if (indexPath.section == 0) {
         GKNote *note = self.noteArray[indexPath.row];
-        CGSize contentLabelSize = [note.text sizeWithFont:[UIFont systemFontOfSize:15.f] constrainedToSize:CGSizeMake(580.f, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
-        
-        return contentLabelSize.height + 85.f;
+        return [NoteCell heightForCellWithNote:note];
     } else {
         return 477.f;
     }
