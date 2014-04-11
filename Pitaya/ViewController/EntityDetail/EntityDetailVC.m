@@ -130,9 +130,38 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)tapMoreBtton
+- (void)tapMoreButton
 {
     NSLog(@"more");
+}
+
+- (IBAction)tapLikeButton:(id)sender
+{
+    __weak __typeof(&*self)weakSelf = self;
+    
+    if (!k_isLogin) {
+        [Passport loginWithSuccessBlock:^{
+            [weakSelf tapLikeButton:self.likeButton];
+        }];
+        return;
+    } else {
+        UIButton *button = sender;
+        
+        [BBProgressHUD show];
+        [GKDataManager likeEntityWithEntityId:self.entity.entityId isLike:!button.isSelected success:^(BOOL liked) {
+            GKUser *user = [Passport sharedInstance].user;
+            if (liked) {
+                [BBProgressHUD showSuccessWithText:@"喜爱成功"];
+                [weakSelf.likeUserArray insertObject:user atIndex:0];
+            } else {
+                [BBProgressHUD dismiss];
+                [weakSelf.likeUserArray removeObject:user];
+            }
+            [weakSelf refreshLikeUser];
+        } failure:^(NSInteger stateCode) {
+            [BBProgressHUD showErrorWithText:@"喜爱失败"];
+        }];
+    }
 }
 
 - (void)tapLikeUserButton:(UIButton *)button
@@ -229,7 +258,7 @@
     // 导航条按钮
     UIButton *moreButton = [[UIButton alloc] initWithFrame:CGRectMake(0.f, 0.f, 50.f, 30.f)];
     [moreButton setImage:[UIImage imageNamed:@"detail_icon_share"] forState:UIControlStateNormal];
-    [moreButton addTarget:self action:@selector(tapMoreBtton) forControlEvents:UIControlEventTouchUpInside];
+    [moreButton addTarget:self action:@selector(tapMoreButton) forControlEvents:UIControlEventTouchUpInside];
     
     _noteButton = [[UIButton alloc] initWithFrame:CGRectMake(0.f, 0.f, 50.f, 30.f)];
     [self.noteButton setImage:[UIImage imageNamed:@"detail_icon_note"] forState:UIControlStateNormal];
@@ -242,6 +271,8 @@
     // headerView
     self.headerView.layer.borderColor = UIColorFromRGB(0xE9E9E9).CGColor;
     [self refreshHeaderView];
+    
+    [self addObserver];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -318,6 +349,34 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - KVO
+
+- (void)addObserver
+{
+    [self.entity addObserver:self forKeyPath:@"liked" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+    [self.entity addObserver:self forKeyPath:@"likeCount" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)removeObserver
+{
+    [self.entity removeObserver:self forKeyPath:@"liked"];
+    [self.entity removeObserver:self forKeyPath:@"likeCount"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"liked"]) {
+        self.likeButton.selected = self.entity.isLiked;
+    } else if ([keyPath isEqualToString:@"likeCount"]) {
+        [self.likeButton setTitle:[NSString stringWithFormat:@"喜爱 %d", self.entity.likeCount] forState:UIControlStateNormal];
+    }
+}
+
+- (void)dealloc
+{
+    [self removeObserver];
 }
 
 @end

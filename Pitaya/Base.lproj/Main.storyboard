@@ -1723,6 +1723,9 @@
                                                     </state>
                                                     <state key="selected" image="like_btn_highlighted"/>
                                                     <state key="highlighted" image="like_btn_highlighted"/>
+                                                    <connections>
+                                                        <action selector="tapLikeButton:" destination="C9Z-0J-GF4" eventType="touchUpInside" id="yqN-ps-Qmy"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qd6-e0-789">
                                                     <rect key="frame" x="503" y="379" width="145" height="40"/>
