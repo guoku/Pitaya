@@ -24,6 +24,6 @@
 
 @property (nonatomic, assign) GKComment *comment;
 
-+ (CGFloat)heightForComment:(GKComment *)comment;
++ (CGFloat)heightForCellWithComment:(GKComment *)comment;
 
 @end

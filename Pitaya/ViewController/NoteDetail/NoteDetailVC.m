@@ -100,7 +100,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [CommentCell heightForComment:self.commentArray[indexPath.row]];
+    return [CommentCell heightForCellWithComment:self.commentArray[indexPath.row]];
 }
 
 #pragma mark - UIScrollViewDelegate
