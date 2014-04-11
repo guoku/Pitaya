@@ -37,7 +37,12 @@ static CGFloat const kNoteCellTextFontSize = 15.f;
 
 - (void)setNote:(GKNote *)note
 {
+    if (_note) {
+        [self removeObserver];
+    }
+    
     _note = note;
+    [self addObserver];
     
     [self setNeedsLayout];
 }
@@ -48,6 +53,22 @@ static CGFloat const kNoteCellTextFontSize = 15.f;
 {
     if (_delegate && [_delegate respondsToSelector:@selector(noteCell:didSelectUser:)]) {
         [self.delegate noteCell:self didSelectUser:self.note.creator];
+    }
+}
+
+- (IBAction)tapPokeButton:(id)sender
+{
+    [GKDataManager pokeWithNoteId:self.note.noteId state:!self.pokeButton.isSelected success:nil failure:nil];
+    
+    if (self.note.isPoked) {
+        self.note.pokeCount -= 1;
+    } else {
+        self.note.pokeCount += 1;
+    }
+    self.note.poked = !self.note.isPoked;
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(noteCell:tapPokeButton:)]) {
+        [self.delegate noteCell:self tapPokeButton:sender];
     }
 }
 
@@ -101,6 +122,38 @@ static CGFloat const kNoteCellTextFontSize = 15.f;
     
     // 精选星星标识
     self.starImageView.hidden = !self.note.isMarked;
+}
+
+#pragma mark - KVO
+
+- (void)addObserver
+{
+    [self.note addObserver:self forKeyPath:@"poked" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+    [self.note addObserver:self forKeyPath:@"pokeCount" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+    [self.note addObserver:self forKeyPath:@"commentCount" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)removeObserver
+{
+    [self.note removeObserver:self forKeyPath:@"poked"];
+    [self.note removeObserver:self forKeyPath:@"pokeCount"];
+    [self.note removeObserver:self forKeyPath:@"commentCount"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"poked"]) {
+        self.pokeButton.selected = self.note.isPoked;
+    } else if ([keyPath isEqualToString:@"pokeCount"]) {
+        [self.pokeButton setTitle:@(self.note.pokeCount).stringValue forState:UIControlStateNormal];
+    } else if ([keyPath isEqualToString:@"commentCount"]) {
+        [self.commentButton setTitle:@(self.note.commentCount).stringValue forState:UIControlStateNormal];
+    }
+}
+
+- (void)dealloc
+{
+    [self removeObserver];
 }
 
 @end

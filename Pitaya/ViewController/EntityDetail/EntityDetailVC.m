@@ -91,6 +91,10 @@
 
 - (void)refreshLikeUser
 {
+    for (UIView *subView in self.likeUserView.subviews) {
+        [subView removeFromSuperview];
+    }
+    
     [self.likeUserArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         CGFloat buttonLength = 35.f;
         
@@ -188,6 +192,20 @@
     UserVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UserVC"];
     vc.user = user;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)noteCell:(NoteCell *)cell tapPokeButton:(UIButton *)pokeButton
+{
+    NSUInteger oldIndex = [self.noteArray indexOfObject:cell.note];
+    [self.noteArray sortUsingDescriptors:@[
+                                           [NSSortDescriptor sortDescriptorWithKey:@"marked" ascending:NO],
+                                           [NSSortDescriptor sortDescriptorWithKey:@"pokeCount" ascending:NO],
+                                           [NSSortDescriptor sortDescriptorWithKey:@"createdTime" ascending:YES]
+                                           ]];
+    NSUInteger newIndex = [self.noteArray indexOfObject:cell.note];
+    [self.tableView beginUpdates];
+    [self.tableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:oldIndex inSection:0] toIndexPath:[NSIndexPath indexPathForRow:newIndex inSection:0] ];
+    [self.tableView endUpdates];
 }
 
 #pragma mark - UITableViewDataSource
