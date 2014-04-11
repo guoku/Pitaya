@@ -401,10 +401,7 @@
         {
             // 点评
             GKNote *note = self.dataArray[1][indexPath.row][@"note"];
-            CGSize cellSize = [note.text sizeWithFont:[UIFont systemFontOfSize:15.f] constrainedToSize:CGSizeMake(608.f, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
-            cellSize.width = 668.f;
-            cellSize.height += 200.f;
-            return cellSize;
+            return [NoteCollectionCell sizeForCellWithNote:note];
             break;
         }
             
@@ -453,6 +450,12 @@
     UserVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UserVC"];
     vc.user = user;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)noteCollectionCell:(NoteCollectionCell *)cell didSelectTag:(NSString *)tag
+{
+    // TODO: push TagVC
+    NSLog(@"%@", tag);
 }
 
 #pragma mark - Life Cycle
