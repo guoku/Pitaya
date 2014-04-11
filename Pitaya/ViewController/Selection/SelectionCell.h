@@ -13,6 +13,7 @@
 
 @optional
 - (void)selectionCell:(SelectionCell *)cell didSelectUser:(GKUser *)user;
+- (void)selectionCell:(SelectionCell *)cell didSelectTag:(NSString *)tag;
 
 @end
 
