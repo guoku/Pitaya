@@ -2814,8 +2814,11 @@
                                             <state key="normal" image="poke">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
-                                            <state key="selected" image="poke"/>
+                                            <state key="selected" image="poke_highlighted"/>
                                             <state key="highlighted" image="poke_highlighted"/>
+                                            <connections>
+                                                <action selector="tapPokeButton:" destination="bGl-d5-stF" eventType="touchUpInside" id="i3O-cB-lLA"/>
+                                            </connections>
                                         </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpq-cN-jYY" customClass="GKAttributedLabel">
                                             <rect key="frame" x="50" y="158" width="608" height="18"/>
@@ -3161,8 +3164,11 @@
                                                     <state key="normal" image="poke">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="selected" image="poke"/>
+                                                    <state key="selected" image="poke_highlighted"/>
                                                     <state key="highlighted" image="poke_highlighted"/>
+                                                    <connections>
+                                                        <action selector="tapPokeButton:" destination="jJI-45-gxt" eventType="touchUpInside" id="rhU-ll-LoZ"/>
+                                                    </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nT4-So-IFJ" customClass="GKAttributedLabel">
                                                     <rect key="frame" x="50" y="158" width="608" height="18"/>
@@ -3703,8 +3709,11 @@
                                                     <state key="normal" image="poke">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="selected" image="poke"/>
+                                                    <state key="selected" image="poke_highlighted"/>
                                                     <state key="highlighted" image="poke_highlighted"/>
+                                                    <connections>
+                                                        <action selector="tapPokeButton:" destination="0uw-8o-GS8" eventType="touchUpInside" id="bmm-7R-YZK"/>
+                                                    </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kca-4l-Mor" customClass="GKAttributedLabel">
                                                     <rect key="frame" x="50" y="158" width="608" height="18"/>

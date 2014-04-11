@@ -44,15 +44,25 @@ static CGFloat const kNoteCollectionCellTextFontSize = 15.f;
 
 - (void)setEntity:(GKEntity *)entity
 {
+    if (_entity && _note) {
+        [self removeObserver];
+    }
+    
     _entity = entity;
     
+    [self addObserver];
     [self setNeedsLayout];
 }
 
 - (void)setNote:(GKNote *)note
 {
+    if (_entity && _note) {
+        [self removeObserver];
+    }
+    
     _note = note;
     
+    [self addObserver];
     [self setNeedsLayout];
 }
 
@@ -70,6 +80,18 @@ static CGFloat const kNoteCollectionCellTextFontSize = 15.f;
     if (_delegate && [_delegate respondsToSelector:@selector(noteCollectionCell:didSelectUser:)]) {
         [self.delegate noteCollectionCell:self didSelectUser:self.note.creator];
     }
+}
+
+- (IBAction)tapPokeButton:(id)sender
+{
+    [GKDataManager pokeWithNoteId:self.note.noteId state:!self.pokeButton.isSelected success:nil failure:nil];
+    
+    if (self.note.isPoked) {
+        self.note.pokeCount -= 1;
+    } else {
+        self.note.pokeCount += 1;
+    }
+    self.note.poked = !self.note.isPoked;
 }
 
 #pragma mark - TTTAttributedLabelDelegate
@@ -138,6 +160,38 @@ static CGFloat const kNoteCollectionCellTextFontSize = 15.f;
     
     // 点评时间
     self.dateLabel.text = [[NSDate dateWithTimeIntervalSince1970:self.note.createdTime] stringWithDefaultFormat];
+}
+
+#pragma mark - KVO
+
+- (void)addObserver
+{
+    [self.note addObserver:self forKeyPath:@"poked" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+    [self.entity addObserver:self forKeyPath:@"likeCount" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+    [self.entity addObserver:self forKeyPath:@"noteCount" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)removeObserver
+{
+    [self.note removeObserver:self forKeyPath:@"poked"];
+    [self.entity removeObserver:self forKeyPath:@"likeCount"];
+    [self.entity removeObserver:self forKeyPath:@"noteCount"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"poked"]) {
+        self.pokeButton.selected = self.note.isPoked;
+    } else if ([keyPath isEqualToString:@"likeCount"]) {
+        self.likeCountLabel.text = @(self.entity.likeCount).stringValue;
+    } else if ([keyPath isEqualToString:@"noteCount"]) {
+        self.commentCountLabel.text = @(self.note.commentCount).stringValue;
+    }
+}
+
+- (void)dealloc
+{
+    [self removeObserver];
 }
 
 @end
