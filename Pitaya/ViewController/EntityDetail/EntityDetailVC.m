@@ -12,6 +12,7 @@
 #import "CategoryVC.h"
 #import "UserVC.h"
 #import "NoteDetailVC.h"
+#import "NotePostVC.h"
 
 @interface EntityDetailVC () <UITableViewDataSource, UITableViewDelegate, RecommendEntityCellDelegate, NoteCellDelegate>
 
@@ -20,6 +21,7 @@
 @property (nonatomic, strong) NSMutableArray *likeUserArray;
 @property (nonatomic, strong) NSMutableArray *recommendEntityArray;
 
+@property (nonatomic, strong) IBOutlet UIButton *noteButton;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) IBOutlet UIView *headerView;
@@ -113,7 +115,19 @@
 
 - (void)tapNoteButton
 {
-    NSLog(@"note");
+    NotePostVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NotePostVC"];
+    vc.entity = self.entity;
+    vc.note = self.note;
+    __weak __typeof(&*self)weakSelf = self;
+    vc.successBlock = ^(GKNote *note) {
+        if (![weakSelf.noteArray containsObject:note]) {
+            [weakSelf.noteArray insertObject:note atIndex:self.noteArray.count];
+        }
+        
+        weakSelf.note = note;
+        [weakSelf.tableView reloadData];
+    };
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)tapMoreBtton
@@ -188,9 +202,7 @@
 {
     if (indexPath.section == 0) {
         GKNote *note = self.noteArray[indexPath.row];
-        CGSize contentLabelSize = [note.text sizeWithFont:[UIFont systemFontOfSize:15.f] constrainedToSize:CGSizeMake(580.f, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
-        
-        return contentLabelSize.height + 85.f;
+        return [NoteCell heightForCellWithNote:note];
     } else {
         return 477.f;
     }
@@ -219,12 +231,12 @@
     [moreButton setImage:[UIImage imageNamed:@"detail_icon_share"] forState:UIControlStateNormal];
     [moreButton addTarget:self action:@selector(tapMoreBtton) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton *noteButton = [[UIButton alloc] initWithFrame:CGRectMake(0.f, 0.f, 50.f, 30.f)];
-    [noteButton setImage:[UIImage imageNamed:@"detail_icon_note"] forState:UIControlStateNormal];
-    [noteButton addTarget:self action:@selector(tapNoteButton) forControlEvents:UIControlEventTouchUpInside];
+    _noteButton = [[UIButton alloc] initWithFrame:CGRectMake(0.f, 0.f, 50.f, 30.f)];
+    [self.noteButton setImage:[UIImage imageNamed:@"detail_icon_note"] forState:UIControlStateNormal];
+    [self.noteButton addTarget:self action:@selector(tapNoteButton) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem *moreButtonItem = [[UIBarButtonItem alloc] initWithCustomView:moreButton];
-    UIBarButtonItem *noteButtonItem = [[UIBarButtonItem alloc] initWithCustomView:noteButton];
+    UIBarButtonItem *noteButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.noteButton];
     self.navigationItem.rightBarButtonItems = @[moreButtonItem, noteButtonItem];
     
     // headerView

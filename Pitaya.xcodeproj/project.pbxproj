@@ -24,10 +24,9 @@
 		B61EE32118B7356000585C9A /* SelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B61EE32018B7356000585C9A /* SelectionCell.m */; };
 		B61FAB1618E15F3B00CD777B /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B61FAB1518E15F3B00CD777B /* MessageCell.m */; };
 		B6252BBB18C5E1DD00E5F489 /* CategorySectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6252BBA18C5E1DD00E5F489 /* CategorySectionHeaderView.m */; };
+		B626517618F53E9700203ECB /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B626517518F53E9700203ECB /* TTTAttributedLabel.m */; };
 		B63156A918ADE5BF003D802E /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63156A818ADE5BF003D802E /* BaseTableViewController.m */; };
 		B63F9B4918DC538500D8768E /* HomeSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B63F9B4818DC538500D8768E /* HomeSectionHeaderView.m */; };
-		B643CFEF18EBEA270088B18E /* STTweetLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B643CFEC18EBEA270088B18E /* STTweetLabel.m */; };
-		B643CFF018EBEA270088B18E /* STTweetTextStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B643CFEE18EBEA270088B18E /* STTweetTextStorage.m */; };
 		B647727618DAAC2900F662FD /* TagCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B647727518DAAC2900F662FD /* TagCollectionCell.m */; };
 		B64ACF921890DB1900D88459 /* DiscoverSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B64ACF911890DB1900D88459 /* DiscoverSectionHeaderView.m */; };
 		B64ACF991891361800D88459 /* GroupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B64ACF981891361800D88459 /* GroupVC.m */; };
@@ -126,6 +125,8 @@
 		B674182218CF11D3009A1407 /* EntityDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B674182118CF11D3009A1407 /* EntityDetailVC.m */; };
 		B674182518CF3A23009A1407 /* NoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B674182418CF3A23009A1407 /* NoteCell.m */; };
 		B6AEAADB18DD68D500548F2A /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AEAADA18DD68D500548F2A /* iCarousel.m */; };
+		B6BF99F918F6A2200097D9AA /* GKAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF99F818F6A2200097D9AA /* GKAttributedLabel.m */; };
+		B6E6209C18F3F969007D88C4 /* NotePostVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E6209A18F3F969007D88C4 /* NotePostVC.m */; };
 		B6F1B9C618C0BB7A001E1A64 /* UISegmentedControl+Flat.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F1B9C518C0BB7A001E1A64 /* UISegmentedControl+Flat.m */; };
 /* End PBXBuildFile section */
 
@@ -174,14 +175,12 @@
 		B61FAB1518E15F3B00CD777B /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		B6252BB918C5E1DD00E5F489 /* CategorySectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategorySectionHeaderView.h; sourceTree = "<group>"; };
 		B6252BBA18C5E1DD00E5F489 /* CategorySectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategorySectionHeaderView.m; sourceTree = "<group>"; };
+		B626517418F53E9700203ECB /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
+		B626517518F53E9700203ECB /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		B63156A718ADE5BF003D802E /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		B63156A818ADE5BF003D802E /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		B63F9B4718DC538500D8768E /* HomeSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSectionHeaderView.h; sourceTree = "<group>"; };
 		B63F9B4818DC538500D8768E /* HomeSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSectionHeaderView.m; sourceTree = "<group>"; };
-		B643CFEB18EBEA270088B18E /* STTweetLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTweetLabel.h; sourceTree = "<group>"; };
-		B643CFEC18EBEA270088B18E /* STTweetLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTweetLabel.m; sourceTree = "<group>"; };
-		B643CFED18EBEA270088B18E /* STTweetTextStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTweetTextStorage.h; sourceTree = "<group>"; };
-		B643CFEE18EBEA270088B18E /* STTweetTextStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTweetTextStorage.m; sourceTree = "<group>"; };
 		B647727418DAAC2900F662FD /* TagCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCollectionCell.h; sourceTree = "<group>"; };
 		B647727518DAAC2900F662FD /* TagCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCollectionCell.m; sourceTree = "<group>"; };
 		B64ACF901890DB1900D88459 /* DiscoverSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverSectionHeaderView.h; sourceTree = "<group>"; };
@@ -372,6 +371,10 @@
 		B674182418CF3A23009A1407 /* NoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCell.m; sourceTree = "<group>"; };
 		B6AEAAD918DD68D500548F2A /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		B6AEAADA18DD68D500548F2A /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		B6BF99F718F6A2200097D9AA /* GKAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKAttributedLabel.h; sourceTree = "<group>"; };
+		B6BF99F818F6A2200097D9AA /* GKAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKAttributedLabel.m; sourceTree = "<group>"; };
+		B6E6209A18F3F969007D88C4 /* NotePostVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotePostVC.m; sourceTree = "<group>"; };
+		B6E6209B18F3F969007D88C4 /* NotePostVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotePostVC.h; sourceTree = "<group>"; };
 		B6F1B9C418C0BB7A001E1A64 /* UISegmentedControl+Flat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISegmentedControl+Flat.h"; sourceTree = "<group>"; };
 		B6F1B9C518C0BB7A001E1A64 /* UISegmentedControl+Flat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISegmentedControl+Flat.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -487,15 +490,13 @@
 			path = Hot;
 			sourceTree = "<group>";
 		};
-		B643CFEA18EBEA270088B18E /* STTweetLabel */ = {
+		B626517318F53E9700203ECB /* TTTAttributedLabel */ = {
 			isa = PBXGroup;
 			children = (
-				B643CFEB18EBEA270088B18E /* STTweetLabel.h */,
-				B643CFEC18EBEA270088B18E /* STTweetLabel.m */,
-				B643CFED18EBEA270088B18E /* STTweetTextStorage.h */,
-				B643CFEE18EBEA270088B18E /* STTweetTextStorage.m */,
+				B626517418F53E9700203ECB /* TTTAttributedLabel.h */,
+				B626517518F53E9700203ECB /* TTTAttributedLabel.m */,
 			);
-			path = STTweetLabel;
+			path = TTTAttributedLabel;
 			sourceTree = "<group>";
 		};
 		B64F9514188F8AB400531FCA /* Homepage */ = {
@@ -544,6 +545,8 @@
 				B65116581893B81F00B40016 /* Cell */,
 				B6011E9318AD00BC0034DD52 /* CustomTextField.h */,
 				B6011E9418AD00BC0034DD52 /* CustomTextField.m */,
+				B6BF99F718F6A2200097D9AA /* GKAttributedLabel.h */,
+				B6BF99F818F6A2200097D9AA /* GKAttributedLabel.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -672,7 +675,7 @@
 		B6603C16188CEBA200F52946 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
-				B643CFEA18EBEA270088B18E /* STTweetLabel */,
+				B626517318F53E9700203ECB /* TTTAttributedLabel */,
 				B604BF7818E56D1B00E58A94 /* RTLabel */,
 				B6AEAAD818DD68D500548F2A /* iCarousel */,
 				B6603C49188D151700F52946 /* AFNetworking */,
@@ -973,6 +976,8 @@
 				B674182418CF3A23009A1407 /* NoteCell.m */,
 				B60620CB18D1B97B007C1A95 /* RecommendEntityCell.h */,
 				B60620CC18D1B97B007C1A95 /* RecommendEntityCell.m */,
+				B6E6209B18F3F969007D88C4 /* NotePostVC.h */,
+				B6E6209A18F3F969007D88C4 /* NotePostVC.m */,
 			);
 			path = EntityDetail;
 			sourceTree = "<group>";
@@ -1106,7 +1111,6 @@
 				B6603CED188D153300F52946 /* GKDataManager.m in Sources */,
 				B6603CEE188D153300F52946 /* GKEntity+ImageURLFixes.m in Sources */,
 				B6603CFE188D179B00F52946 /* YLActivityIndicatorView.m in Sources */,
-				B643CFF018EBEA270088B18E /* STTweetTextStorage.m in Sources */,
 				B64F9523188F8B1400531FCA /* SettingVC.m in Sources */,
 				B6603CA4188D151800F52946 /* DDAbstractDatabaseLogger.m in Sources */,
 				B6603CA2188D151800F52946 /* AFXMLRequestOperation.m in Sources */,
@@ -1117,6 +1121,7 @@
 				B6011E9918AD02B30034DD52 /* LoginVC.m in Sources */,
 				B602A5E018EAC1B200313CBF /* CommentCell.m in Sources */,
 				B6603CF1188D153300F52946 /* GKDevice.m in Sources */,
+				B6E6209C18F3F969007D88C4 /* NotePostVC.m in Sources */,
 				B6603CEC188D153300F52946 /* GKAPI.m in Sources */,
 				B651165B1893B86200B40016 /* EntityCollectionCell.m in Sources */,
 				B61B10D8188E35B90090FC38 /* MasterTableHeaderView.m in Sources */,
@@ -1134,6 +1139,7 @@
 				B6603CA5188D151800F52946 /* DDASLLogger.m in Sources */,
 				B600CA1018D8618600AB8FD7 /* UserSectionHeaderView.m in Sources */,
 				B6603C9C188D151800F52946 /* AFHTTPRequestOperationLogger.m in Sources */,
+				B6BF99F918F6A2200097D9AA /* GKAttributedLabel.m in Sources */,
 				B6603CAC188D151800F52946 /* SDImageCache.m in Sources */,
 				B6603C41188D150A00F52946 /* NSDate+App.m in Sources */,
 				B63156A918ADE5BF003D802E /* BaseTableViewController.m in Sources */,
@@ -1157,6 +1163,7 @@
 				B6603C2E188CEBA200F52946 /* RootViewController.m in Sources */,
 				B6603CF2188D153300F52946 /* Passport.m in Sources */,
 				B651E48118AF3DB800AF077B /* RegisterVC.m in Sources */,
+				B626517618F53E9700203ECB /* TTTAttributedLabel.m in Sources */,
 				B6603C2C188CEBA200F52946 /* MasterTableViewCell.m in Sources */,
 				B63F9B4918DC538500D8768E /* HomeSectionHeaderView.m in Sources */,
 				B61EE31B18B731A200585C9A /* SelectionVC.m in Sources */,
@@ -1176,7 +1183,6 @@
 				B6603CEB188D153300F52946 /* GKBaseHTTPClient.m in Sources */,
 				B6603CB2188D151800F52946 /* SDWebImagePrefetcher.m in Sources */,
 				B6603CB5188D151800F52946 /* UIImage+MultiFormat.m in Sources */,
-				B643CFEF18EBEA270088B18E /* STTweetLabel.m in Sources */,
 				B6011E9518AD00BD0034DD52 /* CustomTextField.m in Sources */,
 				B61FAB1618E15F3B00CD777B /* MessageCell.m in Sources */,
 				B6603CAD188D151800F52946 /* SDWebImageCompat.m in Sources */,

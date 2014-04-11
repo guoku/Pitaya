@@ -105,18 +105,17 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     GKNote *note = self.dataArray[indexPath.row][@"object"][@"note"];
-    CGSize cellSize = [note.text sizeWithFont:[UIFont systemFontOfSize:15.f] constrainedToSize:CGSizeMake(608.f, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
-    cellSize.width = 668.f;
-    cellSize.height += 200.f;
-    return cellSize;
+    
+    return [NoteCollectionCell sizeForCellWithNote:note];
 }
 
 #pragma mark - NoteCollectionCellDelegate
 
-- (void)noteCollectionCell:(NoteCollectionCell *)cell didSelectEntity:(GKEntity *)entity
+- (void)noteCollectionCell:(NoteCollectionCell *)cell didSelectEntity:(GKEntity *)entity note:(GKNote *)note
 {
     EntityDetailVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"EntityDetailVC"];
     vc.entity = entity;
+    vc.note = note;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -125,6 +124,12 @@
     UserVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UserVC"];
     vc.user = user;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)noteCollectionCell:(NoteCollectionCell *)cell didSelectTag:(NSString *)tag
+{
+    // TODO: push TagVC
+    NSLog(@"%@", tag);
 }
 
 #pragma mark - Life Cycle

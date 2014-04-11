@@ -91,6 +91,12 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)selectionCell:(SelectionCell *)cell didSelectTag:(NSString *)tag
+{
+    // TODO: push TagVC
+    NSLog(@"%@", tag);
+}
+
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView

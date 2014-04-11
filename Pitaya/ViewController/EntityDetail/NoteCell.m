@@ -7,13 +7,16 @@
 //
 
 #import "NoteCell.h"
+#import "GKAttributedLabel.h"
 
-@interface NoteCell ()
+static CGFloat const kNoteCellTextFontSize = 15.f;
+
+@interface NoteCell () <TTTAttributedLabelDelegate>
 
 @property (nonatomic, strong) IBOutlet UIView *backView;
 @property (nonatomic, strong) IBOutlet UIButton *avatarButton;
 @property (nonatomic, strong) IBOutlet UIButton *nicknameButton;
-@property (nonatomic, strong) IBOutlet UILabel *contentLabel;
+@property (nonatomic, strong) IBOutlet GKAttributedLabel *contentLabel;
 @property (nonatomic, strong) IBOutlet UIButton *pokeButton;
 @property (nonatomic, strong) IBOutlet UIButton *commentButton;
 @property (nonatomic, strong) IBOutlet UIImageView *starImageView;
@@ -22,6 +25,13 @@
 @end
 
 @implementation NoteCell
+
++ (CGFloat)heightForCellWithNote:(GKNote *)note
+{
+    CGSize contentLabelSize = [note.text sizeWithFont:[UIFont systemFontOfSize:kNoteCellTextFontSize] constrainedToSize:CGSizeMake(580.f, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+    
+    return contentLabelSize.height + 85.f;
+}
 
 #pragma mark - Getter And Setter
 
@@ -39,6 +49,14 @@
     if (_delegate && [_delegate respondsToSelector:@selector(noteCell:didSelectUser:)]) {
         [self.delegate noteCell:self didSelectUser:self.note.creator];
     }
+}
+
+#pragma mark - TTTAttributedLabelDelegate
+
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithPhoneNumber:(NSString *)phoneNumber
+{
+    // TODO: push TagVC
+    NSLog(@"%@", phoneNumber);
 }
 
 #pragma mark - Life Cycle
@@ -65,7 +83,11 @@
     [self.nicknameButton setTitle:self.note.creator.nickname forState:UIControlStateNormal];
     
     // 点评内容
-    self.contentLabel.text = self.note.text;
+    self.contentLabel.numberOfLines = 0;
+    self.contentLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.contentLabel.textColor = UIColorFromRGB(0x666666);
+    self.contentLabel.font = [UIFont appFontWithSize:kNoteCellTextFontSize];
+    self.contentLabel.plainText = self.note.text;
     
     // 赞按钮
     self.pokeButton.selected = self.note.isPoked;

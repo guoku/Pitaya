@@ -7,11 +7,14 @@
 //
 
 #import "SelectionCell.h"
+#import "GKAttributedLabel.h"
+
+static CGFloat const kSelectionCellTextFontSize = 14.f;
 
 @interface SelectionCell ()
 
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
-@property (nonatomic, strong) IBOutlet UILabel *noteLabel;
+@property (nonatomic, strong) IBOutlet GKAttributedLabel *noteLabel;
 @property (nonatomic, strong) IBOutlet UIButton *likeButton;
 @property (nonatomic, strong) IBOutlet UIButton *avatarButton;
 @property (nonatomic, strong) IBOutlet UILabel *dateLabel;
@@ -83,6 +86,15 @@
     }
 }
 
+#pragma mark - TTTAttributedLabelDelegate
+
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithPhoneNumber:(NSString *)phoneNumber
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(selectionCell:didSelectTag:)]) {
+        [self.delegate selectionCell:self didSelectTag:phoneNumber];
+    }
+}
+
 #pragma mark - Life Cycle
 
 - (void)setNeedsLayout
@@ -106,7 +118,13 @@
     [self.imageView setImageWithURL:self.entity.imageURL_310x310];
     
     // 点评内容
-    self.noteLabel.text = [self.note.text stringByAppendingString:@"\n\n\n\n\n\n\n\n"];
+    self.noteLabel.numberOfLines = 0;
+    self.noteLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    self.noteLabel.textColor = UIColorFromRGB(0x666666);
+    self.noteLabel.font = [UIFont appFontWithSize:kSelectionCellTextFontSize];
+    self.noteLabel.verticalAlignment = TTTAttributedLabelVerticalAlignmentTop;
+    self.noteLabel.minimumLineHeight = 17.f;
+    self.noteLabel.plainText = self.note.text;
     
     // 喜爱按钮
     [self.likeButton setTitle:[NSString stringWithFormat:@"喜爱 %d", self.entity.likeCount] forState:UIControlStateNormal];

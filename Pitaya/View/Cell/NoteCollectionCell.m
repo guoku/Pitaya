@@ -7,8 +7,11 @@
 //
 
 #import "NoteCollectionCell.h"
+#import "GKAttributedLabel.h"
 
-@interface NoteCollectionCell ()
+static CGFloat const kNoteCollectionCellTextFontSize = 15.f;
+
+@interface NoteCollectionCell () <TTTAttributedLabelDelegate>
 
 @property (nonatomic, strong) IBOutlet UIButton *avatarButton;
 @property (nonatomic, strong) IBOutlet UIButton *nicknameButton;
@@ -20,7 +23,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *priceLabel;
 @property (nonatomic, strong) IBOutlet UILabel *likeCountLabel;
 @property (nonatomic, strong) IBOutlet UILabel *commentCountLabel;
-@property (nonatomic, strong) IBOutlet UILabel *noteLabel;
+@property (nonatomic, strong) IBOutlet GKAttributedLabel *noteLabel;
 @property (nonatomic, strong) IBOutlet UIButton *pokeButton;
 @property (nonatomic, strong) IBOutlet UILabel *dateLabel;
 
@@ -29,6 +32,13 @@
 @end
 
 @implementation NoteCollectionCell
+
++ (CGSize)sizeForCellWithNote:(GKNote *)note
+{
+    CGSize noteLabelSize = [note.text sizeWithFont:[UIFont systemFontOfSize:kNoteCollectionCellTextFontSize] constrainedToSize:CGSizeMake(608.f, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+    ;
+    return CGSizeMake(668.f, noteLabelSize.height + 200.f);
+}
 
 #pragma mark - Getter And Setter
 
@@ -50,8 +60,8 @@
 
 - (void)tapEntityBackView
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(noteCollectionCell:didSelectEntity:)]) {
-        [self.delegate noteCollectionCell:self didSelectEntity:self.entity];
+    if (_delegate && [_delegate respondsToSelector:@selector(noteCollectionCell:didSelectEntity:note:)]) {
+        [self.delegate noteCollectionCell:self didSelectEntity:self.entity note:self.note];
     }
 }
 
@@ -59,6 +69,15 @@
 {
     if (_delegate && [_delegate respondsToSelector:@selector(noteCollectionCell:didSelectUser:)]) {
         [self.delegate noteCollectionCell:self didSelectUser:self.note.creator];
+    }
+}
+
+#pragma mark - TTTAttributedLabelDelegate
+
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithPhoneNumber:(NSString *)phoneNumber
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(noteCollectionCell:didSelectTag:)]) {
+        [self.delegate noteCollectionCell:self didSelectTag:phoneNumber];
     }
 }
 
@@ -102,7 +121,11 @@
     self.priceLabel.text = [NSString stringWithFormat:@"¥%.2f", self.entity.lowestPrice];
     
     // 点评内容
-    self.noteLabel.text = self.note.text;
+    self.noteLabel.numberOfLines = 0;
+    self.noteLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.noteLabel.textColor = UIColorFromRGB(0x666666);
+    self.noteLabel.font = [UIFont appFontWithSize:kNoteCollectionCellTextFontSize];
+    self.noteLabel.plainText = self.note.text;
     
     // 喜爱数量
     self.likeCountLabel.text = @(self.entity.likeCount).stringValue;

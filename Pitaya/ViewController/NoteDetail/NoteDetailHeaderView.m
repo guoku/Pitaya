@@ -7,14 +7,16 @@
 //
 
 #import "NoteDetailHeaderView.h"
-#import "STTweetLabel.h"
+#import "GKAttributedLabel.h"
 
-@interface NoteDetailHeaderView ()
+static CGFloat const kNoteLabelTextFontSize = 15.f;
+
+@interface NoteDetailHeaderView () <TTTAttributedLabelDelegate>
 
 @property (nonatomic, strong) IBOutlet UIButton *avatarButton;
 @property (nonatomic, strong) IBOutlet UILabel *nicknameLabel;
 @property (nonatomic, strong) IBOutlet UIButton *categoryButton;
-@property (nonatomic, strong) IBOutlet STTweetLabel *noteLabel;
+@property (nonatomic, strong) IBOutlet GKAttributedLabel *noteLabel;
 @property (nonatomic, strong) IBOutlet UIButton *pokeButton;
 @property (nonatomic, strong) IBOutlet UILabel *dateLabel;
 
@@ -26,18 +28,18 @@
 {
     _note = note;
     
-    self.noteLabel.detectionBlock = ^(STTweetHotWord hotWord, NSString *string, NSString *protocol, NSRange range) {
-        // TODO: push TagVC
-        NSLog(@"push TagVC :%@ hotWord:%d", string, hotWord);
-    };
-    [self.noteLabel setAttributes:@{NSForegroundColorAttributeName:UIColorFromRGB(0x666666), NSFontAttributeName:self.noteLabel.font}];
-    [self.noteLabel setAttributes:@{NSForegroundColorAttributeName:UIColorFromRGB(0x427EC0), NSFontAttributeName:self.noteLabel.font} hotWord:STTweetHandle];
-    [self.noteLabel setAttributes:@{NSForegroundColorAttributeName:UIColorFromRGB(0x427EC0), NSFontAttributeName:self.noteLabel.font} hotWord:STTweetHashtag];
-    [self.noteLabel setAttributes:@{NSForegroundColorAttributeName:UIColorFromRGB(0x427EC0), NSFontAttributeName:self.noteLabel.font} hotWord:STTweetLink];
-    CGSize size = [self.noteLabel suggestedFrameSizeToFitEntireStringConstraintedToWidth:CGRectGetWidth(self.noteLabel.bounds)];
-    self.deFrameHeight = size.height + 160.f;
+    CGSize noteLabelSize = [note.text sizeWithFont:[UIFont systemFontOfSize:kNoteLabelTextFontSize] constrainedToSize:CGSizeMake(CGRectGetWidth(self.noteLabel.bounds), CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+    self.deFrameHeight = noteLabelSize.height + 130.f;
     
     [self setNeedsLayout];
+}
+
+#pragma mark - TTTAttributedLabelDelegate
+
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithPhoneNumber:(NSString *)phoneNumber
+{
+    // TODO: push TagVC
+    NSLog(@"%@", phoneNumber);
 }
 
 - (void)layoutSubviews
@@ -54,7 +56,12 @@
     self.nicknameLabel.text = user.nickname;
     
     [self.categoryButton setTitle:[NSString stringWithFormat:@"「%@」", [category.categoryName componentsSeparatedByString:@"-"].firstObject] forState:UIControlStateNormal];
-    self.noteLabel.text = note.text;
+    
+    self.noteLabel.numberOfLines = 0;
+    self.noteLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.noteLabel.textColor = UIColorFromRGB(0x666666);
+    self.noteLabel.font = [UIFont appFontWithSize:kNoteLabelTextFontSize];
+    self.noteLabel.plainText = note.text;
     
     [self.pokeButton setTitle:@(self.note.pokeCount).stringValue forState:UIControlStateNormal];
     

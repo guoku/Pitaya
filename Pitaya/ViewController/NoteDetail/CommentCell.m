@@ -7,31 +7,29 @@
 //
 
 #import "CommentCell.h"
-#import "STTweetLabel.h"
+#import "GKAttributedLabel.h"
 
-@interface CommentCell ()
+static CGFloat const kCommentCellTextFontSize = 15.f;
 
-@property (nonatomic, strong) IBOutlet IBOutlet UIButton *avatarButton;
-@property (nonatomic, strong) IBOutlet IBOutlet UILabel *nicknameLabel;
-@property (nonatomic, strong) IBOutlet IBOutlet UILabel *replyLabel;
-@property (nonatomic, strong) IBOutlet IBOutlet UILabel *replyNicknameLabel;
-@property (nonatomic, strong) IBOutlet IBOutlet UIButton *replyButton;
-@property (nonatomic, strong) IBOutlet IBOutlet STTweetLabel *commentLabel;
-@property (nonatomic, strong) IBOutlet IBOutlet UILabel *dateLabel;
+@interface CommentCell () <TTTAttributedLabelDelegate>
+
+@property (nonatomic, strong) IBOutlet UIButton *avatarButton;
+@property (nonatomic, strong) IBOutlet UILabel *nicknameLabel;
+@property (nonatomic, strong) IBOutlet UILabel *replyLabel;
+@property (nonatomic, strong) IBOutlet UILabel *replyNicknameLabel;
+@property (nonatomic, strong) IBOutlet UIButton *replyButton;
+@property (nonatomic, strong) IBOutlet GKAttributedLabel *commentLabel;
+@property (nonatomic, strong) IBOutlet UILabel *dateLabel;
 
 @end
 
 @implementation CommentCell
 
-+ (CGFloat)heightForComment:(GKComment *)comment
++ (CGFloat)heightForCellWithComment:(GKComment *)comment
 {
-    STTweetLabel *label = [[STTweetLabel alloc] initWithFrame:CGRectMake(0.f, 0.f, 620.f, 0.f)];
-    label.font = [UIFont appFontWithSize:15.f];
-    label.numberOfLines = 0;
-    label.lineBreakMode = NSLineBreakByWordWrapping;
-    label.text = comment.text;
-    CGSize size = [label suggestedFrameSizeToFitEntireStringConstraintedToWidth:CGRectGetWidth(label.bounds)];
-    return size.height + 100.f;
+    CGSize contentLabelSize = [comment.text sizeWithFont:[UIFont systemFontOfSize:kCommentCellTextFontSize] constrainedToSize:CGSizeMake(620.f, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
+    
+    return contentLabelSize.height + 100.f;
 }
 
 - (void)setComment:(GKComment *)comment
@@ -55,6 +53,16 @@
     }
 }
 
+#pragma mark - TTTAttributedLabelDelegate
+
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithPhoneNumber:(NSString *)phoneNumber
+{
+    // TODO: push TagVC
+    NSLog(@"%@", phoneNumber);
+}
+
+#pragma mark - Life Cycle
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -73,11 +81,11 @@
         self.replyNicknameLabel.text = nil;
     }
     
-    self.commentLabel.detectionBlock = ^(STTweetHotWord hotWord, NSString *string, NSString *protocol, NSRange range) {
-        // TODO: push TagVC
-        NSLog(@"push TagVC :%@ hotWord:%d", string, hotWord);
-    };
-    self.commentLabel.text = self.comment.text;
+    self.commentLabel.numberOfLines = 0;
+    self.commentLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.commentLabel.textColor = UIColorFromRGB(0x666666);
+    self.commentLabel.font = [UIFont appFontWithSize:kCommentCellTextFontSize];
+    self.commentLabel.plainText = self.comment.text;
     
     self.dateLabel.text = [self.comment.createdDate stringWithDefaultFormat];
 }

@@ -22,4 +22,6 @@
 
 @property (nonatomic, strong) GKNote *note;
 
++ (CGFloat)heightForCellWithNote:(GKNote *)note;
+
 @end
