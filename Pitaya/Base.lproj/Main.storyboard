@@ -1739,6 +1739,9 @@
                                                     <state key="normal" title="¥198.00">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="tapPriceButton:" destination="C9Z-0J-GF4" eventType="touchUpInside" id="116-nb-zAl"/>
+                                                    </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mDB-9l-II2">
                                                     <rect key="frame" x="0.0" y="429" width="668" height="1"/>

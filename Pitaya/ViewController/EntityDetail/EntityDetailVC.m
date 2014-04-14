@@ -13,6 +13,7 @@
 #import "UserVC.h"
 #import "NoteDetailVC.h"
 #import "NotePostVC.h"
+#import "WebVC.h"
 
 @interface EntityDetailVC () <UITableViewDataSource, UITableViewDelegate, RecommendEntityCellDelegate, NoteCellDelegate>
 
@@ -165,6 +166,17 @@
         } failure:^(NSInteger stateCode) {
             [BBProgressHUD showErrorWithText:@"喜爱失败"];
         }];
+    }
+}
+
+- (IBAction)tapPriceButton:(id)sender
+{
+    GKPurchase * purchase = self.entity.purchaseArray.firstObject;
+    if (purchase) {
+        WebVC *vc = [[WebVC alloc] initWithURL:purchase.buyLink];
+        vc.modalPresentationStyle = UIModalPresentationFullScreen;
+        BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
+        [self.navigationController presentViewController:nav animated:YES completion:nil];
     }
 }
 
