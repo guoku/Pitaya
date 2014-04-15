@@ -107,7 +107,9 @@ static CGFloat const kNoteCellTextFontSize = 15.f;
     self.contentLabel.numberOfLines = 0;
     self.contentLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.contentLabel.textColor = UIColorFromRGB(0x666666);
-    self.contentLabel.font = [UIFont appFontWithSize:kNoteCellTextFontSize];
+    self.contentLabel.font = [GKAttributedLabel fontOfSize:kNoteCellTextFontSize];
+    self.contentLabel.verticalAlignment = TTTAttributedLabelVerticalAlignmentTop;
+    self.contentLabel.minimumLineHeight = 17.f;
     self.contentLabel.plainText = self.note.text;
     
     // 赞按钮

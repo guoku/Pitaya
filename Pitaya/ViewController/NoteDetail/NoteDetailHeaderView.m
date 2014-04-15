@@ -60,7 +60,9 @@ static CGFloat const kNoteLabelTextFontSize = 15.f;
     self.noteLabel.numberOfLines = 0;
     self.noteLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.noteLabel.textColor = UIColorFromRGB(0x666666);
-    self.noteLabel.font = [UIFont appFontWithSize:kNoteLabelTextFontSize];
+    self.noteLabel.font = [GKAttributedLabel fontOfSize:kNoteLabelTextFontSize];
+    self.noteLabel.verticalAlignment = TTTAttributedLabelVerticalAlignmentTop;
+    self.noteLabel.minimumLineHeight = 17.f;
     self.noteLabel.plainText = note.text;
     
     [self.pokeButton setTitle:@(self.note.pokeCount).stringValue forState:UIControlStateNormal];

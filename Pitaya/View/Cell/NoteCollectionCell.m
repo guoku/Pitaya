@@ -146,7 +146,9 @@ static CGFloat const kNoteCollectionCellTextFontSize = 15.f;
     self.noteLabel.numberOfLines = 0;
     self.noteLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.noteLabel.textColor = UIColorFromRGB(0x666666);
-    self.noteLabel.font = [UIFont appFontWithSize:kNoteCollectionCellTextFontSize];
+    self.noteLabel.font = [GKAttributedLabel fontOfSize:kNoteCollectionCellTextFontSize];
+    self.noteLabel.verticalAlignment = TTTAttributedLabelVerticalAlignmentTop;
+    self.noteLabel.minimumLineHeight = 17.f;
     self.noteLabel.plainText = self.note.text;
     
     // 喜爱数量

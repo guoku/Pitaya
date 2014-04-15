@@ -84,7 +84,9 @@ static CGFloat const kCommentCellTextFontSize = 15.f;
     self.commentLabel.numberOfLines = 0;
     self.commentLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.commentLabel.textColor = UIColorFromRGB(0x666666);
-    self.commentLabel.font = [UIFont appFontWithSize:kCommentCellTextFontSize];
+    self.commentLabel.font = [GKAttributedLabel fontOfSize:kCommentCellTextFontSize];
+    self.commentLabel.verticalAlignment = TTTAttributedLabelVerticalAlignmentTop;
+    self.commentLabel.minimumLineHeight = 17.f;
     self.commentLabel.plainText = self.comment.text;
     
     self.dateLabel.text = [self.comment.createdDate stringWithDefaultFormat];

@@ -61,7 +61,7 @@ static CGFloat edgeSizeFromCornerRadius(CGFloat cornerRadius) {
 - (void)setupFlat
 {
     UIColor *normalColor = [UIColor whiteColor];
-    UIColor *selectedColor = UIColorFromRGB(0x007AFF);
+    UIColor *selectedColor = UIColorFromRGB(0x427EC0);
     UIFont *font = [UIFont systemFontOfSize:13.f];
     CGFloat cornerRadius = 4.f;
     
