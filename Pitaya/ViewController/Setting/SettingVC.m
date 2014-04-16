@@ -106,6 +106,16 @@ static NSInteger const VersionLabelTag = 105;
     NSString *CellIdentifier = [NSString stringWithFormat:@"SettingCell%d%d", indexPath.section, indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
+    if (!iOS7) {
+        cell.backgroundView = [UIView new];
+        UIView *separatorView = [cell viewWithTag:111];
+        if (!separatorView) {
+            separatorView = [[UIView alloc] initWithFrame:CGRectMake(15.f, 49.f, 758.f, 1.f)];
+            separatorView.backgroundColor = UIColorFromRGB(0xE9E9E9);
+            [cell addSubview:separatorView];
+        }
+    }
+    
     switch (indexPath.section) {
         case 0:
         {
@@ -265,7 +275,6 @@ static NSInteger const VersionLabelTag = 105;
         [[Passport sharedInstance].user addObserver:self forKeyPath:@"avatarURL" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
         [[Passport sharedInstance].user addObserver:self forKeyPath:@"nickname" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
         [[Passport sharedInstance].user addObserver:self forKeyPath:@"email" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
-        NSLog(@"addObserver willLogout~~~");
     } else {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogin) name:GKUserDidLoginNotification object:nil];
         NSLog(@"addObserver didLogin");

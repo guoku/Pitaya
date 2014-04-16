@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) id plainText;
 
++ (UIFont *)fontOfSize:(CGFloat)size;
+
 @end

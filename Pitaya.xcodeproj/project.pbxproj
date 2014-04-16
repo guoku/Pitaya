@@ -27,6 +27,7 @@
 		B626517618F53E9700203ECB /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B626517518F53E9700203ECB /* TTTAttributedLabel.m */; };
 		B63156A918ADE5BF003D802E /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63156A818ADE5BF003D802E /* BaseTableViewController.m */; };
 		B63F9B4918DC538500D8768E /* HomeSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B63F9B4818DC538500D8768E /* HomeSectionHeaderView.m */; };
+		B644476318FBB1AB00CEE05B /* WebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B644476218FBB1AB00CEE05B /* WebVC.m */; };
 		B647727618DAAC2900F662FD /* TagCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B647727518DAAC2900F662FD /* TagCollectionCell.m */; };
 		B64ACF921890DB1900D88459 /* DiscoverSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B64ACF911890DB1900D88459 /* DiscoverSectionHeaderView.m */; };
 		B64ACF991891361800D88459 /* GroupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B64ACF981891361800D88459 /* GroupVC.m */; };
@@ -181,6 +182,8 @@
 		B63156A818ADE5BF003D802E /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		B63F9B4718DC538500D8768E /* HomeSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSectionHeaderView.h; sourceTree = "<group>"; };
 		B63F9B4818DC538500D8768E /* HomeSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSectionHeaderView.m; sourceTree = "<group>"; };
+		B644476118FBB1AB00CEE05B /* WebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebVC.h; sourceTree = "<group>"; };
+		B644476218FBB1AB00CEE05B /* WebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebVC.m; sourceTree = "<group>"; };
 		B647727418DAAC2900F662FD /* TagCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCollectionCell.h; sourceTree = "<group>"; };
 		B647727518DAAC2900F662FD /* TagCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCollectionCell.m; sourceTree = "<group>"; };
 		B64ACF901890DB1900D88459 /* DiscoverSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverSectionHeaderView.h; sourceTree = "<group>"; };
@@ -499,6 +502,15 @@
 			path = TTTAttributedLabel;
 			sourceTree = "<group>";
 		};
+		B644476018FBB16E00CEE05B /* WebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B644476118FBB1AB00CEE05B /* WebVC.h */,
+				B644476218FBB1AB00CEE05B /* WebVC.m */,
+			);
+			path = WebViewController;
+			sourceTree = "<group>";
+		};
 		B64F9514188F8AB400531FCA /* Homepage */ = {
 			isa = PBXGroup;
 			children = (
@@ -707,6 +719,7 @@
 				B64F9515188F8AB400531FCA /* Message */,
 				B64F9516188F8AB400531FCA /* Setting */,
 				B600CA0A18D81BF300AB8FD7 /* UserVC */,
+				B644476018FBB16E00CEE05B /* WebViewController */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1053,6 +1066,14 @@
 			knownRegions = (
 				en,
 				Base,
+				da,
+				de,
+				"es-ES",
+				es,
+				fr,
+				ja,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = B6603BD0188CE7AE00F52946;
 			productRefGroup = B6603BDA188CE7AE00F52946 /* Products */;
@@ -1125,6 +1146,7 @@
 				B6603CEC188D153300F52946 /* GKAPI.m in Sources */,
 				B651165B1893B86200B40016 /* EntityCollectionCell.m in Sources */,
 				B61B10D8188E35B90090FC38 /* MasterTableHeaderView.m in Sources */,
+				B644476318FBB1AB00CEE05B /* WebVC.m in Sources */,
 				B64F951A188F8AEB00531FCA /* HomepageVC.m in Sources */,
 				B6252BBB18C5E1DD00E5F489 /* CategorySectionHeaderView.m in Sources */,
 				B6603C44188D150A00F52946 /* UIDevice+Hardware.m in Sources */,
@@ -1339,7 +1361,7 @@
 					"-Wno-unused-parameter",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8672FBE9-AB65-4C61-845D-528769724CCF";
+				PROVISIONING_PROFILE = "658EAC62-A0FA-484B-9F4F-FB6FE6B160F2";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1362,7 +1384,7 @@
 					"-Wno-unused-parameter",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8672FBE9-AB65-4C61-845D-528769724CCF";
+				PROVISIONING_PROFILE = "658EAC62-A0FA-484B-9F4F-FB6FE6B160F2";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				WRAPPER_EXTENSION = app;
 			};

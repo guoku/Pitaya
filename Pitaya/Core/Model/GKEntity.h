@@ -7,7 +7,7 @@
 //
 
 #import "GKBaseModel.h"
-@class GKPurchase;
+#import "GKPurchase.h"
 @class GKNote;
 
 /**

@@ -20,6 +20,16 @@ static inline NSRegularExpression * TagRegularExpression() {
 
 @implementation GKAttributedLabel
 
++ (UIFont *)fontOfSize:(CGFloat)size
+{
+    if (iOS7) {
+        return [UIFont appFontWithSize:size];
+    } else {
+        return [UIFont fontWithName:@"STHeitiJ-Light" size:size];
+
+    }
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
