@@ -26,6 +26,8 @@
 		B6252BBB18C5E1DD00E5F489 /* CategorySectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6252BBA18C5E1DD00E5F489 /* CategorySectionHeaderView.m */; };
 		B626517618F53E9700203ECB /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B626517518F53E9700203ECB /* TTTAttributedLabel.m */; };
 		B63156A918ADE5BF003D802E /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63156A818ADE5BF003D802E /* BaseTableViewController.m */; };
+		B63DEE3F18FE58F80080810F /* TagVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B63DEE3E18FE58F80080810F /* TagVC.m */; };
+		B63DEE4218FE61170080810F /* TagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B63DEE4118FE61170080810F /* TagCell.m */; };
 		B63F9B4918DC538500D8768E /* HomeSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B63F9B4818DC538500D8768E /* HomeSectionHeaderView.m */; };
 		B644476318FBB1AB00CEE05B /* WebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B644476218FBB1AB00CEE05B /* WebVC.m */; };
 		B647727618DAAC2900F662FD /* TagCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B647727518DAAC2900F662FD /* TagCollectionCell.m */; };
@@ -180,6 +182,10 @@
 		B626517518F53E9700203ECB /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		B63156A718ADE5BF003D802E /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		B63156A818ADE5BF003D802E /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
+		B63DEE3D18FE58F80080810F /* TagVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagVC.h; sourceTree = "<group>"; };
+		B63DEE3E18FE58F80080810F /* TagVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagVC.m; sourceTree = "<group>"; };
+		B63DEE4018FE61170080810F /* TagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCell.h; sourceTree = "<group>"; };
+		B63DEE4118FE61170080810F /* TagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCell.m; sourceTree = "<group>"; };
 		B63F9B4718DC538500D8768E /* HomeSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSectionHeaderView.h; sourceTree = "<group>"; };
 		B63F9B4818DC538500D8768E /* HomeSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSectionHeaderView.m; sourceTree = "<group>"; };
 		B644476118FBB1AB00CEE05B /* WebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebVC.h; sourceTree = "<group>"; };
@@ -502,6 +508,17 @@
 			path = TTTAttributedLabel;
 			sourceTree = "<group>";
 		};
+		B63DEE3C18FE58DE0080810F /* Tag */ = {
+			isa = PBXGroup;
+			children = (
+				B63DEE3D18FE58F80080810F /* TagVC.h */,
+				B63DEE3E18FE58F80080810F /* TagVC.m */,
+				B63DEE4018FE61170080810F /* TagCell.h */,
+				B63DEE4118FE61170080810F /* TagCell.m */,
+			);
+			path = Tag;
+			sourceTree = "<group>";
+		};
 		B644476018FBB16E00CEE05B /* WebViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -719,6 +736,7 @@
 				B64F9515188F8AB400531FCA /* Message */,
 				B64F9516188F8AB400531FCA /* Setting */,
 				B600CA0A18D81BF300AB8FD7 /* UserVC */,
+				B63DEE3C18FE58DE0080810F /* Tag */,
 				B644476018FBB16E00CEE05B /* WebViewController */,
 			);
 			path = ViewController;
@@ -1123,6 +1141,7 @@
 				B6603C48188D150A00F52946 /* UIView+App.m in Sources */,
 				B6603CEA188D153300F52946 /* GKUser.m in Sources */,
 				B6603CE9188D153300F52946 /* GKPurchase.m in Sources */,
+				B63DEE4218FE61170080810F /* TagCell.m in Sources */,
 				B6603C2A188CEBA200F52946 /* BaseViewController.m in Sources */,
 				B6603BED188CE7AE00F52946 /* AppDelegate.m in Sources */,
 				B6603CBC188D151800F52946 /* UIScrollView+SVPullToRefresh.m in Sources */,
@@ -1185,6 +1204,7 @@
 				B6603C2E188CEBA200F52946 /* RootViewController.m in Sources */,
 				B6603CF2188D153300F52946 /* Passport.m in Sources */,
 				B651E48118AF3DB800AF077B /* RegisterVC.m in Sources */,
+				B63DEE3F18FE58F80080810F /* TagVC.m in Sources */,
 				B626517618F53E9700203ECB /* TTTAttributedLabel.m in Sources */,
 				B6603C2C188CEBA200F52946 /* MasterTableViewCell.m in Sources */,
 				B63F9B4918DC538500D8768E /* HomeSectionHeaderView.m in Sources */,

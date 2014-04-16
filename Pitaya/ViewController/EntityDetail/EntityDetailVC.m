@@ -14,6 +14,7 @@
 #import "NoteDetailVC.h"
 #import "NotePostVC.h"
 #import "WebVC.h"
+#import "TagVC.h"
 
 @interface EntityDetailVC () <UITableViewDataSource, UITableViewDelegate, RecommendEntityCellDelegate, NoteCellDelegate>
 
@@ -204,6 +205,16 @@
     UserVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UserVC"];
     vc.user = user;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)noteCell:(NoteCell *)cell didSelectTag:(NSString *)tag fromUser:(GKUser *)user
+{
+    TagVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"TagVC"];
+    if (tag.length > 1) {
+        vc.tagName = [tag substringFromIndex:1];
+        vc.user = user;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (void)noteCell:(NoteCell *)cell tapPokeButton:(UIButton *)pokeButton

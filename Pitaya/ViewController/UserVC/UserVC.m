@@ -14,6 +14,7 @@
 #import "EntityDetailVC.h"
 #import "CategoryVC.h"
 #import "TagCollectionCell.h"
+#import "TagVC.h"
 
 @interface UserVC () <UICollectionViewDataSource, UICollectionViewDelegate, UserSectionHeaderViewDelegate, NoteCollectionCellDelegate>
 
@@ -309,6 +310,7 @@
             NSString *tagName = self.dataArray[self.selectedIndex][indexPath.row][@"tagName"];
             NSInteger entityCount = [self.dataArray[self.selectedIndex][indexPath.row][@"entityCount"] integerValue];
             cell.tagName = tagName;
+            cell.entityCount = entityCount;
             return cell;
         }
             
@@ -452,10 +454,14 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)noteCollectionCell:(NoteCollectionCell *)cell didSelectTag:(NSString *)tag
+- (void)noteCollectionCell:(NoteCollectionCell *)cell didSelectTag:(NSString *)tag fromUser:(GKUser *)user
 {
-    // TODO: push TagVC
-    NSLog(@"%@", tag);
+    TagVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"TagVC"];
+    if (tag.length > 1) {
+        vc.tagName = [tag substringFromIndex:1];
+        vc.user = user;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 #pragma mark - Life Cycle
@@ -507,6 +513,11 @@
         CategoryVC *vc = (CategoryVC *)segue.destinationViewController;
         NSUInteger categoryId = categoryButton.tag;
         vc.category = [GKEntityCategory modelFromDictionary:@{@"categoryId":@(categoryId)}];
+    } else if ([segue.destinationViewController isKindOfClass:[TagVC class]]) {
+        TagCollectionCell *cell = (TagCollectionCell *)sender;
+        TagVC *vc = (TagVC *)segue.destinationViewController;
+        vc.tagName = cell.tagName;
+        vc.user = self.user;
     }
 }
 

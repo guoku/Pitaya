@@ -8,6 +8,7 @@
 
 #import "CommentCell.h"
 #import "GKAttributedLabel.h"
+#import "TagVC.h"
 
 static CGFloat const kCommentCellTextFontSize = 15.f;
 
@@ -57,8 +58,9 @@ static CGFloat const kCommentCellTextFontSize = 15.f;
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithPhoneNumber:(NSString *)phoneNumber
 {
-    // TODO: push TagVC
-    NSLog(@"%@", phoneNumber);
+    if (_delegate && [_delegate respondsToSelector:@selector(commentCell:didSelectTag:fromUser:)]) {
+        [self.delegate commentCell:self didSelectTag:phoneNumber fromUser:self.comment.creator];
+    }
 }
 
 #pragma mark - Life Cycle
