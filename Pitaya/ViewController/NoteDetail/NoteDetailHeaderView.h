@@ -7,8 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+@class NoteDetailHeaderView;
+
+@protocol NoteDetailHeaderViewDelegate <NSObject>
+
+@optional
+- (void)headerView:(NoteDetailHeaderView *)headerView didSelectTag:(NSString *)tag fromUser:(GKUser *)user;
+
+@end
 
 @interface NoteDetailHeaderView : UIView
+
+@property (nonatomic, weak) IBOutlet id<NoteDetailHeaderViewDelegate> delegate;
 
 @property (nonatomic, strong) GKNote *note;
 

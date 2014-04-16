@@ -10,8 +10,9 @@
 #import "NoteDetailHeaderView.h"
 #import "CommentCell.h"
 #import "UserVC.h"
+#import "TagVC.h"
 
-@interface NoteDetailVC () <UITableViewDataSource, UITableViewDelegate, CommentCellDelegate>
+@interface NoteDetailVC () <UITableViewDataSource, UITableViewDelegate, NoteDetailHeaderViewDelegate, CommentCellDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) IBOutlet NoteDetailHeaderView *tableHeaderView;
@@ -110,6 +111,18 @@
     [self.inputTextField resignFirstResponder];
 }
 
+#pragma mark - NoteDetailHeaderViewDelegate
+
+- (void)headerView:(NoteDetailHeaderView *)headerView didSelectTag:(NSString *)tag fromUser:(GKUser *)user
+{
+    TagVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"TagVC"];
+    if (tag.length > 1) {
+        vc.tagName = [tag substringFromIndex:1];
+        vc.user = user;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
 #pragma mark - CommentCellDelegate
 
 - (void)commentCell:(CommentCell *)cell replyComment:(GKComment *)comment
@@ -127,9 +140,14 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)commentCell:(CommentCell *)cell didSelectTag:(NSString *)tag
+- (void)commentCell:(CommentCell *)cell didSelectTag:(NSString *)tag fromUser:(GKUser *)user
 {
-    
+    TagVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"TagVC"];
+    if (tag.length > 1) {
+        vc.tagName = [tag substringFromIndex:1];
+        vc.user = user;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 #pragma mark - Keyboard Events

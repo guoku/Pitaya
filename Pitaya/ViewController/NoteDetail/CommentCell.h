@@ -13,7 +13,7 @@
 
 @optional
 - (void)commentCell:(CommentCell *)cell didSelectUser:(GKUser *)user;
-- (void)commentCell:(CommentCell *)cell didSelectTag:(NSString *)tag;
+- (void)commentCell:(CommentCell *)cell didSelectTag:(NSString *)tag fromUser:(GKUser *)user;
 - (void)commentCell:(CommentCell *)cell replyComment:(GKComment *)comment;
 
 @end

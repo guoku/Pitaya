@@ -13,6 +13,7 @@
 
 @optional
 - (void)noteCell:(NoteCell *)cell didSelectUser:(GKUser *)user;
+- (void)noteCell:(NoteCell *)cell didSelectTag:(NSString *)tag fromUser:(GKUser *)user;
 - (void)noteCell:(NoteCell *)cell tapPokeButton:(UIButton *)pokeButton;
 
 @end

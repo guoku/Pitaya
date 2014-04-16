@@ -98,8 +98,8 @@ static CGFloat const kNoteCollectionCellTextFontSize = 15.f;
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithPhoneNumber:(NSString *)phoneNumber
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(noteCollectionCell:didSelectTag:)]) {
-        [self.delegate noteCollectionCell:self didSelectTag:phoneNumber];
+    if (_delegate && [_delegate respondsToSelector:@selector(noteCollectionCell:didSelectTag:fromUser:)]) {
+        [self.delegate noteCollectionCell:self didSelectTag:phoneNumber fromUser:self.note.creator];
     }
 }
 

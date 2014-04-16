@@ -38,8 +38,9 @@ static CGFloat const kNoteLabelTextFontSize = 15.f;
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithPhoneNumber:(NSString *)phoneNumber
 {
-    // TODO: push TagVC
-    NSLog(@"%@", phoneNumber);
+    if (_delegate && [_delegate respondsToSelector:@selector(headerView:didSelectTag:fromUser:)]) {
+        [self.delegate headerView:self didSelectTag:phoneNumber fromUser:self.note.creator];
+    }
 }
 
 - (void)layoutSubviews

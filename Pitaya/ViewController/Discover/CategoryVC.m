@@ -13,6 +13,7 @@
 #import "CategorySectionHeaderView.h"
 #import "EntityDetailVC.h"
 #import "UserVC.h"
+#import "TagVC.h"
 
 @interface CategoryVC () <UICollectionViewDataSource, UICollectionViewDelegate, CategorySectionHeaderViewDelegate, NoteCollectionCellDelegate>
 
@@ -340,10 +341,14 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)noteCollectionCell:(NoteCollectionCell *)cell didSelectTag:(NSString *)tag
+- (void)noteCollectionCell:(NoteCollectionCell *)cell didSelectTag:(NSString *)tag fromUser:(GKUser *)user
 {
-    // TODO: push TagVC
-    NSLog(@"%@", tag);
+    TagVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"TagVC"];
+    if (tag.length > 1) {
+        vc.tagName = [tag substringFromIndex:1];
+        vc.user = user;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 #pragma mark - Life Cycle

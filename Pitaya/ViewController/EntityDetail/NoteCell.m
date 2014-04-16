@@ -76,8 +76,9 @@ static CGFloat const kNoteCellTextFontSize = 15.f;
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithPhoneNumber:(NSString *)phoneNumber
 {
-    // TODO: push TagVC
-    NSLog(@"%@", phoneNumber);
+    if (_delegate && [_delegate respondsToSelector:@selector(noteCell:didSelectTag:fromUser:)]) {
+        [self.delegate noteCell:self didSelectTag:phoneNumber fromUser:self.note.creator];
+    }
 }
 
 #pragma mark - Life Cycle
