@@ -310,6 +310,7 @@
             NSString *tagName = self.dataArray[self.selectedIndex][indexPath.row][@"tagName"];
             NSInteger entityCount = [self.dataArray[self.selectedIndex][indexPath.row][@"entityCount"] integerValue];
             cell.tagName = tagName;
+            cell.entityCount = entityCount;
             return cell;
         }
             

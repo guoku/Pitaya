@@ -11,5 +11,6 @@
 @interface TagCollectionCell : UICollectionViewCell
 
 @property (nonatomic, strong) NSString *tagName;
+@property (nonatomic, assign) NSInteger entityCount;
 
 @end

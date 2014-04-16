@@ -3889,20 +3889,21 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TagCollectionCell" id="fYy-LV-TWJ" customClass="TagCollectionCell">
-                                        <rect key="frame" x="45" y="862" width="668" height="50"/>
+                                        <rect key="frame" x="45" y="862" width="668" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="668" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="668" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标签名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ewv-zf-rOf">
-                                                    <rect key="frame" x="20" y="14" width="51" height="21"/>
+                                                    <rect key="frame" x="20" y="13" width="45" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="SdJ-eZ-plq"/>
+                                                        <constraint firstAttribute="height" constant="18" id="VQ0-bi-wgB"/>
+                                                        <constraint firstAttribute="width" constant="45" placeholder="YES" id="r8V-kN-EKh"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AzD-Fn-6mZ">
@@ -3910,15 +3911,39 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.93333333730697632" green="0.93333333730697632" blue="0.93333333730697632" alpha="1" colorSpace="deviceRGB"/>
                                                 </view>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1件商品" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJL-aq-Qgt">
+                                                    <rect key="frame" x="75" y="14" width="43" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="15" id="WeL-xf-UbG"/>
+                                                        <constraint firstAttribute="width" constant="43" placeholder="YES" id="Yn2-eB-2PC"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_next" translatesAutoresizingMaskIntoConstraints="NO" id="yYi-lQ-rLh">
+                                                    <rect key="frame" x="636" y="16" width="12" height="12"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="12" id="9DK-KC-XFR"/>
+                                                        <constraint firstAttribute="width" constant="12" id="vYG-8S-Tsg"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="Ewv-zf-rOf" firstAttribute="leading" secondItem="fYy-LV-TWJ" secondAttribute="leading" constant="20" id="KyX-T8-Gxe"/>
-                                            <constraint firstItem="Ewv-zf-rOf" firstAttribute="top" secondItem="fYy-LV-TWJ" secondAttribute="top" constant="14" id="ntf-tp-bxt"/>
+                                            <constraint firstAttribute="centerY" secondItem="yYi-lQ-rLh" secondAttribute="centerY" id="8Wo-pI-uoW"/>
+                                            <constraint firstItem="Ewv-zf-rOf" firstAttribute="centerY" secondItem="XJL-aq-Qgt" secondAttribute="centerY" id="CJB-7b-Khy"/>
+                                            <constraint firstAttribute="trailing" secondItem="yYi-lQ-rLh" secondAttribute="trailing" constant="20" id="Qj3-Qs-4wr"/>
+                                            <constraint firstAttribute="centerY" secondItem="Ewv-zf-rOf" secondAttribute="centerY" id="mGl-hM-Mhx"/>
+                                            <constraint firstItem="Ewv-zf-rOf" firstAttribute="leading" secondItem="fYy-LV-TWJ" secondAttribute="leading" constant="20" id="r5w-PN-Z61"/>
+                                            <constraint firstItem="XJL-aq-Qgt" firstAttribute="leading" secondItem="Ewv-zf-rOf" secondAttribute="trailing" constant="10" id="xhW-aU-kgF"/>
                                         </constraints>
-                                        <size key="customSize" width="668" height="50"/>
+                                        <size key="customSize" width="668" height="44"/>
                                         <connections>
+                                            <outlet property="entityCountLabel" destination="XJL-aq-Qgt" id="ybq-4j-C0m"/>
                                             <outlet property="tagNameLabel" destination="Ewv-zf-rOf" id="KcG-Kj-CWn"/>
                                             <segue destination="9CQ-qe-eDW" kind="push" id="6uJ-yy-GlV"/>
                                         </connections>
