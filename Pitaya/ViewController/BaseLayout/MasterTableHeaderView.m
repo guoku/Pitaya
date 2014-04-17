@@ -14,8 +14,13 @@
 {
     [super layoutSubviews];
     
-    [self.avatarButton setImageWithURL:[Passport sharedInstance].user.avatarURL_s forState:UIControlStateNormal];
-    self.nicknameLabel.text = [Passport sharedInstance].user.nickname;
+    if (k_isLogin) {
+        [self.avatarButton setImageWithURL:[Passport sharedInstance].user.avatarURL_s forState:UIControlStateNormal];
+        [self.nicknameButton setTitle:[Passport sharedInstance].user.nickname forState:UIControlStateNormal];
+    } else {
+        [self.avatarButton setImage:[UIImage imageNamed:@"menu_icon_tuzi"] forState:UIControlStateNormal];
+        [self.nicknameButton setTitle:@"登陆" forState:UIControlStateNormal];
+    }
 }
 
 @end

@@ -260,6 +260,13 @@ static NSInteger const VersionLabelTag = 105;
     [self addObserver];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self refresh];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -277,7 +284,6 @@ static NSInteger const VersionLabelTag = 105;
         [[Passport sharedInstance].user addObserver:self forKeyPath:@"email" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
     } else {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogin) name:GKUserDidLoginNotification object:nil];
-        NSLog(@"addObserver didLogin");
     }
 }
 

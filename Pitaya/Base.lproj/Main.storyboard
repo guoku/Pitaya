@@ -79,27 +79,16 @@
                                     <rect key="frame" x="0.0" y="0.0" width="266" height="80"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCl-Zo-xwL">
-                                            <rect key="frame" x="70" y="30" width="200" height="40"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="48E-7N-lPR"/>
-                                                <constraint firstAttribute="width" constant="200" id="JJL-xO-Zzs"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ug4-VJ-K3b">
+                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ug4-VJ-K3b">
                                             <rect key="frame" x="10" y="30" width="40" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="JpC-oM-aIn"/>
                                                 <constraint firstAttribute="width" constant="40" id="bYk-6w-wEU"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <state key="normal">
+                                            <state key="normal" image="menu_icon_tuzi">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <userDefinedRuntimeAttributes>
@@ -112,17 +101,31 @@
                                                 <action selector="tapAvatarButton:" destination="VBK-s3-vMa" eventType="touchUpInside" id="RDt-ck-oFT"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPa-c0-Fxn">
+                                            <rect key="frame" x="62" y="30" width="184" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <state key="normal" title="昵称">
+                                                <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="tapAvatarButton:" destination="VBK-s3-vMa" eventType="touchUpInside" id="uVC-kG-Zzp"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="oCl-Zo-xwL" secondAttribute="bottom" constant="10" id="5Cy-UM-pc3"/>
                                         <constraint firstAttribute="bottom" secondItem="ug4-VJ-K3b" secondAttribute="bottom" constant="10" id="AyZ-4j-5yw"/>
-                                        <constraint firstItem="oCl-Zo-xwL" firstAttribute="leading" secondItem="ug4-VJ-K3b" secondAttribute="trailing" constant="20" id="FLm-7L-e4J"/>
+                                        <constraint firstItem="ug4-VJ-K3b" firstAttribute="centerY" secondItem="zPa-c0-Fxn" secondAttribute="centerY" id="L5c-jf-Mxm"/>
+                                        <constraint firstItem="zPa-c0-Fxn" firstAttribute="leading" secondItem="ug4-VJ-K3b" secondAttribute="trailing" constant="12" id="X3J-4R-fpg"/>
+                                        <constraint firstAttribute="trailing" secondItem="zPa-c0-Fxn" secondAttribute="trailing" constant="20" id="Y9d-8i-iLY"/>
                                         <constraint firstItem="ug4-VJ-K3b" firstAttribute="leading" secondItem="8HV-bb-3b3" secondAttribute="leading" constant="10" id="fxd-AM-h58"/>
+                                        <constraint firstItem="ug4-VJ-K3b" firstAttribute="height" secondItem="zPa-c0-Fxn" secondAttribute="height" id="uer-8R-zhO"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="avatarButton" destination="ug4-VJ-K3b" id="3Mr-0j-1TD"/>
-                                        <outlet property="nicknameLabel" destination="oCl-Zo-xwL" id="jOs-l6-zRl"/>
+                                        <outlet property="nicknameButton" destination="zPa-c0-Fxn" id="NsV-40-qIc"/>
                                     </connections>
                                 </view>
                                 <prototypes>
@@ -3073,7 +3076,6 @@
                                                     <state key="highlighted" image="like_btn_highlighted"/>
                                                     <connections>
                                                         <action selector="tapLikeButton:" destination="1Im-V6-9wo" eventType="touchUpInside" id="Vge-Hk-xuU"/>
-                                                        <action selector="tapLikeButton:" destination="DMe-7T-GSK" eventType="touchUpInside" id="iTD-Ha-XDm"/>
                                                     </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kd9-H3-uMT">
@@ -3618,7 +3620,6 @@
                                                     <state key="highlighted" image="like_btn_highlighted"/>
                                                     <connections>
                                                         <action selector="tapLikeButton:" destination="AAi-RV-9f2" eventType="touchUpInside" id="Enu-5h-AN4"/>
-                                                        <action selector="tapLikeButton:" destination="DMe-7T-GSK" eventType="touchUpInside" id="noc-Vz-hb2"/>
                                                     </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T4o-YV-9vD">
@@ -4139,6 +4140,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="wpr-89-GNd"/>
-        <segue reference="uvL-oX-Vqj"/>
+        <segue reference="Khu-wf-qNG"/>
     </inferredMetricsTieBreakers>
 </document>
