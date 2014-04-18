@@ -12,6 +12,7 @@
 @protocol HomeSectionHeaderViewDelegate <NSObject>
 
 @optional
+- (void)headerView:(HomeSectionHeaderView *)headerView didSelectUrl:(NSURL *)url;
 - (void)headerView:(HomeSectionHeaderView *)headerView didSelectEntity:(GKEntity *)entity;
 - (void)headerView:(HomeSectionHeaderView *)headerView didSelectCategory:(GKEntityCategory *)category;
 

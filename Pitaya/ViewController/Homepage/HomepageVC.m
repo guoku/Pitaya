@@ -66,6 +66,11 @@
 
 #pragma mark -HomeSectionHeaderViewDelegate
 
+- (void)headerView:(HomeSectionHeaderView *)headerView didSelectUrl:(NSURL *)url
+{
+    [[UIApplication sharedApplication] openURL:url];
+}
+
 - (void)headerView:(HomeSectionHeaderView *)headerView didSelectEntity:(GKEntity *)entity
 {
     EntityDetailVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"EntityDetailVC"];
@@ -149,13 +154,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self.collectionView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated

@@ -74,7 +74,15 @@
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
 {
     NSString *urlString = self.bannerArray[index][@"url"];
-    if ([urlString hasPrefix:@"guoku://entity/"]) {
+    
+    if ([urlString hasPrefix:@"http://"] || [urlString hasPrefix:@"https://"]) {
+        NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        if (url) {
+            if (_delegate && [_delegate respondsToSelector:@selector(headerView:didSelectUrl:)]) {
+                [self.delegate headerView:self didSelectUrl:url];
+            }
+        }
+    } else if ([urlString hasPrefix:@"guoku://entity/"]) {
         NSString *entityId = [urlString substringFromIndex:15];
         GKEntity *entity = [GKEntity modelFromDictionary:@{@"entityId":entityId}];
         if (_delegate && [_delegate respondsToSelector:@selector(headerView:didSelectEntity:)]) {
