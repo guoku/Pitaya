@@ -17,6 +17,10 @@
 #define kApiKey @"0b19c2b93687347e95c6b6f5cc91bb87"
 #define kApiSecret @"47b41864d64bd46"
 
+#ifndef kTaobaoAppKey
+#define kTaobaoAppKey @"12313170"
+#endif
+
 #pragma mark - Helper
 
 // Screen Height

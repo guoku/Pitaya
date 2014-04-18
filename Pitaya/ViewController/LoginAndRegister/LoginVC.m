@@ -7,11 +7,15 @@
 //
 
 #import "LoginVC.h"
+#import "TaobaoOAuthVC.h"
 
-@interface LoginVC ()
+@interface LoginVC () <TaobaoOAuthVCDelegate>
 
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *leftBarButtonItem;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *rightBarButtonItem;
+
+@property (nonatomic, strong) IBOutlet UIButton *sinaLoginButton;
+@property (nonatomic, strong) IBOutlet UIButton *taobaoLoginButton;
 
 @property (nonatomic, strong) IBOutlet UITextField *emailTextField;
 @property (nonatomic, strong) IBOutlet UITextField *passwordTextField;
@@ -77,11 +81,53 @@
     }];
 }
 
+- (IBAction)tapSinaLoginButton:(id)sender
+{
+    
+}
+
+- (IBAction)tapTaobaoLoginButton:(id)sender
+{
+    TaobaoOAuthVC *vc = [[TaobaoOAuthVC alloc] init];
+    vc.delegate = self;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 - (IBAction)tapRegisterButton:(id)sender
 {
     UITableViewController *registerVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RegisterVC"];
     [self.navigationController pushViewController:registerVC animated:YES];
 }
+
+#pragma mark - TaobaoOAuthVCDelegate
+
+- (void)taobaoAuthorizationDidFinishWithUserInfo:(NSDictionary *)userInfo
+{
+    [Passport sharedInstance].taobaoId = userInfo[@"taobao_user_id"];
+    [Passport sharedInstance].taobaoToken = userInfo[@"access_token"];
+    [Passport sharedInstance].screenName = userInfo[@"taobao_user_nick"];
+    
+    [self.navigationController popViewControllerAnimated:NO];
+    [self tapRegisterButton:nil];
+    
+    NSLog(@"%@", userInfo);
+}
+
+- (void)taobaoAuthorizationDidFailWithError:(NSError *)error
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    [BBProgressHUD showErrorWithText:@"登录失败"];
+}
+
+- (void)taobaoAuthorizationDidCancel
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    [BBProgressHUD showErrorWithText:@"登录失败"];
+}
+
+#pragma mark - Life Cycle
 
 - (void)viewDidLoad
 {
