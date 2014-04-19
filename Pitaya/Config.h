@@ -17,6 +17,20 @@
 #define kApiKey @"0b19c2b93687347e95c6b6f5cc91bb87"
 #define kApiSecret @"47b41864d64bd46"
 
+// Weibo
+#ifndef kWeiboAPPKey
+#define kWeiboAPPKey @"1459383851"
+#endif
+
+#ifndef kWeiboSecret
+#define kWeiboSecret @"bfb2e43c3fa636f102b304c485fa2110"
+#endif
+
+#ifndef kWeiboRedirectURL
+#define kWeiboRedirectURL @"http://www.guoku.com/sina/auth"
+#endif
+
+// Taobao
 #ifndef kTaobaoAppKey
 #define kTaobaoAppKey @"12313170"
 #endif

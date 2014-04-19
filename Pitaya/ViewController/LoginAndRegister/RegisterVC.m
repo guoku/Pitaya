@@ -197,6 +197,9 @@
     
     if ([Passport sharedInstance].screenName) {
         self.nicknameTextField.text = [Passport sharedInstance].screenName;
+        if ([Passport sharedInstance].sinaAvatarURL) {
+            [self.avatarButton setImageWithURL:[NSURL URLWithString:[Passport sharedInstance].sinaAvatarURL] forState:UIControlStateNormal];
+        }
     }
 }
 

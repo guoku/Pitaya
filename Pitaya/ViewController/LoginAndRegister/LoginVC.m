@@ -7,9 +7,10 @@
 //
 
 #import "LoginVC.h"
+#import "SinaWeibo.h"
 #import "TaobaoOAuthVC.h"
 
-@interface LoginVC () <TaobaoOAuthVCDelegate>
+@interface LoginVC () <SinaWeiboDelegate, SinaWeiboRequestDelegate, TaobaoOAuthVCDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *leftBarButtonItem;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *rightBarButtonItem;
@@ -19,6 +20,8 @@
 
 @property (nonatomic, strong) IBOutlet UITextField *emailTextField;
 @property (nonatomic, strong) IBOutlet UITextField *passwordTextField;
+
+@property (nonatomic, strong) SinaWeibo *weibo;
 
 @end
 
@@ -83,7 +86,10 @@
 
 - (IBAction)tapSinaLoginButton:(id)sender
 {
-    
+    if (!self.weibo) {
+        _weibo = [[SinaWeibo alloc] initWithAppKey:kWeiboAPPKey appSecret:kWeiboSecret appRedirectURI:kWeiboRedirectURL andDelegate:self];
+    }
+    [self.weibo logIn];
 }
 
 - (IBAction)tapTaobaoLoginButton:(id)sender
@@ -99,6 +105,64 @@
     [self.navigationController pushViewController:registerVC animated:YES];
 }
 
+#pragma mark - SinaWeiboDelegate
+
+- (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
+{
+    [Passport sharedInstance].sinaUserID = sinaweibo.userID;
+    [Passport sharedInstance].sinaToken = sinaweibo.accessToken;
+    [Passport sharedInstance].sinaExpirationDate = sinaweibo.expirationDate;
+    
+    __weak __typeof(&*self)weakSelf = self;
+    [GKDataManager loginWithSinaUserId:[Passport sharedInstance].sinaUserID sinaToken:[Passport sharedInstance].sinaToken success:^(GKUser *user, NSString *session) {
+        [BBProgressHUD dismiss];
+        
+        [Passport sharedInstance].user = user;
+        [Passport sharedInstance].session = session;
+        
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+        if (weakSelf.successBlock) {
+            weakSelf.successBlock();
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:GKUserDidLoginNotification object:nil];
+    } failure:^(NSInteger stateCode, NSString *type, NSString *message) {
+        [sinaweibo requestWithURL:@"users/show.json" params:[NSMutableDictionary dictionaryWithObjectsAndKeys:sinaweibo.userID,@"uid", nil] httpMethod:@"GET" delegate:self];
+    }];
+}
+
+- (void)sinaweibo:(SinaWeibo *)sinaweibo accessTokenInvalidOrExpired:(NSError *)error
+{
+    if(error.code == 21332)
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"" message:@"授权过期，需要重新登录新浪微博" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alertView show];
+    }
+}
+
+#pragma mark - SinaWeiboRequestDelegate
+
+- (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
+{
+    if((error.code == 21315) || (error.code == 10006)) {
+        [self.weibo logIn];
+    } else {
+        [BBProgressHUD showErrorWithText:@"网络错误"];
+        [self.weibo logOut];
+    }
+}
+
+- (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
+{
+    [BBProgressHUD dismiss];
+    if ([result isKindOfClass:[NSDictionary class]]) {
+        [Passport sharedInstance].sinaAvatarURL = result[@"avatar_hd"];
+        [Passport sharedInstance].screenName = result[@"screen_name"];
+        [self tapRegisterButton:nil];
+    } else {
+        [BBProgressHUD showErrorWithText:@"登录失败"];
+    }
+}
+
 #pragma mark - TaobaoOAuthVCDelegate
 
 - (void)taobaoAuthorizationDidFinishWithUserInfo:(NSDictionary *)userInfo
@@ -107,24 +171,45 @@
     [Passport sharedInstance].taobaoToken = userInfo[@"access_token"];
     [Passport sharedInstance].screenName = userInfo[@"taobao_user_nick"];
     
-    [self.navigationController popViewControllerAnimated:NO];
-    [self tapRegisterButton:nil];
-    
-    NSLog(@"%@", userInfo);
+    __weak __typeof(&*self)weakSelf = self;
+    [GKDataManager loginWithTaobaoUserId:[Passport sharedInstance].taobaoId taobaoToken:[Passport sharedInstance].taobaoToken success:^(GKUser *user, NSString *session) {
+        [Passport sharedInstance].user = user;
+        [Passport sharedInstance].session = session;
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+        [BBProgressHUD dismiss];
+        if (weakSelf.successBlock) {
+            weakSelf.successBlock();
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:GKUserDidLoginNotification object:nil];
+    } failure:^(NSInteger stateCode, NSString *type, NSString *message) {
+        [BBProgressHUD dismiss];
+        [self.navigationController popViewControllerAnimated:NO];
+        [self tapRegisterButton:nil];
+    }];
 }
 
 - (void)taobaoAuthorizationDidFailWithError:(NSError *)error
 {
-    [self.navigationController popViewControllerAnimated:YES];
-    
     [BBProgressHUD showErrorWithText:@"登录失败"];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)taobaoAuthorizationDidCancel
 {
-    [self.navigationController popViewControllerAnimated:YES];
-    
     [BBProgressHUD showErrorWithText:@"登录失败"];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        [self.weibo logOut];
+        [self.weibo logIn];
+    }
 }
 
 #pragma mark - Life Cycle
