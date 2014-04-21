@@ -16,6 +16,7 @@
 		B602A5E018EAC1B200313CBF /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B602A5DF18EAC1B200313CBF /* CommentCell.m */; };
 		B604BF7B18E56D1B00E58A94 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B604BF7A18E56D1B00E58A94 /* RTLabel.m */; };
 		B60620CD18D1B97B007C1A95 /* RecommendEntityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B60620CC18D1B97B007C1A95 /* RecommendEntityCell.m */; };
+		B60A1F50190112E100DE1500 /* TaobaoOAuthVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B60A1F4F190112E100DE1500 /* TaobaoOAuthVC.m */; };
 		B61B10D8188E35B90090FC38 /* MasterTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B61B10D7188E35B90090FC38 /* MasterTableHeaderView.m */; };
 		B61B10DD188E777E0090FC38 /* DiscoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B61B10DC188E777E0090FC38 /* DiscoverVC.m */; };
 		B61B10E0188E7A810090FC38 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B61B10DF188E7A810090FC38 /* CategoryCell.m */; };
@@ -127,6 +128,10 @@
 		B6673FB618BE099D0038F9F2 /* HotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6673FB518BE099D0038F9F2 /* HotCell.m */; };
 		B674182218CF11D3009A1407 /* EntityDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B674182118CF11D3009A1407 /* EntityDetailVC.m */; };
 		B674182518CF3A23009A1407 /* NoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B674182418CF3A23009A1407 /* NoteCell.m */; };
+		B67DD0191902623A00D58061 /* SinaWeibo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B67DD0111902623A00D58061 /* SinaWeibo.bundle */; };
+		B67DD01A1902623A00D58061 /* SinaWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = B67DD0131902623A00D58061 /* SinaWeibo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B67DD01B1902623A00D58061 /* SinaWeiboAuthorizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B67DD0151902623A00D58061 /* SinaWeiboAuthorizeView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B67DD01C1902623A00D58061 /* SinaWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B67DD0181902623A00D58061 /* SinaWeiboRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B6AEAADB18DD68D500548F2A /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AEAADA18DD68D500548F2A /* iCarousel.m */; };
 		B6BF99F918F6A2200097D9AA /* GKAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF99F818F6A2200097D9AA /* GKAttributedLabel.m */; };
 		B6E6209C18F3F969007D88C4 /* NotePostVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E6209A18F3F969007D88C4 /* NotePostVC.m */; };
@@ -162,6 +167,8 @@
 		B604BF7A18E56D1B00E58A94 /* RTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLabel.m; sourceTree = "<group>"; };
 		B60620CB18D1B97B007C1A95 /* RecommendEntityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendEntityCell.h; sourceTree = "<group>"; };
 		B60620CC18D1B97B007C1A95 /* RecommendEntityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendEntityCell.m; sourceTree = "<group>"; };
+		B60A1F4E190112E100DE1500 /* TaobaoOAuthVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaobaoOAuthVC.h; sourceTree = "<group>"; };
+		B60A1F4F190112E100DE1500 /* TaobaoOAuthVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaobaoOAuthVC.m; sourceTree = "<group>"; };
 		B61B10D6188E35B90090FC38 /* MasterTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterTableHeaderView.h; sourceTree = "<group>"; };
 		B61B10D7188E35B90090FC38 /* MasterTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterTableHeaderView.m; sourceTree = "<group>"; };
 		B61B10DB188E777E0090FC38 /* DiscoverVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverVC.h; sourceTree = "<group>"; };
@@ -378,6 +385,14 @@
 		B674182118CF11D3009A1407 /* EntityDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntityDetailVC.m; sourceTree = "<group>"; };
 		B674182318CF3A23009A1407 /* NoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCell.h; sourceTree = "<group>"; };
 		B674182418CF3A23009A1407 /* NoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCell.m; sourceTree = "<group>"; };
+		B67DD0111902623A00D58061 /* SinaWeibo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SinaWeibo.bundle; sourceTree = "<group>"; };
+		B67DD0121902623A00D58061 /* SinaWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeibo.h; sourceTree = "<group>"; };
+		B67DD0131902623A00D58061 /* SinaWeibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeibo.m; sourceTree = "<group>"; };
+		B67DD0141902623A00D58061 /* SinaWeiboAuthorizeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboAuthorizeView.h; sourceTree = "<group>"; };
+		B67DD0151902623A00D58061 /* SinaWeiboAuthorizeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboAuthorizeView.m; sourceTree = "<group>"; };
+		B67DD0161902623A00D58061 /* SinaWeiboConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboConstants.h; sourceTree = "<group>"; };
+		B67DD0171902623A00D58061 /* SinaWeiboRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboRequest.h; sourceTree = "<group>"; };
+		B67DD0181902623A00D58061 /* SinaWeiboRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboRequest.m; sourceTree = "<group>"; };
 		B6AEAAD918DD68D500548F2A /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		B6AEAADA18DD68D500548F2A /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		B6BF99F718F6A2200097D9AA /* GKAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKAttributedLabel.h; sourceTree = "<group>"; };
@@ -456,6 +471,15 @@
 				B604BF7A18E56D1B00E58A94 /* RTLabel.m */,
 			);
 			path = RTLabel;
+			sourceTree = "<group>";
+		};
+		B60A1F4D190112D300DE1500 /* TaoaoOAuth */ = {
+			isa = PBXGroup;
+			children = (
+				B60A1F4E190112E100DE1500 /* TaobaoOAuthVC.h */,
+				B60A1F4F190112E100DE1500 /* TaobaoOAuthVC.m */,
+			);
+			path = TaoaoOAuth;
 			sourceTree = "<group>";
 		};
 		B61B10DA188E77150090FC38 /* Discover */ = {
@@ -704,6 +728,7 @@
 		B6603C16188CEBA200F52946 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				B67DD0101902623A00D58061 /* SinaWeibo */,
 				B626517318F53E9700203ECB /* TTTAttributedLabel */,
 				B604BF7818E56D1B00E58A94 /* RTLabel */,
 				B6AEAAD818DD68D500548F2A /* iCarousel */,
@@ -738,6 +763,7 @@
 				B600CA0A18D81BF300AB8FD7 /* UserVC */,
 				B63DEE3C18FE58DE0080810F /* Tag */,
 				B644476018FBB16E00CEE05B /* WebViewController */,
+				B60A1F4D190112D300DE1500 /* TaoaoOAuth */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1013,6 +1039,21 @@
 			path = EntityDetail;
 			sourceTree = "<group>";
 		};
+		B67DD0101902623A00D58061 /* SinaWeibo */ = {
+			isa = PBXGroup;
+			children = (
+				B67DD0111902623A00D58061 /* SinaWeibo.bundle */,
+				B67DD0121902623A00D58061 /* SinaWeibo.h */,
+				B67DD0131902623A00D58061 /* SinaWeibo.m */,
+				B67DD0141902623A00D58061 /* SinaWeiboAuthorizeView.h */,
+				B67DD0151902623A00D58061 /* SinaWeiboAuthorizeView.m */,
+				B67DD0161902623A00D58061 /* SinaWeiboConstants.h */,
+				B67DD0171902623A00D58061 /* SinaWeiboRequest.h */,
+				B67DD0181902623A00D58061 /* SinaWeiboRequest.m */,
+			);
+			path = SinaWeibo;
+			sourceTree = "<group>";
+		};
 		B6AEAAD818DD68D500548F2A /* iCarousel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1111,6 +1152,7 @@
 			files = (
 				B6603BF5188CE7AE00F52946 /* Images.xcassets in Resources */,
 				B6603BE7188CE7AE00F52946 /* InfoPlist.strings in Resources */,
+				B67DD0191902623A00D58061 /* SinaWeibo.bundle in Resources */,
 				B6603BF0188CE7AE00F52946 /* Main.storyboard in Resources */,
 				B6603CB9188D151800F52946 /* SVProgressHUD.bundle in Resources */,
 			);
@@ -1160,6 +1202,8 @@
 				B6603CB1188D151800F52946 /* SDWebImageManager.m in Sources */,
 				B6011E9918AD02B30034DD52 /* LoginVC.m in Sources */,
 				B602A5E018EAC1B200313CBF /* CommentCell.m in Sources */,
+				B67DD01C1902623A00D58061 /* SinaWeiboRequest.m in Sources */,
+				B60A1F50190112E100DE1500 /* TaobaoOAuthVC.m in Sources */,
 				B6603CF1188D153300F52946 /* GKDevice.m in Sources */,
 				B6E6209C18F3F969007D88C4 /* NotePostVC.m in Sources */,
 				B6603CEC188D153300F52946 /* GKAPI.m in Sources */,
@@ -1171,6 +1215,7 @@
 				B6603C44188D150A00F52946 /* UIDevice+Hardware.m in Sources */,
 				B60620CD18D1B97B007C1A95 /* RecommendEntityCell.m in Sources */,
 				B6603CE7188D153300F52946 /* GKEntityCategory.m in Sources */,
+				B67DD01B1902623A00D58061 /* SinaWeiboAuthorizeView.m in Sources */,
 				B6603CA8188D151800F52946 /* DDTTYLogger.m in Sources */,
 				B6603CE6188D153300F52946 /* GKEntity.m in Sources */,
 				B6603CEF188D153300F52946 /* GKHTTPClient.m in Sources */,
@@ -1233,6 +1278,7 @@
 				B6603C9F188D151800F52946 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				B61EE31E18B731B300585C9A /* HotVC.m in Sources */,
 				B6603C2B188CEBA200F52946 /* DetailViewController.m in Sources */,
+				B67DD01A1902623A00D58061 /* SinaWeibo.m in Sources */,
 				B6603CAB188D151800F52946 /* NSData+GIF.m in Sources */,
 				B6603C45188D150A00F52946 /* UIFont+App.m in Sources */,
 				B6603CA0188D151800F52946 /* AFPropertyListRequestOperation.m in Sources */,

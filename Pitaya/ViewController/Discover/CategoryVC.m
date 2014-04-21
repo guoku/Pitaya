@@ -141,13 +141,6 @@
     }
 }
 
-#pragma mark - Selector Method
-
-- (IBAction)tapLikeButton:(id)sender
-{
-    NSLog(@"tapLikeButton");
-}
-
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView

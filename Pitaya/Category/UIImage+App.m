@@ -36,7 +36,6 @@
 // 缩略图
 - (UIImage *)imageWithSize:(CGSize)newSize
 {
-    NSLog(@"size :%@", NSStringFromCGSize(newSize));
     UIGraphicsBeginImageContext(newSize);
     [self drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();

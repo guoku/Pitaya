@@ -37,19 +37,15 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
 
 - (void)didLogin
 {
-    [self addObserver];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willLogout) name:GKUserWillLogoutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:GKUserDidLoginNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogout) name:GKUserDidLogoutNotification object:nil];
     [self.headerView setNeedsLayout];
 }
 
-- (void)willLogout
-{
-    [self removeObserver];
-}
-
 - (void)didLogout
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:GKUserDidLogoutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogin) name:GKUserDidLoginNotification object:nil];
     [self.headerView setNeedsLayout];
 }
 
@@ -89,8 +85,6 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
 {
     if (self = [super initWithCoder:aDecoder]) {
         if (k_isLogin) {
-            [self addObserver];
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willLogout) name:GKUserWillLogoutNotification object:nil];
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogout) name:GKUserDidLogoutNotification object:nil];
         } else {
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogin) name:GKUserDidLoginNotification object:nil];
@@ -118,14 +112,7 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
         frame.size.height += kStatusBarHeight;
     }
     self.headerView.frame = frame;
-    
-    if (k_isLogin) {
-        [self.headerView.avatarButton setImageWithURL:[Passport sharedInstance].user.avatarURL_s forState:UIControlStateNormal];
-        self.headerView.nicknameLabel.text = [Passport sharedInstance].user.nickname;
-    } else {
-        self.headerView.avatarButton.backgroundColor = [UIColor blueColor];
-        self.headerView.nicknameLabel.text = @"未登录";
-    }
+    [self.headerView setNeedsLayout];
     
     self.tableView.tableFooterView = [UIView new];
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
@@ -135,41 +122,6 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - KVO
-
-- (void)addObserver
-{
-    [[Passport sharedInstance].user addObserver:self forKeyPath:@"avatarURL" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
-    [[Passport sharedInstance].user addObserver:self forKeyPath:@"nickname" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
-}
-
-- (void)removeObserver
-{
-    if ([Passport sharedInstance].user.observationInfo) {
-        [[Passport sharedInstance].user removeObserver:self forKeyPath:@"avatarURL"];
-        [[Passport sharedInstance].user removeObserver:self forKeyPath:@"nickname"];
-    }
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    if ([keyPath isEqualToString:@"avatarURL"]) {
-        GKUser *user = (GKUser *)object;
-        [self.headerView.avatarButton setBackgroundImageWithURL:user.avatarURL forState:UIControlStateNormal];
-    } else if ([keyPath isEqualToString:@"nickname"]) {
-        GKUser *user = (GKUser *)object;
-        self.headerView.nicknameLabel.text = user.nickname;
-    }
-}
-
-- (void)dealloc
-{
-    [self removeObserver];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:GKUserDidLoginNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:GKUserWillLogoutNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:GKUserDidLogoutNotification object:nil];
 }
 
 @end

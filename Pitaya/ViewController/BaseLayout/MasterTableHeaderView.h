@@ -11,6 +11,6 @@
 @interface MasterTableHeaderView : UIView
 
 @property (nonatomic, strong) IBOutlet UIButton *avatarButton;
-@property (nonatomic, strong) IBOutlet UILabel *nicknameLabel;
+@property (nonatomic, strong) IBOutlet UIButton *nicknameButton;
 
 @end

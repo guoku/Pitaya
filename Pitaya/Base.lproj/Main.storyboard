@@ -79,27 +79,16 @@
                                     <rect key="frame" x="0.0" y="0.0" width="266" height="80"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCl-Zo-xwL">
-                                            <rect key="frame" x="70" y="30" width="200" height="40"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="48E-7N-lPR"/>
-                                                <constraint firstAttribute="width" constant="200" id="JJL-xO-Zzs"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ug4-VJ-K3b">
+                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ug4-VJ-K3b">
                                             <rect key="frame" x="10" y="30" width="40" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="JpC-oM-aIn"/>
                                                 <constraint firstAttribute="width" constant="40" id="bYk-6w-wEU"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <state key="normal">
+                                            <state key="normal" image="menu_icon_tuzi">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <userDefinedRuntimeAttributes>
@@ -112,17 +101,31 @@
                                                 <action selector="tapAvatarButton:" destination="VBK-s3-vMa" eventType="touchUpInside" id="RDt-ck-oFT"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPa-c0-Fxn">
+                                            <rect key="frame" x="62" y="30" width="184" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <state key="normal" title="昵称">
+                                                <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="tapAvatarButton:" destination="VBK-s3-vMa" eventType="touchUpInside" id="uVC-kG-Zzp"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="oCl-Zo-xwL" secondAttribute="bottom" constant="10" id="5Cy-UM-pc3"/>
                                         <constraint firstAttribute="bottom" secondItem="ug4-VJ-K3b" secondAttribute="bottom" constant="10" id="AyZ-4j-5yw"/>
-                                        <constraint firstItem="oCl-Zo-xwL" firstAttribute="leading" secondItem="ug4-VJ-K3b" secondAttribute="trailing" constant="20" id="FLm-7L-e4J"/>
+                                        <constraint firstItem="ug4-VJ-K3b" firstAttribute="centerY" secondItem="zPa-c0-Fxn" secondAttribute="centerY" id="L5c-jf-Mxm"/>
+                                        <constraint firstItem="zPa-c0-Fxn" firstAttribute="leading" secondItem="ug4-VJ-K3b" secondAttribute="trailing" constant="12" id="X3J-4R-fpg"/>
+                                        <constraint firstAttribute="trailing" secondItem="zPa-c0-Fxn" secondAttribute="trailing" constant="20" id="Y9d-8i-iLY"/>
                                         <constraint firstItem="ug4-VJ-K3b" firstAttribute="leading" secondItem="8HV-bb-3b3" secondAttribute="leading" constant="10" id="fxd-AM-h58"/>
+                                        <constraint firstItem="ug4-VJ-K3b" firstAttribute="height" secondItem="zPa-c0-Fxn" secondAttribute="height" id="uer-8R-zhO"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="avatarButton" destination="ug4-VJ-K3b" id="3Mr-0j-1TD"/>
-                                        <outlet property="nicknameLabel" destination="oCl-Zo-xwL" id="jOs-l6-zRl"/>
+                                        <outlet property="nicknameButton" destination="zPa-c0-Fxn" id="NsV-40-qIc"/>
                                     </connections>
                                 </view>
                                 <prototypes>
@@ -310,6 +313,46 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uMg-XQ-0l0" id="VHZ-90-zRf">
                                             <rect key="frame" x="0.0" y="0.0" width="540" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaU-Yv-X1R">
+                                                    <rect key="frame" x="269" y="0.0" width="44" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <state key="normal" image="login_icon_weibo">
+                                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="22"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="tapSinaLoginButton:" destination="vtd-7S-tjo" eventType="touchUpInside" id="abI-49-wRU"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3K-cE-hgr">
+                                                    <rect key="frame" x="326" y="0.0" width="44" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <state key="normal" image="login_icon_taobao">
+                                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="22"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="tapTaobaoLoginButton:" destination="vtd-7S-tjo" eventType="touchUpInside" id="SxN-1w-rxN"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -335,6 +378,8 @@
                         <outlet property="leftBarButtonItem" destination="Q1S-b6-yXc" id="sU1-RY-NZ3"/>
                         <outlet property="passwordTextField" destination="YTU-0l-be3" id="klh-30-hdf"/>
                         <outlet property="rightBarButtonItem" destination="WJj-NR-hHj" id="f6r-Bn-vAM"/>
+                        <outlet property="sinaLoginButton" destination="vaU-Yv-X1R" id="Sph-JN-0VM"/>
+                        <outlet property="taobaoLoginButton" destination="g3K-cE-hgr" id="AjC-IW-mqE"/>
                         <segue destination="QNA-YN-9dd" kind="push" identifier="LoginToRegister" id="OMh-cf-yHP"/>
                     </connections>
                 </tableViewController>
@@ -368,7 +413,7 @@
                                                         <constraint firstAttribute="width" constant="44" id="58A-p4-GNZ"/>
                                                         <constraint firstAttribute="height" constant="44" id="lwC-PB-tqd"/>
                                                     </constraints>
-                                                    <state key="normal" image="login_icon_avatar">
+                                                    <state key="normal" backgroundImage="login_icon_avatar">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -512,6 +557,9 @@
                     <navigationItem key="navigationItem" title="注册" id="GZJ-Dh-3Cz"/>
                     <connections>
                         <outlet property="avatarButton" destination="oJ9-Be-d0s" id="bf6-kT-WxG"/>
+                        <outlet property="emailTextField" destination="PWQ-P4-aEF" id="LEc-y8-HT9"/>
+                        <outlet property="nicknameTextField" destination="XIh-2p-5jF" id="vjk-sK-Kpz"/>
+                        <outlet property="passwordTextField" destination="4Vi-eX-06U" id="gGV-4F-ke3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zff-1L-7Xb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1143,10 +1191,13 @@
                                     <rect key="frame" x="0.0" y="725" width="758" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zRw-r7-xId">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zRw-r7-xId">
                                             <rect key="frame" x="349" y="7" width="60" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <state key="normal" title="注销登录">
+                                                <color key="titleColor" red="0.93333333333333335" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -3073,7 +3124,6 @@
                                                     <state key="highlighted" image="like_btn_highlighted"/>
                                                     <connections>
                                                         <action selector="tapLikeButton:" destination="1Im-V6-9wo" eventType="touchUpInside" id="Vge-Hk-xuU"/>
-                                                        <action selector="tapLikeButton:" destination="DMe-7T-GSK" eventType="touchUpInside" id="iTD-Ha-XDm"/>
                                                     </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kd9-H3-uMT">
@@ -3618,7 +3668,6 @@
                                                     <state key="highlighted" image="like_btn_highlighted"/>
                                                     <connections>
                                                         <action selector="tapLikeButton:" destination="AAi-RV-9f2" eventType="touchUpInside" id="Enu-5h-AN4"/>
-                                                        <action selector="tapLikeButton:" destination="DMe-7T-GSK" eventType="touchUpInside" id="noc-Vz-hb2"/>
                                                     </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T4o-YV-9vD">
@@ -4117,19 +4166,63 @@
     <resources>
         <image name="Personal_icon_male" width="14" height="14"/>
         <image name="detail_icon_comment" width="21" height="21"/>
+        <image name="detail_icon_comment" width="21" height="21"/>
         <image name="detail_icon_poke" width="21" height="21"/>
+        <image name="detail_icon_poke" width="21" height="21"/>
+        <image name="detail_icon_poke" width="21" height="21"/>
+        <image name="detail_icon_poke_highlighted" width="21" height="21"/>
+        <image name="detail_icon_poke_highlighted" width="21" height="21"/>
         <image name="detail_icon_poke_highlighted" width="21" height="21"/>
         <image name="detail_icon_selection" width="21" height="21"/>
         <image name="icon_like" width="12" height="12"/>
+        <image name="icon_like" width="12" height="12"/>
+        <image name="icon_like" width="12" height="12"/>
+        <image name="icon_next" width="12" height="12"/>
         <image name="icon_next" width="12" height="12"/>
         <image name="icon_reply" width="12" height="12"/>
+        <image name="icon_reply" width="12" height="12"/>
+        <image name="icon_reply" width="12" height="12"/>
+        <image name="like_btn" width="18" height="18"/>
+        <image name="like_btn" width="18" height="18"/>
+        <image name="like_btn" width="18" height="18"/>
+        <image name="like_btn" width="18" height="18"/>
+        <image name="like_btn" width="18" height="18"/>
+        <image name="like_btn" width="18" height="18"/>
+        <image name="like_btn" width="18" height="18"/>
+        <image name="like_btn" width="18" height="18"/>
+        <image name="like_btn" width="18" height="18"/>
+        <image name="like_btn" width="18" height="18"/>
+        <image name="like_btn" width="18" height="18"/>
         <image name="like_btn" width="18" height="18"/>
         <image name="like_btn_highlighted" width="18" height="18"/>
+        <image name="like_btn_highlighted" width="18" height="18"/>
+        <image name="like_btn_highlighted" width="18" height="18"/>
+        <image name="like_btn_highlighted" width="18" height="18"/>
+        <image name="like_btn_highlighted" width="18" height="18"/>
+        <image name="like_btn_highlighted" width="18" height="18"/>
+        <image name="like_btn_highlighted" width="18" height="18"/>
+        <image name="like_btn_highlighted" width="18" height="18"/>
+        <image name="like_btn_highlighted" width="18" height="18"/>
         <image name="login_icon_avatar" width="30" height="30"/>
+        <image name="login_icon_taobao" width="20" height="15"/>
+        <image name="login_icon_weibo" width="22" height="18"/>
         <image name="menu_icon_tuzi" width="29" height="29"/>
+        <image name="menu_icon_tuzi" width="29" height="29"/>
+        <image name="menu_icon_tuzi" width="29" height="29"/>
+        <image name="menu_icon_tuzi_press" width="29" height="29"/>
+        <image name="menu_icon_tuzi_press" width="29" height="29"/>
+        <image name="menu_icon_tuzi_press" width="29" height="29"/>
+        <image name="menu_icon_tuzi_press" width="29" height="29"/>
         <image name="menu_icon_tuzi_press" width="29" height="29"/>
         <image name="nav_back_btn" width="32" height="24"/>
         <image name="poke" width="18" height="18"/>
+        <image name="poke" width="18" height="18"/>
+        <image name="poke" width="18" height="18"/>
+        <image name="poke_highlighted" width="18" height="18"/>
+        <image name="poke_highlighted" width="18" height="18"/>
+        <image name="poke_highlighted" width="18" height="18"/>
+        <image name="poke_highlighted" width="18" height="18"/>
+        <image name="poke_highlighted" width="18" height="18"/>
         <image name="poke_highlighted" width="18" height="18"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -4139,6 +4232,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="wpr-89-GNd"/>
-        <segue reference="uvL-oX-Vqj"/>
+        <segue reference="Khu-wf-qNG"/>
     </inferredMetricsTieBreakers>
 </document>
