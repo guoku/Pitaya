@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "GKUser.h"
+#import "SinaWeibo.h"
 
 // Notification
 static NSString *const GKUserWillLoginNotification = @"GKUserWillLoginNotification";
@@ -26,6 +27,7 @@ static NSString *const GKUserDidLogoutNotification = @"GKUserDidLogoutNotificati
 @property (nonatomic, strong) NSString *taobaoId;
 @property (nonatomic, strong) NSString *taobaoToken;
 @property (nonatomic, strong) NSDate *sinaExpirationDate;
+@property (nonatomic, weak) SinaWeibo *weiboInstance;
 
 + (Passport *)sharedInstance;
 + (void)loginWithSuccessBlock:(void (^)())successBlock;

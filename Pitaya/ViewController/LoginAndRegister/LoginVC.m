@@ -88,6 +88,7 @@
 {
     if (!self.weibo) {
         _weibo = [[SinaWeibo alloc] initWithAppKey:kWeiboAPPKey appSecret:kWeiboSecret appRedirectURI:kWeiboRedirectURL andDelegate:self];
+        [Passport sharedInstance].weiboInstance = self.weibo;
     }
     [self.weibo logIn];
 }

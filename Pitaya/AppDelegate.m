@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SinaWeibo.h"
 
 int ddLogLevel;
 
@@ -29,6 +30,16 @@ int ddLogLevel;
     
     return YES;
 }
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    if ([url.absoluteString hasPrefix:@"sinaweibosso"]) {
+        SinaWeibo *weibo = [Passport sharedInstance].weiboInstance;
+        return [weibo handleOpenURL:url];
+    }
+    
+    return NO;
+}
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -49,7 +60,11 @@ int ddLogLevel;
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    SinaWeibo *weibo = [Passport sharedInstance].weiboInstance;
+    weibo.userID = [Passport sharedInstance].sinaUserID;
+    weibo.accessToken = [Passport sharedInstance].sinaToken;
+    weibo.expirationDate = [Passport sharedInstance].sinaExpirationDate;
+    [weibo applicationDidBecomeActive];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
