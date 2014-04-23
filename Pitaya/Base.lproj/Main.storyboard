@@ -1058,6 +1058,68 @@
             </objects>
             <point key="canvasLocation" x="2663" y="14518"/>
         </scene>
+        <!--Nickname UpdateVC - 修改昵称-->
+        <scene sceneID="rLm-G9-k6O">
+            <objects>
+                <viewController storyboardIdentifier="NicknameUpdateVC" id="UYH-w9-bNc" customClass="NicknameUpdateVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cJD-xv-gun"/>
+                        <viewControllerLayoutGuide type="bottom" id="cWw-qx-F7i"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CnH-nB-Mxm">
+                        <rect key="frame" x="0.0" y="0.0" width="758" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="昵称" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4Kh-5e-abS" customClass="CustomTextField">
+                                <rect key="frame" x="279" y="84" width="200" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Vce-1C-HnC"/>
+                                    <constraint firstAttribute="width" constant="200" id="WzZ-5d-bqj"/>
+                                </constraints>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="UYH-w9-bNc" id="69H-uD-uZ9"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5U8-Pd-LbM">
+                                <rect key="frame" x="279" y="167" width="200" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.25882352939999997" green="0.4941176471" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="WfG-fU-ZUj"/>
+                                    <constraint firstAttribute="width" constant="200" id="rTv-JO-6Pm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="修改">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapSubmitButton:" destination="UYH-w9-bNc" eventType="touchUpInside" id="6FG-Js-umu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="4Kh-5e-abS" secondAttribute="centerX" id="GM4-eF-QCL"/>
+                            <constraint firstItem="4Kh-5e-abS" firstAttribute="top" secondItem="cJD-xv-gun" secondAttribute="bottom" constant="40" id="XkK-Lf-k8N"/>
+                            <constraint firstAttribute="centerX" secondItem="5U8-Pd-LbM" secondAttribute="centerX" id="jx7-qc-XQA"/>
+                            <constraint firstItem="5U8-Pd-LbM" firstAttribute="top" secondItem="4Kh-5e-abS" secondAttribute="bottom" constant="38" id="mt0-S5-zqE"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="修改昵称" id="xlG-Db-f1x"/>
+                    <connections>
+                        <outlet property="nicknameTextField" destination="4Kh-5e-abS" id="Lnj-6I-don"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uts-Qk-2cV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3679" y="11330"/>
+        </scene>
         <!--Base Navigation Controller - 精选-->
         <scene sceneID="YNj-cz-2Zb">
             <objects>
@@ -1276,6 +1338,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="UYH-w9-bNc" kind="push" id="fKD-F3-GJX"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SettingCell03" rowHeight="50" id="iIA-ur-80z">
                                         <rect key="frame" x="0.0" y="216" width="758" height="50"/>

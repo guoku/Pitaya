@@ -34,6 +34,7 @@
 		B61C1E0E190641650085BCD0 /* UIImage+MultiFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = B61C1DFE190641650085BCD0 /* UIImage+MultiFormat.m */; };
 		B61C1E0F190641650085BCD0 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = B61C1E00190641650085BCD0 /* UIImage+WebP.m */; };
 		B61C1E10190641650085BCD0 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B61C1E02190641650085BCD0 /* UIImageView+WebCache.m */; };
+		B61C1E13190690040085BCD0 /* NicknameUpdateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B61C1E12190690040085BCD0 /* NicknameUpdateVC.m */; };
 		B61EE31B18B731A200585C9A /* SelectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B61EE31A18B731A200585C9A /* SelectionVC.m */; };
 		B61EE31E18B731B300585C9A /* HotVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B61EE31D18B731B300585C9A /* HotVC.m */; };
 		B61EE32118B7356000585C9A /* SelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B61EE32018B7356000585C9A /* SelectionCell.m */; };
@@ -205,6 +206,8 @@
 		B61C1E00190641650085BCD0 /* UIImage+WebP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WebP.m"; sourceTree = "<group>"; };
 		B61C1E01190641650085BCD0 /* UIImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WebCache.h"; sourceTree = "<group>"; };
 		B61C1E02190641650085BCD0 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
+		B61C1E11190690040085BCD0 /* NicknameUpdateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NicknameUpdateVC.h; sourceTree = "<group>"; };
+		B61C1E12190690040085BCD0 /* NicknameUpdateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NicknameUpdateVC.m; sourceTree = "<group>"; };
 		B61EE31918B731A200585C9A /* SelectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectionVC.h; sourceTree = "<group>"; };
 		B61EE31A18B731A200585C9A /* SelectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectionVC.m; sourceTree = "<group>"; };
 		B61EE31C18B731B300585C9A /* HotVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotVC.h; sourceTree = "<group>"; };
@@ -618,6 +621,8 @@
 			children = (
 				B64F9521188F8B1400531FCA /* SettingVC.h */,
 				B64F9522188F8B1400531FCA /* SettingVC.m */,
+				B61C1E11190690040085BCD0 /* NicknameUpdateVC.h */,
+				B61C1E12190690040085BCD0 /* NicknameUpdateVC.m */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1265,6 +1270,7 @@
 				B6603CAA188D151800F52946 /* DispatchQueueLogFormatter.m in Sources */,
 				B6603CE5188D153300F52946 /* GKComment.m in Sources */,
 				B6603CE8188D153300F52946 /* GKNote.m in Sources */,
+				B61C1E13190690040085BCD0 /* NicknameUpdateVC.m in Sources */,
 				B6F1B9C618C0BB7A001E1A64 /* UISegmentedControl+Flat.m in Sources */,
 				B6603CF0188D153300F52946 /* BBProgressHUD.m in Sources */,
 				B64ACF991891361800D88459 /* GroupVC.m in Sources */,

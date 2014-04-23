@@ -90,7 +90,6 @@ static NSInteger const LogoutButtonTag = 999;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *CellIdentifier;
-    NSLog(@"%d", indexPath.row);
     switch (indexPath.row) {
         // 帐号设置
         case 0:
