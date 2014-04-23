@@ -17,6 +17,7 @@
 		B604BF7B18E56D1B00E58A94 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B604BF7A18E56D1B00E58A94 /* RTLabel.m */; };
 		B60620CD18D1B97B007C1A95 /* RecommendEntityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B60620CC18D1B97B007C1A95 /* RecommendEntityCell.m */; };
 		B606B46619079C1E0037EB57 /* EmailUpdateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B606B46519079C1E0037EB57 /* EmailUpdateVC.m */; };
+		B606B4691907A8030037EB57 /* PasswordUpdateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B606B4681907A8030037EB57 /* PasswordUpdateVC.m */; };
 		B60A1F50190112E100DE1500 /* TaobaoOAuthVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B60A1F4F190112E100DE1500 /* TaobaoOAuthVC.m */; };
 		B61B10D8188E35B90090FC38 /* MasterTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B61B10D7188E35B90090FC38 /* MasterTableHeaderView.m */; };
 		B61B10DD188E777E0090FC38 /* DiscoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B61B10DC188E777E0090FC38 /* DiscoverVC.m */; };
@@ -172,6 +173,8 @@
 		B60620CC18D1B97B007C1A95 /* RecommendEntityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendEntityCell.m; sourceTree = "<group>"; };
 		B606B46419079C1E0037EB57 /* EmailUpdateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailUpdateVC.h; sourceTree = "<group>"; };
 		B606B46519079C1E0037EB57 /* EmailUpdateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailUpdateVC.m; sourceTree = "<group>"; };
+		B606B4671907A8030037EB57 /* PasswordUpdateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordUpdateVC.h; sourceTree = "<group>"; };
+		B606B4681907A8030037EB57 /* PasswordUpdateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordUpdateVC.m; sourceTree = "<group>"; };
 		B60A1F4E190112E100DE1500 /* TaobaoOAuthVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaobaoOAuthVC.h; sourceTree = "<group>"; };
 		B60A1F4F190112E100DE1500 /* TaobaoOAuthVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaobaoOAuthVC.m; sourceTree = "<group>"; };
 		B61B10D6188E35B90090FC38 /* MasterTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterTableHeaderView.h; sourceTree = "<group>"; };
@@ -628,6 +631,8 @@
 				B61C1E12190690040085BCD0 /* NicknameUpdateVC.m */,
 				B606B46419079C1E0037EB57 /* EmailUpdateVC.h */,
 				B606B46519079C1E0037EB57 /* EmailUpdateVC.m */,
+				B606B4671907A8030037EB57 /* PasswordUpdateVC.h */,
+				B606B4681907A8030037EB57 /* PasswordUpdateVC.m */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1242,6 +1247,7 @@
 				B6603CF6188D167600F52946 /* BaseNavigationController.m in Sources */,
 				B6603CA5188D151800F52946 /* DDASLLogger.m in Sources */,
 				B61C1E0C190641650085BCD0 /* UIButton+WebCache.m in Sources */,
+				B606B4691907A8030037EB57 /* PasswordUpdateVC.m in Sources */,
 				B600CA1018D8618600AB8FD7 /* UserSectionHeaderView.m in Sources */,
 				B6603C9C188D151800F52946 /* AFHTTPRequestOperationLogger.m in Sources */,
 				B6BF99F918F6A2200097D9AA /* GKAttributedLabel.m in Sources */,

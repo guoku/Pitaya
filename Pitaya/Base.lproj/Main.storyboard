@@ -1182,6 +1182,104 @@
             </objects>
             <point key="canvasLocation" x="3679" y="12270"/>
         </scene>
+        <!--Password UpdateVC - 修改密码-->
+        <scene sceneID="bGw-qB-Syw">
+            <objects>
+                <viewController storyboardIdentifier="PasswordUpdateVC" id="HFV-TG-DD9" customClass="PasswordUpdateVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gn5-ug-iXe"/>
+                        <viewControllerLayoutGuide type="bottom" id="ckH-Ux-Zyo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Kxy-5P-JyT">
+                        <rect key="frame" x="0.0" y="0.0" width="758" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入当前密码" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kzn-A3-CSr" customClass="CustomTextField">
+                                <rect key="frame" x="279" y="84" width="200" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="lgR-wn-JIe"/>
+                                    <constraint firstAttribute="width" constant="200" id="sOy-xJ-2bm"/>
+                                </constraints>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="HFV-TG-DD9" id="RCA-ln-eXE"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OlT-xF-cb1">
+                                <rect key="frame" x="279" y="303" width="200" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.25882352939999997" green="0.4941176471" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="LXK-n4-t9h"/>
+                                    <constraint firstAttribute="width" constant="200" id="zIR-O5-1ON"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="修改">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapSubmitButton:" destination="HFV-TG-DD9" eventType="touchUpInside" id="rkd-XR-U2a"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入新密码" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YBB-pQ-dJy" customClass="CustomTextField">
+                                <rect key="frame" x="279" y="157" width="200" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="DFR-7k-PuW"/>
+                                    <constraint firstAttribute="height" constant="45" id="sX2-yC-INR"/>
+                                </constraints>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="HFV-TG-DD9" id="uaO-W9-Fqn"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="确认新密码" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6QJ-a4-SVm" customClass="CustomTextField">
+                                <rect key="frame" x="279" y="230" width="200" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="3KC-00-xr1"/>
+                                    <constraint firstAttribute="width" constant="200" id="bNw-Eo-kPs"/>
+                                </constraints>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="HFV-TG-DD9" id="soY-xM-Udy"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="6QJ-a4-SVm" secondAttribute="centerX" id="1ZX-zy-ik8"/>
+                            <constraint firstAttribute="centerX" secondItem="OlT-xF-cb1" secondAttribute="centerX" id="2F9-3q-Elq"/>
+                            <constraint firstItem="OlT-xF-cb1" firstAttribute="top" secondItem="6QJ-a4-SVm" secondAttribute="bottom" constant="28" id="KzU-Bb-lsA"/>
+                            <constraint firstItem="kzn-A3-CSr" firstAttribute="top" secondItem="gn5-ug-iXe" secondAttribute="bottom" constant="40" id="LQK-fI-byp"/>
+                            <constraint firstItem="YBB-pQ-dJy" firstAttribute="top" secondItem="kzn-A3-CSr" secondAttribute="bottom" constant="28" id="W5Y-st-wpf"/>
+                            <constraint firstItem="6QJ-a4-SVm" firstAttribute="top" secondItem="YBB-pQ-dJy" secondAttribute="bottom" constant="28" id="c0G-EN-BpY"/>
+                            <constraint firstAttribute="centerX" secondItem="kzn-A3-CSr" secondAttribute="centerX" id="ihS-4u-pVH"/>
+                            <constraint firstAttribute="centerX" secondItem="YBB-pQ-dJy" secondAttribute="centerX" id="yjo-P0-Ry4"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="修改密码" id="nqd-IE-EmC"/>
+                    <connections>
+                        <outlet property="oldPasswordTextField" destination="kzn-A3-CSr" id="Z82-Gv-Rr4"/>
+                        <outlet property="theNewPasswordTextField" destination="YBB-pQ-dJy" id="flV-uR-wUC"/>
+                        <outlet property="verifyPasswordTextField" destination="6QJ-a4-SVm" id="8qN-zH-eeG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B8z-9q-AxT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3679" y="13230"/>
+        </scene>
         <!--Base Navigation Controller - 精选-->
         <scene sceneID="YNj-cz-2Zb">
             <objects>
@@ -1468,6 +1566,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="HFV-TG-DD9" kind="push" id="ET0-8H-zPV"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SettingCell10" rowHeight="50" id="lh3-WE-qtA">
                                         <rect key="frame" x="0.0" y="316" width="758" height="50"/>
