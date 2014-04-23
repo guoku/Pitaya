@@ -14,7 +14,7 @@ static NSInteger const EmailLabelTag = 102;
 static NSInteger const VersionLabelTag = 103;
 static NSInteger const LogoutButtonTag = 999;
 
-@interface SettingVC () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
+@interface SettingVC () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIImageView *avatarImageView;
@@ -22,6 +22,7 @@ static NSInteger const LogoutButtonTag = 999;
 @property (nonatomic, strong) UILabel *emailLabel;
 @property (nonatomic, strong) UILabel *versionLabel;
 @property (nonatomic, strong) UIButton *logoutButton;
+@property (nonatomic, strong) UIPopoverController *popover;
 
 @end
 
@@ -38,6 +39,44 @@ static NSInteger const LogoutButtonTag = 999;
     }
     
     [self.tableView reloadData];
+}
+
+- (void)showImagePickerFromPhotoLibrary
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+        UIImagePickerController *imagePickerVC = [[UIImagePickerController alloc] init];
+        imagePickerVC.allowsEditing = YES;
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePickerVC.delegate = self;
+        imagePickerVC.navigationBar.opaque = YES;
+        
+        _popover = [[UIPopoverController alloc] initWithContentViewController:imagePickerVC];
+        self.popover.popoverContentSize = CGSizeMake(300.f, 400.f);
+        [self.popover presentPopoverFromRect:CGRectMake(self.avatarImageView.frame.origin.x + CGRectGetWidth(self.avatarImageView.frame)/2, self.avatarImageView.frame.origin.y + CGRectGetHeight(self.avatarImageView.frame), 0, 0) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    }
+}
+
+- (void)showImagePickerToTakePhoto
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIImagePickerController *imagePickerVC = [[UIImagePickerController alloc] init];
+        imagePickerVC.allowsEditing = YES;
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePickerVC.delegate = self;
+        [kAppDelegate.alertWindow makeKeyAndVisible];
+        [kAppDelegate.alertWindow.rootViewController presentViewController:imagePickerVC animated:YES completion:nil];
+    }
+}
+
+- (void)updateAvatarWithImage:(UIImage *)image
+{
+    [BBProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    [GKDataManager updateUserProfileWithNickname:nil email:nil password:nil imageData:[image imageData] success:^(GKUser *user) {
+        [self.tableView reloadData];
+        [BBProgressHUD showSuccessWithText:@"更新成功"];
+    } failure:^(NSInteger stateCode) {
+        [BBProgressHUD showErrorWithText:@"更新失败"];
+    }];
 }
 
 #pragma mark - Selector Method
@@ -222,21 +261,8 @@ static NSInteger const LogoutButtonTag = 999;
         case 1:
         {
             // 修改头像
-            break;
-        }
-        case 2:
-        {
-            // 修改昵称
-            break;
-        }
-        case 3:
-        {
-            // 修改邮箱
-            break;
-        }
-        case 4:
-        {
-            // 修改密码
+            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照", @"照片库", nil];
+            [actionSheet showInView:self.view];
             break;
         }
         case 6:
@@ -293,6 +319,65 @@ static NSInteger const LogoutButtonTag = 999;
             [BBProgressHUD showSuccessWithText:@"清除完成"];
         }];
     }
+}
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // 修改头像
+    switch (buttonIndex) {
+        case 0:
+        {
+            // 拍照
+            if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+                [self showImagePickerToTakePhoto];
+            }
+            break;
+        }
+            
+        case 1:
+        {
+            // 照片库
+            [self showImagePickerFromPhotoLibrary];
+            break;
+        }
+    }
+}
+
+#pragma mark- UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
+{
+    [kAppDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:^{
+        [kAppDelegate.window makeKeyAndVisible];
+        kAppDelegate.window.hidden = YES;
+    }];
+    
+    [self updateAvatarWithImage:image];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    if([info count] > 0) {
+        UIImage *editedImage = [info objectForKey:UIImagePickerControllerEditedImage];
+        [self updateAvatarWithImage:editedImage];
+    }
+    
+    [self.popover dismissPopoverAnimated:YES];
+    
+    [kAppDelegate.alertWindow.rootViewController dismissViewControllerAnimated:YES completion:^{
+        [kAppDelegate.window makeKeyAndVisible];
+        kAppDelegate.alertWindow.hidden = YES;
+    }];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [kAppDelegate.alertWindow.rootViewController dismissViewControllerAnimated:YES completion:^{
+        [kAppDelegate.window makeKeyAndVisible];
+        kAppDelegate.alertWindow.hidden = YES;
+    }];
 }
 
 #pragma mark - Life Cycle
