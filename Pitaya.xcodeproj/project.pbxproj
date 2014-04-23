@@ -16,6 +16,7 @@
 		B602A5E018EAC1B200313CBF /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B602A5DF18EAC1B200313CBF /* CommentCell.m */; };
 		B604BF7B18E56D1B00E58A94 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B604BF7A18E56D1B00E58A94 /* RTLabel.m */; };
 		B60620CD18D1B97B007C1A95 /* RecommendEntityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B60620CC18D1B97B007C1A95 /* RecommendEntityCell.m */; };
+		B606B46619079C1E0037EB57 /* EmailUpdateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B606B46519079C1E0037EB57 /* EmailUpdateVC.m */; };
 		B60A1F50190112E100DE1500 /* TaobaoOAuthVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B60A1F4F190112E100DE1500 /* TaobaoOAuthVC.m */; };
 		B61B10D8188E35B90090FC38 /* MasterTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B61B10D7188E35B90090FC38 /* MasterTableHeaderView.m */; };
 		B61B10DD188E777E0090FC38 /* DiscoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B61B10DC188E777E0090FC38 /* DiscoverVC.m */; };
@@ -169,6 +170,8 @@
 		B604BF7A18E56D1B00E58A94 /* RTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLabel.m; sourceTree = "<group>"; };
 		B60620CB18D1B97B007C1A95 /* RecommendEntityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendEntityCell.h; sourceTree = "<group>"; };
 		B60620CC18D1B97B007C1A95 /* RecommendEntityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendEntityCell.m; sourceTree = "<group>"; };
+		B606B46419079C1E0037EB57 /* EmailUpdateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailUpdateVC.h; sourceTree = "<group>"; };
+		B606B46519079C1E0037EB57 /* EmailUpdateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailUpdateVC.m; sourceTree = "<group>"; };
 		B60A1F4E190112E100DE1500 /* TaobaoOAuthVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaobaoOAuthVC.h; sourceTree = "<group>"; };
 		B60A1F4F190112E100DE1500 /* TaobaoOAuthVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaobaoOAuthVC.m; sourceTree = "<group>"; };
 		B61B10D6188E35B90090FC38 /* MasterTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterTableHeaderView.h; sourceTree = "<group>"; };
@@ -623,6 +626,8 @@
 				B64F9522188F8B1400531FCA /* SettingVC.m */,
 				B61C1E11190690040085BCD0 /* NicknameUpdateVC.h */,
 				B61C1E12190690040085BCD0 /* NicknameUpdateVC.m */,
+				B606B46419079C1E0037EB57 /* EmailUpdateVC.h */,
+				B606B46519079C1E0037EB57 /* EmailUpdateVC.m */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1265,6 +1270,7 @@
 				B626517618F53E9700203ECB /* TTTAttributedLabel.m in Sources */,
 				B6603C2C188CEBA200F52946 /* MasterTableViewCell.m in Sources */,
 				B63F9B4918DC538500D8768E /* HomeSectionHeaderView.m in Sources */,
+				B606B46619079C1E0037EB57 /* EmailUpdateVC.m in Sources */,
 				B61EE31B18B731A200585C9A /* SelectionVC.m in Sources */,
 				B6603CF3188D153300F52946 /* SettingManager.m in Sources */,
 				B6603CAA188D151800F52946 /* DispatchQueueLogFormatter.m in Sources */,

@@ -1120,6 +1120,68 @@
             </objects>
             <point key="canvasLocation" x="3679" y="11330"/>
         </scene>
+        <!--Email UpdateVC - 修改邮箱-->
+        <scene sceneID="RYg-pA-dJP">
+            <objects>
+                <viewController storyboardIdentifier="EmailUpdateVC" id="aLK-ef-OPL" customClass="EmailUpdateVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Ug-sT-Alj"/>
+                        <viewControllerLayoutGuide type="bottom" id="gk2-tG-EUL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RbV-jc-3Tg">
+                        <rect key="frame" x="0.0" y="0.0" width="758" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="邮箱" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6FD-ZT-Aov" customClass="CustomTextField">
+                                <rect key="frame" x="279" y="84" width="200" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="5kH-bq-VXb"/>
+                                    <constraint firstAttribute="height" constant="45" id="Ti1-zu-maG"/>
+                                </constraints>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="aLK-ef-OPL" id="2pV-ti-wpg"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uJ7-Dm-qXO">
+                                <rect key="frame" x="279" y="167" width="200" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.25882352939999997" green="0.4941176471" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="ifm-3t-yCQ"/>
+                                    <constraint firstAttribute="width" constant="200" id="snp-dv-tdD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="修改">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapSubmitButton:" destination="aLK-ef-OPL" eventType="touchUpInside" id="cfT-d1-iHv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="6FD-ZT-Aov" secondAttribute="centerX" id="4Ei-Gd-QCE"/>
+                            <constraint firstItem="uJ7-Dm-qXO" firstAttribute="top" secondItem="6FD-ZT-Aov" secondAttribute="bottom" constant="38" id="9sL-ZX-YwH"/>
+                            <constraint firstAttribute="centerX" secondItem="uJ7-Dm-qXO" secondAttribute="centerX" id="rSA-Am-scc"/>
+                            <constraint firstItem="6FD-ZT-Aov" firstAttribute="top" secondItem="2Ug-sT-Alj" secondAttribute="bottom" constant="40" id="wMM-h6-unV"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="修改邮箱" id="YXs-oe-gZ2"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="6FD-ZT-Aov" id="rUG-NR-fD6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MAB-Zf-gpz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3679" y="12270"/>
+        </scene>
         <!--Base Navigation Controller - 精选-->
         <scene sceneID="YNj-cz-2Zb">
             <objects>
@@ -1372,6 +1434,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="aLK-ef-OPL" kind="push" id="YBj-bR-7o1"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SettingCell04" rowHeight="50" id="iJb-zB-28R">
                                         <rect key="frame" x="0.0" y="266" width="758" height="50"/>
