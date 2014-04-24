@@ -11,20 +11,18 @@
 static NSInteger const AvatarImageViewTag = 100;
 static NSInteger const NicknameLabelTag = 101;
 static NSInteger const EmailLabelTag = 102;
-static NSInteger const HighQualityImageSwitchTag = 103;
-static NSInteger const HideNoteSwitchTag = 104;
-static NSInteger const VersionLabelTag = 105;
+static NSInteger const VersionLabelTag = 103;
+static NSInteger const LogoutButtonTag = 999;
 
-@interface SettingVC () <UITableViewDataSource, UITableViewDelegate>
+@interface SettingVC () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIImageView *avatarImageView;
 @property (nonatomic, strong) UILabel *nicknameLabel;
 @property (nonatomic, strong) UILabel *emailLabel;
-@property (nonatomic, strong) UISwitch *highQualityImageSwitch;
-@property (nonatomic, strong) UISwitch *hideNoteSwitch;
 @property (nonatomic, strong) UILabel *versionLabel;
-@property (nonatomic, strong) IBOutlet UIButton *logoutButton;
+@property (nonatomic, strong) UIButton *logoutButton;
+@property (nonatomic, strong) UIPopoverController *popover;
 
 @end
 
@@ -43,13 +41,51 @@ static NSInteger const VersionLabelTag = 105;
     [self.tableView reloadData];
 }
 
+- (void)showImagePickerFromPhotoLibrary
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+        UIImagePickerController *imagePickerVC = [[UIImagePickerController alloc] init];
+        imagePickerVC.allowsEditing = YES;
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePickerVC.delegate = self;
+        imagePickerVC.navigationBar.opaque = YES;
+        
+        _popover = [[UIPopoverController alloc] initWithContentViewController:imagePickerVC];
+        self.popover.popoverContentSize = CGSizeMake(300.f, 400.f);
+        [self.popover presentPopoverFromRect:CGRectMake(self.avatarImageView.frame.origin.x + CGRectGetWidth(self.avatarImageView.frame)/2, self.avatarImageView.frame.origin.y + CGRectGetHeight(self.avatarImageView.frame), 0, 0) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    }
+}
+
+- (void)showImagePickerToTakePhoto
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIImagePickerController *imagePickerVC = [[UIImagePickerController alloc] init];
+        imagePickerVC.allowsEditing = YES;
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePickerVC.delegate = self;
+        [kAppDelegate.alertWindow makeKeyAndVisible];
+        [kAppDelegate.alertWindow.rootViewController presentViewController:imagePickerVC animated:YES completion:nil];
+    }
+}
+
+- (void)updateAvatarWithImage:(UIImage *)image
+{
+    [BBProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    [GKDataManager updateUserProfileWithNickname:nil email:nil password:nil imageData:[image imageData] success:^(GKUser *user) {
+        [self.tableView reloadData];
+        [BBProgressHUD showSuccessWithText:@"更新成功"];
+    } failure:^(NSInteger stateCode) {
+        [BBProgressHUD showErrorWithText:@"更新失败"];
+    }];
+}
+
 #pragma mark - Selector Method
 
-- (IBAction)tapLogoutButton:(id)sender
+- (void)tapLogoutButton
 {
     if (k_isLogin) {
         [Passport logout];
-        self.logoutButton.hidden = YES;
+        [self.tableView reloadData];
     }
 }
 
@@ -82,28 +118,72 @@ static NSInteger const VersionLabelTag = 105;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    switch (section) {
-        case 0:
-            return 4;
-        case 1:
-            return 2;
-        case 2:
-            return 4;
-        case 3:
-            return 4;
-        default:
-            return 0;
-    }
+    return 16;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *CellIdentifier = [NSString stringWithFormat:@"SettingCell%d%d", indexPath.section, indexPath.row];
+    NSString *CellIdentifier;
+    switch (indexPath.row) {
+        // 帐号设置
+        case 0:
+            CellIdentifier = @"SettingCell00";
+            break;
+        case 1:
+            CellIdentifier = @"SettingCell01";
+            break;
+        case 2:
+            CellIdentifier = @"SettingCell02";
+            break;
+        case 3:
+            CellIdentifier = @"SettingCell03";
+            break;
+        case 4:
+            CellIdentifier = @"SettingCell04";
+            break;
+        // 推荐
+        case 5:
+            CellIdentifier = @"SettingCell10";
+            break;
+        case 6:
+            CellIdentifier = @"SettingCell11";
+            break;
+        case 7:
+            CellIdentifier = @"SettingCell12";
+            break;
+        case 8:
+            CellIdentifier = @"SettingCell13";
+            break;
+        case 9:
+            CellIdentifier = @"SettingCell14";
+            break;
+        // 其他
+        case 10:
+            CellIdentifier = @"SettingCell20";
+            break;
+        case 11:
+            CellIdentifier = @"SettingCell21";
+            break;
+        case 12:
+            CellIdentifier = @"SettingCell22";
+            break;
+        case 13:
+            CellIdentifier = @"SettingCell23";
+            break;
+        case 14:
+            CellIdentifier = @"SettingCell24";
+            break;
+        // 注销登录
+        case 15:
+            CellIdentifier = @"SettingCell30";
+            break;
+    }
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (!iOS7) {
@@ -116,71 +196,43 @@ static NSInteger const VersionLabelTag = 105;
         }
     }
     
-    switch (indexPath.section) {
-        case 0:
-        {
-            if (!k_isLogin) {
-                break;
-            }
-            
-            GKUser *user = [Passport sharedInstance].user;
-            
-            switch (indexPath.row) {
-                case 0:
-                {
-                    // 头像
-                    self.avatarImageView = (UIImageView *)[cell viewWithTag:AvatarImageViewTag];
-                    [self.avatarImageView setImageWithURL:user.avatarURL_s];
-                    break;
-                }
-                    
-                case 1:
-                {
-                    // 昵称
-                    self.nicknameLabel = (UILabel *)[cell viewWithTag:NicknameLabelTag];
-                    self.nicknameLabel.text = user.nickname;
-                    break;
-                }
-                    
-                case 2:
-                {
-                    // 邮箱
-                    self.emailLabel = (UILabel *)[cell viewWithTag:EmailLabelTag];
-                    self.emailLabel.text = user.email;
-                    break;
-                }
-            }
-            break;
-        }
-            
+    switch (indexPath.row) {
         case 1:
         {
-            switch (indexPath.row) {
-                case 0:
-                {
-                    // 高清图片开关
-                    self.highQualityImageSwitch = (UISwitch *)[cell viewWithTag:HighQualityImageSwitchTag];
-                    self.highQualityImageSwitch.on = [SettingManager sharedInstance].highQualityImage;
-                    break;
-                }
-                    
-                case 1:
-                {
-                    // 精选点评开关
-                    self.hideNoteSwitch = (UISwitch *)[cell viewWithTag:HideNoteSwitchTag];
-                    self.hideNoteSwitch.on = [SettingManager sharedInstance].hidesNote;
-                    break;
-                }
-            }
+            // 头像
+            self.avatarImageView = (UIImageView *)[cell viewWithTag:AvatarImageViewTag];
+            [self.avatarImageView setImageWithURL:[Passport sharedInstance].user.avatarURL_s];
+        }
+            
+        case 2:
+        {
+            // 昵称
+            self.nicknameLabel = (UILabel *)[cell viewWithTag:NicknameLabelTag];
+            self.nicknameLabel.text = [Passport sharedInstance].user.nickname;
             break;
         }
             
         case 3:
         {
-            if (indexPath.row == 3) {
-                self.versionLabel = (UILabel *)[cell viewWithTag:VersionLabelTag];
-                self.versionLabel.text = [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
-            }
+            // 邮箱
+            self.emailLabel = (UILabel *)[cell viewWithTag:EmailLabelTag];
+            self.emailLabel.text = [Passport sharedInstance].user.email;
+            break;
+        }
+            
+        case 14:
+        {
+            // 版本
+            self.versionLabel = (UILabel *)[cell viewWithTag:VersionLabelTag];
+            self.versionLabel.text = [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
+            break;
+        }
+            
+        case 15:
+        {
+            // 注销
+            self.logoutButton = (UIButton *)[cell viewWithTag:LogoutButtonTag];
+            [self.logoutButton addTarget:self action:@selector(tapLogoutButton) forControlEvents:UIControlEventTouchUpInside];
             break;
         }
     }
@@ -188,61 +240,144 @@ static NSInteger const VersionLabelTag = 105;
     return cell;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, 600.f, 30.f)];
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.f, 0.f, 100.f, 30.f)];
-    titleLabel.font = [UIFont appFontWithSize:15.f bold:YES];
-    titleLabel.textColor = UIColorFromRGB(0x333333);
-    [view addSubview:titleLabel];
-    
-    switch (section) {
-        case 0:
-        {
-            if (!k_isLogin) {
-                return [UIView new];
-            }
-            titleLabel.text = @"账号设置";
-            break;
-        }
-        case 1:
-        {
-            titleLabel.text = @"系统设置";
-            break;
-        }
-        case 2:
-        {
-            titleLabel.text = @"推荐";
-            break;
-        }
-        case 3:
-        {
-            titleLabel.text = @"其他";
-            break;
-        }
-        default:
-            titleLabel.text = @"";
-    }
-    
-    return view;
-}
-
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (!k_isLogin && indexPath.section == 0) {
+    if (!k_isLogin && indexPath.row < 5) {
         return 0.f;
     }
+    
+    if (!k_isLogin && indexPath.row == 15) {
+        return 0.f;
+    }
+    
     return 50.f;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (!k_isLogin && section == 0) {
-        return 0.5f;
+    switch (indexPath.row) {
+        case 1:
+        {
+            // 修改头像
+            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照", @"照片库", nil];
+            [actionSheet showInView:self.view];
+            break;
+        }
+        case 6:
+        {
+            // 评分
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.apple.com/cn/app/id477652209?mt=8"]];
+            break;
+        }
+        case 7:
+        {
+            // 分享给微信好友
+            break;
+        }
+        case 8:
+        {
+            // 分享至朋友圈
+            break;
+        }
+        case 9:
+        {
+            // 关注我们的新浪微博
+            break;
+        }
+        case 11:
+        {
+            // 应用推荐
+            NSLog(@"应用推荐");
+            break;
+        }
+        case 12:
+        {
+            // 意见反馈
+            NSLog(@"意见反馈");
+            break;
+        }
+        case 13:
+        {
+            // 清除图片缓存
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"" message:@"是否清除图片缓存?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认清除", nil];
+            [alertView show];
+            break;
+        }
     }
-    return 30.f;
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        [BBProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+        [[SDImageCache sharedImageCache] clearMemory];
+        [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
+            [BBProgressHUD showSuccessWithText:@"清除完成"];
+        }];
+    }
+}
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // 修改头像
+    switch (buttonIndex) {
+        case 0:
+        {
+            // 拍照
+            if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+                [self showImagePickerToTakePhoto];
+            }
+            break;
+        }
+            
+        case 1:
+        {
+            // 照片库
+            [self showImagePickerFromPhotoLibrary];
+            break;
+        }
+    }
+}
+
+#pragma mark- UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
+{
+    [kAppDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:^{
+        [kAppDelegate.window makeKeyAndVisible];
+        kAppDelegate.window.hidden = YES;
+    }];
+    
+    [self updateAvatarWithImage:image];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    if([info count] > 0) {
+        UIImage *editedImage = [info objectForKey:UIImagePickerControllerEditedImage];
+        [self updateAvatarWithImage:editedImage];
+    }
+    
+    [self.popover dismissPopoverAnimated:YES];
+    
+    [kAppDelegate.alertWindow.rootViewController dismissViewControllerAnimated:YES completion:^{
+        [kAppDelegate.window makeKeyAndVisible];
+        kAppDelegate.alertWindow.hidden = YES;
+    }];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [kAppDelegate.alertWindow.rootViewController dismissViewControllerAnimated:YES completion:^{
+        [kAppDelegate.window makeKeyAndVisible];
+        kAppDelegate.alertWindow.hidden = YES;
+    }];
 }
 
 #pragma mark - Life Cycle
@@ -272,6 +407,8 @@ static NSInteger const VersionLabelTag = 105;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - KVO
 
 - (void)addObserver
 {
