@@ -27,7 +27,7 @@ static NSString *const GKUserDidLogoutNotification = @"GKUserDidLogoutNotificati
 @property (nonatomic, strong) NSString *taobaoId;
 @property (nonatomic, strong) NSString *taobaoToken;
 @property (nonatomic, strong) NSDate *sinaExpirationDate;
-@property (nonatomic, weak) SinaWeibo *weiboInstance;
+@property (nonatomic, strong) SinaWeibo *weiboInstance;
 
 + (Passport *)sharedInstance;
 + (void)loginWithSuccessBlock:(void (^)())successBlock;
