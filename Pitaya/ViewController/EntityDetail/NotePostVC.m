@@ -70,7 +70,7 @@
     
     [self.textView becomeFirstResponder];
     
-    if (self.note) {
+    if (self.note && [Passport sharedInstance].user.userId == self.note.creator.userId) {
         [self.sendButton setTitle:@"修改" forState:UIControlStateNormal];
         self.textView.text = self.note.text;
         self.placeholderLabel.hidden = (self.textView.text.length > 0);
