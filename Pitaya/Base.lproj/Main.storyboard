@@ -2920,11 +2920,11 @@
                                     <size key="itemSize" width="110" height="110"/>
                                     <size key="headerReferenceSize" width="50" height="40"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="48" minY="20" maxX="48" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCell" id="SeS-nz-7iH" customClass="CategoryCell">
-                                        <rect key="frame" x="20" y="104" width="110" height="110"/>
+                                        <rect key="frame" x="48" y="104" width="110" height="110"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
@@ -2971,7 +2971,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wXe-Ye-TyT">
-                                            <rect key="frame" x="718" y="20" width="20" height="20"/>
+                                            <rect key="frame" x="690" y="20" width="20" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="Mtx-Db-qXA"/>
@@ -2979,12 +2979,12 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分类名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fnT-Xc-OxT">
-                                            <rect key="frame" x="20" y="20" width="200" height="20"/>
+                                            <rect key="frame" x="49" y="20" width="200" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <gestureRecognizers/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="200" id="SQu-wR-BTn"/>
                                                 <constraint firstAttribute="height" constant="20" id="dT1-aP-5Dz"/>
+                                                <constraint firstAttribute="width" constant="200" id="g03-lw-hpd"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -3008,11 +3008,11 @@
                                         <constraint firstAttribute="bottom" secondItem="Tjq-uA-kg8" secondAttribute="bottom" id="B46-0g-yPj"/>
                                         <constraint firstAttribute="trailing" secondItem="Tjq-uA-kg8" secondAttribute="trailing" id="Pdq-ep-8mS"/>
                                         <constraint firstAttribute="bottom" secondItem="fnT-Xc-OxT" secondAttribute="bottom" id="UBy-MS-FIX"/>
+                                        <constraint firstAttribute="centerX" secondItem="fnT-Xc-OxT" secondAttribute="centerX" constant="230" id="YON-QB-emm"/>
                                         <constraint firstItem="Tjq-uA-kg8" firstAttribute="top" secondItem="RXw-L2-fuR" secondAttribute="top" id="ZDm-MJ-c5j"/>
-                                        <constraint firstItem="fnT-Xc-OxT" firstAttribute="leading" secondItem="RXw-L2-fuR" secondAttribute="leading" constant="20" id="duO-8o-is1"/>
                                         <constraint firstItem="Tjq-uA-kg8" firstAttribute="leading" secondItem="RXw-L2-fuR" secondAttribute="leading" id="ezJ-5h-vQa"/>
+                                        <constraint firstAttribute="centerX" secondItem="wXe-Ye-TyT" secondAttribute="centerX" constant="-321" id="mub-Z8-NGC"/>
                                         <constraint firstAttribute="bottom" secondItem="wXe-Ye-TyT" secondAttribute="bottom" id="oiP-7m-tNy"/>
-                                        <constraint firstAttribute="trailing" secondItem="wXe-Ye-TyT" secondAttribute="trailing" constant="20" id="tsG-bN-8ol"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="imageView" destination="wXe-Ye-TyT" id="D4w-eb-QKO"/>
@@ -4450,6 +4450,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="wpr-89-GNd"/>
-        <segue reference="Khu-wf-qNG"/>
+        <segue reference="4dc-UK-xle"/>
     </inferredMetricsTieBreakers>
 </document>

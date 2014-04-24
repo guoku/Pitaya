@@ -12,7 +12,7 @@
 #import "GroupVC.h"
 #import "CategoryVC.h"
 
-@interface DiscoverVC () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface DiscoverVC () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) NSMutableArray *allCategoryArray;
 @property (nonatomic, strong) NSMutableArray *filteredCategoryArray;
@@ -86,6 +86,26 @@
 
 #pragma mark - UICollectionViewDelegate
 
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    CGFloat top, left, bottom, right;
+    if (self.interfaceOrientation == 1 || self.interfaceOrientation == 2) {
+        // 竖屏
+        left = 23.f;
+    } else {
+        // 横屏
+        left = 48.f;
+    }
+    
+    top = 20.f;
+    bottom = 0.f;
+    right = left;
+    
+    return UIEdgeInsetsMake(top, left, bottom, right);
+}
+
 #pragma mark - Life Cycle
 
 - (void)viewDidLoad
@@ -126,6 +146,15 @@
         CategoryVC *vc = (CategoryVC *)segue.destinationViewController;
         vc.category = cell.category;
     }
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    double delayInSeconds = 0.1;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.collectionView reloadData];
+    });
 }
 
 - (void)didReceiveMemoryWarning
