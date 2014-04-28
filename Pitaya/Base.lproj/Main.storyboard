@@ -2899,7 +2899,7 @@
             </objects>
             <point key="canvasLocation" x="3804" y="278"/>
         </scene>
-        <!--DiscoverVC - 发现-->
+        <!--DiscoverVC-->
         <scene sceneID="d1o-6h-dYc">
             <objects>
                 <viewController storyboardIdentifier="DiscoverVC" hidesBottomBarWhenPushed="YES" id="bgN-5d-p5w" customClass="DiscoverVC" sceneMemberID="viewController">
@@ -3045,13 +3045,27 @@
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" title="发现" id="cWW-m6-oyQ">
+                    <navigationItem key="navigationItem" id="cWW-m6-oyQ">
+                        <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title=" " id="uH3-qo-jyL"/>
+                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="搜索品类" minimumFontSize="17" clearButtonMode="whileEditing" id="cOT-cY-izg" customClass="CustomTextField">
+                            <rect key="frame" x="228" y="7" width="303" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            <connections>
+                                <action selector="editingChanged:" destination="bgN-5d-p5w" eventType="editingChanged" id="g4X-4l-mMh"/>
+                                <outlet property="delegate" destination="bgN-5d-p5w" id="aaQ-kP-FRp"/>
+                            </connections>
+                        </textField>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="tFX-n1-A8u" id="rha-qj-5rk"/>
                         <outlet property="collectionView" destination="rXu-tq-Mvl" id="zCb-vO-etP"/>
+                        <outlet property="searchTextField" destination="cOT-cY-izg" id="7VL-aG-iBG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tVy-bv-Oyt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4449,7 +4463,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="wpr-89-GNd"/>
+        <segue reference="kHF-kd-qUr"/>
         <segue reference="4dc-UK-xle"/>
     </inferredMetricsTieBreakers>
 </document>

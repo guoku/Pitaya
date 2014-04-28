@@ -11,14 +11,18 @@
 #import "CategoryCell.h"
 #import "GroupVC.h"
 #import "CategoryVC.h"
+#import "PinyinTools.h"
 
-@interface DiscoverVC () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface DiscoverVC () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextFieldDelegate>
 
 @property (nonatomic, strong) NSMutableArray *allCategoryArray;
 @property (nonatomic, strong) NSMutableArray *filteredCategoryArray;
 @property (nonatomic, strong) NSMutableArray *categoryGroupArray;
 
+@property (nonatomic, assign) BOOL isSearching;
+
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) IBOutlet UITextField *searchTextField;
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 
 @end
@@ -42,26 +46,65 @@
     }];
 }
 
+- (void)searchCategoryByKeyword:(NSString *)keyword
+{
+    [self.filteredCategoryArray removeAllObjects];
+    
+    for (GKEntityCategory *category in self.allCategoryArray) {
+        if ([PinyinTools ifNameString:category.categoryName SearchString:keyword]) {
+            [self.filteredCategoryArray addObject:category];
+        }
+    }
+    
+    [self.filteredCategoryArray sortUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"status" ascending:NO]]];
+    [self.collectionView reloadData];
+}
+
 #pragma mark - Selector Method
+
+- (IBAction)editingChanged:(id)sender
+{
+    UITextField *textField = (UITextField *)sender;
+    if (textField.text.length > 0) {
+        self.isSearching = YES;
+        [self searchCategoryByKeyword:textField.text];
+    } else {
+        self.isSearching = NO;
+        [self.collectionView reloadData];
+    }
+}
 
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return self.categoryGroupArray.count;
+    if (self.isSearching) {
+        return 1;
+    } else {
+        return self.categoryGroupArray.count;
+    }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSArray *categoryArray = self.categoryGroupArray[section][CategoryArrayKey];
-    return categoryArray.count;
+    if (self.isSearching) {
+        return self.filteredCategoryArray.count;
+    } else {
+        NSArray *categoryArray = self.categoryGroupArray[section][CategoryArrayKey];
+        return categoryArray.count;
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CategoryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CategoryCell" forIndexPath:indexPath];
     
-    GKEntityCategory *category = self.categoryGroupArray[indexPath.section][CategoryArrayKey][indexPath.row];
+    GKEntityCategory *category;
+    if (self.isSearching) {
+        category = self.filteredCategoryArray[indexPath.row];
+    } else {
+        category = self.categoryGroupArray[indexPath.section][CategoryArrayKey][indexPath.row];
+    }
     cell.category = category;
     
     return cell;
@@ -72,13 +115,36 @@
     UICollectionReusableView *reusableview = nil;
     
     if (kind == UICollectionElementKindSectionHeader) {
-        DiscoverSectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"DiscoverSectionHeaderView" forIndexPath:indexPath];
-        
-        headerView.groupDict = self.categoryGroupArray[indexPath.section];
-        headerView.imageView.image = [UIImage imageNamed:@"icon_next"];
-        headerView.tapButton.tag = indexPath.section;
-        
-        reusableview = headerView;
+        if (self.isSearching) {
+            reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ResultSectionHeaderView" forIndexPath:indexPath];
+            UILabel *label = (UILabel *)[reusableview viewWithTag:200];
+            if (!label) {
+                label = [[UILabel alloc] initWithFrame:CGRectMake(0.f, 20.f, 200.f, 20.f)];
+                label.font = [UIFont appFontWithSize:16.f bold:YES];
+                label.textAlignment = NSTextAlignmentLeft;
+                label.textColor = UIColorFromRGB(0x666666);
+                label.tag = 200;
+                label.text = @"搜索结果：";
+                [reusableview addSubview:label];
+            }
+            
+            if (self.interfaceOrientation == 1 || self.interfaceOrientation == 2) {
+                // 竖屏
+                label.deFrameLeft = 23.f;
+            } else {
+                // 横屏
+                label.deFrameLeft = 48.f;
+            }
+            
+        } else {
+            DiscoverSectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"DiscoverSectionHeaderView" forIndexPath:indexPath];
+            
+            headerView.groupDict = self.categoryGroupArray[indexPath.section];
+            headerView.imageView.image = [UIImage imageNamed:@"icon_next"];
+            headerView.tapButton.tag = indexPath.section;
+            
+            reusableview = headerView;
+        }
     }
     
     return reusableview;
@@ -106,11 +172,28 @@
     return UIEdgeInsetsMake(top, left, bottom, right);
 }
 
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if ([string isEqualToString:@"\n"]) {
+        NSLog(@"push search result vc by %@", textField.text);
+        return NO;
+    }
+    
+    return YES;
+}
+
 #pragma mark - Life Cycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.isSearching = NO;
+    _filteredCategoryArray = [NSMutableArray array];
+    
+    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ResultSectionHeaderView"];
 }
 
 - (void)viewWillAppear:(BOOL)animated

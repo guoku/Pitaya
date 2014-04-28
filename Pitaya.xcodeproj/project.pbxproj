@@ -22,6 +22,8 @@
 		B61B10D8188E35B90090FC38 /* MasterTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B61B10D7188E35B90090FC38 /* MasterTableHeaderView.m */; };
 		B61B10DD188E777E0090FC38 /* DiscoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B61B10DC188E777E0090FC38 /* DiscoverVC.m */; };
 		B61B10E0188E7A810090FC38 /* CategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B61B10DF188E7A810090FC38 /* CategoryCell.m */; };
+		B61B93DC190E51910094CE09 /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = B61B93D8190E51910094CE09 /* pinyin.c */; };
+		B61B93DD190E51910094CE09 /* PinyinTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B61B93DB190E51910094CE09 /* PinyinTools.m */; };
 		B61C1E03190641650085BCD0 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B61C1DE7190641650085BCD0 /* MKAnnotationView+WebCache.m */; };
 		B61C1E04190641650085BCD0 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = B61C1DE9190641650085BCD0 /* NSData+ImageContentType.m */; };
 		B61C1E05190641650085BCD0 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B61C1DEB190641650085BCD0 /* SDImageCache.m */; };
@@ -183,6 +185,10 @@
 		B61B10DC188E777E0090FC38 /* DiscoverVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverVC.m; sourceTree = "<group>"; };
 		B61B10DE188E7A810090FC38 /* CategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCell.h; sourceTree = "<group>"; };
 		B61B10DF188E7A810090FC38 /* CategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCell.m; sourceTree = "<group>"; };
+		B61B93D8190E51910094CE09 /* pinyin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pinyin.c; sourceTree = "<group>"; };
+		B61B93D9190E51910094CE09 /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
+		B61B93DA190E51910094CE09 /* PinyinTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinyinTools.h; sourceTree = "<group>"; };
+		B61B93DB190E51910094CE09 /* PinyinTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinyinTools.m; sourceTree = "<group>"; };
 		B61C1DE6190641650085BCD0 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		B61C1DE7190641650085BCD0 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		B61C1DE8190641650085BCD0 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -513,6 +519,17 @@
 			path = Discover;
 			sourceTree = "<group>";
 		};
+		B61B93D7190E51910094CE09 /* pinyinTools */ = {
+			isa = PBXGroup;
+			children = (
+				B61B93D8190E51910094CE09 /* pinyin.c */,
+				B61B93D9190E51910094CE09 /* pinyin.h */,
+				B61B93DA190E51910094CE09 /* PinyinTools.h */,
+				B61B93DB190E51910094CE09 /* PinyinTools.m */,
+			);
+			path = pinyinTools;
+			sourceTree = "<group>";
+		};
 		B61C1DE5190641650085BCD0 /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -782,6 +799,7 @@
 		B6603C16188CEBA200F52946 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				B61B93D7190E51910094CE09 /* pinyinTools */,
 				B67DD0101902623A00D58061 /* SinaWeibo */,
 				B626517318F53E9700203ECB /* TTTAttributedLabel */,
 				B604BF7818E56D1B00E58A94 /* RTLabel */,
@@ -1207,6 +1225,7 @@
 				B6603C2A188CEBA200F52946 /* BaseViewController.m in Sources */,
 				B6603BED188CE7AE00F52946 /* AppDelegate.m in Sources */,
 				B6603CBC188D151800F52946 /* UIScrollView+SVPullToRefresh.m in Sources */,
+				B61B93DC190E51910094CE09 /* pinyin.c in Sources */,
 				B6603C46188D150A00F52946 /* UIImage+App.m in Sources */,
 				B6603BE9188CE7AE00F52946 /* main.m in Sources */,
 				B664EFAC18AA38F30005E635 /* NoteCollectionCell.m in Sources */,
@@ -1256,6 +1275,7 @@
 				B61EE32118B7356000585C9A /* SelectionCell.m in Sources */,
 				B6AEAADB18DD68D500548F2A /* iCarousel.m in Sources */,
 				B6603C9B188D151800F52946 /* AFHTTPRequestOperation.m in Sources */,
+				B61B93DD190E51910094CE09 /* PinyinTools.m in Sources */,
 				B6603C9D188D151800F52946 /* AFImageRequestOperation.m in Sources */,
 				B647727618DAAC2900F662FD /* TagCollectionCell.m in Sources */,
 				B64ACF9C1891372400D88459 /* CategoryVC.m in Sources */,
