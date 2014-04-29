@@ -165,10 +165,20 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        if (iOS7) {
+            cell.tintColor = UIColorFromRGB(0x427EC0);
+        }
     }
     
     if (indexPath.row == self.currentCategoryIndex) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        if (iOS7) {
+            cell.textLabel.textColor = UIColorFromRGB(0x427EC0);
+        } else {
+            cell.textLabel.textColor = UIColorFromRGB(0x666666);
+        }
+    } else {
+        cell.textLabel.textColor = UIColorFromRGB(0x666666);
     }
     
     cell.textLabel.text = self.categoryTitleArray[indexPath.row];
@@ -177,6 +187,11 @@
 }
 
 #pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 50.f;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -204,7 +219,7 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         _selectionArray = @[].mutableCopy;
-        _categoryTitleArray = @[@"全部", @"女装", @"男装", @"孩童", @"配饰", @"美容", @"科技", @"居家", @"户外", @"文化", @"美食", @"玩乐"];
+        _categoryTitleArray = @[@"所有", @"女装", @"男装", @"孩童", @"配饰", @"美容", @"科技", @"居家", @"户外", @"文化", @"美食", @"玩乐"];
     }
     return self;
 }

@@ -143,11 +143,12 @@
             if (!self.allCategoryButton) {
                 _allCategoryButton = [[UIButton alloc] init];
                 self.allCategoryButton.backgroundColor = UIColorFromRGB(0xF8F8F8);
-                self.allCategoryButton.imageEdgeInsets = UIEdgeInsetsMake(20.f, 32.5f, 45.f, 32.5f);
-                self.allCategoryButton.titleEdgeInsets = UIEdgeInsetsMake(80.f, 0.f, 10.f, 0.f);
+                self.allCategoryButton.imageEdgeInsets = UIEdgeInsetsMake(25.f, 39.f, 45.f, 39.f);
+                self.allCategoryButton.titleEdgeInsets = UIEdgeInsetsMake(80.f, -29.f, 10.f, 0.f);
                 self.allCategoryButton.titleLabel.font = [UIFont appFontWithSize:14.f];
                 [self.allCategoryButton setTitleColor:UIColorFromRGB(0xA9A9A9) forState:UIControlStateNormal];
                 [self.allCategoryButton setTitle:@"更多品类" forState:UIControlStateNormal];
+                [self.allCategoryButton setImage:[UIImage imageNamed:@"icon_homepage_more"] forState:UIControlStateNormal];
                 [self.allCategoryButton addTarget:self action:@selector(tapHotCategoryButton:) forControlEvents:UIControlEventTouchUpInside];
                 [self.hotCategoryView addSubview:self.allCategoryButton];
             }

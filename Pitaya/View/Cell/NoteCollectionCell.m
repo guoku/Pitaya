@@ -18,8 +18,7 @@ static CGFloat const kNoteCollectionCellTextFontSize = 15.f;
 @property (nonatomic, strong) IBOutlet UIButton *categoryButton;
 @property (nonatomic, strong) IBOutlet UIView *entityBackView;
 @property (nonatomic, strong) IBOutlet UIImageView *entityImageView;
-@property (nonatomic, strong) IBOutlet UILabel *brandLabel;
-@property (nonatomic, strong) IBOutlet UILabel *titleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *brandAndTitleLabel;
 @property (nonatomic, strong) IBOutlet UILabel *priceLabel;
 @property (nonatomic, strong) IBOutlet UILabel *likeCountLabel;
 @property (nonatomic, strong) IBOutlet UILabel *commentCountLabel;
@@ -132,11 +131,9 @@ static CGFloat const kNoteCollectionCellTextFontSize = 15.f;
     
     // 品牌 名称
     if (self.entity.brand.length > 0) {
-        self.brandLabel.text = self.entity.brand;
-        self.titleLabel.text = self.entity.title;
+        self.brandAndTitleLabel.text = [NSString stringWithFormat:@"%@ - %@", self.entity.brand, self.entity.title];
     } else {
-        self.brandLabel.text = self.entity.title;
-        self.titleLabel.text = @"";
+        self.brandAndTitleLabel.text = self.entity.title;
     }
     
     // 价格
@@ -145,7 +142,7 @@ static CGFloat const kNoteCollectionCellTextFontSize = 15.f;
     // 点评内容
     self.noteLabel.numberOfLines = 0;
     self.noteLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    self.noteLabel.textColor = UIColorFromRGB(0x666666);
+    self.noteLabel.textColor = UIColorFromRGB(0x7777777);
     self.noteLabel.font = [GKAttributedLabel fontOfSize:kNoteCollectionCellTextFontSize];
     self.noteLabel.verticalAlignment = TTTAttributedLabelVerticalAlignmentTop;
     self.noteLabel.minimumLineHeight = 17.f;
@@ -158,7 +155,12 @@ static CGFloat const kNoteCollectionCellTextFontSize = 15.f;
     self.commentCountLabel.text = @(self.note.commentCount).stringValue;
     
     // 赞
-    self.pokeButton.highlighted = self.note.isPoked;
+    self.pokeButton.selected = self.note.isPoked;
+    if (self.note.pokeCount) {
+        [self.pokeButton setTitle:@(self.note.pokeCount).stringValue forState:UIControlStateNormal];
+    } else {
+        [self.pokeButton setTitle:@"" forState:UIControlStateNormal];
+    }
     
     // 点评时间
     self.dateLabel.text = [[NSDate dateWithTimeIntervalSince1970:self.note.createdTime] stringWithDefaultFormat];
@@ -169,6 +171,7 @@ static CGFloat const kNoteCollectionCellTextFontSize = 15.f;
 - (void)addObserver
 {
     [self.note addObserver:self forKeyPath:@"poked" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+    [self.note addObserver:self forKeyPath:@"pokeCount" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
     [self.entity addObserver:self forKeyPath:@"likeCount" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
     [self.entity addObserver:self forKeyPath:@"noteCount" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
 }
@@ -176,6 +179,7 @@ static CGFloat const kNoteCollectionCellTextFontSize = 15.f;
 - (void)removeObserver
 {
     [self.note removeObserver:self forKeyPath:@"poked"];
+    [self.note removeObserver:self forKeyPath:@"pokeCount"];
     [self.entity removeObserver:self forKeyPath:@"likeCount"];
     [self.entity removeObserver:self forKeyPath:@"noteCount"];
 }
@@ -184,6 +188,12 @@ static CGFloat const kNoteCollectionCellTextFontSize = 15.f;
 {
     if ([keyPath isEqualToString:@"poked"]) {
         self.pokeButton.selected = self.note.isPoked;
+    } else if ([keyPath isEqualToString:@"pokeCount"]) {
+        if (self.note.pokeCount) {
+            [self.pokeButton setTitle:@(self.note.pokeCount).stringValue forState:UIControlStateNormal];
+        } else {
+            [self.pokeButton setTitle:@"" forState:UIControlStateNormal];
+        }
     } else if ([keyPath isEqualToString:@"likeCount"]) {
         self.likeCountLabel.text = @(self.entity.likeCount).stringValue;
     } else if ([keyPath isEqualToString:@"noteCount"]) {

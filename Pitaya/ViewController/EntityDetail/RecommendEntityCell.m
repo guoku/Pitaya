@@ -36,12 +36,14 @@
 {
     [super layoutSubviews];
     
-    if (self.backView.subviews.count > 0) {
+    if (self.backView.subviews.count > 1) {
         return;
     }
     
     for (UIView *subView in self.backView.subviews) {
-        [subView removeFromSuperview];
+        if ([subView isKindOfClass:UIButton.class]) {
+            [subView removeFromSuperview];
+        }
     }
     
     for (NSUInteger i = 0; (i < 6) && i < self.entityArray.count; i++) {
@@ -49,13 +51,13 @@
         
         CGRect frame;
         frame.origin.x = (i % 3) * (210.f + 19.f);
-        frame.origin.y = 19.f + (i / 3) * (210.f + 19.f);
+        frame.origin.y = 35.f + 15.f + (i / 3) * (210.f + 19.f);
         frame.size.width = 210.f;
         frame.size.height = 210.f;
         
         UIButton *entityButton = [[UIButton alloc] initWithFrame:frame];
         entityButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        entityButton.layer.borderColor = UIColorFromRGB(0xE9E9E9).CGColor;
+        entityButton.layer.borderColor = UIColorFromRGB(0xF6F6F6).CGColor;
         entityButton.layer.borderWidth = 1.f;
         entityButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
         entityButton.adjustsImageWhenHighlighted = NO;

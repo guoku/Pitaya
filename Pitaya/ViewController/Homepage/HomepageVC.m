@@ -8,7 +8,7 @@
 
 #import "HomepageVC.h"
 #import "HomeSectionHeaderView.h"
-#import "HotCell.h"
+#import "EntityCollectionCell.h"
 #import "SVPullToRefresh.h"
 #import "EntityDetailVC.h"
 #import "CategoryVC.h"
@@ -104,7 +104,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    HotCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HotCell" forIndexPath:indexPath];
+    EntityCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"EntityCollectionCell" forIndexPath:indexPath];
     
     cell.entity = self.entityArray[indexPath.row];
     
@@ -185,7 +185,7 @@
     [super prepareForSegue:segue sender:sender];
     
     if ([segue.destinationViewController isKindOfClass:[EntityDetailVC class]]) {
-        HotCell *cell = (HotCell *)sender;
+        EntityCollectionCell *cell = (EntityCollectionCell *)sender;
         EntityDetailVC *vc = (EntityDetailVC *)segue.destinationViewController;
         vc.entity = cell.entity;
     }

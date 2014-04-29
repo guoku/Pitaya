@@ -66,7 +66,7 @@
 {
     [super layoutSubviews];
     
-    self.layer.borderColor = UIColorFromRGB(0xEEEEEE).CGColor;
+    self.layer.borderColor = UIColorFromRGB(0xF6F6F6).CGColor;
     
     // 商品图
     [self.imageView setImageWithURL:self.entity.imageURL_310x310];
@@ -80,7 +80,9 @@
     } else {
         [self.likeButton setImage:[UIImage imageNamed:@"like_btn"] forState:UIControlStateNormal];
     }
-    [self.likeButton setTitle:[NSString stringWithFormat:@"喜爱 %d", self.entity.likeCount] forState:UIControlStateNormal];
+    
+    NSString *likeButtonTitle = self.entity.likeCount ? [NSString stringWithFormat:@"喜爱 %d", self.entity.likeCount] : @"喜爱";
+    [self.likeButton setTitle:likeButtonTitle forState:UIControlStateNormal];
 }
 
 #pragma mark - KVO
