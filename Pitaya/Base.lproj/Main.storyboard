@@ -3193,7 +3193,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="¥999.99" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gzr-WS-zMC">
-                                                    <rect key="frame" x="98" y="59" width="81" height="21"/>
+                                                    <rect key="frame" x="98" y="59" width="150" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="18"/>
                                                     <color key="textColor" red="0.25882352941176473" green="0.49411764705882355" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
@@ -4034,20 +4034,20 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <state key="normal" title="用户昵称">
-                                                        <color key="titleColor" red="0.26666668059999998" green="0.26666668059999998" blue="0.26666668059999998" alpha="1" colorSpace="deviceRGB"/>
+                                                        <color key="titleColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N6M-JC-URH">
-                                                    <rect key="frame" x="558" y="10" width="100" height="40"/>
+                                                    <rect key="frame" x="563" y="10" width="100" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="Ngp-N8-XR3"/>
                                                         <constraint firstAttribute="height" constant="40" id="oe8-lG-iDq"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <state key="normal" title="[分类名称]">
-                                                        <color key="titleColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="deviceRGB"/>
+                                                        <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -4062,7 +4062,7 @@
                                                         <constraint firstAttribute="height" constant="40" id="eZd-9X-j4U"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="deviceRGB"/>
+                                                    <color key="textColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iD9-eX-tVL">
@@ -4078,25 +4078,18 @@
                                                             <rect key="frame" x="10" y="10" width="80" height="80"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </imageView>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="商品品牌" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kUw-AE-O3z">
-                                                            <rect key="frame" x="98" y="10" width="550" height="18"/>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="商品品牌" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="500" translatesAutoresizingMaskIntoConstraints="NO" id="kUw-AE-O3z">
+                                                            <rect key="frame" x="98" y="10" width="500" height="48"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="deviceRGB"/>
+                                                            <color key="textColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="¥999.99" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mpt-Qb-Gni">
-                                                            <rect key="frame" x="98" y="59" width="81" height="21"/>
+                                                            <rect key="frame" x="98" y="59" width="150" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="18"/>
-                                                            <color key="textColor" red="0.2588235438" green="0.49411764740000003" blue="0.75294119120000003" alpha="1" colorSpace="deviceRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="商品名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGv-pV-DfH">
-                                                            <rect key="frame" x="98" y="31" width="550" height="18"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="deviceRGB"/>
+                                                            <color key="textColor" red="0.25882352941176473" green="0.49411764705882355" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubm-g7-XjW">
@@ -4106,7 +4099,7 @@
                                                                 <constraint firstAttribute="height" constant="12" id="sw4-K8-NHG"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                            <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="deviceRGB"/>
+                                                            <color key="textColor" red="0.74901960784313726" green="0.74901960784313726" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8b-WW-6mo">
@@ -4116,7 +4109,7 @@
                                                                 <constraint firstAttribute="height" constant="12" id="bS9-1c-ZTI"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                            <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="deviceRGB"/>
+                                                            <color key="textColor" red="0.74901960784313726" green="0.74901960784313726" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_reply" translatesAutoresizingMaskIntoConstraints="NO" id="9md-V9-cS5">
@@ -4156,22 +4149,30 @@
                                                         <constraint firstAttribute="width" constant="100" id="Kz4-Ah-Bp0"/>
                                                         <constraint firstAttribute="height" constant="15" id="U3M-gZ-2S1"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="deviceRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.74901960784313726" green="0.74901960784313726" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KtU-0a-bAw">
-                                                    <rect key="frame" x="37" y="236" width="44" height="44"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KtU-0a-bAw">
+                                                    <rect key="frame" x="37" y="236" width="70" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="44" id="7am-m2-0Xs"/>
+                                                        <constraint firstAttribute="width" constant="70" id="7am-m2-0Xs"/>
                                                         <constraint firstAttribute="height" constant="44" id="o9q-xj-0t2"/>
                                                     </constraints>
-                                                    <state key="normal" image="poke">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <inset key="titleEdgeInsets" minX="15" minY="2" maxX="10" maxY="0.0"/>
+                                                    <inset key="imageEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <state key="normal" title="99" image="poke">
+                                                        <color key="titleColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="selected" image="poke_highlighted"/>
-                                                    <state key="highlighted" image="poke_highlighted"/>
+                                                    <state key="selected" image="poke_highlighted">
+                                                        <color key="titleColor" red="0.25882352941176473" green="0.49411764705882355" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <state key="highlighted" image="poke_highlighted">
+                                                        <color key="titleColor" red="0.25882352941176473" green="0.49411764705882355" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="tapPokeButton:" destination="0uw-8o-GS8" eventType="touchUpInside" id="bmm-7R-YZK"/>
                                                     </connections>
@@ -4198,7 +4199,7 @@
                                             <constraint firstAttribute="bottom" secondItem="yai-3h-T6R" secondAttribute="bottom" constant="12" id="F9r-lc-SKz"/>
                                             <constraint firstAttribute="trailing" secondItem="yai-3h-T6R" secondAttribute="trailing" constant="10" id="JuU-xa-3U6"/>
                                             <constraint firstItem="VaU-Me-sSb" firstAttribute="top" secondItem="0uw-8o-GS8" secondAttribute="top" constant="10" id="WRF-T0-0CB"/>
-                                            <constraint firstAttribute="trailing" secondItem="N6M-JC-URH" secondAttribute="trailing" constant="10" id="YBf-IV-KoV"/>
+                                            <constraint firstAttribute="trailing" secondItem="N6M-JC-URH" secondAttribute="trailing" constant="5" id="YBf-IV-KoV"/>
                                             <constraint firstItem="Kca-4l-Mor" firstAttribute="top" secondItem="Lj2-cd-bZT" secondAttribute="bottom" constant="8" id="aUD-Wh-5eN"/>
                                             <constraint firstItem="XTI-3m-Ebd" firstAttribute="top" secondItem="0uw-8o-GS8" secondAttribute="top" constant="10" id="beK-84-b4l"/>
                                             <constraint firstItem="KtU-0a-bAw" firstAttribute="leading" secondItem="0uw-8o-GS8" secondAttribute="leading" constant="37" id="enp-2z-hwH"/>
@@ -4213,7 +4214,7 @@
                                         <size key="customSize" width="668" height="280"/>
                                         <connections>
                                             <outlet property="avatarButton" destination="m3X-hM-SN3" id="Ld1-52-mdI"/>
-                                            <outlet property="brandLabel" destination="kUw-AE-O3z" id="R51-yv-AiB"/>
+                                            <outlet property="brandAndTitleLabel" destination="kUw-AE-O3z" id="Hx3-LA-LY1"/>
                                             <outlet property="categoryButton" destination="N6M-JC-URH" id="SaP-TE-pqT"/>
                                             <outlet property="commentCountLabel" destination="ubm-g7-XjW" id="9In-iX-P4O"/>
                                             <outlet property="dateLabel" destination="yai-3h-T6R" id="uvq-a9-esO"/>
@@ -4224,7 +4225,6 @@
                                             <outlet property="noteLabel" destination="Kca-4l-Mor" id="20U-ct-0fZ"/>
                                             <outlet property="pokeButton" destination="KtU-0a-bAw" id="AeE-AK-ulZ"/>
                                             <outlet property="priceLabel" destination="Mpt-Qb-Gni" id="Kak-mN-gxR"/>
-                                            <outlet property="titleLabel" destination="IGv-pV-DfH" id="nmb-8G-l2k"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TagCollectionCell" id="fYy-LV-TWJ" customClass="TagCollectionCell">
