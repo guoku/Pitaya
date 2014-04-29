@@ -2094,7 +2094,7 @@
             </objects>
             <point key="canvasLocation" x="1211" y="-1544"/>
         </scene>
-        <!--Entity DetailVC - 详情-->
+        <!--Entity DetailVC - 商品-->
         <scene sceneID="Pxh-RE-zBP">
             <objects>
                 <viewController storyboardIdentifier="EntityDetailVC" id="C9Z-0J-GF4" customClass="EntityDetailVC" sceneMemberID="viewController">
@@ -2122,7 +2122,7 @@
                                                 <constraint firstAttribute="height" constant="25" id="bQp-s0-nLo"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2H6-ou-Vj6">
@@ -2189,7 +2189,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mDB-9l-II2">
                                                     <rect key="frame" x="0.0" y="429" width="668" height="1"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="avm-wZ-0GL"/>
                                                     </constraints>
@@ -2315,8 +2315,12 @@
                                                                 <color key="titleColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
-                                                            <state key="selected" image="detail_icon_poke_highlighted"/>
-                                                            <state key="highlighted" image="detail_icon_poke_highlighted"/>
+                                                            <state key="selected" image="detail_icon_poke_highlighted">
+                                                                <color key="titleColor" red="0.25882352941176473" green="0.49411764705882355" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </state>
+                                                            <state key="highlighted" image="detail_icon_poke_highlighted">
+                                                                <color key="titleColor" red="0.25882352941176473" green="0.49411764705882355" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </state>
                                                             <connections>
                                                                 <action selector="tapPokeButton:" destination="PmY-61-4L1" eventType="touchUpInside" id="T0f-AO-0bD"/>
                                                             </connections>
@@ -2356,7 +2360,7 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EsU-hS-HFe">
                                                             <rect key="frame" x="0.0" y="148" width="668" height="1"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="gpH-3X-qzL"/>
                                                             </constraints>
@@ -2429,6 +2433,15 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zZ4-Sw-QK6">
                                                     <rect key="frame" x="45" y="0.0" width="668" height="477"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="相似推荐" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWY-zJ-Qh5">
+                                                            <rect key="frame" x="0.0" y="15" width="64" height="20"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="668" id="Yak-eg-6Jz"/>
@@ -2462,7 +2475,7 @@
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" title="详情" id="Hha-X7-M02">
+                    <navigationItem key="navigationItem" title="商品" id="Hha-X7-M02">
                         <barButtonItem key="backBarButtonItem" title=" " id="DWe-y1-Mkv"/>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -2842,7 +2855,7 @@
             </objects>
             <point key="canvasLocation" x="3814" y="1970"/>
         </scene>
-        <!--Note PostVC-->
+        <!--Note PostVC - 点评-->
         <scene sceneID="UeV-Xf-gmu">
             <objects>
                 <viewController storyboardIdentifier="NotePostVC" id="nEX-KE-I9B" customClass="NotePostVC" sceneMemberID="viewController">
@@ -2862,6 +2875,7 @@
                                     <constraint firstAttribute="width" constant="600" id="BeJ-hE-Apo"/>
                                     <constraint firstAttribute="height" constant="300" id="SZF-wT-HM7"/>
                                 </constraints>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
@@ -2869,13 +2883,13 @@
                                 </connections>
                             </textView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="撰写真实、有用、有趣的商品点评" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBy-kC-SL7">
-                                <rect key="frame" x="89" y="72" width="580" height="18"/>
+                                <rect key="frame" x="99" y="82" width="560" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="580" id="6Yl-dQ-4VD"/>
+                                    <constraint firstAttribute="width" constant="560" id="6Yl-dQ-4VD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -2883,12 +2897,12 @@
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="EBy-kC-SL7" secondAttribute="centerX" id="6CL-0H-xpQ"/>
                             <constraint firstItem="PMK-bv-WhG" firstAttribute="top" secondItem="ran-m0-fdA" secondAttribute="bottom" constant="20" id="KiJ-Hw-DQD"/>
-                            <constraint firstItem="EBy-kC-SL7" firstAttribute="top" secondItem="PMK-bv-WhG" secondAttribute="bottom" constant="-292" id="SLJ-FA-ouJ"/>
+                            <constraint firstItem="EBy-kC-SL7" firstAttribute="top" secondItem="PMK-bv-WhG" secondAttribute="bottom" constant="-282" id="SLJ-FA-ouJ"/>
                             <constraint firstAttribute="centerX" secondItem="PMK-bv-WhG" secondAttribute="centerX" id="VMq-Vs-IO7"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" id="E0s-V0-Wbk">
+                    <navigationItem key="navigationItem" title="点评" id="E0s-V0-Wbk">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="zVW-vc-JFS">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="O8z-Hw-Qix">
                                 <rect key="frame" x="692" y="5" width="50" height="33"/>
@@ -3145,10 +3159,10 @@
                                             </state>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FC4-tl-6ch">
-                                            <rect key="frame" x="563" y="10" width="100" height="40"/>
+                                            <rect key="frame" x="463" y="10" width="200" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="100" id="aXN-ed-hqd"/>
+                                                <constraint firstAttribute="width" constant="200" id="aXN-ed-hqd"/>
                                                 <constraint firstAttribute="height" constant="40" id="oPi-0r-8gC"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -4039,10 +4053,10 @@
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N6M-JC-URH">
-                                                    <rect key="frame" x="563" y="10" width="100" height="40"/>
+                                                    <rect key="frame" x="463" y="10" width="200" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="Ngp-N8-XR3"/>
+                                                        <constraint firstAttribute="width" constant="200" id="Ngp-N8-XR3"/>
                                                         <constraint firstAttribute="height" constant="40" id="oe8-lG-iDq"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -4649,7 +4663,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="p0H-nL-S1o"/>
         <segue reference="9ha-sJ-Ien"/>
+        <segue reference="r0j-eJ-qcD"/>
     </inferredMetricsTieBreakers>
 </document>

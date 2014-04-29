@@ -68,6 +68,7 @@
 {
     [super viewDidLoad];
     
+    self.textView.contentInset = UIEdgeInsetsMake(10.f, 20.f, 10.f, 20.f);
     [self.textView becomeFirstResponder];
     
     if (self.note && [Passport sharedInstance].user.userId == self.note.creator.userId) {

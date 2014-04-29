@@ -89,12 +89,12 @@ static CGFloat const kNoteCellTextFontSize = 15.f;
     
     // 左右边线
     CALayer *leftLinelayer = [CALayer layer];
-    leftLinelayer.backgroundColor = UIColorFromRGB(0xE9E9E9).CGColor;
+    leftLinelayer.backgroundColor = UIColorFromRGB(0xF6F6F6).CGColor;
     leftLinelayer.frame = CGRectMake(0.f, 0.f, 1.f, CGRectGetHeight(self.backView.bounds));
     [self.backView.layer addSublayer:leftLinelayer];
     
     CALayer *rightLinelayer = [CALayer layer];
-    rightLinelayer.backgroundColor = UIColorFromRGB(0xE9E9E9).CGColor;
+    rightLinelayer.backgroundColor = UIColorFromRGB(0xF6F6F6).CGColor;
     rightLinelayer.frame = CGRectMake((CGRectGetWidth(self.backView.bounds) - 1.f), 0.f, 1.f, CGRectGetHeight(self.backView.bounds));
     [self.backView.layer addSublayer:rightLinelayer];
     
@@ -107,7 +107,7 @@ static CGFloat const kNoteCellTextFontSize = 15.f;
     // 点评内容
     self.contentLabel.numberOfLines = 0;
     self.contentLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    self.contentLabel.textColor = UIColorFromRGB(0x666666);
+    self.contentLabel.textColor = UIColorFromRGB(0x777777);
     self.contentLabel.font = [GKAttributedLabel fontOfSize:kNoteCellTextFontSize];
     self.contentLabel.verticalAlignment = TTTAttributedLabelVerticalAlignmentTop;
     self.contentLabel.minimumLineHeight = 17.f;
