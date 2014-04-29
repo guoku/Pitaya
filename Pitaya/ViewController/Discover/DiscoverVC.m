@@ -12,6 +12,7 @@
 #import "GroupVC.h"
 #import "CategoryVC.h"
 #import "PinyinTools.h"
+#import "SearchResultVC.h"
 
 @interface DiscoverVC () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextFieldDelegate>
 
@@ -177,7 +178,9 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     if ([string isEqualToString:@"\n"]) {
-        NSLog(@"push search result vc by %@", textField.text);
+        SearchResultVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SearchResultVC"];
+        vc.keyword = textField.text;
+        [self.navigationController pushViewController:vc animated:YES];
         return NO;
     }
     
