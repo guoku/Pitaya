@@ -69,7 +69,9 @@
     if (self.entity.imageURL) {
         [imageURLArray addObject:self.entity.imageURL];
     }
-    if (self.entity.imageURLArray) {
+    
+    BOOL multiImageSupport = NO;
+    if (self.entity.imageURLArray && multiImageSupport) {
         [imageURLArray addObjectsFromArray:self.entity.imageURLArray];
     }
     

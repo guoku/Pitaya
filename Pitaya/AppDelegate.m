@@ -105,9 +105,8 @@ int ddLogLevel;
         [UINavigationBar appearance].backIndicatorTransitionMaskImage = navigationBarBackButtonImage;
     } else {
         [UINavigationBar appearance].tintColor = navigationBarBackgroundColor;
-        // TODO:  使用一张带下边线的navBar背景图
         [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
-        [UINavigationBar appearance].shadowImage = [UIImage imageWithColor:[UIColor lightGrayColor]];
+        [UINavigationBar appearance].shadowImage = [UIImage imageWithColor:UIColorFromRGB(0xE9E9E9)];
     }
     
     [UINavigationBar appearance].titleTextAttributes = @{

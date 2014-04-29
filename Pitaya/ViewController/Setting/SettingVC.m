@@ -14,7 +14,7 @@ static NSInteger const EmailLabelTag = 102;
 static NSInteger const VersionLabelTag = 103;
 static NSInteger const LogoutButtonTag = 999;
 
-@interface SettingVC () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
+@interface SettingVC () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, SinaWeiboDelegate, SinaWeiboRequestDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIImageView *avatarImageView;
@@ -77,6 +77,12 @@ static NSInteger const LogoutButtonTag = 999;
     } failure:^(NSInteger stateCode) {
         [BBProgressHUD showErrorWithText:@"更新失败"];
     }];
+}
+
+- (void)followGuoku
+{
+    [BBProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    [[Passport sharedInstance].weiboInstance requestWithURL:@"friendships/create.json" params:[@{@"uid":@"2179686555"} mutableCopy] httpMethod:@"POST" delegate:self];
 }
 
 #pragma mark - Selector Method
@@ -284,6 +290,17 @@ static NSInteger const LogoutButtonTag = 999;
         case 9:
         {
             // 关注我们的新浪微博
+            if (![Passport sharedInstance].weiboInstance) {
+                SinaWeibo *weiboInstance = [[SinaWeibo alloc] initWithAppKey:kWeiboAPPKey appSecret:kWeiboSecret appRedirectURI:kWeiboRedirectURL andDelegate:self];
+                [Passport sharedInstance].weiboInstance = weiboInstance;
+            }
+            
+            if (![Passport sharedInstance].weiboInstance.isLoggedIn) {
+                [[Passport sharedInstance].weiboInstance logIn];
+            } else {
+                [self followGuoku];
+            }
+            
             break;
         }
         case 11:
@@ -378,6 +395,46 @@ static NSInteger const LogoutButtonTag = 999;
         [kAppDelegate.window makeKeyAndVisible];
         kAppDelegate.alertWindow.hidden = YES;
     }];
+}
+
+#pragma mark - SinaWeiboDelegate
+
+- (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
+{
+    [Passport sharedInstance].sinaUserID = sinaweibo.userID;
+    [Passport sharedInstance].sinaToken = sinaweibo.accessToken;
+    [Passport sharedInstance].sinaExpirationDate = sinaweibo.expirationDate;
+    
+    [self followGuoku];
+}
+
+- (void)sinaweibo:(SinaWeibo *)sinaweibo accessTokenInvalidOrExpired:(NSError *)error
+{
+    if(error.code == 21332)
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"" message:@"授权过期，需要重新登录新浪微博" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alertView show];
+    }
+}
+
+#pragma mark - SinaWeiboRequestDelegate
+
+- (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
+{
+    [BBProgressHUD dismiss];
+    if((error.code == 21315)||(error.code == 10006)) {
+        [[Passport sharedInstance].weiboInstance logIn];
+    } else if(error.code == 20506) {
+        [BBProgressHUD showSuccessWithText:@"已关注果库\U0001F603"];
+    } else {
+        [BBProgressHUD showErrorWithText:[NSString  stringWithFormat:@"网络错误,错误代码%d", error.code]];
+    }
+}
+
+- (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
+{
+    [BBProgressHUD dismiss];
+    [BBProgressHUD showSuccessWithText:@"成功关注果库\U0001F603" ];
 }
 
 #pragma mark - Life Cycle

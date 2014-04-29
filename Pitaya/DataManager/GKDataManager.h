@@ -421,7 +421,7 @@ static NSInteger const kDefaultCount = 30;
                           type:(NSString *)type
                         offset:(NSInteger)offset
                          count:(NSInteger)count
-                       success:(void (^)(NSDictionary *,NSArray *entityArray))success
+                       success:(void (^)(NSDictionary *stateDict, NSArray *entityArray))success
                        failure:(void (^)(NSInteger stateCode))failure;
 
 /**

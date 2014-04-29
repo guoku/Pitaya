@@ -58,8 +58,8 @@
     [Passport sharedInstance].taobaoToken = nil;
     [NSObject removeFromUserDefaultsByKey:TaobaoTokenKey];
     
-    // TODO: 退出新浪微博
-//    [kAppDelegate.sinaweibo logOut];
+    [[Passport sharedInstance].weiboInstance performSelector:@selector(removeAuthData)];
+    [Passport sharedInstance].weiboInstance = nil;
     
     [[GKBaseModelCenter sharedInstance].modelDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if ([obj isKindOfClass:[GKEntity class]]) {
@@ -93,6 +93,7 @@
         self.sinaToken = sinaToken;
         NSDate *sinaExpirationDate = [[NSUserDefaults standardUserDefaults] objectForKey:SinaExpirationDateKey];
         self.sinaExpirationDate = sinaExpirationDate;
+        _weiboInstance = [[SinaWeibo alloc] initWithAppKey:kWeiboAPPKey appSecret:kWeiboSecret appRedirectURI:kWeiboRedirectURL andDelegate:self];
     }
     return self;
 }
