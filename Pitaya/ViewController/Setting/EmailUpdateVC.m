@@ -30,7 +30,7 @@
         return;
     }
     
-    if ([self.emailTextField.text isEqualToString:[Passport sharedInstance].user.nickname]) {
+    if ([self.emailTextField.text isEqualToString:[Passport sharedInstance].user.email]) {
         [self.navigationController popViewControllerAnimated:YES];
     } else {
         [BBProgressHUD show];
