@@ -652,10 +652,10 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="LC9-Ad-sTn"/>
                                                         <constraint firstAttribute="height" constant="44" id="xsQ-s3-gVg"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     <state key="normal" title="喜爱 88" image="like_btn">
-                                                        <color key="titleColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="deviceRGB"/>
+                                                        <color key="titleColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="selected" image="like_btn_highlighted"/>
@@ -665,18 +665,19 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2014.12.30" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPW-W9-FEm">
-                                                    <rect key="frame" x="237" y="399" width="73" height="21"/>
+                                                    <rect key="frame" x="190" y="404" width="120" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="CCG-Gp-CdA"/>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="73" id="Tgn-Ms-h74"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="120" id="Tgn-Ms-h74"/>
+                                                        <constraint firstAttribute="width" constant="120" placeholder="YES" id="b9A-uV-twm"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.6705882352941176" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="deviceRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.74901960784313726" green="0.74901960784313726" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQb-Pi-dew">
-                                                    <rect key="frame" x="197" y="395" width="30" height="30"/>
+                                                    <rect key="frame" x="150" y="400" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.96470588450000005" green="0.96470588450000005" blue="0.96470588450000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -720,12 +721,12 @@
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="IQb-Pi-dew" secondAttribute="bottom" constant="10" id="13O-zA-Ogd"/>
+                                            <constraint firstAttribute="bottom" secondItem="IQb-Pi-dew" secondAttribute="bottom" constant="5" id="13O-zA-Ogd"/>
                                             <constraint firstItem="96Y-7V-WqN" firstAttribute="top" secondItem="gXX-mE-rL0" secondAttribute="bottom" constant="10" id="3u3-Xp-XGs"/>
                                             <constraint firstItem="ek1-Mc-xEh" firstAttribute="top" secondItem="96Y-7V-WqN" secondAttribute="bottom" id="4ft-XR-1W9"/>
                                             <constraint firstItem="gXX-mE-rL0" firstAttribute="top" secondItem="qwO-Wa-mta" secondAttribute="top" constant="10" id="5VK-by-PrA"/>
                                             <constraint firstAttribute="trailing" secondItem="oPW-W9-FEm" secondAttribute="trailing" constant="10" id="9dh-eD-EQM"/>
-                                            <constraint firstAttribute="bottom" secondItem="oPW-W9-FEm" secondAttribute="bottom" constant="15" id="D4P-JM-jOP"/>
+                                            <constraint firstAttribute="bottom" secondItem="oPW-W9-FEm" secondAttribute="bottom" constant="10" id="D4P-JM-jOP"/>
                                             <constraint firstAttribute="bottom" secondItem="6h6-Ak-gcz" secondAttribute="bottom" id="IEw-sP-dv3"/>
                                             <constraint firstAttribute="centerX" secondItem="gXX-mE-rL0" secondAttribute="centerX" id="IFy-rm-riD"/>
                                             <constraint firstItem="96Y-7V-WqN" firstAttribute="leading" secondItem="qwO-Wa-mta" secondAttribute="leading" id="JS4-cb-dLN"/>
@@ -2158,10 +2159,10 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="o1m-oN-baC"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="sln-7A-tUO"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     <state key="normal" title="喜爱 88" image="like_btn">
-                                                        <color key="titleColor" red="0.6705882353" green="0.6705882353" blue="0.6705882353" alpha="1" colorSpace="deviceRGB"/>
+                                                        <color key="titleColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="selected" image="like_btn_highlighted"/>

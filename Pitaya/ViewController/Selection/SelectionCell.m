@@ -108,7 +108,7 @@ static CGFloat const kSelectionCellTextFontSize = 14.f;
 {
     [super layoutSubviews];
     
-    self.layer.borderColor = UIColorFromRGB(0xEEEEEE).CGColor;
+    self.layer.borderColor = UIColorFromRGB(0xF6F6F6).CGColor;
     
     if (!(self.entity && self.note && self.date)) {
         return;
@@ -120,14 +120,19 @@ static CGFloat const kSelectionCellTextFontSize = 14.f;
     // 点评内容
     self.noteLabel.numberOfLines = 0;
     self.noteLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-    self.noteLabel.textColor = UIColorFromRGB(0x666666);
+    self.noteLabel.textColor = UIColorFromRGB(0x777777);
     self.noteLabel.font = [GKAttributedLabel fontOfSize:kSelectionCellTextFontSize];
     self.noteLabel.verticalAlignment = TTTAttributedLabelVerticalAlignmentTop;
     self.noteLabel.minimumLineHeight = 17.f;
     self.noteLabel.plainText = self.note.text;
     
     // 喜爱按钮
-    [self.likeButton setTitle:[NSString stringWithFormat:@"喜爱 %d", self.entity.likeCount] forState:UIControlStateNormal];
+    if (self.entity.likeCount) {
+        [self.likeButton setTitle:[NSString stringWithFormat:@"喜爱 %d", self.entity.likeCount] forState:UIControlStateNormal];
+    } else {
+        [self.likeButton setTitle:@"喜爱" forState:UIControlStateNormal];
+    }
+    
     if (self.entity.isLiked) {
         [self.likeButton setImage:[UIImage imageNamed:@"like_btn_highlighted"] forState:UIControlStateNormal];
     } else {
