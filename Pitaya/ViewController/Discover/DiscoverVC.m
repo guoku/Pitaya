@@ -224,6 +224,9 @@
 {
     [super viewWillAppear:animated];
     
+    self.searchTextField.text = @"";
+    [self editingChanged:nil];
+    
     if (self.categoryGroupArray.count == 0 && self.allCategoryArray.count == 0) {
         __weak __typeof(&*self)weakSelf = self;
         [GKDataManager getAllCategoryFromNetwork:NO result:^(NSArray *categoryGroupArray, NSArray *fullCategoryGroupArray, NSArray *allCategoryArray) {
