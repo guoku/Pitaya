@@ -184,7 +184,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
 {
-    if (self.categoryGroupArray.count - 1 == (NSUInteger)section) {
+    if (self.categoryGroupArray.count - 1 == (NSUInteger)section || self.isSearching) {
         return CGSizeMake(50.f, 20.f);
     } else {
         return CGSizeZero;
