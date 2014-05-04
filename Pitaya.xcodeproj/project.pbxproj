@@ -158,6 +158,7 @@
 		B67DD01A1902623A00D58061 /* SinaWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = B67DD0131902623A00D58061 /* SinaWeibo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B67DD01B1902623A00D58061 /* SinaWeiboAuthorizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B67DD0151902623A00D58061 /* SinaWeiboAuthorizeView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B67DD01C1902623A00D58061 /* SinaWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B67DD0181902623A00D58061 /* SinaWeiboRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B68859FA1916597A00F4D099 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B68859F41916597A00F4D099 /* libGoogleAnalyticsServices.a */; };
 		B6AEAADB18DD68D500548F2A /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6AEAADA18DD68D500548F2A /* iCarousel.m */; };
 		B6BF99F918F6A2200097D9AA /* GKAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BF99F818F6A2200097D9AA /* GKAttributedLabel.m */; };
 		B6E6209C18F3F969007D88C4 /* NotePostVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E6209A18F3F969007D88C4 /* NotePostVC.m */; };
@@ -467,6 +468,18 @@
 		B67DD0161902623A00D58061 /* SinaWeiboConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboConstants.h; sourceTree = "<group>"; };
 		B67DD0171902623A00D58061 /* SinaWeiboRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboRequest.h; sourceTree = "<group>"; };
 		B67DD0181902623A00D58061 /* SinaWeiboRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboRequest.m; sourceTree = "<group>"; };
+		B68859EE1916597A00F4D099 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		B68859EF1916597A00F4D099 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		B68859F01916597A00F4D099 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		B68859F11916597A00F4D099 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		B68859F21916597A00F4D099 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		B68859F31916597A00F4D099 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		B68859F41916597A00F4D099 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		B68859F51916597A00F4D099 /* TAGContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGContainer.h; sourceTree = "<group>"; };
+		B68859F61916597A00F4D099 /* TAGContainerOpener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGContainerOpener.h; sourceTree = "<group>"; };
+		B68859F71916597A00F4D099 /* TAGDataLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGDataLayer.h; sourceTree = "<group>"; };
+		B68859F81916597A00F4D099 /* TAGLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGLogger.h; sourceTree = "<group>"; };
+		B68859F91916597A00F4D099 /* TAGManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAGManager.h; sourceTree = "<group>"; };
 		B6AEAAD918DD68D500548F2A /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		B6AEAADA18DD68D500548F2A /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		B6BF99F718F6A2200097D9AA /* GKAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKAttributedLabel.h; sourceTree = "<group>"; };
@@ -485,6 +498,7 @@
 				B605AD341916408300A22E58 /* libz.dylib in Frameworks */,
 				B605AD18191632A600A22E58 /* libUMFeedback.a in Frameworks */,
 				B6603D02188D194A00F52946 /* MobileCoreServices.framework in Frameworks */,
+				B68859FA1916597A00F4D099 /* libGoogleAnalyticsServices.a in Frameworks */,
 				B605AD2319163C6400A22E58 /* libUMAppNetwork_3.5.6.a in Frameworks */,
 				B605AD321916403800A22E58 /* libMobClickLibrary.a in Frameworks */,
 				B6603D00188D193D00F52946 /* SystemConfiguration.framework in Frameworks */,
@@ -956,6 +970,7 @@
 		B6603C16188CEBA200F52946 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				B68859ED1916597A00F4D099 /* GA */,
 				B605ACCE191632A600A22E58 /* UMeng */,
 				B61B93D7190E51910094CE09 /* pinyinTools */,
 				B67DD0101902623A00D58061 /* SinaWeibo */,
@@ -1250,6 +1265,25 @@
 				B67DD0181902623A00D58061 /* SinaWeiboRequest.m */,
 			);
 			path = SinaWeibo;
+			sourceTree = "<group>";
+		};
+		B68859ED1916597A00F4D099 /* GA */ = {
+			isa = PBXGroup;
+			children = (
+				B68859EE1916597A00F4D099 /* GAI.h */,
+				B68859EF1916597A00F4D099 /* GAIDictionaryBuilder.h */,
+				B68859F01916597A00F4D099 /* GAIFields.h */,
+				B68859F11916597A00F4D099 /* GAILogger.h */,
+				B68859F21916597A00F4D099 /* GAITrackedViewController.h */,
+				B68859F31916597A00F4D099 /* GAITracker.h */,
+				B68859F41916597A00F4D099 /* libGoogleAnalyticsServices.a */,
+				B68859F51916597A00F4D099 /* TAGContainer.h */,
+				B68859F61916597A00F4D099 /* TAGContainerOpener.h */,
+				B68859F71916597A00F4D099 /* TAGDataLayer.h */,
+				B68859F81916597A00F4D099 /* TAGLogger.h */,
+				B68859F91916597A00F4D099 /* TAGManager.h */,
+			);
+			path = GA;
 			sourceTree = "<group>";
 		};
 		B6AEAAD818DD68D500548F2A /* iCarousel */ = {
@@ -1646,6 +1680,7 @@
 					/Users/Wei/Project/Pitaya/Pitaya/ThirdParty/UMeng/Feedback,
 					/Users/Wei/Project/Pitaya/Pitaya/ThirdParty/UMeng/AppNetwork,
 					/Users/Wei/Project/Pitaya/Pitaya/ThirdParty/UMeng/Analytics,
+					/Users/Wei/Project/Pitaya/Pitaya/ThirdParty/GA,
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
@@ -1677,6 +1712,7 @@
 					/Users/Wei/Project/Pitaya/Pitaya/ThirdParty/UMeng/Feedback,
 					/Users/Wei/Project/Pitaya/Pitaya/ThirdParty/UMeng/AppNetwork,
 					/Users/Wei/Project/Pitaya/Pitaya/ThirdParty/UMeng/Analytics,
+					/Users/Wei/Project/Pitaya/Pitaya/ThirdParty/GA,
 				);
 				OTHER_CFLAGS = (
 					"-Wall",

@@ -113,6 +113,8 @@
 {
     [super viewDidLoad];
     
+    self.screenName = @"品类组页";
+    
     self.navigationItem.title = self.groupDict[GroupNameKey];
     
     self.categoryArray = [@[@[], @[]] mutableCopy];

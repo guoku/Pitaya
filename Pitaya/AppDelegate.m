@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "SinaWeibo.h"
 #import "MobClick.h"
+#import "GAI.h"
 
 int ddLogLevel;
 
@@ -22,6 +23,12 @@ int ddLogLevel;
     
     // 友盟统计
     [MobClick startWithAppkey:UMENG_APPKEY reportPolicy:1 channelId:@""];
+    
+    // GA
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    [GAI sharedInstance].dispatchInterval = 60;
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelError];
+    [[GAI sharedInstance] trackerWithTrackingId:GAnalyticsAccountId];
     
     [self configCustomAppearance];
     

@@ -360,6 +360,8 @@
 {
     [super viewDidLoad];
     
+    self.screenName = @"品类页";
+    
     NSString *title = [self.category.categoryName componentsSeparatedByString:@"-"].firstObject;
     [self.navTitleButton setTitle:title forState:UIControlStateNormal];
     self.navTitleButton.imageView.contentMode = UIViewContentModeScaleAspectFit;

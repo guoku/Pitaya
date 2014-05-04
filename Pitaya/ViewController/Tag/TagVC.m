@@ -83,6 +83,8 @@
 {
     [super viewDidLoad];
     
+    self.screenName = @"标签页";
+    
     self.navigationItem.title = [NSString stringWithFormat:@"#%@", self.tagName];
 }
 

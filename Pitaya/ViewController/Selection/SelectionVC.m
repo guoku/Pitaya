@@ -228,6 +228,8 @@
 {
     [super viewDidLoad];
     
+    self.screenName = @"精选页";
+    
     _popoverTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.f, 0.f, 200.f, 600.f) style:UITableViewStylePlain];
     self.popoverTableView.dataSource = self;
     self.popoverTableView.delegate = self;

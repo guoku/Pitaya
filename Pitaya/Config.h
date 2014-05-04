@@ -34,6 +34,10 @@
 #define UMENG_APPKEY @"5365fc4556240b48f208ee2b"
 #endif
 
+#ifndef GAnalyticsAccountId
+#define GAnalyticsAccountId @"UA-33667018-4"
+#endif
+
 // Taobao
 #ifndef kTaobaoAppKey
 #define kTaobaoAppKey @"12313170"
