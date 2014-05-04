@@ -7,7 +7,7 @@
 //
 
 #import "HotVC.h"
-#import "HotCell.h"
+#import "EntityCollectionCell.h"
 #import "SVPullToRefresh.h"
 #import "EntityDetailVC.h"
 
@@ -75,7 +75,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    HotCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HotCell" forIndexPath:indexPath];
+    EntityCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"EntityCollectionCell" forIndexPath:indexPath];
     
     cell.entity = self.dataArray[self.segmentedControl.selectedSegmentIndex][indexPath.row];
     
@@ -147,7 +147,7 @@
     [super prepareForSegue:segue sender:sender];
     
     if ([segue.destinationViewController isKindOfClass:[EntityDetailVC class]]) {
-        HotCell *cell = (HotCell *)sender;
+        EntityCollectionCell *cell = (EntityCollectionCell *)sender;
         EntityDetailVC *vc = (EntityDetailVC *)segue.destinationViewController;
         vc.entity = cell.entity;
     }

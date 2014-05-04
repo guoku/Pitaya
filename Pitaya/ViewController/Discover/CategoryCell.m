@@ -23,9 +23,10 @@
 
 - (void)setCategory:(GKEntityCategory *)category
 {
-    _category = category;
-    
-    [self setNeedsLayout];
+    if (_category != category) {
+        _category = category;
+        [self setNeedsLayout];
+    }
 }
 
 #pragma mark - Life Cycle
@@ -36,6 +37,8 @@
     
     [self.imageView setImageWithURL:self.category.iconURL];
     self.titleLabel.text = [self.category.categoryName componentsSeparatedByString:@"-"].firstObject;
+    
+    [self setNeedsUpdateConstraints];
 }
 
 - (void)updateConstraints

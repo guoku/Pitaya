@@ -27,6 +27,8 @@
     
     if (self.groupDict) {
         self.titleLabel.text = self.groupDict[GroupNameKey];
+        NSArray *categoryArray = self.groupDict[CategoryArrayKey];
+        self.categoryCountLabel.text = [NSString stringWithFormat:@"%d个品类", categoryArray.count];
     }
 }
 

@@ -78,6 +78,35 @@
 
 #pragma mark - UICollectionViewDelegate
 
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    CGFloat top, left, bottom, right;
+    if (self.interfaceOrientation == 1 || self.interfaceOrientation == 2) {
+        // 竖屏
+        left = 23.f;
+    } else {
+        // 横屏
+        left = 48.f;
+    }
+    
+    top = 20.f;
+    bottom = 0.f;
+    right = left;
+    
+    return UIEdgeInsetsMake(top, left, bottom, right);
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
+{
+    if (self.categoryArray.count - 1 == (NSUInteger)section) {
+        return CGSizeMake(50.f, 20.f);
+    } else {
+        return CGSizeZero;
+    }
+}
+
 #pragma mark - Life Cycle
 
 - (void)viewDidLoad
@@ -113,6 +142,15 @@
     CategoryCell *cell = (CategoryCell *)sender;
     CategoryVC *vc = (CategoryVC *)segue.destinationViewController;
     vc.category = cell.category;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    double delayInSeconds = 0.1;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.collectionView reloadData];
+    });
 }
 
 - (void)didReceiveMemoryWarning

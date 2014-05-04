@@ -129,7 +129,7 @@ static NSInteger const LogoutButtonTag = 999;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 16;
+    return 14;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -162,30 +162,24 @@ static NSInteger const LogoutButtonTag = 999;
         case 7:
             CellIdentifier = @"SettingCell12";
             break;
-        case 8:
-            CellIdentifier = @"SettingCell13";
-            break;
-        case 9:
-            CellIdentifier = @"SettingCell14";
-            break;
         // 其他
-        case 10:
+        case 8:
             CellIdentifier = @"SettingCell20";
             break;
-        case 11:
+        case 9:
             CellIdentifier = @"SettingCell21";
             break;
-        case 12:
+        case 10:
             CellIdentifier = @"SettingCell22";
             break;
-        case 13:
+        case 11:
             CellIdentifier = @"SettingCell23";
             break;
-        case 14:
+        case 12:
             CellIdentifier = @"SettingCell24";
             break;
         // 注销登录
-        case 15:
+        case 13:
             CellIdentifier = @"SettingCell30";
             break;
     }
@@ -193,11 +187,15 @@ static NSInteger const LogoutButtonTag = 999;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (!iOS7) {
-        cell.backgroundView = [UIView new];
         UIView *separatorView = [cell viewWithTag:111];
         if (!separatorView) {
-            separatorView = [[UIView alloc] initWithFrame:CGRectMake(15.f, 49.f, 758.f, 1.f)];
-            separatorView.backgroundColor = UIColorFromRGB(0xE9E9E9);
+            CGRect frame = CGRectMake(15.f, 49.f, 758.f, 1.f);
+            if (indexPath.row == 0 || indexPath.row == 5 || indexPath.row == 8 || indexPath.row == 13) {
+                frame.origin.y += 10.f;
+            }
+            separatorView = [[UIView alloc] initWithFrame:frame];
+            separatorView.tag = 111;
+            separatorView.backgroundColor = UIColorFromRGB(0xf6f6f6);
             [cell addSubview:separatorView];
         }
     }
@@ -254,11 +252,17 @@ static NSInteger const LogoutButtonTag = 999;
         return 0.f;
     }
     
-    if (!k_isLogin && indexPath.row == 15) {
+    if (!k_isLogin && indexPath.row == 13) {
         return 0.f;
     }
     
-    return 50.f;
+    if (indexPath.row == 0 || indexPath.row == 5 || indexPath.row == 8 || indexPath.row == 13) {
+        // section header or logout button
+        return 60.f;
+    } else {
+        // cell
+        return 50.f;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -279,16 +283,6 @@ static NSInteger const LogoutButtonTag = 999;
         }
         case 7:
         {
-            // 分享给微信好友
-            break;
-        }
-        case 8:
-        {
-            // 分享至朋友圈
-            break;
-        }
-        case 9:
-        {
             // 关注我们的新浪微博
             if (![Passport sharedInstance].weiboInstance) {
                 SinaWeibo *weiboInstance = [[SinaWeibo alloc] initWithAppKey:kWeiboAPPKey appSecret:kWeiboSecret appRedirectURI:kWeiboRedirectURL andDelegate:self];
@@ -303,19 +297,19 @@ static NSInteger const LogoutButtonTag = 999;
             
             break;
         }
-        case 11:
+        case 9:
         {
             // 应用推荐
             NSLog(@"应用推荐");
             break;
         }
-        case 12:
+        case 10:
         {
             // 意见反馈
             NSLog(@"意见反馈");
             break;
         }
-        case 13:
+        case 11:
         {
             // 清除图片缓存
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"" message:@"是否清除图片缓存?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认清除", nil];
@@ -442,6 +436,10 @@ static NSInteger const LogoutButtonTag = 999;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if (!iOS7) {
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    }
     
     if (k_isLogin) {
         self.logoutButton.hidden = NO;

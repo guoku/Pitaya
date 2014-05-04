@@ -173,6 +173,24 @@
     return UIEdgeInsetsMake(top, left, bottom, right);
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    if (self.isSearching) {
+        return CGSizeZero;
+    } else {
+        return CGSizeMake(50.f, 40.f);
+    }
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
+{
+    if (self.categoryGroupArray.count - 1 == (NSUInteger)section) {
+        return CGSizeMake(50.f, 20.f);
+    } else {
+        return CGSizeZero;
+    }
+}
+
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -192,6 +210,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.searchTextField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"menu_icon_search"]];
+    self.searchTextField.leftViewMode = UITextFieldViewModeAlways;
     
     self.isSearching = NO;
     _filteredCategoryArray = [NSMutableArray array];

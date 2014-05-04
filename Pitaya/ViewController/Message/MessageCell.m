@@ -360,7 +360,7 @@ static CGFloat labelWidth = 600.f;
     if (!self.timeLabel) {
         _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(65.f, 0.f, 200.f, 15.f)];
         self.timeLabel.font = [UIFont appFontWithSize:12.f];
-        self.timeLabel.textColor = UIColorFromRGB(0x666666);
+        self.timeLabel.textColor = UIColorFromRGB(0x999999);
         self.timeLabel.textAlignment = NSTextAlignmentLeft;
         [self.contentView addSubview:self.timeLabel];
         
