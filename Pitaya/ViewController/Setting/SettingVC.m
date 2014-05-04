@@ -224,7 +224,7 @@ static NSInteger const LogoutButtonTag = 999;
             break;
         }
             
-        case 14:
+        case 12:
         {
             // 版本
             self.versionLabel = (UILabel *)[cell viewWithTag:VersionLabelTag];
@@ -232,7 +232,7 @@ static NSInteger const LogoutButtonTag = 999;
             break;
         }
             
-        case 15:
+        case 13:
         {
             // 注销
             self.logoutButton = (UIButton *)[cell viewWithTag:LogoutButtonTag];
