@@ -15,6 +15,7 @@
 #import "CategoryVC.h"
 #import "TagCollectionCell.h"
 #import "TagVC.h"
+#import "UserListVC.h"
 
 @interface UserVC () <UICollectionViewDataSource, UICollectionViewDelegate, UserSectionHeaderViewDelegate, NoteCollectionCellDelegate>
 
@@ -151,7 +152,8 @@
     switch (self.user.relation) {
         case GKUserRelationTypeNone:
         {
-            self.self.rightButton.backgroundColor = UIColorFromRGB(0x427ec0);
+            self.rightButton.hidden = NO;
+            self.rightButton.backgroundColor = UIColorFromRGB(0x427ec0);
             [self.rightButton setTitleColor:UIColorFromRGB(0xffffff) forState:UIControlStateNormal];
             [self.rightButton setTitle:@"关注" forState:UIControlStateNormal];
             break;
@@ -159,6 +161,7 @@
             
         case GKUserRelationTypeFollowing:
         {
+            self.rightButton.hidden = NO;
             self.rightButton.backgroundColor = UIColorFromRGB(0xf1f1f1);
             [self.rightButton setTitleColor:UIColorFromRGB(0x427ec0) forState:UIControlStateNormal];
             [self.rightButton setTitle:@"已关注" forState:UIControlStateNormal];
@@ -167,6 +170,7 @@
             
         case GKUserRelationTypeFan:
         {
+            self.rightButton.hidden = NO;
             self.rightButton.backgroundColor = UIColorFromRGB(0x427ec0);
             [self.rightButton setTitleColor:UIColorFromRGB(0xffffff) forState:UIControlStateNormal];
             [self.rightButton setTitle:@"关注" forState:UIControlStateNormal];
@@ -175,6 +179,7 @@
             
         case GKUserRelationTypeBoth:
         {
+            self.rightButton.hidden = NO;
             self.rightButton.backgroundColor = UIColorFromRGB(0xf1f1f1);
             [self.rightButton setTitleColor:UIColorFromRGB(0x427ec0) forState:UIControlStateNormal];
             [self.rightButton setTitle:@"已关注" forState:UIControlStateNormal];
@@ -183,6 +188,7 @@
             
         case GKUserRelationTypeSelf:
         {
+            self.rightButton.hidden = YES;
             self.rightButton.backgroundColor = UIColorFromRGB(0xf1f1f1);
             [self.rightButton setTitleColor:UIColorFromRGB(0x427ec0) forState:UIControlStateNormal];
             [self.rightButton setTitle:@"自己" forState:UIControlStateNormal];
@@ -190,6 +196,7 @@
         }
         default:
         {
+            self.rightButton.hidden = YES;
             [self.rightButton setTitle:@"" forState:UIControlStateNormal];
             [self.rightButton setImage:nil forState:UIControlStateNormal];
             break;
@@ -437,6 +444,22 @@
     }
 }
 
+- (void)headerView:(UserSectionHeaderView *)headerView didTapedFanButton:(UIButton *)fanButton
+{
+    UserListVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UserListVC"];
+    vc.user = self.user;
+    vc.type = UserListTypeFans;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)headerView:(UserSectionHeaderView *)headerView didTapedFriendButton:(UIButton *)friendButton
+{
+    UserListVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UserListVC"];
+    vc.user = self.user;
+    vc.type = UserListTypeFriends;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 #pragma mark - NoteCollectionCellDelegate
 
 - (void)noteCollectionCell:(NoteCollectionCell *)cell didSelectEntity:(GKEntity *)entity note:(GKNote *)note
@@ -479,6 +502,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.rightButton.hidden = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -496,8 +521,6 @@
     if (((NSMutableArray *)self.dataArray[self.selectedIndex]).count == 0) {
         [self.collectionView triggerPullToRefresh];
     }
-    
-    [self refreshFollowButtonState];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

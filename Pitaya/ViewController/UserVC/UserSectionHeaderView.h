@@ -13,6 +13,8 @@
 
 @optional
 - (void)headerView:(UserSectionHeaderView *)headerView didSelectedIndex:(NSInteger)index;
+- (void)headerView:(UserSectionHeaderView *)headerView didTapedFanButton:(UIButton *)fanButton;
+- (void)headerView:(UserSectionHeaderView *)headerView didTapedFriendButton:(UIButton *)friendButton;
 
 @end
 
