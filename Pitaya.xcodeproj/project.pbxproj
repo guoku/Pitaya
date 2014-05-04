@@ -23,6 +23,11 @@
 		B605AD16191632A600A22E58 /* UMFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B605ACF6191632A600A22E58 /* UMFeedbackViewController.m */; };
 		B605AD17191632A600A22E58 /* UMFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B605ACF7191632A600A22E58 /* UMFeedbackViewController.xib */; };
 		B605AD18191632A600A22E58 /* libUMFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B605ACF8191632A600A22E58 /* libUMFeedback.a */; };
+		B605AD2319163C6400A22E58 /* libUMAppNetwork_3.5.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B605AD1919163C6400A22E58 /* libUMAppNetwork_3.5.6.a */; };
+		B605AD2419163C6400A22E58 /* UMUFP.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B605AD1A19163C6400A22E58 /* UMUFP.bundle */; };
+		B605AD2C19163C9600A22E58 /* UMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B605AD2719163C9600A22E58 /* UMTableViewCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B605AD2D19163C9600A22E58 /* UMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B605AD2919163C9600A22E58 /* UMTableViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B605AD2E19163C9600A22E58 /* UMTableViewLoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B605AD2B19163C9600A22E58 /* UMTableViewLoadingCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B60620CD18D1B97B007C1A95 /* RecommendEntityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B60620CC18D1B97B007C1A95 /* RecommendEntityCell.m */; };
 		B606B46619079C1E0037EB57 /* EmailUpdateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B606B46519079C1E0037EB57 /* EmailUpdateVC.m */; };
 		B606B4691907A8030037EB57 /* PasswordUpdateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B606B4681907A8030037EB57 /* PasswordUpdateVC.m */; };
@@ -197,6 +202,16 @@
 		B605ACF7191632A600A22E58 /* UMFeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMFeedbackViewController.xib; sourceTree = "<group>"; };
 		B605ACF8191632A600A22E58 /* libUMFeedback.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMFeedback.a; sourceTree = "<group>"; };
 		B605ACF9191632A600A22E58 /* UMFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMFeedback.h; sourceTree = "<group>"; };
+		B605AD1919163C6400A22E58 /* libUMAppNetwork_3.5.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMAppNetwork_3.5.6.a; sourceTree = "<group>"; };
+		B605AD1A19163C6400A22E58 /* UMUFP.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMUFP.bundle; sourceTree = "<group>"; };
+		B605AD2119163C6400A22E58 /* UMUFPTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMUFPTableView.h; sourceTree = "<group>"; };
+		B605AD2619163C9600A22E58 /* UMTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMTableViewCell.h; sourceTree = "<group>"; };
+		B605AD2719163C9600A22E58 /* UMTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMTableViewCell.m; sourceTree = "<group>"; };
+		B605AD2819163C9600A22E58 /* UMTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMTableViewController.h; sourceTree = "<group>"; };
+		B605AD2919163C9600A22E58 /* UMTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMTableViewController.m; sourceTree = "<group>"; };
+		B605AD2A19163C9600A22E58 /* UMTableViewLoadingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMTableViewLoadingCell.h; sourceTree = "<group>"; };
+		B605AD2B19163C9600A22E58 /* UMTableViewLoadingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMTableViewLoadingCell.m; sourceTree = "<group>"; };
+		B605AD2F19163D6900A22E58 /* UMUFPImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMUFPImageView.h; sourceTree = "<group>"; };
 		B60620CB18D1B97B007C1A95 /* RecommendEntityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendEntityCell.h; sourceTree = "<group>"; };
 		B60620CC18D1B97B007C1A95 /* RecommendEntityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendEntityCell.m; sourceTree = "<group>"; };
 		B606B46419079C1E0037EB57 /* EmailUpdateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailUpdateVC.h; sourceTree = "<group>"; };
@@ -464,6 +479,7 @@
 			files = (
 				B605AD18191632A600A22E58 /* libUMFeedback.a in Frameworks */,
 				B6603D02188D194A00F52946 /* MobileCoreServices.framework in Frameworks */,
+				B605AD2319163C6400A22E58 /* libUMAppNetwork_3.5.6.a in Frameworks */,
 				B6603D00188D193D00F52946 /* SystemConfiguration.framework in Frameworks */,
 				B6603BDF188CE7AE00F52946 /* CoreGraphics.framework in Frameworks */,
 				B6603BE1188CE7AE00F52946 /* UIKit.framework in Frameworks */,
@@ -552,6 +568,11 @@
 		B605ACD0191632A600A22E58 /* AppNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				B605AD2519163C9600A22E58 /* TableView */,
+				B605AD1919163C6400A22E58 /* libUMAppNetwork_3.5.6.a */,
+				B605AD1A19163C6400A22E58 /* UMUFP.bundle */,
+				B605AD2119163C6400A22E58 /* UMUFPTableView.h */,
+				B605AD2F19163D6900A22E58 /* UMUFPImageView.h */,
 			);
 			path = AppNetwork;
 			sourceTree = "<group>";
@@ -598,6 +619,19 @@
 				B605ACD9191632A600A22E58 /* blueArrow@2x.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		B605AD2519163C9600A22E58 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				B605AD2619163C9600A22E58 /* UMTableViewCell.h */,
+				B605AD2719163C9600A22E58 /* UMTableViewCell.m */,
+				B605AD2819163C9600A22E58 /* UMTableViewController.h */,
+				B605AD2919163C9600A22E58 /* UMTableViewController.m */,
+				B605AD2A19163C9600A22E58 /* UMTableViewLoadingCell.h */,
+				B605AD2B19163C9600A22E58 /* UMTableViewLoadingCell.m */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 		B60A1F4D190112D300DE1500 /* TaoaoOAuth */ = {
@@ -1305,6 +1339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B605ACFD191632A600A22E58 /* blueArrow@2x.png in Resources */,
+				B605AD2419163C6400A22E58 /* UMUFP.bundle in Resources */,
 				B6603BF5188CE7AE00F52946 /* Images.xcassets in Resources */,
 				B6603BE7188CE7AE00F52946 /* InfoPlist.strings in Resources */,
 				B67DD0191902623A00D58061 /* SinaWeibo.bundle in Resources */,
@@ -1335,6 +1370,7 @@
 				B6603C47188D150A00F52946 /* UILabel+App.m in Sources */,
 				B64F9520188F8B0600531FCA /* MessageVC.m in Sources */,
 				B6603C43188D150A00F52946 /* NSString+App.m in Sources */,
+				B605AD2C19163C9600A22E58 /* UMTableViewCell.m in Sources */,
 				B6603C28188CEBA200F52946 /* UIView+DEFrameAdditions.m in Sources */,
 				B6603CFA188D171500F52946 /* GKRotateLoadingView.m in Sources */,
 				B6603C48188D150A00F52946 /* UIView+App.m in Sources */,
@@ -1402,6 +1438,7 @@
 				B61B93DD190E51910094CE09 /* PinyinTools.m in Sources */,
 				B6603C9D188D151800F52946 /* AFImageRequestOperation.m in Sources */,
 				B647727618DAAC2900F662FD /* TagCollectionCell.m in Sources */,
+				B605AD2D19163C9600A22E58 /* UMTableViewController.m in Sources */,
 				B64ACF9C1891372400D88459 /* CategoryVC.m in Sources */,
 				B64ACF921890DB1900D88459 /* DiscoverSectionHeaderView.m in Sources */,
 				B674182518CF3A23009A1407 /* NoteCell.m in Sources */,
@@ -1426,6 +1463,7 @@
 				B6603CF3188D153300F52946 /* SettingManager.m in Sources */,
 				B6603CAA188D151800F52946 /* DispatchQueueLogFormatter.m in Sources */,
 				B6603CE5188D153300F52946 /* GKComment.m in Sources */,
+				B605AD2E19163C9600A22E58 /* UMTableViewLoadingCell.m in Sources */,
 				B6603CE8188D153300F52946 /* GKNote.m in Sources */,
 				B61C1E13190690040085BCD0 /* NicknameUpdateVC.m in Sources */,
 				B6F1B9C618C0BB7A001E1A64 /* UISegmentedControl+Flat.m in Sources */,
@@ -1596,6 +1634,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Wei/Project/Pitaya/Pitaya/ThirdParty/UMeng/Feedback,
+					/Users/Wei/Project/Pitaya/Pitaya/ThirdParty/UMeng/AppNetwork,
 				);
 				OTHER_CFLAGS = (
 					"-Wall",
@@ -1623,6 +1662,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Wei/Project/Pitaya/Pitaya/ThirdParty/UMeng/Feedback,
+					/Users/Wei/Project/Pitaya/Pitaya/ThirdParty/UMeng/AppNetwork,
 				);
 				OTHER_CFLAGS = (
 					"-Wall",
