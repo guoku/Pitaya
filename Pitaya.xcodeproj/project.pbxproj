@@ -15,6 +15,14 @@
 		B602A5DD18EAC19400313CBF /* NoteDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B602A5DC18EAC19400313CBF /* NoteDetailHeaderView.m */; };
 		B602A5E018EAC1B200313CBF /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B602A5DF18EAC1B200313CBF /* CommentCell.m */; };
 		B604BF7B18E56D1B00E58A94 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B604BF7A18E56D1B00E58A94 /* RTLabel.m */; };
+		B605ACFA191632A600A22E58 /* UMEGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B605ACD5191632A600A22E58 /* UMEGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B605ACFC191632A600A22E58 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = B605ACD8191632A600A22E58 /* blueArrow.png */; };
+		B605ACFD191632A600A22E58 /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B605ACD9191632A600A22E58 /* blueArrow@2x.png */; };
+		B605AD14191632A600A22E58 /* UMFeedbackTableViewCellLeft.m in Sources */ = {isa = PBXBuildFile; fileRef = B605ACF2191632A600A22E58 /* UMFeedbackTableViewCellLeft.m */; };
+		B605AD15191632A600A22E58 /* UMFeedbackTableViewCellRight.m in Sources */ = {isa = PBXBuildFile; fileRef = B605ACF4191632A600A22E58 /* UMFeedbackTableViewCellRight.m */; };
+		B605AD16191632A600A22E58 /* UMFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B605ACF6191632A600A22E58 /* UMFeedbackViewController.m */; };
+		B605AD17191632A600A22E58 /* UMFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B605ACF7191632A600A22E58 /* UMFeedbackViewController.xib */; };
+		B605AD18191632A600A22E58 /* libUMFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B605ACF8191632A600A22E58 /* libUMFeedback.a */; };
 		B60620CD18D1B97B007C1A95 /* RecommendEntityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B60620CC18D1B97B007C1A95 /* RecommendEntityCell.m */; };
 		B606B46619079C1E0037EB57 /* EmailUpdateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B606B46519079C1E0037EB57 /* EmailUpdateVC.m */; };
 		B606B4691907A8030037EB57 /* PasswordUpdateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B606B4681907A8030037EB57 /* PasswordUpdateVC.m */; };
@@ -176,6 +184,19 @@
 		B602A5DF18EAC1B200313CBF /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		B604BF7918E56D1B00E58A94 /* RTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLabel.h; sourceTree = "<group>"; };
 		B604BF7A18E56D1B00E58A94 /* RTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLabel.m; sourceTree = "<group>"; };
+		B605ACD4191632A600A22E58 /* UMEGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMEGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		B605ACD5191632A600A22E58 /* UMEGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMEGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		B605ACD8191632A600A22E58 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
+		B605ACD9191632A600A22E58 /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
+		B605ACF1191632A600A22E58 /* UMFeedbackTableViewCellLeft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMFeedbackTableViewCellLeft.h; sourceTree = "<group>"; };
+		B605ACF2191632A600A22E58 /* UMFeedbackTableViewCellLeft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMFeedbackTableViewCellLeft.m; sourceTree = "<group>"; };
+		B605ACF3191632A600A22E58 /* UMFeedbackTableViewCellRight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMFeedbackTableViewCellRight.h; sourceTree = "<group>"; };
+		B605ACF4191632A600A22E58 /* UMFeedbackTableViewCellRight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMFeedbackTableViewCellRight.m; sourceTree = "<group>"; };
+		B605ACF5191632A600A22E58 /* UMFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMFeedbackViewController.h; sourceTree = "<group>"; };
+		B605ACF6191632A600A22E58 /* UMFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMFeedbackViewController.m; sourceTree = "<group>"; };
+		B605ACF7191632A600A22E58 /* UMFeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMFeedbackViewController.xib; sourceTree = "<group>"; };
+		B605ACF8191632A600A22E58 /* libUMFeedback.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMFeedback.a; sourceTree = "<group>"; };
+		B605ACF9191632A600A22E58 /* UMFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMFeedback.h; sourceTree = "<group>"; };
 		B60620CB18D1B97B007C1A95 /* RecommendEntityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendEntityCell.h; sourceTree = "<group>"; };
 		B60620CC18D1B97B007C1A95 /* RecommendEntityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendEntityCell.m; sourceTree = "<group>"; };
 		B606B46419079C1E0037EB57 /* EmailUpdateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailUpdateVC.h; sourceTree = "<group>"; };
@@ -441,6 +462,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B605AD18191632A600A22E58 /* libUMFeedback.a in Frameworks */,
 				B6603D02188D194A00F52946 /* MobileCoreServices.framework in Frameworks */,
 				B6603D00188D193D00F52946 /* SystemConfiguration.framework in Frameworks */,
 				B6603BDF188CE7AE00F52946 /* CoreGraphics.framework in Frameworks */,
@@ -508,6 +530,74 @@
 				B604BF7A18E56D1B00E58A94 /* RTLabel.m */,
 			);
 			path = RTLabel;
+			sourceTree = "<group>";
+		};
+		B605ACCE191632A600A22E58 /* UMeng */ = {
+			isa = PBXGroup;
+			children = (
+				B605ACCF191632A600A22E58 /* Analytics */,
+				B605ACD0191632A600A22E58 /* AppNetwork */,
+				B605ACD1191632A600A22E58 /* Feedback */,
+			);
+			path = UMeng;
+			sourceTree = "<group>";
+		};
+		B605ACCF191632A600A22E58 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		B605ACD0191632A600A22E58 /* AppNetwork */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AppNetwork;
+			sourceTree = "<group>";
+		};
+		B605ACD1191632A600A22E58 /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				B605ACD2191632A600A22E58 /* chat */,
+				B605ACF8191632A600A22E58 /* libUMFeedback.a */,
+				B605ACF9191632A600A22E58 /* UMFeedback.h */,
+			);
+			path = Feedback;
+			sourceTree = "<group>";
+		};
+		B605ACD2191632A600A22E58 /* chat */ = {
+			isa = PBXGroup;
+			children = (
+				B605ACD3191632A600A22E58 /* EGO_Refresh */,
+				B605ACD6191632A600A22E58 /* Images */,
+				B605ACF1191632A600A22E58 /* UMFeedbackTableViewCellLeft.h */,
+				B605ACF2191632A600A22E58 /* UMFeedbackTableViewCellLeft.m */,
+				B605ACF3191632A600A22E58 /* UMFeedbackTableViewCellRight.h */,
+				B605ACF4191632A600A22E58 /* UMFeedbackTableViewCellRight.m */,
+				B605ACF5191632A600A22E58 /* UMFeedbackViewController.h */,
+				B605ACF6191632A600A22E58 /* UMFeedbackViewController.m */,
+				B605ACF7191632A600A22E58 /* UMFeedbackViewController.xib */,
+			);
+			path = chat;
+			sourceTree = "<group>";
+		};
+		B605ACD3191632A600A22E58 /* EGO_Refresh */ = {
+			isa = PBXGroup;
+			children = (
+				B605ACD4191632A600A22E58 /* UMEGORefreshTableHeaderView.h */,
+				B605ACD5191632A600A22E58 /* UMEGORefreshTableHeaderView.m */,
+			);
+			path = EGO_Refresh;
+			sourceTree = "<group>";
+		};
+		B605ACD6191632A600A22E58 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B605ACD8191632A600A22E58 /* blueArrow.png */,
+				B605ACD9191632A600A22E58 /* blueArrow@2x.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		B60A1F4D190112D300DE1500 /* TaoaoOAuth */ = {
@@ -822,6 +912,7 @@
 		B6603C16188CEBA200F52946 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				B605ACCE191632A600A22E58 /* UMeng */,
 				B61B93D7190E51910094CE09 /* pinyinTools */,
 				B67DD0101902623A00D58061 /* SinaWeibo */,
 				B626517318F53E9700203ECB /* TTTAttributedLabel */,
@@ -1213,11 +1304,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B605ACFD191632A600A22E58 /* blueArrow@2x.png in Resources */,
 				B6603BF5188CE7AE00F52946 /* Images.xcassets in Resources */,
 				B6603BE7188CE7AE00F52946 /* InfoPlist.strings in Resources */,
 				B67DD0191902623A00D58061 /* SinaWeibo.bundle in Resources */,
 				B6603BF0188CE7AE00F52946 /* Main.storyboard in Resources */,
+				B605ACFC191632A600A22E58 /* blueArrow.png in Resources */,
 				B6603CB9188D151800F52946 /* SVProgressHUD.bundle in Resources */,
+				B605AD17191632A600A22E58 /* UMFeedbackViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1257,6 +1351,7 @@
 				B6313C2B190E70E700D25F79 /* SearchResultSectionHeaderView.m in Sources */,
 				B6603CED188D153300F52946 /* GKDataManager.m in Sources */,
 				B6603CEE188D153300F52946 /* GKEntity+ImageURLFixes.m in Sources */,
+				B605AD16191632A600A22E58 /* UMFeedbackViewController.m in Sources */,
 				B6603CFE188D179B00F52946 /* YLActivityIndicatorView.m in Sources */,
 				B64F9523188F8B1400531FCA /* SettingVC.m in Sources */,
 				B6603CA4188D151800F52946 /* DDAbstractDatabaseLogger.m in Sources */,
@@ -1316,6 +1411,7 @@
 				B602A5DD18EAC19400313CBF /* NoteDetailHeaderView.m in Sources */,
 				B6603C2D188CEBA200F52946 /* MasterViewController.m in Sources */,
 				B600CA0D18D81C0E00AB8FD7 /* UserVC.m in Sources */,
+				B605AD15191632A600A22E58 /* UMFeedbackTableViewCellRight.m in Sources */,
 				B6603CA6188D151800F52946 /* DDFileLogger.m in Sources */,
 				B61C1E03190641650085BCD0 /* MKAnnotationView+WebCache.m in Sources */,
 				B6603C2E188CEBA200F52946 /* RootViewController.m in Sources */,
@@ -1334,6 +1430,7 @@
 				B61C1E13190690040085BCD0 /* NicknameUpdateVC.m in Sources */,
 				B6F1B9C618C0BB7A001E1A64 /* UISegmentedControl+Flat.m in Sources */,
 				B6603CF0188D153300F52946 /* BBProgressHUD.m in Sources */,
+				B605ACFA191632A600A22E58 /* UMEGORefreshTableHeaderView.m in Sources */,
 				B64ACF991891361800D88459 /* GroupVC.m in Sources */,
 				B61C1E06190641650085BCD0 /* SDWebImageCompat.m in Sources */,
 				B6603C9E188D151800F52946 /* AFJSONRequestOperation.m in Sources */,
@@ -1343,6 +1440,7 @@
 				B6603CBA188D151800F52946 /* SVProgressHUD.m in Sources */,
 				B6603CEB188D153300F52946 /* GKBaseHTTPClient.m in Sources */,
 				B6011E9518AD00BD0034DD52 /* CustomTextField.m in Sources */,
+				B605AD14191632A600A22E58 /* UMFeedbackTableViewCellLeft.m in Sources */,
 				B61FAB1618E15F3B00CD777B /* MessageCell.m in Sources */,
 				B6603CA9188D151800F52946 /* ContextFilterLogFormatter.m in Sources */,
 				B6603CB8188D151800F52946 /* SevenSwitch.m in Sources */,
@@ -1495,6 +1593,10 @@
 				GCC_PREFIX_HEADER = "Pitaya/Pitaya-Prefix.pch";
 				INFOPLIST_FILE = "Pitaya/Pitaya-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Wei/Project/Pitaya/Pitaya/ThirdParty/UMeng/Feedback,
+				);
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wextra",
@@ -1518,6 +1620,10 @@
 				GCC_PREFIX_HEADER = "Pitaya/Pitaya-Prefix.pch";
 				INFOPLIST_FILE = "Pitaya/Pitaya-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Wei/Project/Pitaya/Pitaya/ThirdParty/UMeng/Feedback,
+				);
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wextra",
