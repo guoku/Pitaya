@@ -10,6 +10,7 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 #import "UserVC.h"
+#import "DiscoverVC.h"
 
 @interface RootViewController () <MasterViewControllerDelegate>
 
@@ -33,6 +34,11 @@
         UserVC *vc = nav.viewControllers.firstObject;
         vc.user = [Passport sharedInstance].user;
     }
+    
+    if ([nav.viewControllers.firstObject isKindOfClass:[UserVC class]] || [nav.viewControllers.firstObject isKindOfClass:[DiscoverVC class]]) {
+        [nav popToRootViewControllerAnimated:YES];
+    }
+    
     self.detailVC.selectedIndex = indexPath.row;
 }
 

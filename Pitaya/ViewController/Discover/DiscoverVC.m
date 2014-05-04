@@ -184,7 +184,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
 {
-    if (self.categoryGroupArray.count - 1 == (NSUInteger)section) {
+    if (self.categoryGroupArray.count - 1 == (NSUInteger)section || self.isSearching) {
         return CGSizeMake(50.f, 20.f);
     } else {
         return CGSizeZero;
@@ -223,6 +223,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    self.searchTextField.text = @"";
+    [self editingChanged:nil];
     
     if (self.categoryGroupArray.count == 0 && self.allCategoryArray.count == 0) {
         __weak __typeof(&*self)weakSelf = self;
