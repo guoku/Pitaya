@@ -503,6 +503,8 @@
 {
     [super viewDidLoad];
     
+    self.screenName = @"用户页";
+    
     self.rightButton.hidden = YES;
 }
 

@@ -183,6 +183,8 @@
 {
     [super viewDidLoad];
     
+    self.screenName = @"搜索结果页";
+    
     self.navigationItem.title = self.keyword;
 }
 

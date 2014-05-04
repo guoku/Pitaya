@@ -161,7 +161,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    self.screenName = @"消息页";
 }
 
 - (void)viewDidAppear:(BOOL)animated

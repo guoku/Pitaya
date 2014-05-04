@@ -153,7 +153,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    self.screenName = @"首页";
 }
 
 - (void)viewDidAppear:(BOOL)animated

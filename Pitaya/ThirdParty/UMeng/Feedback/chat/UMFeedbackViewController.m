@@ -14,13 +14,6 @@
 
 static UITapGestureRecognizer *tapRecognizer;
 
-@implementation UINavigationBar (CustomImage)
-- (void)drawRect:(CGRect)rect {
-    UIImage *image = [UIImage imageNamed:@"nav_btn_bg"];
-    [image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-}
-@end
-
 @interface UMFeedbackViewController ()
 @property(nonatomic, copy) NSString *mContactInfo;
 @end
@@ -103,9 +96,13 @@ static UITapGestureRecognizer *tapRecognizer;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.navigationItem.title = @"用户反馈";
+    self.navigationItem.title = @"意见反馈";
+    
+    if (iOS7) {
+        _mTableView.deFrameTop = 25.f;
+        _mTableView.deFrameHeight -= 25.f;
+    }
 
-    [self setBackButton];
     [self setBackgroundColor];
     [self setupTableView];
     [self setupEGORefreshTableHeaderView];
@@ -145,23 +142,11 @@ static UITapGestureRecognizer *tapRecognizer;
 - (void)setBackgroundColor {
     self.mTableView.backgroundColor = [UIColor whiteColor];
     if ([self.mToolBar respondsToSelector:@selector(setBackgroundImage:forToolbarPosition:barMetrics:)]) {
-        UIImage *image = [self imageWithColor:UIColorFromRGB(0xCCCCCC)];
+        UIImage *image = [self imageWithColor:UIColorFromRGB(0xEEEEEE)];
         [self.mToolBar setBackgroundImage:image forToolbarPosition:UIToolbarPositionBottom barMetrics:UIBarMetricsDefault];
     } else {
         self.mToolBar.barStyle = UIBarStyleBlack;
     }
-}
-
-- (void)setBackButton {
-    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-
-    [backBtn addTarget:self action:@selector(backToPrevious) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
-    self.navigationItem.leftBarButtonItem = backButtonItem;
-    [backBtn setBackgroundImage:[UIImage imageNamed:@"nav_btn_bg"] forState:UIControlStateNormal];
-    [backBtn setBackgroundImage:[UIImage imageNamed:@"nav_btn_bg_lighted"] forState:UIControlStateHighlighted];
-    backBtn.frame = CGRectMake(0, 0, 51.0f, self.navigationController.navigationBar.frame.size.height * 0.7);
-    backBtn.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 }
 
 - (void)didTapAnywhere:(UITapGestureRecognizer *)recognizer {

@@ -211,6 +211,8 @@
 {
     [super viewDidLoad];
     
+    self.screenName = @"发现页";
+    
     self.searchTextField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"menu_icon_search"]];
     self.searchTextField.leftViewMode = UITextFieldViewModeAlways;
     

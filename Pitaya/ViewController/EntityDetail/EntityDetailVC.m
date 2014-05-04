@@ -314,6 +314,8 @@
 {
     [super viewDidLoad];
     
+    self.screenName = @"商品页";
+    
     // 导航条按钮
     UIButton *moreButton = [[UIButton alloc] initWithFrame:CGRectMake(0.f, 0.f, 50.f, 30.f)];
     [moreButton setImage:[UIImage imageNamed:@"detail_icon_share"] forState:UIControlStateNormal];

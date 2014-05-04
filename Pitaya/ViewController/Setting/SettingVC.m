@@ -444,6 +444,8 @@ static NSInteger const LogoutButtonTag = 999;
 {
     [super viewDidLoad];
     
+    self.screenName = @"设置页";
+    
     if (!iOS7) {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
