@@ -81,6 +81,7 @@
     _mTableView.dataSource = self;
     _mTableView.backgroundColor = [UIColor clearColor];
     _mTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    _mTableView.separatorColor = UIColorFromRGB(0xF6F6F6);
     _mTableView.dataLoadDelegate = (id<UMUFPTableViewDataLoadDelegate>)self;
     [self.view addSubview:_mTableView];
     [_mTableView release];
@@ -89,7 +90,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = @"精彩推荐";
+    self.navigationItem.title = @"应用推荐";
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self setupTableView];

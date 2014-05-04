@@ -60,7 +60,12 @@
 {
     if (!view) {
         view = [[UIImageView alloc] initWithFrame:CGRectMake(0.f, 0.f, 630.f/1.5, 280.f/1.5)];
-        view.backgroundColor = [UIColor orangeColor];
+        view.backgroundColor = UIColorFromRGB(0xF6F6F6);
+        //UIView设置阴影
+        view.layer.shadowOffset = CGSizeMake(0, 0);
+        view.layer.shadowRadius = 10.f;
+        view.layer.shadowOpacity = 0.8;
+        view.layer.shadowColor = UIColorFromRGB(0x999999).CGColor;
     }
     
     NSURL *imageURL = self.bannerArray[index][@"img"];
