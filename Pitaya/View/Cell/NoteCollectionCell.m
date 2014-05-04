@@ -36,7 +36,9 @@ static CGFloat const kNoteCollectionCellTextFontSize = 15.f;
 {
     CGSize noteLabelSize = [note.text sizeWithFont:[UIFont systemFontOfSize:kNoteCollectionCellTextFontSize] constrainedToSize:CGSizeMake(608.f, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
     ;
-    return CGSizeMake(668.f, noteLabelSize.height + 200.f);
+    
+    // 2 ＝ 是最小行高 － 字体大小 － 2
+    return CGSizeMake(668.f, noteLabelSize.height + 2 * ceilf(noteLabelSize.height / kNoteCollectionCellTextFontSize) + 200.f);
 }
 
 #pragma mark - Getter And Setter
@@ -145,7 +147,7 @@ static CGFloat const kNoteCollectionCellTextFontSize = 15.f;
     self.noteLabel.textColor = UIColorFromRGB(0x7777777);
     self.noteLabel.font = [GKAttributedLabel fontOfSize:kNoteCollectionCellTextFontSize];
     self.noteLabel.verticalAlignment = TTTAttributedLabelVerticalAlignmentTop;
-    self.noteLabel.minimumLineHeight = 17.f;
+    self.noteLabel.minimumLineHeight = 19.f;
     self.noteLabel.plainText = self.note.text;
     
     // 喜爱数量
