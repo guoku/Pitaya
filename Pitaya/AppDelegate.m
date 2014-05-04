@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SinaWeibo.h"
+#import "MobClick.h"
 
 int ddLogLevel;
 
@@ -18,6 +19,9 @@ int ddLogLevel;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self configLog];
+    
+    // 友盟统计
+    [MobClick startWithAppkey:UMENG_APPKEY reportPolicy:1 channelId:@""];
     
     [self configCustomAppearance];
     

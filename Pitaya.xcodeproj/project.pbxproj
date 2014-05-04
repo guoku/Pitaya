@@ -28,6 +28,8 @@
 		B605AD2C19163C9600A22E58 /* UMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B605AD2719163C9600A22E58 /* UMTableViewCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B605AD2D19163C9600A22E58 /* UMTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B605AD2919163C9600A22E58 /* UMTableViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B605AD2E19163C9600A22E58 /* UMTableViewLoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B605AD2B19163C9600A22E58 /* UMTableViewLoadingCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B605AD321916403800A22E58 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B605AD301916403800A22E58 /* libMobClickLibrary.a */; };
+		B605AD341916408300A22E58 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B605AD331916408300A22E58 /* libz.dylib */; };
 		B60620CD18D1B97B007C1A95 /* RecommendEntityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B60620CC18D1B97B007C1A95 /* RecommendEntityCell.m */; };
 		B606B46619079C1E0037EB57 /* EmailUpdateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B606B46519079C1E0037EB57 /* EmailUpdateVC.m */; };
 		B606B4691907A8030037EB57 /* PasswordUpdateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B606B4681907A8030037EB57 /* PasswordUpdateVC.m */; };
@@ -212,6 +214,9 @@
 		B605AD2A19163C9600A22E58 /* UMTableViewLoadingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMTableViewLoadingCell.h; sourceTree = "<group>"; };
 		B605AD2B19163C9600A22E58 /* UMTableViewLoadingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMTableViewLoadingCell.m; sourceTree = "<group>"; };
 		B605AD2F19163D6900A22E58 /* UMUFPImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMUFPImageView.h; sourceTree = "<group>"; };
+		B605AD301916403800A22E58 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		B605AD311916403800A22E58 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		B605AD331916408300A22E58 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		B60620CB18D1B97B007C1A95 /* RecommendEntityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendEntityCell.h; sourceTree = "<group>"; };
 		B60620CC18D1B97B007C1A95 /* RecommendEntityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendEntityCell.m; sourceTree = "<group>"; };
 		B606B46419079C1E0037EB57 /* EmailUpdateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailUpdateVC.h; sourceTree = "<group>"; };
@@ -477,9 +482,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B605AD341916408300A22E58 /* libz.dylib in Frameworks */,
 				B605AD18191632A600A22E58 /* libUMFeedback.a in Frameworks */,
 				B6603D02188D194A00F52946 /* MobileCoreServices.framework in Frameworks */,
 				B605AD2319163C6400A22E58 /* libUMAppNetwork_3.5.6.a in Frameworks */,
+				B605AD321916403800A22E58 /* libMobClickLibrary.a in Frameworks */,
 				B6603D00188D193D00F52946 /* SystemConfiguration.framework in Frameworks */,
 				B6603BDF188CE7AE00F52946 /* CoreGraphics.framework in Frameworks */,
 				B6603BE1188CE7AE00F52946 /* UIKit.framework in Frameworks */,
@@ -561,6 +568,8 @@
 		B605ACCF191632A600A22E58 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
+				B605AD301916403800A22E58 /* libMobClickLibrary.a */,
+				B605AD311916403800A22E58 /* MobClick.h */,
 			);
 			path = Analytics;
 			sourceTree = "<group>";
@@ -857,6 +866,7 @@
 		B6603BDB188CE7AE00F52946 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B605AD331916408300A22E58 /* libz.dylib */,
 				B6603D01188D194A00F52946 /* MobileCoreServices.framework */,
 				B6603CFF188D193D00F52946 /* SystemConfiguration.framework */,
 				B6603BDC188CE7AE00F52946 /* Foundation.framework */,
@@ -1635,6 +1645,7 @@
 					"$(inherited)",
 					/Users/Wei/Project/Pitaya/Pitaya/ThirdParty/UMeng/Feedback,
 					/Users/Wei/Project/Pitaya/Pitaya/ThirdParty/UMeng/AppNetwork,
+					/Users/Wei/Project/Pitaya/Pitaya/ThirdParty/UMeng/Analytics,
 				);
 				OTHER_CFLAGS = (
 					"-Wall",
@@ -1663,6 +1674,7 @@
 					"$(inherited)",
 					/Users/Wei/Project/Pitaya/Pitaya/ThirdParty/UMeng/Feedback,
 					/Users/Wei/Project/Pitaya/Pitaya/ThirdParty/UMeng/AppNetwork,
+					/Users/Wei/Project/Pitaya/Pitaya/ThirdParty/UMeng/Analytics,
 				);
 				OTHER_CFLAGS = (
 					"-Wall",
