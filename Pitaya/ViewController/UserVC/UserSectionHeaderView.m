@@ -29,6 +29,20 @@
     }
 }
 
+- (IBAction)tapFanButton:(id)sender
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(headerView:didTapedFanButton:)]) {
+        [self.delegate headerView:self didTapedFanButton:sender];
+    }
+}
+
+- (IBAction)tapFriendButton:(id)sender
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(headerView:didTapedFriendButton:)]) {
+        [self.delegate headerView:self didTapedFriendButton:sender];
+    }
+}
+
 - (void)setUser:(GKUser *)user
 {
     if (_user != user) {

@@ -14,7 +14,7 @@
 #import "UserVC.h"
 #import "TagVC.h"
 
-@interface FeedVC () <UICollectionViewDataSource, UICollectionViewDelegate, NoteCollectionCellDelegate>
+@interface FeedVC () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, NoteCollectionCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
@@ -29,7 +29,15 @@
 - (void)refresh
 {
     __weak __typeof(&*self)weakSelf = self;
-    [GKDataManager getAllFeedWithTimestamp:[[NSDate date] timeIntervalSince1970] type:@"entity" success:^(NSArray *dataArray) {
+    
+    if (!k_isLogin) {
+        [weakSelf.collectionView.pullToRefreshView stopAnimating];
+        [Passport loginWithSuccessBlock:^{
+            [weakSelf refresh];
+        }];
+    }
+    
+    [GKDataManager getFriendFeedWithTimestamp:[[NSDate date] timeIntervalSince1970] type:@"entity" success:^(NSArray *dataArray) {
         [weakSelf.collectionView.pullToRefreshView stopAnimating];
         
         [weakSelf.dataArray removeAllObjects];
@@ -43,8 +51,16 @@
 - (void)loadMore
 {
     __weak __typeof(&*self)weakSelf = self;
+    
+    if (!k_isLogin) {
+        [weakSelf.collectionView.infiniteScrollingView stopAnimating];
+        [Passport loginWithSuccessBlock:^{
+            [weakSelf loadMore];
+        }];
+    }
+    
     GKNote *note = self.dataArray.lastObject[@"object"][@"note"];
-    [GKDataManager getAllFeedWithTimestamp:note.updatedTime type:@"entity" success:^(NSArray *dataArray) {
+    [GKDataManager getFriendFeedWithTimestamp:note.updatedTime type:@"entity" success:^(NSArray *dataArray) {
         [weakSelf.collectionView.infiniteScrollingView stopAnimating];
         
         [weakSelf.dataArray addObjectsFromArray:dataArray];
@@ -52,6 +68,11 @@
     } failure:^(NSInteger stateCode) {
         [weakSelf.collectionView.infiniteScrollingView stopAnimating];
     }];
+}
+
+- (void)didLogin
+{
+    [self.collectionView triggerPullToRefresh];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -79,6 +100,17 @@
     return cell;
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *reusableview = nil;
+    
+    if (kind == UICollectionElementKindSectionHeader) {
+        reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"FeedSectionHeaderView" forIndexPath:indexPath];
+    }
+    
+    return reusableview;
+}
+
 #pragma mark - UICollectionViewDelegate
 
 #pragma mark - UICollectionViewDelegateFlowLayout
@@ -96,6 +128,15 @@
     right = left;
     
     return UIEdgeInsetsMake(top, left, bottom, right);
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    if (k_isLogin) {
+        return CGSizeZero;
+    } else {
+        return CGSizeMake(50.f, 200.f);
+    }
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
@@ -150,6 +191,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogin) name:GKUserDidLoginNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -164,8 +207,13 @@
         [weakSelf loadMore];
     }];
     
-    if (self.dataArray.count == 0) {
-        [self.collectionView triggerPullToRefresh];
+    if (k_isLogin) {
+        if (self.dataArray.count == 0) {
+            [self.collectionView triggerPullToRefresh];
+        }
+    } else {
+        [self.dataArray removeAllObjects];
+        [self.collectionView reloadData];
     }
 }
 
@@ -190,6 +238,11 @@
         NSUInteger categoryId = categoryButton.tag;
         vc.category = [GKEntityCategory modelFromDictionary:@{@"categoryId":@(categoryId)}];
     }
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:GKUserDidLoginNotification object:nil];
 }
 
 @end
