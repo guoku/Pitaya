@@ -97,6 +97,9 @@ int ddLogLevel;
 - (void)configCustomAppearance
 {
     UIColor *navigationBarBackgroundColor = [UIColor clearColor];
+    if ([UIDevice currentDevice].systemVersion.floatValue >= 7.0) {
+        navigationBarBackgroundColor = [UIColor whiteColor];
+    }
     UIImage *navigationBarBackButtonImage = [UIImage imageNamed:@"nav_back_btn"];
     UIFont *navigationBarTitleFont = [UIFont appFontWithSize:20.f];
     UIColor *navigationBarTitleColor = UIColorFromRGB(0x555555);
