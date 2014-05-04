@@ -77,6 +77,7 @@
                     NSDictionary *filteredGroupDict = @{@"GroupId"       : groupDict[@"GroupId"],
                                                         @"GroupName"     : groupDict[@"GroupName"],
                                                         @"Status"        : groupDict[@"Status"],
+                                                        @"Count"         : @(categoryArray.count),
                                                         @"CategoryArray" : filteredCategoryArray};
                     if ([groupDict[@"Status"] integerValue] > 0) {
                         [categoryGroupArray addObject:filteredGroupDict];

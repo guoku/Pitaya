@@ -4147,7 +4147,7 @@
             </objects>
             <point key="canvasLocation" x="191" y="14397"/>
         </scene>
-        <!--UserVC - 个人页-->
+        <!--UserVC-->
         <scene sceneID="GHG-sQ-9Ly">
             <objects>
                 <viewController storyboardIdentifier="UserVC" hidesBottomBarWhenPushed="YES" id="3dR-6i-QCU" customClass="UserVC" sceneMemberID="viewController">
@@ -4601,7 +4601,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l98-Kp-EGh">
                                             <rect key="frame" x="379" y="171" width="1" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="deviceRGB"/>
+                                            <color key="backgroundColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="5zx-AJ-q1v"/>
                                                 <constraint firstAttribute="width" constant="1" id="ljH-qE-gzX"/>
@@ -4680,7 +4680,7 @@
                             <constraint firstItem="P7U-Zf-cyP" firstAttribute="top" secondItem="Vgv-ID-bdS" secondAttribute="bottom" id="cI7-Oz-0Wo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="个人页" id="h1f-1G-drZ">
+                    <navigationItem key="navigationItem" id="h1f-1G-drZ">
                         <barButtonItem key="backBarButtonItem" title=" " id="86f-PE-BvW"/>
                         <barButtonItem key="rightBarButtonItem" style="done" id="52v-se-t8x">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="KIe-41-2xm">
