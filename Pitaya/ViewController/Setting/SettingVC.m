@@ -7,6 +7,9 @@
 //
 
 #import "SettingVC.h"
+#import "UMFeedback.h"
+#import "UMFeedbackViewController.h"
+#import "UMTableViewController.h"
 
 static NSInteger const AvatarImageViewTag = 100;
 static NSInteger const NicknameLabelTag = 101;
@@ -300,13 +303,17 @@ static NSInteger const LogoutButtonTag = 999;
         case 9:
         {
             // 应用推荐
-            NSLog(@"应用推荐");
+            UMTableViewController *controller = [[UMTableViewController alloc] init];
+            [self.navigationController pushViewController:controller animated:YES];
             break;
         }
         case 10:
         {
             // 意见反馈
-            NSLog(@"意见反馈");
+            UMFeedbackViewController *feedbackViewController = [[UMFeedbackViewController alloc] initWithNibName:@"UMFeedbackViewController" bundle:nil];
+            feedbackViewController.appkey = UMENG_APPKEY;
+            [self.navigationController pushViewController:feedbackViewController animated:YES];
+            
             break;
         }
         case 11:

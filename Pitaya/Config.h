@@ -30,6 +30,10 @@
 #define kWeiboRedirectURL @"http://www.guoku.com/sina/auth"
 #endif
 
+#ifndef UMENG_APPKEY
+#define UMENG_APPKEY @"5365fc4556240b48f208ee2b"
+#endif
+
 // Taobao
 #ifndef kTaobaoAppKey
 #define kTaobaoAppKey @"12313170"
