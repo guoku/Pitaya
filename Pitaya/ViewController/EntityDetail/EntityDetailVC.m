@@ -15,6 +15,7 @@
 #import "NotePostVC.h"
 #import "WebVC.h"
 #import "TagVC.h"
+#import "WeiboPostVC.h"
 
 @interface EntityDetailVC () <UITableViewDataSource, UITableViewDelegate, RecommendEntityCellDelegate, NoteCellDelegate>
 
@@ -119,6 +120,13 @@
     }];
 }
 
+- (void)shareToWeibo
+{
+    WeiboPostVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"WeiboPostVC"];
+    vc.entity = self.entity;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 #pragma mark - Selector Method
 
 - (void)tapNoteButton
@@ -140,7 +148,15 @@
 
 - (void)tapMoreButton
 {
-    NSLog(@"more");
+    __weak __typeof(&*self)weakSelf = self;
+    if ([[Passport sharedInstance].weiboInstance isAuthValid]) {
+        WeiboPostVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"WeiboPostVC"];
+        vc.entity = weakSelf.entity;
+        vc.noteArray = weakSelf.noteArray;
+        [weakSelf.navigationController pushViewController:vc animated:YES];
+    } else {
+        [[Passport sharedInstance].weiboInstance logIn];
+    }
 }
 
 - (IBAction)tapLikeButton:(id)sender

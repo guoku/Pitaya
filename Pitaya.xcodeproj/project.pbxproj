@@ -49,6 +49,7 @@
 		B6313C2B190E70E700D25F79 /* SearchResultSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6313C2A190E70E700D25F79 /* SearchResultSectionHeaderView.m */; };
 		B63156A918ADE5BF003D802E /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B63156A818ADE5BF003D802E /* BaseTableViewController.m */; };
 		B639498719150C6300075638 /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B639498619150C6300075638 /* UserCell.m */; };
+		B639498B1915C96B00075638 /* WeiboPostVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B639498A1915C96B00075638 /* WeiboPostVC.m */; };
 		B63DEE3F18FE58F80080810F /* TagVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B63DEE3E18FE58F80080810F /* TagVC.m */; };
 		B63DEE4218FE61170080810F /* TagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B63DEE4118FE61170080810F /* TagCell.m */; };
 		B63F9B4918DC538500D8768E /* HomeSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B63F9B4818DC538500D8768E /* HomeSectionHeaderView.m */; };
@@ -244,6 +245,8 @@
 		B63156A818ADE5BF003D802E /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		B639498519150C6300075638 /* UserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
 		B639498619150C6300075638 /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
+		B63949891915C96B00075638 /* WeiboPostVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboPostVC.h; sourceTree = "<group>"; };
+		B639498A1915C96B00075638 /* WeiboPostVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboPostVC.m; sourceTree = "<group>"; };
 		B63DEE3D18FE58F80080810F /* TagVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagVC.h; sourceTree = "<group>"; };
 		B63DEE3E18FE58F80080810F /* TagVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagVC.m; sourceTree = "<group>"; };
 		B63DEE4018FE61170080810F /* TagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCell.h; sourceTree = "<group>"; };
@@ -1093,6 +1096,8 @@
 				B60620CC18D1B97B007C1A95 /* RecommendEntityCell.m */,
 				B6E6209B18F3F969007D88C4 /* NotePostVC.h */,
 				B6E6209A18F3F969007D88C4 /* NotePostVC.m */,
+				B63949891915C96B00075638 /* WeiboPostVC.h */,
+				B639498A1915C96B00075638 /* WeiboPostVC.m */,
 			);
 			path = EntityDetail;
 			sourceTree = "<group>";
@@ -1263,6 +1268,7 @@
 				B6603C42188D150A00F52946 /* NSObject+App.m in Sources */,
 				B6011E9918AD02B30034DD52 /* LoginVC.m in Sources */,
 				B602A5E018EAC1B200313CBF /* CommentCell.m in Sources */,
+				B639498B1915C96B00075638 /* WeiboPostVC.m in Sources */,
 				B67DD01C1902623A00D58061 /* SinaWeiboRequest.m in Sources */,
 				B60A1F50190112E100DE1500 /* TaobaoOAuthVC.m in Sources */,
 				B6603CF1188D153300F52946 /* GKDevice.m in Sources */,
