@@ -34,6 +34,16 @@ static CGFloat const kNoteLabelTextFontSize = 15.f;
     [self setNeedsLayout];
 }
 
+#pragma mark - Selecotr Method
+
+- (IBAction)tapCategoryButton:(id)sender
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(headerView:didSelectCategory:)]) {
+        GKEntityCategory *category = [GKEntityCategory modelFromDictionary:@{@"categoryId":@(self.note.categoryId)}];
+        [self.delegate headerView:self didSelectCategory:category];
+    }
+}
+
 #pragma mark - TTTAttributedLabelDelegate
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithPhoneNumber:(NSString *)phoneNumber

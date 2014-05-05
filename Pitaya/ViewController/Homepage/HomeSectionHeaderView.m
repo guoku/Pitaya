@@ -39,6 +39,10 @@
 
 - (void)tapHotCategoryButton:(UIButton *)button
 {
+#if EnableDataTracking
+    [self findViewControllerAndSaveStateWithEventName:@"CATEGORY"];
+#endif
+    
     GKEntityCategory *category = nil;
     if (button != self.allCategoryButton) {
         category = self.hotCategoryArray[button.tag - kHotCategoryButtonTag];
@@ -69,7 +73,7 @@
     }
     
     NSURL *imageURL = self.bannerArray[index][@"img"];
-    [((UIImageView *)view) setImageWithURL:imageURL placeholderImage:[UIImage imageWithColor:[UIColor lightGrayColor] andSize:view.frame.size]];
+    [((UIImageView *)view) setImageWithURL:imageURL placeholderImage:[UIImage imageWithColor:UIColorFromRGB(0xF6F6F6) andSize:view.frame.size]];
     
     return view;
 }
@@ -78,6 +82,10 @@
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
 {
+#if EnableDataTracking
+    [self findViewControllerAndSaveStateWithEventName:@"BANNER"];
+#endif
+    
     NSString *urlString = self.bannerArray[index][@"url"];
     
     if ([urlString hasPrefix:@"http://"] || [urlString hasPrefix:@"https://"]) {

@@ -15,6 +15,7 @@
 - (void)noteCell:(NoteCell *)cell didSelectUser:(GKUser *)user;
 - (void)noteCell:(NoteCell *)cell didSelectTag:(NSString *)tag fromUser:(GKUser *)user;
 - (void)noteCell:(NoteCell *)cell tapPokeButton:(UIButton *)pokeButton;
+- (void)noteCell:(NoteCell *)cell tapCommentButton:(UIButton *)noteButton;
 
 @end
 

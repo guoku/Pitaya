@@ -12,15 +12,15 @@
 
 + (UIFont *)appFontWithSize:(CGFloat)size
 {
-    return [UIFont fontWithName:@"Helvetica" size:size];
+    return [UIFont systemFontOfSize:size];
 }
 
 + (UIFont *)appFontWithSize:(CGFloat)size bold:(BOOL)bold
 {
     if (bold) {
-        return [UIFont fontWithName:@"Helvetica-Bold" size:size];
+        return [UIFont boldSystemFontOfSize:size];
     } else {
-        return [UIFont fontWithName:@"Helvetica" size:size];
+        return [UIFont systemFontOfSize:size];
     }
 }
 

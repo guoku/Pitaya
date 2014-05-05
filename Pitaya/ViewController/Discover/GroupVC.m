@@ -71,12 +71,21 @@
         headerView.titleLabel.text = (indexPath.section == 0) ? @"优选品类" : @"普通品类";
         
         reusableview = headerView;
+    } else if (kind == UICollectionElementKindSectionFooter) {
+        reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"DiscoverSectionFooterView" forIndexPath:indexPath];
     }
     
     return reusableview;
 }
 
 #pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+#if EnableDataTracking
+    [self saveStateWithEventName:@"CATEGORY"];
+#endif
+}
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 
@@ -160,5 +169,19 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Data Tracking
+
+#if EnableDataTracking
+
+- (void)saveStateWithEventName:(NSString *)eventName
+{
+    [kAppDelegate.trackNode clear];
+    kAppDelegate.trackNode.pageName = @"GROUP";
+    kAppDelegate.trackNode.xid = [self.groupDict[GroupIdKey] stringValue];
+    kAppDelegate.trackNode.featureName = eventName;
+}
+
+#endif
 
 @end

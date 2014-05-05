@@ -93,8 +93,12 @@ static NSInteger const LogoutButtonTag = 999;
 - (void)tapLogoutButton
 {
     if (k_isLogin) {
-        [Passport logout];
-        [self.tableView reloadData];
+        [UIAlertView bk_showAlertViewWithTitle:nil message:@"确定退出登录？" cancelButtonTitle:@"取消" otherButtonTitles:@[@"确定"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if (buttonIndex == 1) {
+                [Passport logout];
+                [self.tableView reloadData];
+            }
+        }];
     }
 }
 

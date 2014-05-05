@@ -84,6 +84,13 @@
 
 #pragma mark - UICollectionViewDelegate
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+#if EnableDataTracking
+    [self saveStateWithEventName:@"ENTITY"];
+#endif
+}
+
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
@@ -168,5 +175,19 @@
         [self.collectionView reloadData];
     });
 }
+
+#pragma mark - Data Tracking
+
+#if EnableDataTracking
+
+- (void)saveStateWithEventName:(NSString *)eventName
+{
+    [kAppDelegate.trackNode clear];
+    kAppDelegate.trackNode.pageName = @"HOT";
+    kAppDelegate.trackNode.tabIndex = self.segmentedControl.selectedSegmentIndex;
+    kAppDelegate.trackNode.featureName = eventName;
+}
+
+#endif
 
 @end

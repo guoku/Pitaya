@@ -11,6 +11,7 @@
 #import "CommentCell.h"
 #import "UserVC.h"
 #import "TagVC.h"
+#import "CategoryVC.h"
 
 @interface NoteDetailVC () <UITableViewDataSource, UITableViewDelegate, NoteDetailHeaderViewDelegate, CommentCellDelegate>
 
@@ -123,6 +124,16 @@
     }
 }
 
+- (void)headerView:(NoteDetailHeaderView *)headerView didSelectCategory:(GKEntityCategory *)category
+{
+#if EnableDataTracking
+    [self saveStateWithEventName:@"CATEGORY"];
+#endif
+    CategoryVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"CategoryVC"];
+    vc.category = category;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 #pragma mark - CommentCellDelegate
 
 - (void)commentCell:(CommentCell *)cell replyComment:(GKComment *)comment
@@ -211,5 +222,19 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Data Tracking
+
+#if EnableDataTracking
+
+- (void)saveStateWithEventName:(NSString *)eventName
+{
+    [kAppDelegate.trackNode clear];
+    kAppDelegate.trackNode.pageName = @"NOTE";
+    kAppDelegate.trackNode.xid = @(self.note.noteId).stringValue;
+    kAppDelegate.trackNode.featureName = eventName;
+}
+
+#endif
 
 @end

@@ -37,8 +37,8 @@ static CGFloat const kNoteCollectionCellTextFontSize = 15.f;
     CGSize noteLabelSize = [note.text sizeWithFont:[UIFont systemFontOfSize:kNoteCollectionCellTextFontSize] constrainedToSize:CGSizeMake(608.f, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
     ;
     
-    // 2 ＝ 是最小行高 － 字体大小 － 2
-    return CGSizeMake(668.f, noteLabelSize.height + 2 * ceilf(noteLabelSize.height / kNoteCollectionCellTextFontSize) + 200.f);
+    // 1.f ＝ 是最小行高 － 字体大小 － 3.f
+    return CGSizeMake(668.f, noteLabelSize.height + 1.f * floorf(noteLabelSize.height / kNoteCollectionCellTextFontSize) + 200.f);
 }
 
 #pragma mark - Getter And Setter

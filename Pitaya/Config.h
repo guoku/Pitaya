@@ -93,3 +93,7 @@
 #ifndef kRequestSize
 #define kRequestSize 30
 #endif
+
+#ifndef EnableDataTracking
+#define EnableDataTracking 1
+#endif

@@ -211,6 +211,10 @@
 
 - (void)recommendEntityCell:(RecommendEntityCell *)cell didSelectedEntity:(GKEntity *)entity
 {
+#if EnableDataTracking
+    [self saveStateWithEventName:@"ENTITY"];
+#endif
+    
     EntityDetailVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"EntityDetailVC"];
     vc.entity = entity;
     [self.navigationController pushViewController:vc animated:YES];
@@ -247,6 +251,13 @@
     [self.tableView beginUpdates];
     [self.tableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:oldIndex inSection:0] toIndexPath:[NSIndexPath indexPathForRow:newIndex inSection:0] ];
     [self.tableView endUpdates];
+}
+
+- (void)noteCell:(NoteCell *)cell tapCommentButton:(UIButton *)noteButton
+{
+    NoteDetailVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NoteDetailVC"];
+    vc.note = cell.note;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -395,6 +406,10 @@
     [super prepareForSegue:segue sender:sender];
     
     if ([segue.destinationViewController isKindOfClass:[CategoryVC class]]) {
+#if EnableDataTracking
+        [self saveStateWithEventName:@"CATEGORY"];
+#endif
+        
         UIButton *categoryButton = (UIButton *)sender;
         CategoryVC *vc = (CategoryVC *)segue.destinationViewController;
         NSUInteger categoryId = categoryButton.tag;
@@ -439,5 +454,19 @@
 {
     [self removeObserver];
 }
+
+#pragma mark - Data Tracking
+
+#if EnableDataTracking
+
+- (void)saveStateWithEventName:(NSString *)eventName
+{
+    [kAppDelegate.trackNode clear];
+    kAppDelegate.trackNode.pageName = @"ENTITY";
+    kAppDelegate.trackNode.xid = self.entity.entityId;
+    kAppDelegate.trackNode.featureName = eventName;
+}
+
+#endif
 
 @end

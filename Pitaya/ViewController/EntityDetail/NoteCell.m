@@ -72,6 +72,13 @@ static CGFloat const kNoteCellTextFontSize = 15.f;
     }
 }
 
+- (IBAction)tapCommentButton:(id)sender
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(noteCell:tapCommentButton:)]) {
+        [self.delegate noteCell:self tapCommentButton:sender];
+    }
+}
+
 #pragma mark - TTTAttributedLabelDelegate
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithPhoneNumber:(NSString *)phoneNumber

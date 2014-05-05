@@ -42,6 +42,11 @@
     return nil;
 }
 
+- (void)saveStateWithEventName:(NSString *)eventName
+{
+    [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
+}
+
 #pragma mark - Life Cycle
 
 - (void)viewDidLoad

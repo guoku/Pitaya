@@ -129,6 +129,13 @@
 
 #pragma mark - UICollectionViewDelegate
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+#if EnableDataTracking
+    [self saveStateWithEventName:@"ENTITY"];
+#endif
+}
+
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
@@ -155,6 +162,13 @@
     [super viewDidLoad];
     
     self.screenName = @"首页";
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.collectionView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -200,5 +214,18 @@
         [self.collectionView reloadData];
     });
 }
+
+#pragma mark - Data Tracking
+
+#if EnableDataTracking
+
+- (void)saveStateWithEventName:(NSString *)eventName
+{
+    [kAppDelegate.trackNode clear];
+    kAppDelegate.trackNode.pageName = @"HOMEPAGE";
+    kAppDelegate.trackNode.featureName = eventName;
+}
+
+#endif
 
 @end

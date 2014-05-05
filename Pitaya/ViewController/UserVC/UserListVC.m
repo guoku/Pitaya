@@ -128,14 +128,14 @@
     switch (self.type) {
         case UserListTypeFans:
         {
-            self.navigationItem.title = @"TA的粉丝";
+            self.navigationItem.title = @"TA 的粉丝";
             break;
         }
             
         case UserListTypeFriends:
         {
             
-            self.navigationItem.title = @"TA关注的";
+            self.navigationItem.title = @"TA 关注的";
             break;
         }
     }
