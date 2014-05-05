@@ -30,6 +30,9 @@ int ddLogLevel;
     [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelError];
     [[GAI sharedInstance] trackerWithTrackingId:GAnalyticsAccountId];
     
+    // Data Tracking
+    _trackNode = [[DTNode alloc] init];
+    
     [self configCustomAppearance];
     
     _alertWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];

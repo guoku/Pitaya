@@ -146,12 +146,21 @@
             
             reusableview = headerView;
         }
+    } else if (kind == UICollectionElementKindSectionFooter) {
+        reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"DiscoverSectionFooterView" forIndexPath:indexPath];
     }
     
     return reusableview;
 }
 
 #pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+#if EnableDataTracking
+    [self saveStateWithEventName:@"CATEGORY"];
+#endif
+}
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 
@@ -274,5 +283,23 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Data Tracking
+
+#if EnableDataTracking
+
+- (void)saveStateWithEventName:(NSString *)eventName
+{
+    [kAppDelegate.trackNode clear];
+    if (self.isSearching) {
+        kAppDelegate.trackNode.pageName = @"SEARCH";
+        kAppDelegate.trackNode.keyword = self.searchTextField.text;
+    } else {
+        kAppDelegate.trackNode.pageName = @"DISCOVER";
+    }
+    kAppDelegate.trackNode.featureName = eventName;
+}
+
+#endif
 
 @end

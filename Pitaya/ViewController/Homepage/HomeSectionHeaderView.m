@@ -39,6 +39,10 @@
 
 - (void)tapHotCategoryButton:(UIButton *)button
 {
+#if EnableDataTracking
+    [self findViewControllerAndSaveStateWithEventName:@"CATEGORY"];
+#endif
+    
     GKEntityCategory *category = nil;
     if (button != self.allCategoryButton) {
         category = self.hotCategoryArray[button.tag - kHotCategoryButtonTag];
@@ -78,6 +82,10 @@
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
 {
+#if EnableDataTracking
+    [self findViewControllerAndSaveStateWithEventName:@"BANNER"];
+#endif
+    
     NSString *urlString = self.bannerArray[index][@"url"];
     
     if ([urlString hasPrefix:@"http://"] || [urlString hasPrefix:@"https://"]) {

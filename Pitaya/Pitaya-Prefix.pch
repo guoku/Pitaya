@@ -28,6 +28,7 @@
     #import "UIView+DEFrameAdditions.h"
     #import "UIDevice+Hardware.h"
     #import "UISegmentedControl+Flat.h"
+    #import "UIView+DataTracking.h"
 
     // Log
     #import "DDTTYLogger.h"

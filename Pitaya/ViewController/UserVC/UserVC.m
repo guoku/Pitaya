@@ -345,6 +345,17 @@
 
 #pragma mark - UICollectionViewDelegate
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+#if EnableDataTracking
+    if (self.selectedIndex == 0) {
+        [self saveStateWithEventName:@"ENTITY"];
+    } else if (self.selectedIndex == 2) {
+        [self saveStateWithEventName:@"TAG"];
+    }
+#endif
+}
+
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
@@ -464,6 +475,10 @@
 
 - (void)noteCollectionCell:(NoteCollectionCell *)cell didSelectEntity:(GKEntity *)entity note:(GKNote *)note
 {
+#if EnableDataTracking
+    [self saveStateWithEventName:@"ENTITY"];
+#endif
+    
     EntityDetailVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"EntityDetailVC"];
     vc.entity = entity;
     vc.note = note;
@@ -584,5 +599,20 @@
 {
     [self removeObserver];
 }
+
+#pragma mark - Data Tracking
+
+#if EnableDataTracking
+
+- (void)saveStateWithEventName:(NSString *)eventName
+{
+    [kAppDelegate.trackNode clear];
+    kAppDelegate.trackNode.pageName = @"USER";
+    kAppDelegate.trackNode.xid = @(self.user.userId).stringValue;
+    kAppDelegate.trackNode.tabIndex = self.selectedIndex;
+    kAppDelegate.trackNode.featureName = eventName;
+}
+
+#endif
 
 @end

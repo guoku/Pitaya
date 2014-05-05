@@ -58,6 +58,9 @@
 
 - (void)messageCell:(MessageCell *)cell didSelectEntity:(GKEntity *)entity
 {
+#if EnableDataTracking
+    [self saveStateWithEventName:@"ENTITY"];
+#endif
     EntityDetailVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"EntityDetailVC"];
     vc.entity = entity;
     [self.navigationController pushViewController:vc animated:YES];
@@ -187,5 +190,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Data Tracking
+
+#if EnableDataTracking
+
+- (void)saveStateWithEventName:(NSString *)eventName
+{
+    [kAppDelegate.trackNode clear];
+    kAppDelegate.trackNode.pageName = @"MESSAGE";
+    kAppDelegate.trackNode.featureName = eventName;
+}
+
+#endif
 
 @end

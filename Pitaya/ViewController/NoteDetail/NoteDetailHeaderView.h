@@ -13,6 +13,7 @@
 
 @optional
 - (void)headerView:(NoteDetailHeaderView *)headerView didSelectTag:(NSString *)tag fromUser:(GKUser *)user;
+- (void)headerView:(NoteDetailHeaderView *)headerView didSelectCategory:(GKEntityCategory *)category;
 
 @end
 

@@ -10,4 +10,6 @@
 
 @interface BaseViewController : GAITrackedViewController
 
+- (void)saveStateWithEventName:(NSString *)eventName;
+
 @end

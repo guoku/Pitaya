@@ -211,6 +211,10 @@
 
 - (void)recommendEntityCell:(RecommendEntityCell *)cell didSelectedEntity:(GKEntity *)entity
 {
+#if EnableDataTracking
+    [self saveStateWithEventName:@"ENTITY"];
+#endif
+    
     EntityDetailVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"EntityDetailVC"];
     vc.entity = entity;
     [self.navigationController pushViewController:vc animated:YES];
@@ -395,6 +399,10 @@
     [super prepareForSegue:segue sender:sender];
     
     if ([segue.destinationViewController isKindOfClass:[CategoryVC class]]) {
+#if EnableDataTracking
+        [self saveStateWithEventName:@"CATEGORY"];
+#endif
+        
         UIButton *categoryButton = (UIButton *)sender;
         CategoryVC *vc = (CategoryVC *)segue.destinationViewController;
         NSUInteger categoryId = categoryButton.tag;
@@ -439,5 +447,19 @@
 {
     [self removeObserver];
 }
+
+#pragma mark - Data Tracking
+
+#if EnableDataTracking
+
+- (void)saveStateWithEventName:(NSString *)eventName
+{
+    [kAppDelegate.trackNode clear];
+    kAppDelegate.trackNode.pageName = @"ENTITY";
+    kAppDelegate.trackNode.xid = self.entity.entityId;
+    kAppDelegate.trackNode.featureName = eventName;
+}
+
+#endif
 
 @end

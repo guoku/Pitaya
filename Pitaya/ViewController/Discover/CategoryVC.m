@@ -321,6 +321,10 @@
 
 - (void)noteCollectionCell:(NoteCollectionCell *)cell didSelectEntity:(GKEntity *)entity note:(GKNote *)note
 {
+#if EnableDataTracking
+    [self saveStateWithEventName:@"ENTITY"];
+#endif
+    
     EntityDetailVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"EntityDetailVC"];
     vc.entity = entity;
     vc.note = note;
@@ -393,10 +397,18 @@
     [super prepareForSegue:segue sender:sender];
     
     if ([segue.destinationViewController isKindOfClass:[EntityDetailVC class]]) {
+#if EnableDataTracking
+        [self saveStateWithEventName:@"ENTITY"];
+#endif
+        
         EntityCollectionCell *cell = (EntityCollectionCell *)sender;
         EntityDetailVC *vc = (EntityDetailVC *)segue.destinationViewController;
         vc.entity = cell.entity;
     } else if ([segue.destinationViewController isKindOfClass:[CategoryVC class]]) {
+#if EnableDataTracking
+        [self saveStateWithEventName:@"CATEGORY"];
+#endif
+        
         UIButton *categoryButton = (UIButton *)sender;
         CategoryVC *vc = (CategoryVC *)segue.destinationViewController;
         NSUInteger categoryId = categoryButton.tag;
@@ -418,5 +430,20 @@
         [self.collectionView reloadData];
     });
 }
+
+#pragma mark - Data Tracking
+
+#if EnableDataTracking
+
+- (void)saveStateWithEventName:(NSString *)eventName
+{
+    [kAppDelegate.trackNode clear];
+    kAppDelegate.trackNode.pageName = @"CATEGORY";
+    kAppDelegate.trackNode.tabIndex = self.selectedIndex;
+    kAppDelegate.trackNode.xid = @(self.category.categoryId).stringValue;
+    kAppDelegate.trackNode.featureName = eventName;
+}
+
+#endif
 
 @end

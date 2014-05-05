@@ -93,9 +93,9 @@
     [newDict setObject:version forKey:@"version"];
     
     // TODO: 增加数据跟踪
-//    if (kAppDelegate.trackNode.trackString) {
-//        [newDict setObject:kAppDelegate.trackNode.trackString forKey:@"prev"];
-//    }
+    if (kAppDelegate.trackNode.trackString) {
+        [newDict setObject:kAppDelegate.trackNode.trackString forKey:@"prev"];
+    }
     
     NSString *session = [Passport sharedInstance].session;
     if (session) {
