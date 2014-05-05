@@ -73,6 +73,8 @@
 		B64ACF921890DB1900D88459 /* DiscoverSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B64ACF911890DB1900D88459 /* DiscoverSectionHeaderView.m */; };
 		B64ACF991891361800D88459 /* GroupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B64ACF981891361800D88459 /* GroupVC.m */; };
 		B64ACF9C1891372400D88459 /* CategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B64ACF9B1891372400D88459 /* CategoryVC.m */; };
+		B64DA4F819174D4D00860D86 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B64DA4F719174D4D00860D86 /* AdSupport.framework */; };
+		B64DA4FA19174DBF00860D86 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B64DA4F919174DBF00860D86 /* CoreData.framework */; };
 		B64F951A188F8AEB00531FCA /* HomepageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B64F9519188F8AEB00531FCA /* HomepageVC.m */; };
 		B64F951D188F8AF900531FCA /* FeedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B64F951C188F8AF900531FCA /* FeedVC.m */; };
 		B64F9520188F8B0600531FCA /* MessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B64F951F188F8B0600531FCA /* MessageVC.m */; };
@@ -305,6 +307,8 @@
 		B64ACF981891361800D88459 /* GroupVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupVC.m; sourceTree = "<group>"; };
 		B64ACF9A1891372400D88459 /* CategoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryVC.h; sourceTree = "<group>"; };
 		B64ACF9B1891372400D88459 /* CategoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryVC.m; sourceTree = "<group>"; };
+		B64DA4F719174D4D00860D86 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		B64DA4F919174DBF00860D86 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B64F9518188F8AEB00531FCA /* HomepageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepageVC.h; sourceTree = "<group>"; };
 		B64F9519188F8AEB00531FCA /* HomepageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepageVC.m; sourceTree = "<group>"; };
 		B64F951B188F8AF900531FCA /* FeedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedVC.h; sourceTree = "<group>"; };
@@ -495,6 +499,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B64DA4FA19174DBF00860D86 /* CoreData.framework in Frameworks */,
+				B64DA4F819174D4D00860D86 /* AdSupport.framework in Frameworks */,
 				B605AD341916408300A22E58 /* libz.dylib in Frameworks */,
 				B605AD18191632A600A22E58 /* libUMFeedback.a in Frameworks */,
 				B6603D02188D194A00F52946 /* MobileCoreServices.framework in Frameworks */,
@@ -880,6 +886,8 @@
 		B6603BDB188CE7AE00F52946 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B64DA4F919174DBF00860D86 /* CoreData.framework */,
+				B64DA4F719174D4D00860D86 /* AdSupport.framework */,
 				B605AD331916408300A22E58 /* libz.dylib */,
 				B6603D01188D194A00F52946 /* MobileCoreServices.framework */,
 				B6603CFF188D193D00F52946 /* SystemConfiguration.framework */,
