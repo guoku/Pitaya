@@ -46,6 +46,7 @@
     #import "UIButton+WebCache.h"
     #import "GKDataManager.h"
     #import "BBProgressHUD.h"
+    #import "BlocksKit+UIKit.h"
 
     #import "BaseViewController.h"
     #import "BaseNavigationController.h"
