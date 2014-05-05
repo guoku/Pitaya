@@ -253,6 +253,13 @@
     [self.tableView endUpdates];
 }
 
+- (void)noteCell:(NoteCell *)cell tapCommentButton:(UIButton *)noteButton
+{
+    NoteDetailVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NoteDetailVC"];
+    vc.note = cell.note;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
