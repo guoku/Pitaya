@@ -73,7 +73,7 @@
     }
     
     NSURL *imageURL = self.bannerArray[index][@"img"];
-    [((UIImageView *)view) setImageWithURL:imageURL placeholderImage:[UIImage imageWithColor:[UIColor lightGrayColor] andSize:view.frame.size]];
+    [((UIImageView *)view) setImageWithURL:imageURL placeholderImage:[UIImage imageWithColor:UIColorFromRGB(0xF6F6F6) andSize:view.frame.size]];
     
     return view;
 }

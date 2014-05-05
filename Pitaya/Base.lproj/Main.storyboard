@@ -216,7 +216,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="w5g-eB-Wgd"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -286,7 +286,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKM-ek-pAh">
                                                     <rect key="frame" x="170" y="8" width="200" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.25882352941176473" green="0.49411764705882355" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="200" id="1AR-FI-4BO"/>
                                                         <constraint firstAttribute="height" constant="44" id="1x2-FA-4fN"/>
@@ -428,7 +428,7 @@
                                                         <constraint firstAttribute="width" constant="100" id="gZ2-x1-5pn"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -525,7 +525,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fhl-Kv-ZxS">
                                                     <rect key="frame" x="170" y="18" width="200" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.25882352941176473" green="0.49411764705882355" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="200" id="3v5-GI-9Tc"/>
                                                         <constraint firstAttribute="height" constant="44" id="PDl-e4-2LE"/>

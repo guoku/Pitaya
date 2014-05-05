@@ -224,7 +224,7 @@
 {
     [super viewWillAppear:animated];
     
-    UIColor *titleColor = [UIColor redColor];
+    UIColor *titleColor = UIColorFromRGB(0x427EC0);
     
     if (iOS7) {
         self.rightBarButtonItem.tintColor = titleColor;
