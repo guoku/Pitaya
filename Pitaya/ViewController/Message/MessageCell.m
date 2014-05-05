@@ -15,6 +15,7 @@ static CGFloat labelWidth = 600.f;
 
 @property (nonatomic, assign) MessageType type;
 
+@property (nonatomic, strong) UIView *separatorView;
 @property (nonatomic, strong) UIImageView *iconImageView;
 @property (nonatomic, strong) UIButton *photoImageButton;
 @property (nonatomic, strong) RTLabel *label;
@@ -179,6 +180,7 @@ static CGFloat labelWidth = 600.f;
     self.contentLabel.text = [NSString stringWithFormat:@"<font face='Helvetica' color='^777777' size=14>“ %@ ”</font>", replying_comment.text];
     self.contentLabel.deFrameHeight = self.contentLabel.optimumSize.height + 5.f;
     self.contentLabel.deFrameTop = self.label.deFrameBottom + 10.f;
+    self.contentLabel.hidden = NO;
 }
 
 - (void)setupCellForType_2
@@ -195,10 +197,12 @@ static CGFloat labelWidth = 600.f;
     
     [self.photoImageButton setImageWithURL:note.entityChiefImage forState:UIControlStateNormal];
     self.photoImageButton.deFrameTop = self.label.deFrameBottom + 10.f;
+    self.photoImageButton.hidden = NO;
     
     self.contentLabel.text = [NSString stringWithFormat:@"<font face='Helvetica' color='^777777' size=14>“ %@ ”</font>", comment.text];
     self.contentLabel.deFrameHeight = self.contentLabel.optimumSize.height + 5.f;
     self.contentLabel.deFrameTop = self.photoImageButton.deFrameBottom + 10.f;
+    self.contentLabel.hidden = NO;
 }
 
 - (void)setupCellForType_3
@@ -238,10 +242,12 @@ static CGFloat labelWidth = 600.f;
     
     [self.photoImageButton setImageWithURL:entity.imageURL_240x240 forState:UIControlStateNormal];
     self.photoImageButton.deFrameTop = self.label.deFrameBottom + 10.f;
+    self.photoImageButton.hidden = NO;
     
     self.contentLabel.text = [NSString stringWithFormat:@"<font face='Helvetica' color='^777777' size=14>%@</font>", note.text];
     self.contentLabel.deFrameHeight = self.contentLabel.optimumSize.height + 5.f;
     self.contentLabel.deFrameTop = self.photoImageButton.deFrameBottom + 10.f;
+    self.contentLabel.hidden = NO;
 }
 
 - (void)setupCellForType_6
@@ -257,6 +263,7 @@ static CGFloat labelWidth = 600.f;
     
     [self.photoImageButton setImageWithURL:entity.imageURL_240x240 forState:UIControlStateNormal];
     self.photoImageButton.deFrameTop = self.label.deFrameBottom + 10.f;
+    self.photoImageButton.hidden = NO;
 }
 
 - (void)setupCellForType_7
@@ -271,17 +278,25 @@ static CGFloat labelWidth = 600.f;
     
     [self.photoImageButton setImageWithURL:entity.imageURL_240x240 forState:UIControlStateNormal];
     self.photoImageButton.deFrameTop = self.label.deFrameBottom + 10.f;
+    self.photoImageButton.hidden = NO;
 }
 
 #pragma mark - Getter And Setter
 
 - (void)setMessage:(NSDictionary *)message
 {
+//    [self removeObserver];
+    
     _message = message;
     
     _type = [MessageCell typeFromMessage:_message];
     
     [self setNeedsLayout];
+}
+
+- (RTLabel *)contentLabel
+{
+    return _contentLabel;
 }
 
 #pragma mark - RTLabelDelegate
@@ -309,24 +324,27 @@ static CGFloat labelWidth = 600.f;
 
 #pragma mark - Life Cycle
 
-- (void)prepareForReuse
-{
-    [super prepareForReuse];
-    
-    for (UIView *subView in self.contentView.subviews) {
-        subView.hidden = YES;
-    }
-}
+//- (void)prepareForReuse
+//{
+//    [super prepareForReuse];
+//    
+//    self.photoImageButton.hidden = YES;
+//    self.contentLabel.hidden = YES;
+//}
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     
+    if (!self.separatorView) {
+        _separatorView = [[UIView alloc] initWithFrame:CGRectMake(20.f, 0.f, 1000.f, 1.f)];
+        self.separatorView.backgroundColor = UIColorFromRGB(0xF6F6F6);
+        [self.contentView addSubview:self.separatorView];
+    }
+    
     if (!self.iconImageView) {
         _iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20.f, 15.f, 25.f, 25.f)];
         [self.contentView addSubview:self.iconImageView];
-        
-        [self.iconImageView addObserver:self forKeyPath:@"image" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
     }
     
     if (!self.label) {
@@ -335,16 +353,13 @@ static CGFloat labelWidth = 600.f;
         self.label.lineSpacing = 4.0;
         self.label.delegate = self;
         [self.contentView addSubview:self.label];
-        
-        [self.label addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
     }
     
     if (!self.photoImageButton) {
         _photoImageButton = [[UIButton alloc] initWithFrame:CGRectMake(65.f, 0.f, 100.f, 100.f)];
+        self.photoImageButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
         [self.photoImageButton addTarget:self action:@selector(tapPhotoImageButton) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:self.photoImageButton];
-        
-        [self.photoImageButton addObserver:self forKeyPath:@"imageView.image" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
     }
     
     if (!self.contentLabel) {
@@ -353,8 +368,6 @@ static CGFloat labelWidth = 600.f;
         self.contentLabel.lineSpacing = 4.0;
         self.contentLabel.delegate = self;
         [self.contentView addSubview:self.contentLabel];
-        
-        [self.contentLabel addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
     }
     
     if (!self.timeLabel) {
@@ -363,9 +376,10 @@ static CGFloat labelWidth = 600.f;
         self.timeLabel.textColor = UIColorFromRGB(0x999999);
         self.timeLabel.textAlignment = NSTextAlignmentLeft;
         [self.contentView addSubview:self.timeLabel];
-        
-        [self.timeLabel addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
     }
+    
+    self.photoImageButton.hidden = YES;
+    self.contentLabel.hidden = YES;
     
     switch (self.type) {
         case MessageType_1:
@@ -422,18 +436,28 @@ static CGFloat labelWidth = 600.f;
     self.contentView.backgroundColor = [UIColor clearColor];
 }
 
-#pragma mark - KVO
-
-- (void)dealloc
-{
-    [self.label removeObserver:self forKeyPath:@"text"];
-    [self.photoImageButton removeObserver:self forKeyPath:@"image"];
-    [self.contentLabel removeObserver:self forKeyPath:@"text"];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    ((UIView *)object).hidden = NO;
-}
+//#pragma mark - KVO
+//
+//- (void)addObserver
+//{
+//    [self.photoImageButton addObserver:self forKeyPath:@"imageView.image" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+//    [self.contentLabel addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+//}
+//
+//- (void)removeObserver
+//{
+//    [self.photoImageButton removeObserver:self forKeyPath:@"imageView.image"];
+//    [self.contentLabel removeObserver:self forKeyPath:@"text"];
+//}
+//
+//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+//{
+//    ((UIView *)object).hidden = NO;
+//}
+//
+//- (void)dealloc
+//{
+//    [self removeObserver];
+//}
 
 @end
