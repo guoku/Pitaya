@@ -59,6 +59,14 @@
     }
 }
 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    if (iOS7) {
+        UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
+        navBarHairlineImageView.image = [UIImage imageWithColor:UIColorFromRGB(0xE9E9E9)];
+    }
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
