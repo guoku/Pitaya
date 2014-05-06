@@ -10,7 +10,7 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 #import "UserVC.h"
-#import "DiscoverVC.h"
+#import "SelectionVC.h"
 
 @interface RootViewController () <MasterViewControllerDelegate>
 
@@ -35,8 +35,19 @@
         vc.user = [Passport sharedInstance].user;
     }
     
-    if ([nav.viewControllers.firstObject isKindOfClass:[UserVC class]] || [nav.viewControllers.firstObject isKindOfClass:[DiscoverVC class]]) {
+    if (![nav.viewControllers.firstObject isKindOfClass:[SelectionVC class]]) {
         [nav popToRootViewControllerAnimated:YES];
+        BaseViewController *rootVC = (BaseViewController *)nav.viewControllers.firstObject;
+        for (UIView *subView in rootVC.view.subviews) {
+            if ([subView isKindOfClass:UIScrollView.class]) {
+                if (iOS7) {
+                    [((UIScrollView *)subView) setContentOffset:CGPointMake(0.f, -70.f)];
+                } else {
+                    [((UIScrollView *)subView) setContentOffset:CGPointZero];
+                }
+                break;
+            }
+        }
     }
     
     self.detailVC.selectedIndex = indexPath.row;
