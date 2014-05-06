@@ -3944,6 +3944,7 @@
                                                 <segment title="点评 9999"/>
                                                 <segment title="喜爱 999"/>
                                             </segments>
+                                            <color key="tintColor" red="0.25882352941176473" green="0.49411764705882355" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="tapSegmentControl:" destination="lOb-gM-Cwx" eventType="valueChanged" id="SOd-DB-tH8"/>
                                             </connections>

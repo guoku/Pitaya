@@ -118,6 +118,7 @@ int ddLogLevel;
     
     if (iOS7) {
         [UINavigationBar appearance].barTintColor = navigationBarBackgroundColor;
+        [UINavigationBar appearance].tintColor = UIColorFromRGB(0x427EC0);
         [UINavigationBar appearance].backIndicatorImage = navigationBarBackButtonImage;
         [UINavigationBar appearance].backIndicatorTransitionMaskImage = navigationBarBackButtonImage;
     } else {
