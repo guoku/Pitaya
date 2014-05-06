@@ -35,6 +35,7 @@
         [Passport loginWithSuccessBlock:^{
             [weakSelf refresh];
         }];
+        return;
     }
     
     [GKDataManager getFriendFeedWithTimestamp:[[NSDate date] timeIntervalSince1970] type:@"entity" success:^(NSArray *dataArray) {
@@ -57,6 +58,7 @@
         [Passport loginWithSuccessBlock:^{
             [weakSelf loadMore];
         }];
+        return;
     }
     
     GKNote *note = self.dataArray.lastObject[@"object"][@"note"];
@@ -73,6 +75,12 @@
 - (void)didLogin
 {
     [self.collectionView triggerPullToRefresh];
+}
+
+- (void)didLogout
+{
+    [self.dataArray removeAllObjects];
+    [self.collectionView reloadData];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -100,17 +108,6 @@
     return cell;
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
-    UICollectionReusableView *reusableview = nil;
-    
-    if (kind == UICollectionElementKindSectionHeader) {
-        reusableview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"FeedSectionHeaderView" forIndexPath:indexPath];
-    }
-    
-    return reusableview;
-}
-
 #pragma mark - UICollectionViewDelegate
 
 #pragma mark - UICollectionViewDelegateFlowLayout
@@ -128,15 +125,6 @@
     right = left;
     
     return UIEdgeInsetsMake(top, left, bottom, right);
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
-{
-    if (k_isLogin) {
-        return CGSizeZero;
-    } else {
-        return CGSizeMake(50.f, 200.f);
-    }
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
@@ -198,6 +186,7 @@
     self.screenName = @"动态页";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogin) name:GKUserDidLoginNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogout) name:GKUserDidLogoutNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -217,8 +206,9 @@
             [self.collectionView triggerPullToRefresh];
         }
     } else {
-        [self.dataArray removeAllObjects];
-        [self.collectionView reloadData];
+        [Passport loginWithSuccessBlock:^{
+            [self.collectionView triggerPullToRefresh];
+        }];
     }
 }
 
@@ -248,6 +238,7 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:GKUserDidLoginNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:GKUserDidLogoutNotification object:nil];
 }
 
 #pragma mark - Data Tracking
