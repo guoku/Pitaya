@@ -131,6 +131,13 @@
 
 - (void)tapNoteButton
 {
+    if (!k_isLogin) {
+        [Passport loginWithSuccessBlock:^{
+            [self tapNoteButton];
+        }];
+        return;
+    }
+    
     NotePostVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NotePostVC"];
     vc.entity = self.entity;
     vc.note = self.note;

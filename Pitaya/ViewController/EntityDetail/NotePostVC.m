@@ -60,6 +60,23 @@
 - (void)textViewDidChange:(UITextView *)textView
 {
     self.placeholderLabel.hidden = (textView.text.length > 0);
+    
+    // 修复 iOS 7 下 UITextView 最后一行文字看不到的 bug。
+    if (iOS7) {
+        CGRect line = [textView caretRectForPosition:textView.selectedTextRange.start];
+        CGFloat overflow = line.origin.y + line.size.height - ( textView.contentOffset.y + textView.bounds.size.height - textView.contentInset.bottom - textView.contentInset.top );
+        
+        if (overflow > 0) {
+            // We are at the bottom of the visible text and introduced a line feed, scroll down (iOS 7 does not do it)
+            // Scroll caret to visible area
+            CGPoint offset = textView.contentOffset;
+            offset.y += overflow + 7; // leave 7 pixels margin
+            // Cannot animate with setContentOffset:animated: or caret will not appear
+            [UIView animateWithDuration:.2 animations:^{
+                [textView setContentOffset:offset];
+            }];
+        }
+    }
 }
 
 #pragma mark - Life Cycle
@@ -68,7 +85,12 @@
 {
     [super viewDidLoad];
     
-    self.textView.contentInset = UIEdgeInsetsMake(10.f, 20.f, 10.f, 20.f);
+    if (iOS7) {
+        self.textView.textContainerInset = UIEdgeInsetsMake(20.f, 18.f, 20.f, 18.f);
+    } else {
+        self.textView.contentInset = UIEdgeInsetsMake(12.f, 20.f, 12.f, 20.f);
+    }
+    
     [self.textView becomeFirstResponder];
     
     if (self.note && [Passport sharedInstance].user.userId == self.note.creator.userId) {
