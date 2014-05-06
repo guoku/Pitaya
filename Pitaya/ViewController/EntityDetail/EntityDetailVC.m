@@ -111,6 +111,7 @@
         
         GKUser *user = obj;
         UIButton *avatarButton = [[UIButton alloc] initWithFrame:frame];
+        avatarButton.backgroundColor = UIColorFromRGB(0xF6F6F6);
         avatarButton.layer.cornerRadius = buttonLength / 2;
         avatarButton.layer.masksToBounds = YES;
         avatarButton.tag = user.userId;
