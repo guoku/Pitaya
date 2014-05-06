@@ -115,7 +115,7 @@ static CGFloat const kSelectionCellTextFontSize = 14.f;
     }
     
     // 商品图
-    [self.imageView setImageWithURL:self.entity.imageURL_310x310];
+    [self.imageView setImageWithURL:self.entity.imageURL_640x640];
     
     // 点评内容
     self.noteLabel.numberOfLines = 0;
