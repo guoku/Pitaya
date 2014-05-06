@@ -24,6 +24,8 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
 
 - (IBAction)tapAvatarButton:(id)sender
 {
+    [self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:YES];
+    
     if (k_isLogin) {
         if (_delegate && [_delegate respondsToSelector:@selector(masterViewController:didSelectRowAtIndexPath:)]) {
             [self.delegate masterViewController:self didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:self.titleArray.count inSection:0]];
