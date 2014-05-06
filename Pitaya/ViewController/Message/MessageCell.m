@@ -110,13 +110,12 @@ static CGFloat labelWidth = 600.f;
             size = [string sizeWithFont:[UIFont appFontWithSize:15.f] constrainedToSize:CGSizeMake(labelWidth, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
             height += size.height;
             
-            height += 60.f;
+            height += 180.f;
             break;
         }
             
         case MessageType_5:
         {
-            GKEntity *entity = message[@"content"][@"entity"];
             GKNote   *note   = message[@"content"][@"note"];
             GKUser   *user   = note.creator;
             
@@ -160,6 +159,10 @@ static CGFloat labelWidth = 600.f;
 {
     if (_delegate && [_delegate respondsToSelector:@selector(messageCell:didSelectEntity:)]) {
         GKEntity *entity = self.message[@"content"][@"entity"];
+        if (self.type == MessageType_4) {
+            GKNote *note = self.message[@"content"][@"note"];
+            entity = [GKEntity modelFromDictionary:@{@"entityId":note.entityId}];
+        }
         [self.delegate messageCell:self didSelectEntity:entity];
     }
 }
@@ -226,6 +229,10 @@ static CGFloat labelWidth = 600.f;
     
     self.label.text = [NSString stringWithFormat:@"<a href='user:%u'><font face='Helvetica-Bold' color='^555555' size=14>%@ </font></a><font face='Helvetica' color='^777777' size=14>赞了你对 </font><a href='entity:%@'><font face='Helvetica-Bold' color='^555555' size=14>%@</font></a><font face='Helvetica' color='^777777' size=14> 的点评</font>", user.userId, user.nickname ,note.entityId,note.title];
     self.label.deFrameHeight = self.label.optimumSize.height + 5.f;
+    
+    [self.photoImageButton setImageWithURL:note.entityChiefImage forState:UIControlStateNormal];
+    self.photoImageButton.deFrameTop = self.label.deFrameBottom + 10.f;
+    self.photoImageButton.hidden = NO;
 }
 
 - (void)setupCellForType_5
@@ -323,14 +330,6 @@ static CGFloat labelWidth = 600.f;
 }
 
 #pragma mark - Life Cycle
-
-//- (void)prepareForReuse
-//{
-//    [super prepareForReuse];
-//    
-//    self.photoImageButton.hidden = YES;
-//    self.contentLabel.hidden = YES;
-//}
 
 - (void)layoutSubviews
 {
