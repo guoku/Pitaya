@@ -33,6 +33,17 @@ int ddLogLevel;
     // Data Tracking
     _trackNode = [[DTNode alloc] init];
     
+    // 获取2.0的本地session
+    NSString *session = [[NSUserDefaults standardUserDefaults] objectForKey:@"session"];
+    if (session) {
+        [GKDataManager getUserInfoWithSession:session success:^(GKUser *user) {
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"session"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:GKUserDidLoginNotification object:nil];
+        } failure:^(NSInteger stateCode) {
+            [Passport logout];
+        }];
+    }
+    
     [self configCustomAppearance];
     
     _alertWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -90,7 +101,7 @@ int ddLogLevel;
 
 - (void)configLog
 {
-    ddLogLevel = LOG_LEVEL_VERBOSE;
+    ddLogLevel = LOG_LEVEL_ERROR;
     
     // 控制台输出
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
@@ -118,6 +129,7 @@ int ddLogLevel;
     
     if (iOS7) {
         [UINavigationBar appearance].barTintColor = navigationBarBackgroundColor;
+        [UINavigationBar appearance].tintColor = UIColorFromRGB(0x427EC0);
         [UINavigationBar appearance].backIndicatorImage = navigationBarBackButtonImage;
         [UINavigationBar appearance].backIndicatorTransitionMaskImage = navigationBarBackButtonImage;
     } else {

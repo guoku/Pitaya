@@ -10,7 +10,7 @@
 #import "SinaWeibo.h"
 #import "TaobaoOAuthVC.h"
 
-@interface LoginVC () <SinaWeiboDelegate, SinaWeiboRequestDelegate, TaobaoOAuthVCDelegate, UIAlertViewDelegate>
+@interface LoginVC () <SinaWeiboDelegate, SinaWeiboRequestDelegate, TaobaoOAuthVCDelegate, UIAlertViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *leftBarButtonItem;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *rightBarButtonItem;
@@ -104,6 +104,22 @@
 {
     UITableViewController *registerVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RegisterVC"];
     [self.navigationController pushViewController:registerVC animated:YES];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if ([string isEqualToString:@"\n"]) {
+        if (textField == self.emailTextField) {
+            [self.passwordTextField becomeFirstResponder];
+        } else if (textField == self.passwordTextField) {
+            [self tapLoginButton:nil];
+        }
+        return NO;
+    }
+    
+    return YES;
 }
 
 #pragma mark - SinaWeiboDelegate

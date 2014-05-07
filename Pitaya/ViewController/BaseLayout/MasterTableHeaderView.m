@@ -19,7 +19,7 @@
         [self.nicknameButton setTitle:[Passport sharedInstance].user.nickname forState:UIControlStateNormal];
     } else {
         [self.avatarButton setImage:[UIImage imageNamed:@"menu_icon_tuzi"] forState:UIControlStateNormal];
-        [self.nicknameButton setTitle:@"登陆" forState:UIControlStateNormal];
+        [self.nicknameButton setTitle:@"登录" forState:UIControlStateNormal];
     }
 }
 

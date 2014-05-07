@@ -35,12 +35,6 @@
 {
     self.backButton.enabled = self.webView.canGoBack;
     self.forwardBurron.enabled = self.webView.canGoForward;
-    
-    if (self.webView.isLoading) {
-        [self.refreshButton setImage:[UIImage imageNamed:@"button_icon_close"] forState:UIControlStateNormal];
-    } else {
-        [self.refreshButton setImage:[UIImage imageNamed:@"button_icon_Refresh"] forState:UIControlStateNormal];
-    }
 }
 
 #pragma mark - Selector Method
@@ -79,21 +73,21 @@
 {
     [BBProgressHUD show];
     [self updateButtonState];
-    [self.refreshButton setImage:[UIImage imageNamed:@"button_icon_close"] forState:UIControlStateNormal];
+    self.refreshButton.enabled = NO;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [BBProgressHUD dismiss];
     [self updateButtonState];
-    [self.refreshButton setImage:[UIImage imageNamed:@"button_icon_Refresh"] forState:UIControlStateNormal];
+    self.refreshButton.enabled = YES;
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     [BBProgressHUD dismiss];
     [self updateButtonState];
-    [self.refreshButton setImage:[UIImage imageNamed:@"button_icon_Refresh"] forState:UIControlStateNormal];
+    self.refreshButton.enabled = YES;
 }
 
 #pragma mark - Lefe Cycle

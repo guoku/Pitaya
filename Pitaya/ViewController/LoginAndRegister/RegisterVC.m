@@ -8,7 +8,7 @@
 
 #import "RegisterVC.h"
 
-@interface RegisterVC () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
+@interface RegisterVC () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) IBOutlet UIButton *avatarButton;
 @property (nonatomic, strong) IBOutlet UITextField *nicknameTextField;
@@ -127,6 +127,24 @@
         [kAppDelegate.alertWindow makeKeyAndVisible];
         [kAppDelegate.alertWindow.rootViewController presentViewController:imagePickerVC animated:YES completion:nil];
     }
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if ([string isEqualToString:@"\n"]) {
+        if (textField == self.nicknameTextField) {
+            [self.emailTextField becomeFirstResponder];
+        } else if (textField == self.emailTextField) {
+            [self.passwordTextField becomeFirstResponder];
+        } else if (textField == self.passwordTextField) {
+            [self tapRegisterButton:nil];
+        }
+        return NO;
+    }
+    
+    return YES;
 }
 
 #pragma mark - UIActionSheetDelegate

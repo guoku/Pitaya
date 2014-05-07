@@ -47,16 +47,26 @@
     [NSException raise:NSInternalInconsistencyException format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
 }
 
+- (void)changeNavigationBarSeparatorColor
+{
+    if (iOS7) {
+        UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
+        navBarHairlineImageView.image = [UIImage imageWithColor:UIColorFromRGB(0xE9E9E9)];
+    }
+}
+
 #pragma mark - Life Cycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
     
-    if (iOS7) {
-        UIImageView *navBarHairlineImageView = [self findHairlineImageViewUnder:self.navigationController.navigationBar];
-        navBarHairlineImageView.image = [UIImage imageWithColor:UIColorFromRGB(0xE9E9E9)];
-    }
+    [self changeNavigationBarSeparatorColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -75,6 +85,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    [self changeNavigationBarSeparatorColor];
     
     ((BaseNavigationController *)self.navigationController).backGesture.enabled = YES;
 }

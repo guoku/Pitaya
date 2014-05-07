@@ -26,19 +26,39 @@
 
 - (void)refresh
 {
+    __weak __typeof(&*self)weakSelf = self;
+    
+    if (!k_isLogin) {
+        [weakSelf.tableView.pullToRefreshView stopAnimating];
+        [Passport loginWithSuccessBlock:^{
+            [weakSelf refresh];
+        }];
+        return;
+    }
+    
     [GKDataManager getMessageListWithTimestamp:[[NSDate date] timeIntervalSince1970] count:kRequestSize success:^(NSArray *messageArray) {
-        [self.tableView.pullToRefreshView stopAnimating];
+        [weakSelf.tableView.pullToRefreshView stopAnimating];
         
-        [self.messageArray removeAllObjects];
-        self.messageArray = [messageArray mutableCopy];
-        [self.tableView reloadData];
+        [weakSelf.messageArray removeAllObjects];
+        weakSelf.messageArray = [messageArray mutableCopy];
+        [weakSelf.tableView reloadData];
     } failure:^(NSInteger stateCode) {
-        [self.tableView.pullToRefreshView stopAnimating];
+        [weakSelf.tableView.pullToRefreshView stopAnimating];
     }];
 }
 
 - (void)loadMore
 {
+    __weak __typeof(&*self)weakSelf = self;
+    
+    if (!k_isLogin) {
+        [weakSelf.tableView.pullToRefreshView stopAnimating];
+        [Passport loginWithSuccessBlock:^{
+            [weakSelf refresh];
+        }];
+        return;
+    }
+    
     NSTimeInterval timestamp = [self.messageArray.lastObject[@"time"] doubleValue];
     [GKDataManager getMessageListWithTimestamp:timestamp count:kRequestSize success:^(NSArray *messageArray) {
         [self.tableView.infiniteScrollingView stopAnimating];
@@ -52,6 +72,17 @@
     } failure:^(NSInteger stateCode) {
         [self.tableView.infiniteScrollingView stopAnimating];
     }];
+}
+
+- (void)didLogin
+{
+    [self.tableView triggerPullToRefresh];
+}
+
+- (void)didLogout
+{
+    [self.messageArray removeAllObjects];
+    [self.tableView reloadData];
 }
 
 #pragma mark - MessageCellDelegate
@@ -166,6 +197,9 @@
     [super viewDidLoad];
     
     self.screenName = @"消息页";
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogin) name:GKUserDidLoginNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogout) name:GKUserDidLogoutNotification object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -189,6 +223,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:GKUserDidLoginNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:GKUserDidLogoutNotification object:nil];
 }
 
 #pragma mark - Data Tracking
