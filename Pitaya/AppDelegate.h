@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DTNode.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) UIWindow *alertWindow;
+@property (nonatomic, strong) DTNode *trackNode;
 
 @end
