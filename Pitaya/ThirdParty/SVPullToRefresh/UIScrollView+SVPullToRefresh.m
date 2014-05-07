@@ -212,8 +212,7 @@ static char UIScrollViewPullToRefreshView;
 - (void)layoutSubviews {
 
     if (!_rotateLoadingView) {
-        _rotateLoadingView = [[GKRotateLoadingView alloc]init];
-        _rotateLoadingView.center =  CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+        _rotateLoadingView = [[GKRotateLoadingView alloc]initWithFrame:CGRectMake(((self.frame.size.width - 30.f)/2), ((self.frame.size.height - 30.f)/2), 30.f, 30.f)];
         [self addSubview:_rotateLoadingView];
     }
     /* 
@@ -612,9 +611,10 @@ static char UIScrollViewPullToRefreshView;
             if(fequalzero(self.scrollView.contentOffset.y)) {
                 [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x, -self.frame.size.height) animated:YES];
                 self.wasTriggeredByUser = NO;
-            }
-            else
+            } else {
+                [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x, -(self.frame.size.height + 20.f + 44.f)) animated:YES];
                 self.wasTriggeredByUser = YES;
+            }
             
             break;
         case SVPullToRefreshPositionBottom:
