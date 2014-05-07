@@ -101,7 +101,7 @@ int ddLogLevel;
 
 - (void)configLog
 {
-    ddLogLevel = LOG_LEVEL_VERBOSE;
+    ddLogLevel = LOG_LEVEL_ERROR;
     
     // 控制台输出
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
