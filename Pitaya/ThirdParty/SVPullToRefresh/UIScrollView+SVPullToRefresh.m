@@ -215,13 +215,13 @@ static char UIScrollViewPullToRefreshView;
         _rotateLoadingView = [[GKRotateLoadingView alloc]initWithFrame:CGRectMake(((self.frame.size.width - 30.f)/2), ((self.frame.size.height - 30.f)/2), 30.f, 30.f)];
         [self addSubview:_rotateLoadingView];
     }
-    /* 
-    if (!_loadView) {
-        _loadView= [[YLActivityIndicatorView alloc] init];
-        _loadView.center = CGPointMake(kScreenWidth/2, self.frame.size.height/2+10);
-        [self addSubview:_loadView];
+    
+    if ([UIDevice currentDevice].orientation == 1 || [UIDevice currentDevice].orientation == 2) {
+        self.rotateLoadingView.deFrameLeft = 339.f;
+    } else if ([UIDevice currentDevice].orientation == 3 || [UIDevice currentDevice].orientation == 4) {
+        self.rotateLoadingView.deFrameLeft = 339.f + 25.f;
     }
-     */
+    
     switch (self.position) {
         case SVPullToRefreshPositionTop:
             self.rotateLoadingView.hidden = NO;
