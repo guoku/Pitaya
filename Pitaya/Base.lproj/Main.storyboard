@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="fST-Wk-SOz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="fST-Wk-SOz">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Root View Controller-->
@@ -2601,6 +2601,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="DWe-y1-Mkv"/>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="768" height="758"/>
                     <connections>
                         <outlet property="brandAndTitleLabel" destination="5bt-f8-4Zy" id="UQU-9i-dxT"/>
                         <outlet property="categoryButton" destination="O2m-kZ-nHf" id="oYC-D6-EJ8"/>
@@ -4003,6 +4004,7 @@
                         </button>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="768" height="758"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="8ms-FB-PkG" id="VFO-JV-eLt"/>
                         <outlet property="collectionView" destination="tL8-jQ-1b3" id="gMO-kb-mDV"/>
@@ -4169,7 +4171,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="758" height="1068"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vgv-ID-bdS">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vgv-ID-bdS">
                                 <rect key="frame" x="0.0" y="0.0" width="758" height="1068"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -4710,6 +4712,7 @@
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="758" height="1068"/>
                     <connections>
                         <outlet property="collectionView" destination="Vgv-ID-bdS" id="BhJ-Dn-9f6"/>
                         <outlet property="rightButton" destination="KIe-41-2xm" id="W0U-9z-BEe"/>
@@ -4881,6 +4884,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="BWf-BC-Vbh"/>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="758" height="768"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="IJK-FC-DLh" id="3T0-ni-lxX"/>
                         <outlet property="collectionView" destination="YPu-lH-T0c" id="yrM-Jj-8W1"/>

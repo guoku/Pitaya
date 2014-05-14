@@ -46,13 +46,13 @@
         case 0:
         {
             [GKDataManager getUserLikeEntityListWithUserId:self.user.userId timestamp:[[NSDate date] timeIntervalSince1970] count:kRequestSize success:^(NSTimeInterval timestamp, NSArray *entityArray) {
+                [weakSelf.collectionView.pullToRefreshView stopAnimating];
+                [weakSelf.activityIndicatorView stopAnimating];
+                
                 [weakSelf.dataArray[index] removeAllObjects];
                 [weakSelf.dataArray[index] addObjectsFromArray:entityArray];
                 weakSelf.likeTimestamp = timestamp;
                 [weakSelf.collectionView reloadData];
-                
-                [weakSelf.collectionView.pullToRefreshView stopAnimating];
-                [weakSelf.activityIndicatorView stopAnimating];
             } failure:^(NSInteger stateCode) {
                 [weakSelf.collectionView.pullToRefreshView stopAnimating];
                 [weakSelf.activityIndicatorView stopAnimating];
@@ -64,12 +64,12 @@
         case 1:
         {
             [GKDataManager getUserNoteListWithUserId:self.user.userId timestamp:[[NSDate date] timeIntervalSince1970] count:kRequestSize success:^(NSArray *dataArray) {
+                [weakSelf.collectionView.pullToRefreshView stopAnimating];
+                [weakSelf.activityIndicatorView stopAnimating];
+                
                 [weakSelf.dataArray[index] removeAllObjects];
                 [weakSelf.dataArray[index] addObjectsFromArray:dataArray];
                 [weakSelf.collectionView reloadData];
-                
-                [weakSelf.collectionView.pullToRefreshView stopAnimating];
-                [weakSelf.activityIndicatorView stopAnimating];
             } failure:^(NSInteger stateCode) {
                 [weakSelf.collectionView.pullToRefreshView stopAnimating];
                 [weakSelf.activityIndicatorView stopAnimating];
@@ -81,12 +81,12 @@
         case 2:
         {
             [GKDataManager getTagListWithUserId:self.user.userId offset:0 count:kRequestSize success:^(GKUser *user, NSArray *tagArray) {
+                [weakSelf.collectionView.pullToRefreshView stopAnimating];
+                [weakSelf.activityIndicatorView stopAnimating];
+                
                 [weakSelf.dataArray[index] removeAllObjects];
                 [weakSelf.dataArray[index] addObjectsFromArray:tagArray];
                 [weakSelf.collectionView reloadData];
-                
-                [weakSelf.collectionView.pullToRefreshView stopAnimating];
-                [weakSelf.activityIndicatorView stopAnimating];
             } failure:^(NSInteger stateCode) {
                 [weakSelf.collectionView.pullToRefreshView stopAnimating];
                 [weakSelf.activityIndicatorView stopAnimating];
@@ -127,12 +127,12 @@
             NSTimeInterval timestamp = note ? note.createdTime : [[NSDate date] timeIntervalSince1970];
             
             [GKDataManager getUserNoteListWithUserId:self.user.userId timestamp:timestamp count:kRequestSize success:^(NSArray *dataArray) {
-                [weakSelf.collectionView.pullToRefreshView stopAnimating];
+                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
                 
                 [weakSelf.dataArray[index] addObjectsFromArray:dataArray];
                 [weakSelf.collectionView reloadData];
             } failure:^(NSInteger stateCode) {
-                [weakSelf.collectionView.pullToRefreshView stopAnimating];
+                [weakSelf.collectionView.infiniteScrollingView stopAnimating];
             }];
             
             break;
@@ -446,12 +446,10 @@
 {
     self.selectedIndex = index;
     
-    [self.activityIndicatorView stopAnimating];
+    [self.collectionView reloadData];
     
     if (((NSMutableArray *)self.dataArray[index]).count == 0) {
         [self.collectionView triggerPullToRefresh];
-    } else {
-        [self.collectionView reloadData];
     }
 }
 
@@ -502,17 +500,18 @@
     }
 }
 
-#pragma mark - Life Cycle
-
-- (void)loadView
+- (NSMutableArray *)dataArray
 {
-    [super loadView];
-    
-    _dataArray = [NSMutableArray array];
-    [self.dataArray addObject:[NSMutableArray array]];
-    [self.dataArray addObject:[NSMutableArray array]];
-    [self.dataArray addObject:[NSMutableArray array]];
+    if (!_dataArray) {
+        _dataArray = [NSMutableArray array];
+        [_dataArray addObject:[NSMutableArray array]];
+        [_dataArray addObject:[NSMutableArray array]];
+        [_dataArray addObject:[NSMutableArray array]];
+    }
+    return _dataArray;
 }
+
+#pragma mark - Life Cycle
 
 - (void)viewDidLoad
 {
