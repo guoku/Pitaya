@@ -36,18 +36,23 @@
     }
     
     if (![nav.viewControllers.firstObject isKindOfClass:[SelectionVC class]]) {
-        [nav popToRootViewControllerAnimated:YES];
-        BaseViewController *rootVC = (BaseViewController *)nav.viewControllers.firstObject;
-        for (UIView *subView in rootVC.view.subviews) {
-            if ([subView isKindOfClass:UIScrollView.class]) {
-                if (iOS7) {
-                    [((UIScrollView *)subView) setContentOffset:CGPointMake(0.f, -70.f)];
-                } else {
-                    [((UIScrollView *)subView) setContentOffset:CGPointZero];
+        BOOL isSameVC = (self.detailVC.selectedIndex == (NSUInteger)indexPath.row);
+        CGFloat duration = isSameVC ? 0.5f : 0.f;
+        [nav popToRootViewControllerAnimated:isSameVC];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            BaseViewController *rootVC = (BaseViewController *)nav.viewControllers.firstObject;
+            for (UIView *subView in rootVC.view.subviews) {
+                if ([subView isKindOfClass:UIScrollView.class]) {
+                    if (iOS7) {
+                        [((UIScrollView *)subView) setContentOffset:CGPointMake(0.f, -64.f) animated:isSameVC];
+                    } else {
+                        [((UIScrollView *)subView) setContentOffset:CGPointZero animated:isSameVC];
+                    }
+                    break;
                 }
-                break;
             }
-        }
+        });
     }
     
     self.detailVC.selectedIndex = indexPath.row;
