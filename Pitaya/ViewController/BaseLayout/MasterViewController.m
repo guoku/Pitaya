@@ -15,6 +15,7 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *titleArray;
+@property (nonatomic, assign) NSUInteger unreadSelectionCount;
 
 @end
 
@@ -51,6 +52,14 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
     [self.headerView setNeedsLayout];
 }
 
+- (void)updateUnreadCount
+{
+    [GKDataManager getUnreadCountWithSuccess:^(NSDictionary *dictionary) {
+        self.unreadSelectionCount = [dictionary[@"unread_selection_count"] unsignedIntegerValue];
+        [self.tableView reloadData];
+    } failure:nil];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -68,6 +77,9 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
     MasterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellReuseIdentifier];
     
     cell.titleLabel.text = self.titleArray[indexPath.row];
+    if ([cell.titleLabel.text isEqualToString:@"精选"]) {
+        cell.count = self.unreadSelectionCount;
+    }
     
     return cell;
 }
@@ -76,6 +88,10 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    MasterTableViewCell *cell = (MasterTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    if ([cell.titleLabel.text isEqualToString:@"精选"]) {
+        cell.count = 0;
+    }
     if (_delegate && [_delegate respondsToSelector:@selector(masterViewController:didSelectRowAtIndexPath:)]) {
         [_delegate masterViewController:self didSelectRowAtIndexPath:indexPath];
     }
@@ -118,6 +134,9 @@ static NSString * const CellReuseIdentifier = @"MasterTableViewCell";
     
     self.tableView.tableFooterView = [UIView new];
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+    
+    [self updateUnreadCount];
+    [NSTimer scheduledTimerWithTimeInterval:240 target:self selector:@selector(updateUnreadCount) userInfo:nil repeats:YES];
 }
 
 - (void)didReceiveMemoryWarning

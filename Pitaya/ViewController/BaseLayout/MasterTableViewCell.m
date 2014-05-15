@@ -8,7 +8,32 @@
 
 #import "MasterTableViewCell.h"
 
+@interface MasterTableViewCell ()
+
+@property (nonatomic, strong) UIImageView *countImageView;
+
+@end
+
 @implementation MasterTableViewCell
+
+- (UIImageView *)countImageView
+{
+    if (!_countImageView) {
+        _countImageView = [[UIImageView alloc] initWithFrame:CGRectMake(34.f, 14.f, 8.f, 8.f)];
+        _countImageView.backgroundColor = UIColorFromRGB(0x427EC0);
+        _countImageView.layer.cornerRadius = 4.f;
+        _countImageView.layer.masksToBounds = YES;
+        [self.contentView addSubview:_countImageView];
+    }
+    return _countImageView;
+}
+
+- (void)setCount:(NSUInteger)count
+{
+    _count = count;
+    
+    [self setNeedsLayout];
+}
 
 - (void)layoutSubviews
 {
@@ -33,6 +58,10 @@
         imageName = [imageName stringByAppendingString:@"_press"];
     }
     self.iconImageView.image = [UIImage imageNamed:imageName];
+    
+    if ([self.titleLabel.text isEqualToString:@"精选"]) {
+        self.countImageView.hidden = (self.count == 0);
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

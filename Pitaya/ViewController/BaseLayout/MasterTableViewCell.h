@@ -13,4 +13,6 @@
 @property (nonatomic, strong) IBOutlet UIImageView *iconImageView;
 @property (nonatomic, strong) IBOutlet UILabel *titleLabel;
 
+@property (nonatomic, assign) NSUInteger count;
+
 @end
