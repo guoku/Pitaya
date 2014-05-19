@@ -36,31 +36,13 @@
         [self.collectionView reloadData];
     } failure:nil];
     
-    [GKDataManager getNewEntityListWithTimestamp:[[NSDate date] timeIntervalSince1970] cateId:0 count:kRequestSize success:^(NSArray *entityArray) {
+    [GKDataManager getHotEntityListWithType:@"daily" success:^(NSArray *entityArray) {
         [self.collectionView.pullToRefreshView stopAnimating];
         
-        self.entityArray = [entityArray mutableCopy];
+        self.entityArray = [[entityArray subarrayWithRange:NSMakeRange(0, 12)] mutableCopy];
         [self.collectionView reloadData];
     } failure:^(NSInteger stateCode) {
         [self.collectionView.pullToRefreshView stopAnimating];
-    }];
-}
-
-- (void)loadMore
-{
-    double timestamp = [[NSDate date] timeIntervalSince1970];
-    GKEntity *entity = self.entityArray.lastObject;
-    if (entity) {
-        timestamp = entity.updatedTime;
-    }
-    
-    [GKDataManager getNewEntityListWithTimestamp:timestamp cateId:0 count:kRequestSize success:^(NSArray *entityArray) {
-        [self.collectionView.infiniteScrollingView stopAnimating];
-        
-        [self.entityArray addObjectsFromArray:entityArray];
-        [self.collectionView reloadData];
-    } failure:^(NSInteger stateCode) {
-        [self.collectionView.infiniteScrollingView stopAnimating];
     }];
 }
 
@@ -179,9 +161,6 @@
     
     [self.collectionView addPullToRefreshWithActionHandler:^{
         [weakSelf refresh];
-    }];
-    [self.collectionView addInfiniteScrollingWithActionHandler:^{
-        [weakSelf loadMore];
     }];
     
     if (self.entityArray.count == 0) {
