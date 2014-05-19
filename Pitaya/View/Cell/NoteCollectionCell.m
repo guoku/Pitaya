@@ -45,25 +45,25 @@ static CGFloat const kNoteCollectionCellTextFontSize = 15.f;
 
 - (void)setEntity:(GKEntity *)entity
 {
-    if (_entity && _note) {
-        [self removeObserver];
+    if (_entity) {
+        [self removeObserverForEntity];
     }
     
     _entity = entity;
     
-    [self addObserver];
+    [self addObserverForEntity];
     [self setNeedsLayout];
 }
 
 - (void)setNote:(GKNote *)note
 {
-    if (_entity && _note) {
-        [self removeObserver];
+    if (_note) {
+        [self removeObserverForNote];
     }
     
     _note = note;
     
-    [self addObserver];
+    [self addObserverForNote];
     [self setNeedsLayout];
 }
 
@@ -170,18 +170,26 @@ static CGFloat const kNoteCollectionCellTextFontSize = 15.f;
 
 #pragma mark - KVO
 
-- (void)addObserver
+- (void)addObserverForNote
 {
     [self.note addObserver:self forKeyPath:@"poked" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
     [self.note addObserver:self forKeyPath:@"pokeCount" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)addObserverForEntity
+{
     [self.entity addObserver:self forKeyPath:@"likeCount" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
     [self.entity addObserver:self forKeyPath:@"noteCount" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
 }
 
-- (void)removeObserver
+- (void)removeObserverForNote
 {
     [self.note removeObserver:self forKeyPath:@"poked"];
     [self.note removeObserver:self forKeyPath:@"pokeCount"];
+}
+
+- (void)removeObserverForEntity
+{
     [self.entity removeObserver:self forKeyPath:@"likeCount"];
     [self.entity removeObserver:self forKeyPath:@"noteCount"];
 }
@@ -205,7 +213,8 @@ static CGFloat const kNoteCollectionCellTextFontSize = 15.f;
 
 - (void)dealloc
 {
-    [self removeObserver];
+    [self removeObserverForNote];
+    [self removeObserverForEntity];
 }
 
 @end

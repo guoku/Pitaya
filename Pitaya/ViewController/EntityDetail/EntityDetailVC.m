@@ -141,7 +141,12 @@
     
     NotePostVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NotePostVC"];
     vc.entity = self.entity;
-    vc.note = self.note;
+    for (GKNote *note in self.noteArray) {
+        if (note.creator.userId == [Passport sharedInstance].user.userId) {
+            vc.note = note;
+            break;
+        }
+    }
     __weak __typeof(&*self)weakSelf = self;
     vc.successBlock = ^(GKNote *note) {
         if (![weakSelf.noteArray containsObject:note]) {
