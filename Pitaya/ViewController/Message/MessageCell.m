@@ -159,7 +159,7 @@ static CGFloat labelWidth = 600.f;
 {
     if (_delegate && [_delegate respondsToSelector:@selector(messageCell:didSelectEntity:)]) {
         GKEntity *entity = self.message[@"content"][@"entity"];
-        if (self.type == MessageType_4) {
+        if (self.type == MessageType_2 || self.type == MessageType_4) {
             GKNote *note = self.message[@"content"][@"note"];
             entity = [GKEntity modelFromDictionary:@{@"entityId":note.entityId}];
         }

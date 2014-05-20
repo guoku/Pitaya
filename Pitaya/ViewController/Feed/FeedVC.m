@@ -83,6 +83,13 @@
     [self.collectionView reloadData];
 }
 
+#pragma mark - Selector
+
+- (IBAction)tapRefreshButton:(id)sender
+{
+    [self.collectionView triggerPullToRefresh];
+}
+
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView

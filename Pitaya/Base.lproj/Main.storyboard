@@ -852,7 +852,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="210" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wFw-Wj-cPj">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wFw-Wj-cPj">
                                                     <rect key="frame" x="10" y="10" width="190" height="190"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <constraints>
@@ -956,6 +956,11 @@
                                 <action selector="tapSegmentedControl:" destination="Blb-Bu-ubv" eventType="valueChanged" id="FSC-jF-XL7"/>
                             </connections>
                         </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" image="button_icon_Refresh" id="UDy-Qe-Ocl">
+                            <connections>
+                                <action selector="tapRefreshButton:" destination="Blb-Bu-ubv" id="u1o-1I-nFm"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -1522,6 +1527,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="消息" id="G80-QK-6S8">
                         <barButtonItem key="backBarButtonItem" title=" " id="wF8-XA-gCV"/>
+                        <barButtonItem key="rightBarButtonItem" image="button_icon_Refresh" id="nsi-YW-iLi">
+                            <connections>
+                                <action selector="tapRefreshButton:" destination="vZU-wL-b6P" id="xQH-Ny-V4q"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -2154,7 +2164,7 @@
                                             <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="编辑推荐" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cK-0g-htT">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新品推荐" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cK-0g-htT">
                                             <rect key="frame" x="48" y="530" width="64" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
@@ -2230,7 +2240,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="fcJ-rk-XS3">
-                                    <rect key="frame" x="0.0" y="0.0" width="768" height="578"/>
+                                    <rect key="frame" x="0.0" y="44" width="768" height="578"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="品牌 - 商品名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bt-f8-4Zy">
@@ -2379,7 +2389,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NoteCell" rowHeight="150" id="PmY-61-4L1" customClass="NoteCell">
-                                        <rect key="frame" x="0.0" y="600" width="768" height="150"/>
+                                        <rect key="frame" x="0.0" y="644" width="768" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PmY-61-4L1" id="nDE-kY-Umy">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="150"/>
@@ -2547,7 +2557,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" restorationIdentifier="RecommendEntityCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="RecommendEntityCell" rowHeight="477" id="Nd0-pQ-K6l" customClass="RecommendEntityCell">
-                                        <rect key="frame" x="0.0" y="750" width="768" height="477"/>
+                                        <rect key="frame" x="0.0" y="794" width="768" height="477"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nd0-pQ-K6l" id="nuQ-2Q-ZsN">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="477"/>
@@ -2596,6 +2606,7 @@
                             <constraint firstAttribute="trailing" secondItem="Q6F-YV-v9Y" secondAttribute="trailing" id="fRF-e3-i3d"/>
                             <constraint firstItem="Q6F-YV-v9Y" firstAttribute="top" secondItem="PUa-FH-OGK" secondAttribute="top" id="znt-dE-jR2"/>
                         </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" title="商品" id="Hha-X7-M02">
                         <barButtonItem key="backBarButtonItem" title=" " id="DWe-y1-Mkv"/>
@@ -2639,7 +2650,7 @@
                                 <color key="separatorColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="y4X-Dr-hD9" customClass="NoteDetailHeaderView">
-                                    <rect key="frame" x="0.0" y="0.0" width="768" height="150"/>
+                                    <rect key="frame" x="0.0" y="44" width="768" height="150"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Jx-ml-7Jk">
@@ -2769,13 +2780,13 @@
                                     </connections>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Qpn-Ek-JKa">
-                                    <rect key="frame" x="0.0" y="351" width="768" height="1"/>
+                                    <rect key="frame" x="0.0" y="395" width="768" height="1"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="200" id="tEl-Kf-a6a" customClass="CommentCell">
-                                        <rect key="frame" x="0.0" y="151" width="768" height="200"/>
+                                        <rect key="frame" x="0.0" y="195" width="768" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tEl-Kf-a6a" id="8j9-m1-Q2a">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="199"/>
@@ -2965,6 +2976,7 @@
                             <constraint firstItem="TFp-Na-QrA" firstAttribute="top" secondItem="iZj-u6-6sd" secondAttribute="bottom" constant="60" id="oyt-0o-X3z"/>
                             <constraint firstAttribute="trailing" secondItem="iZj-u6-6sd" secondAttribute="trailing" id="z0c-bt-hcv"/>
                         </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="BD9-4L-f9e">
                         <barButtonItem key="backBarButtonItem" title=" " id="mAM-xY-6Xr"/>
@@ -2993,7 +3005,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="758"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyS-9F-cGd">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyS-9F-cGd">
                                 <rect key="frame" x="84" y="64" width="600" height="250"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
@@ -3007,7 +3019,7 @@
                                     <outlet property="delegate" destination="owF-UC-C3I" id="dkj-qF-FvP"/>
                                 </connections>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1k9-FL-Zcm">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1k9-FL-Zcm">
                                 <rect key="frame" x="634" y="322" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -3015,7 +3027,7 @@
                                     <constraint firstAttribute="height" constant="50" id="qpF-En-aQo"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="还可以输入 110 字" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Igt-sg-EZE">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="还可以输入 110 字" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Igt-sg-EZE">
                                 <rect key="frame" x="84" y="339" width="117" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -3035,6 +3047,7 @@
                             <constraint firstAttribute="centerX" secondItem="VyS-9F-cGd" secondAttribute="centerX" id="nFf-Me-6ri"/>
                             <constraint firstItem="VyS-9F-cGd" firstAttribute="top" secondItem="Fl3-rs-6Pu" secondAttribute="bottom" constant="20" id="nuw-Xl-mpN"/>
                         </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="EKk-iU-jBg">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="x5R-qB-dw9">
@@ -3076,14 +3089,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="758"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="撰写真实、有用、有趣的商品点评" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBy-kC-SL7">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="撰写真实、有用、有趣的商品点评" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBy-kC-SL7">
                                 <rect key="frame" x="104" y="84" width="560" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTB-ab-5pC">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTB-ab-5pC">
                                 <rect key="frame" x="84" y="64" width="600" height="300"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
@@ -3098,7 +3111,7 @@
                                     <outlet property="delegate" destination="nEX-KE-I9B" id="PhH-Yc-LTk"/>
                                 </connections>
                             </textView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="撰写真实、有用、有趣的商品点评" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqr-jo-qRt">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="撰写真实、有用、有趣的商品点评" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqr-jo-qRt">
                                 <rect key="frame" x="104" y="84" width="560" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -3121,6 +3134,7 @@
                             <constraint firstAttribute="centerX" secondItem="Uqr-jo-qRt" secondAttribute="centerX" id="iyG-Az-UiN"/>
                             <constraint firstItem="EBy-kC-SL7" firstAttribute="width" secondItem="Uqr-jo-qRt" secondAttribute="width" id="lVQ-hY-gNA"/>
                         </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" title="点评" id="E0s-V0-Wbk">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="zVW-vc-JFS">
@@ -3601,6 +3615,11 @@
                     </collectionView>
                     <navigationItem key="navigationItem" title="动态" id="XzF-K0-vJZ">
                         <barButtonItem key="backBarButtonItem" title=" " id="xFA-Eu-Bbm"/>
+                        <barButtonItem key="rightBarButtonItem" image="button_icon_Refresh" id="7XE-XM-eQK">
+                            <connections>
+                                <action selector="tapRefreshButton:" destination="AvC-3r-xx0" id="9ZA-67-GPd"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -4226,7 +4245,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T4o-YV-9vD">
                                                     <rect key="frame" x="0.0" y="210" width="210" height="1"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.93333333730000001" green="0.93333333730000001" blue="0.93333333730000001" alpha="1" colorSpace="deviceRGB"/>
+                                                    <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="XpV-zB-M0t"/>
                                                     </constraints>
@@ -4897,6 +4916,7 @@
     </scenes>
     <resources>
         <image name="Personal_icon_male" width="14" height="14"/>
+        <image name="button_icon_Refresh" width="29" height="29"/>
         <image name="detail_icon_comment" width="21" height="21"/>
         <image name="detail_icon_poke" width="21" height="21"/>
         <image name="detail_icon_poke_highlighted" width="21" height="21"/>
@@ -4924,8 +4944,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="eak-sn-aEm"/>
+        <segue reference="9ha-sJ-Ien"/>
+        <segue reference="wpr-89-GNd"/>
         <segue reference="cAE-bU-MJB"/>
-        <segue reference="r0j-eJ-qcD"/>
     </inferredMetricsTieBreakers>
 </document>

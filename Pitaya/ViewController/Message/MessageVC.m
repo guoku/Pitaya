@@ -85,6 +85,13 @@
     [self.tableView reloadData];
 }
 
+#pragma mark - Selector
+
+- (IBAction)tapRefreshButton:(id)sender
+{
+    [self.tableView triggerPullToRefresh];
+}
+
 #pragma mark - MessageCellDelegate
 
 - (void)messageCell:(MessageCell *)cell didSelectEntity:(GKEntity *)entity
