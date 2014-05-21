@@ -41,7 +41,7 @@
     
     self.backgroundColor = [UIColor clearColor];
     
-    self.titleLabel.textColor = self.isSelected ? UIColorFromRGB(0x427EC0) : UIColorFromRGB(0xAAAAAA);
+    self.titleLabel.textColor = self.isSelected ? UIColorFromRGB(0x427EC0) : UIColorFromRGB(0x959595);
     
     NSDictionary *dict = @{
                            @"首页":@"menu_icon_homepage",

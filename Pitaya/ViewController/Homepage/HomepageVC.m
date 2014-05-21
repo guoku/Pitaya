@@ -64,6 +64,13 @@
     }];
 }
 
+#pragma mark - Selector Method
+
+- (IBAction)tapRefreshButton:(id)sender
+{
+    [self.collectionView triggerPullToRefresh];
+}
+
 #pragma mark -HomeSectionHeaderViewDelegate
 
 - (void)headerView:(HomeSectionHeaderView *)headerView didSelectUrl:(NSURL *)url
