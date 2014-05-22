@@ -38,7 +38,7 @@ static CGFloat const kNoteCollectionCellTextFontSize = 15.f;
     ;
     
     // 1.f ＝ 是最小行高 － 字体大小 － 3.f
-    return CGSizeMake(668.f, noteLabelSize.height + 1.f * floorf(noteLabelSize.height / kNoteCollectionCellTextFontSize) + 200.f);
+    return CGSizeMake(668.f, noteLabelSize.height + 1.f * floorf(noteLabelSize.height / kNoteCollectionCellTextFontSize) + 205.f);
 }
 
 #pragma mark - Getter And Setter

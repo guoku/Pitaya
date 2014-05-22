@@ -19,9 +19,9 @@
 - (UIImageView *)countImageView
 {
     if (!_countImageView) {
-        _countImageView = [[UIImageView alloc] initWithFrame:CGRectMake(34.f, 14.f, 8.f, 8.f)];
+        _countImageView = [[UIImageView alloc] initWithFrame:CGRectMake(41.f, 20.f, 6.f, 6.f)];
         _countImageView.backgroundColor = UIColorFromRGB(0x427EC0);
-        _countImageView.layer.cornerRadius = 4.f;
+        _countImageView.layer.cornerRadius = 3.f;
         _countImageView.layer.masksToBounds = YES;
         [self.contentView addSubview:_countImageView];
     }
@@ -41,7 +41,7 @@
     
     self.backgroundColor = [UIColor clearColor];
     
-    self.titleLabel.textColor = self.isSelected ? UIColorFromRGB(0x427EC0) : UIColorFromRGB(0xAAAAAA);
+    self.titleLabel.textColor = self.isSelected ? UIColorFromRGB(0x427EC0) : UIColorFromRGB(0x959595);
     
     NSDictionary *dict = @{
                            @"首页":@"menu_icon_homepage",

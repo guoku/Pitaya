@@ -10,6 +10,7 @@
 #import "TagCell.h"
 #import "SVPullToRefresh.h"
 #import "EntityDetailVC.h"
+#import "UserVC.h"
 
 @interface TagVC ()
 
@@ -33,6 +34,15 @@
     } failure:^(NSInteger stateCode) {
         [self.collectionView.pullToRefreshView stopAnimating];
     }];
+}
+
+#pragma mark - Selector
+
+- (void)tapUserButton
+{
+    UserVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UserVC"];
+    vc.user = self.user;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -93,6 +103,15 @@
     self.screenName = @"标签页";
     
     self.navigationItem.title = [NSString stringWithFormat:@"#%@", self.tagName];
+    
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0.f, 0.f, 30.f, 30.f)];
+    [button setImageWithURL:self.user.avatarURL forState:UIControlStateNormal];
+    button.imageView.layer.cornerRadius = 15.f;
+    button.imageView.layer.masksToBounds = YES;
+    [button addTarget:self action:@selector(tapUserButton) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    self.navigationItem.rightBarButtonItem = rightButtonItem;
 }
 
 - (void)viewDidAppear:(BOOL)animated

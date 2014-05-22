@@ -83,6 +83,11 @@
     [self.popover presentPopoverFromRect:frame inView:self.navigationController.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
+- (IBAction)tapRefreshButton:(id)sender
+{
+    [self.collectionView triggerPullToRefresh];
+}
+
 #pragma mark - SelectionCellDelegate
 
 - (void)selectionCell:(SelectionCell *)cell didSelectUser:(GKUser *)user
@@ -210,13 +215,8 @@
     
     [self.categoryButton setTitle:self.categoryTitleArray[self.currentCategoryIndex] forState:UIControlStateNormal];
     [self.popover dismissPopoverAnimated:YES];
-    [self.collectionView setContentOffset:CGPointZero animated:YES];
     
-    double delayInSeconds = 0.5;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self.collectionView triggerPullToRefresh];
-    });
+    [self.collectionView triggerPullToRefresh];
 }
 
 #pragma mark - Life Cycle

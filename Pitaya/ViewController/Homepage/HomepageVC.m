@@ -36,14 +36,39 @@
         [self.collectionView reloadData];
     } failure:nil];
     
-    [GKDataManager getHotEntityListWithType:@"daily" success:^(NSArray *entityArray) {
+    [GKDataManager getNewEntityListWithTimestamp:[[NSDate date] timeIntervalSince1970] cateId:0 count:kRequestSize success:^(NSArray *entityArray) {
         [self.collectionView.pullToRefreshView stopAnimating];
         
-        self.entityArray = [[entityArray subarrayWithRange:NSMakeRange(0, 12)] mutableCopy];
+        self.entityArray = [entityArray mutableCopy];
         [self.collectionView reloadData];
     } failure:^(NSInteger stateCode) {
         [self.collectionView.pullToRefreshView stopAnimating];
     }];
+}
+
+- (void)loadMore
+{
+    double timestamp = [[NSDate date] timeIntervalSince1970];
+    GKEntity *entity = self.entityArray.lastObject;
+    if (entity) {
+        timestamp = entity.updatedTime;
+    }
+    
+    [GKDataManager getNewEntityListWithTimestamp:timestamp cateId:0 count:kRequestSize success:^(NSArray *entityArray) {
+        [self.collectionView.infiniteScrollingView stopAnimating];
+        
+        [self.entityArray addObjectsFromArray:entityArray];
+        [self.collectionView reloadData];
+    } failure:^(NSInteger stateCode) {
+        [self.collectionView.infiniteScrollingView stopAnimating];
+    }];
+}
+
+#pragma mark - Selector Method
+
+- (IBAction)tapRefreshButton:(id)sender
+{
+    [self.collectionView triggerPullToRefresh];
 }
 
 #pragma mark -HomeSectionHeaderViewDelegate
@@ -166,6 +191,9 @@
     if (self.entityArray.count == 0) {
         [self.collectionView triggerPullToRefresh];
     }
+    [self.collectionView addInfiniteScrollingWithActionHandler:^{
+        [weakSelf loadMore];
+    }];
 }
 
 - (void)didReceiveMemoryWarning
