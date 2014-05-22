@@ -222,7 +222,9 @@
     }];
     
     if (self.messageArray.count == 0) {
-        [self.tableView triggerPullToRefresh];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.tableView triggerPullToRefresh];
+        });
     }
 }
 
