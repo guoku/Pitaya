@@ -8,7 +8,32 @@
 
 #import "MasterTableViewCell.h"
 
+@interface MasterTableViewCell ()
+
+@property (nonatomic, strong) UIImageView *countImageView;
+
+@end
+
 @implementation MasterTableViewCell
+
+- (UIImageView *)countImageView
+{
+    if (!_countImageView) {
+        _countImageView = [[UIImageView alloc] initWithFrame:CGRectMake(41.f, 20.f, 6.f, 6.f)];
+        _countImageView.backgroundColor = UIColorFromRGB(0x427EC0);
+        _countImageView.layer.cornerRadius = 3.f;
+        _countImageView.layer.masksToBounds = YES;
+        [self.contentView addSubview:_countImageView];
+    }
+    return _countImageView;
+}
+
+- (void)setCount:(NSUInteger)count
+{
+    _count = count;
+    
+    [self setNeedsLayout];
+}
 
 - (void)layoutSubviews
 {
@@ -16,7 +41,7 @@
     
     self.backgroundColor = [UIColor clearColor];
     
-    self.titleLabel.textColor = self.isSelected ? UIColorFromRGB(0x427EC0) : UIColorFromRGB(0xAAAAAA);
+    self.titleLabel.textColor = self.isSelected ? UIColorFromRGB(0x427EC0) : UIColorFromRGB(0x959595);
     
     NSDictionary *dict = @{
                            @"首页":@"menu_icon_homepage",
@@ -33,6 +58,10 @@
         imageName = [imageName stringByAppendingString:@"_press"];
     }
     self.iconImageView.image = [UIImage imageNamed:imageName];
+    
+    if ([self.titleLabel.text isEqualToString:@"精选"]) {
+        self.countImageView.hidden = (self.count == 0);
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

@@ -30,7 +30,7 @@ static CGFloat const kNoteCellTextFontSize = 15.f;
 {
     CGSize contentLabelSize = [note.text sizeWithFont:[UIFont systemFontOfSize:kNoteCellTextFontSize] constrainedToSize:CGSizeMake(580.f, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
     
-    return contentLabelSize.height + 85.f;
+    return contentLabelSize.height + 95.f;
 }
 
 #pragma mark - Getter And Setter

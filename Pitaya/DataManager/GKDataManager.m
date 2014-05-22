@@ -118,6 +118,14 @@
                                [GKDataManager sharedInstance].allCategoryArray);
                     });
                 }
+            } else {
+                if (![GKDataManager sharedInstance].categoryGroupArray) {
+                    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                        [GKDataManager sharedInstance].categoryGroupArray = [NSObject objectFromUserDefaultsByKey:CategoryGroupArrayWithStatusKey];
+                        [GKDataManager sharedInstance].fullCategoryGroupArray = [NSObject objectFromUserDefaultsByKey:CategoryGroupArrayKey];
+                        [GKDataManager sharedInstance].allCategoryArray = [NSObject objectFromUserDefaultsByKey:AllCategoryArrayKey];
+                    });
+                }
             }
         }];
     } else {
@@ -139,6 +147,14 @@
                     result([GKDataManager sharedInstance].categoryGroupArray,
                            [GKDataManager sharedInstance].fullCategoryGroupArray,
                            [GKDataManager sharedInstance].allCategoryArray);
+                });
+            }
+        } else {
+            if (![GKDataManager sharedInstance].categoryGroupArray) {
+                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    [GKDataManager sharedInstance].categoryGroupArray = [NSObject objectFromUserDefaultsByKey:CategoryGroupArrayWithStatusKey];
+                    [GKDataManager sharedInstance].fullCategoryGroupArray = [NSObject objectFromUserDefaultsByKey:CategoryGroupArrayKey];
+                    [GKDataManager sharedInstance].allCategoryArray = [NSObject objectFromUserDefaultsByKey:AllCategoryArrayKey];
                 });
             }
         }

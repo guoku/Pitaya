@@ -18,6 +18,7 @@ static CGFloat const kSelectionCellTextFontSize = 14.f;
 @property (nonatomic, strong) IBOutlet UIButton *likeButton;
 @property (nonatomic, strong) IBOutlet UIButton *avatarButton;
 @property (nonatomic, strong) IBOutlet UILabel *dateLabel;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 
 @end
 
@@ -47,6 +48,17 @@ static CGFloat const kSelectionCellTextFontSize = 14.f;
     _date = date;
     
     [self setNeedsLayout];
+}
+
+- (UIActivityIndicatorView *)activityIndicatorView
+{
+    if (!_activityIndicatorView) {
+        _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        _activityIndicatorView.center = self.imageView.center;
+        [self.contentView addSubview:_activityIndicatorView];
+    }
+    
+    return _activityIndicatorView;
 }
 
 #pragma mark - Selector Method
@@ -115,7 +127,11 @@ static CGFloat const kSelectionCellTextFontSize = 14.f;
     }
     
     // 商品图
-    [self.imageView setImageWithURL:self.entity.imageURL_640x640];
+    [self.activityIndicatorView startAnimating];
+    __weak __typeof(self)weakSelf = self;
+    [self.imageView setImageWithURL:self.entity.imageURL_640x640 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+        [weakSelf.activityIndicatorView stopAnimating];
+    }];
     
     // 点评内容
     self.noteLabel.numberOfLines = 0;

@@ -54,9 +54,9 @@
         self.bioLabel.text = self.user.bio;
         [self.friendButton setTitle:[NSString stringWithFormat:@"%d 关注", self.user.followingCount] forState:UIControlStateNormal];
         [self.fanButton setTitle:[NSString stringWithFormat:@"%d 粉丝", self.user.fanCount] forState:UIControlStateNormal];
-        [self.segmentedControl setTitle:[NSString stringWithFormat:@"喜爱 %d", self.user.likeCount] forSegmentAtIndex:UIControlStateNormal];
-        [self.segmentedControl setTitle:[NSString stringWithFormat:@"点评 %d", self.user.noteCount] forSegmentAtIndex:UIControlStateNormal];
-        [self.segmentedControl setTitle:[NSString stringWithFormat:@"标签 %d", self.user.tagCount] forSegmentAtIndex:UIControlStateNormal];
+        [self.segmentedControl setTitle:[NSString stringWithFormat:@"喜爱 %d", self.user.likeCount] forSegmentAtIndex:0];
+        [self.segmentedControl setTitle:[NSString stringWithFormat:@"点评 %d", self.user.noteCount] forSegmentAtIndex:1];
+        [self.segmentedControl setTitle:[NSString stringWithFormat:@"标签 %d", self.user.tagCount] forSegmentAtIndex:2];
         [self addObserver];
     }
     

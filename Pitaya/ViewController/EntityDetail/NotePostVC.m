@@ -31,7 +31,7 @@
     [BBProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
     
     __weak __typeof(&*self)weakSelf = self;
-    if (self.note) {
+    if ([self isMyNote]) {
         [GKDataManager updateNoteWithNoteId:self.note.noteId content:content score:score imageData:nil success:^(GKNote *note) {
             [weakSelf.navigationController popViewControllerAnimated:YES];
             [BBProgressHUD showSuccessWithText:@"修改成功"];
@@ -53,6 +53,11 @@
             [BBProgressHUD showErrorWithText:@"发布失败"];
         }];
     }
+}
+
+- (BOOL)isMyNote
+{
+    return (self.note && [Passport sharedInstance].user.userId == self.note.creator.userId);
 }
 
 #pragma mark - UITextViewDelegate
@@ -93,7 +98,7 @@
     
     [self.textView becomeFirstResponder];
     
-    if (self.note && [Passport sharedInstance].user.userId == self.note.creator.userId) {
+    if ([self isMyNote]) {
         [self.sendButton setTitle:@"修改" forState:UIControlStateNormal];
         self.textView.text = self.note.text;
         self.placeholderLabel.hidden = (self.textView.text.length > 0);

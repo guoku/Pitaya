@@ -13,6 +13,7 @@
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
 @property (nonatomic, strong) IBOutlet UILabel *priceLabel;
 @property (nonatomic, strong) IBOutlet UIButton *likeButton;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 
 @end
 
@@ -28,6 +29,17 @@
     _entity = entity;
     [self addObserver];
     [self setNeedsLayout];
+}
+
+- (UIActivityIndicatorView *)activityIndicatorView
+{
+    if (!_activityIndicatorView) {
+        _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        _activityIndicatorView.center = self.imageView.center;
+        [self.contentView addSubview:_activityIndicatorView];
+    }
+    
+    return _activityIndicatorView;
 }
 
 #pragma mark - Selector Method
@@ -69,7 +81,11 @@
     self.layer.borderColor = UIColorFromRGB(0xF6F6F6).CGColor;
     
     // 商品图
-    [self.imageView setImageWithURL:self.entity.imageURL_310x310];
+    [self.activityIndicatorView startAnimating];
+    __weak __typeof(self)weakSelf = self;
+    [self.imageView setImageWithURL:self.entity.imageURL_310x310 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+        [weakSelf.activityIndicatorView stopAnimating];
+    }];
     
     // 价格
     self.priceLabel.text = [NSString stringWithFormat:@"¥%.2f", self.entity.lowestPrice];

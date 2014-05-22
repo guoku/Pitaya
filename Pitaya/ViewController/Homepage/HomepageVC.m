@@ -64,6 +64,13 @@
     }];
 }
 
+#pragma mark - Selector Method
+
+- (IBAction)tapRefreshButton:(id)sender
+{
+    [self.collectionView triggerPullToRefresh];
+}
+
 #pragma mark -HomeSectionHeaderViewDelegate
 
 - (void)headerView:(HomeSectionHeaderView *)headerView didSelectUrl:(NSURL *)url
@@ -180,13 +187,13 @@
     [self.collectionView addPullToRefreshWithActionHandler:^{
         [weakSelf refresh];
     }];
-    [self.collectionView addInfiniteScrollingWithActionHandler:^{
-        [weakSelf loadMore];
-    }];
     
     if (self.entityArray.count == 0) {
         [self.collectionView triggerPullToRefresh];
     }
+    [self.collectionView addInfiniteScrollingWithActionHandler:^{
+        [weakSelf loadMore];
+    }];
 }
 
 - (void)didReceiveMemoryWarning

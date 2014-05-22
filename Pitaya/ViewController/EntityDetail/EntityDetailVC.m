@@ -115,7 +115,7 @@
         avatarButton.layer.cornerRadius = buttonLength / 2;
         avatarButton.layer.masksToBounds = YES;
         avatarButton.tag = user.userId;
-        [avatarButton setImageWithURL:user.avatarURL_s forState:UIControlStateNormal];
+        [avatarButton setImageWithURL:user.avatarURL forState:UIControlStateNormal];
         [avatarButton addTarget:self action:@selector(tapLikeUserButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.likeUserView addSubview:avatarButton];
     }];
@@ -141,7 +141,12 @@
     
     NotePostVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"NotePostVC"];
     vc.entity = self.entity;
-    vc.note = self.note;
+    for (GKNote *note in self.noteArray) {
+        if (note.creator.userId == [Passport sharedInstance].user.userId) {
+            vc.note = note;
+            break;
+        }
+    }
     __weak __typeof(&*self)weakSelf = self;
     vc.successBlock = ^(GKNote *note) {
         if (![weakSelf.noteArray containsObject:note]) {
@@ -311,7 +316,7 @@
         GKNote *note = self.noteArray[indexPath.row];
         return [NoteCell heightForCellWithNote:note];
     } else {
-        return 477.f;
+        return 510.f;
     }
 }
 
