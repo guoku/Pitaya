@@ -3907,8 +3907,12 @@
                                                         <color key="titleColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="selected" image="detail_icon_poke_highlighted"/>
-                                                    <state key="highlighted" image="detail_icon_poke_highlighted"/>
+                                                    <state key="selected" image="detail_icon_poke_highlighted">
+                                                        <color key="titleColor" red="0.25882352941176473" green="0.49411764705882355" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <state key="highlighted" image="detail_icon_poke_highlighted">
+                                                        <color key="titleColor" red="0.25882352941176473" green="0.49411764705882355" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="tapPokeButton:" destination="jJI-45-gxt" eventType="touchUpInside" id="rhU-ll-LoZ"/>
                                                     </connections>
@@ -4927,7 +4931,7 @@
     </scenes>
     <resources>
         <image name="Personal_icon_male" width="14" height="14"/>
-        <image name="button_icon_Refresh" width="29" height="29"/>
+        <image name="button_icon_Refresh" width="32" height="24"/>
         <image name="detail_icon_comment" width="21" height="21"/>
         <image name="detail_icon_poke" width="21" height="21"/>
         <image name="detail_icon_poke_highlighted" width="21" height="21"/>
