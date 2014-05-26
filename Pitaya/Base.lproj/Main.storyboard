@@ -2763,7 +2763,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZ2-o0-BfL">
-                                            <rect key="frame" x="0.0" y="149" width="768" height="1"/>
+                                            <rect key="frame" x="0.0" y="150" width="768" height="1"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
@@ -2777,7 +2777,7 @@
                                         <constraint firstItem="YZ2-o0-BfL" firstAttribute="leading" secondItem="y4X-Dr-hD9" secondAttribute="leading" id="9PW-aU-5Ui"/>
                                         <constraint firstAttribute="centerX" secondItem="8Jx-ml-7Jk" secondAttribute="centerX" id="Dyq-o7-lAq"/>
                                         <constraint firstAttribute="bottom" secondItem="8Jx-ml-7Jk" secondAttribute="bottom" id="Joy-8L-ZoR"/>
-                                        <constraint firstAttribute="bottom" secondItem="YZ2-o0-BfL" secondAttribute="bottom" id="j26-pO-JI2"/>
+                                        <constraint firstAttribute="bottom" secondItem="YZ2-o0-BfL" secondAttribute="bottom" constant="-1" id="j26-pO-JI2"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="avatarButton" destination="JlC-HX-a3I" id="Rmi-3f-JIq"/>
