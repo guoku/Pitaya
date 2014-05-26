@@ -2657,8 +2657,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="698"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <color key="separatorColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="separatorInset" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="y4X-Dr-hD9" customClass="NoteDetailHeaderView">
                                     <rect key="frame" x="0.0" y="44" width="768" height="150"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2770,9 +2770,9 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZ2-o0-BfL">
-                                            <rect key="frame" x="0.0" y="150" width="768" height="1"/>
+                                            <rect key="frame" x="20" y="150" width="748" height="1"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="j2l-cs-iNd"/>
                                             </constraints>
@@ -2781,7 +2781,7 @@
                                     <constraints>
                                         <constraint firstItem="8Jx-ml-7Jk" firstAttribute="top" secondItem="y4X-Dr-hD9" secondAttribute="top" id="1th-we-kWu"/>
                                         <constraint firstAttribute="trailing" secondItem="YZ2-o0-BfL" secondAttribute="trailing" id="74e-E9-Lx7"/>
-                                        <constraint firstItem="YZ2-o0-BfL" firstAttribute="leading" secondItem="y4X-Dr-hD9" secondAttribute="leading" id="9PW-aU-5Ui"/>
+                                        <constraint firstItem="YZ2-o0-BfL" firstAttribute="leading" secondItem="y4X-Dr-hD9" secondAttribute="leading" constant="20" id="9PW-aU-5Ui"/>
                                         <constraint firstAttribute="centerX" secondItem="8Jx-ml-7Jk" secondAttribute="centerX" id="Dyq-o7-lAq"/>
                                         <constraint firstAttribute="bottom" secondItem="8Jx-ml-7Jk" secondAttribute="bottom" id="Joy-8L-ZoR"/>
                                         <constraint firstAttribute="bottom" secondItem="YZ2-o0-BfL" secondAttribute="bottom" constant="-1" id="j26-pO-JI2"/>
@@ -2799,7 +2799,22 @@
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Qpn-Ek-JKa">
                                     <rect key="frame" x="0.0" y="395" width="768" height="1"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ux9-CX-Epe">
+                                            <rect key="frame" x="20" y="0.0" width="748" height="0.0"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="XBi-Yt-qa9"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="Ux9-CX-Epe" firstAttribute="top" secondItem="Qpn-Ek-JKa" secondAttribute="top" id="2DV-KU-V9d"/>
+                                        <constraint firstAttribute="trailing" secondItem="Ux9-CX-Epe" secondAttribute="trailing" id="Hye-2i-KcG"/>
+                                        <constraint firstItem="Ux9-CX-Epe" firstAttribute="leading" secondItem="Qpn-Ek-JKa" secondAttribute="leading" constant="20" id="lja-rK-Nh1"/>
+                                    </constraints>
                                 </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="200" id="tEl-Kf-a6a" customClass="CommentCell">
@@ -2851,7 +2866,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzb-uB-fAK">
-                                                            <rect key="frame" x="624" y="45" width="44" height="44"/>
+                                                            <rect key="frame" x="624" y="78" width="44" height="44"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="44" id="YuT-8j-GgT"/>
@@ -2904,12 +2919,12 @@
                                                         <constraint firstItem="DpX-t7-oka" firstAttribute="top" secondItem="vGs-hY-lvj" secondAttribute="bottom" constant="15" id="KcB-93-4YE"/>
                                                         <constraint firstItem="Vxq-Ea-bWv" firstAttribute="top" secondItem="czW-D1-GiP" secondAttribute="top" constant="10" id="OKw-9s-z24"/>
                                                         <constraint firstItem="Vxq-Ea-bWv" firstAttribute="leading" secondItem="nUm-Kc-DBZ" secondAttribute="trailing" constant="8" id="ada-sc-XLg"/>
-                                                        <constraint firstItem="wzb-uB-fAK" firstAttribute="top" secondItem="czW-D1-GiP" secondAttribute="top" constant="45" id="arp-bP-1NB"/>
                                                         <constraint firstItem="7Hb-Zv-Dwd" firstAttribute="leading" secondItem="czW-D1-GiP" secondAttribute="leading" constant="10" id="cK7-KU-A6i"/>
                                                         <constraint firstAttribute="trailing" secondItem="MJZ-dl-WUY" secondAttribute="trailing" id="f1R-iG-HSM"/>
                                                         <constraint firstItem="vGs-hY-lvj" firstAttribute="top" secondItem="czW-D1-GiP" secondAttribute="top" constant="10" id="fEe-Bo-7lm"/>
                                                         <constraint firstItem="nUm-Kc-DBZ" firstAttribute="leading" secondItem="7Hb-Zv-Dwd" secondAttribute="trailing" constant="8" id="mLR-Rf-pkb"/>
                                                         <constraint firstItem="vGs-hY-lvj" firstAttribute="leading" secondItem="Vxq-Ea-bWv" secondAttribute="trailing" constant="8" id="pwY-zw-Bk0"/>
+                                                        <constraint firstAttribute="centerY" secondItem="wzb-uB-fAK" secondAttribute="centerY" id="rNJ-n6-T1z"/>
                                                         <constraint firstAttribute="width" constant="668" id="tH6-7N-QlQ"/>
                                                         <constraint firstItem="nUm-Kc-DBZ" firstAttribute="leading" secondItem="DpX-t7-oka" secondAttribute="leading" id="wXx-3W-Qsq"/>
                                                         <constraint firstAttribute="trailing" secondItem="wzb-uB-fAK" secondAttribute="trailing" id="xZJ-Aa-Mvz"/>
