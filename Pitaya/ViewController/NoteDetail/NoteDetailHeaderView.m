@@ -26,11 +26,16 @@ static CGFloat const kNoteLabelTextFontSize = 15.f;
 
 - (void)setNote:(GKNote *)note
 {
+    if (_note) {
+        [self removeObserver];
+    }
+    
     _note = note;
     
     CGSize noteLabelSize = [note.text sizeWithFont:[UIFont systemFontOfSize:kNoteLabelTextFontSize] constrainedToSize:CGSizeMake(CGRectGetWidth(self.noteLabel.bounds), CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
     self.deFrameHeight = noteLabelSize.height + 130.f;
     
+    [self addObserver];
     [self setNeedsLayout];
 }
 
@@ -42,6 +47,18 @@ static CGFloat const kNoteLabelTextFontSize = 15.f;
         GKEntityCategory *category = [GKEntityCategory modelFromDictionary:@{@"categoryId":@(self.note.categoryId)}];
         [self.delegate headerView:self didSelectCategory:category];
     }
+}
+
+- (IBAction)tapPokeButton:(id)sender
+{
+    [GKDataManager pokeWithNoteId:self.note.noteId state:!self.pokeButton.isSelected success:nil failure:nil];
+    
+    if (self.note.isPoked) {
+        self.note.pokeCount -= 1;
+    } else {
+        self.note.pokeCount += 1;
+    }
+    self.note.poked = !self.note.isPoked;
 }
 
 #pragma mark - TTTAttributedLabelDelegate
@@ -79,6 +96,38 @@ static CGFloat const kNoteLabelTextFontSize = 15.f;
     [self.pokeButton setTitle:@(self.note.pokeCount).stringValue forState:UIControlStateNormal];
     
     self.dateLabel.text = [note.createdDate stringWithDefaultFormat];
+}
+
+#pragma mark - KVO
+
+- (void)addObserver
+{
+    [self.note addObserver:self forKeyPath:@"poked" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+    [self.note addObserver:self forKeyPath:@"pokeCount" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)removeObserver
+{
+    [self.note removeObserver:self forKeyPath:@"poked"];
+    [self.note removeObserver:self forKeyPath:@"pokeCount"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"poked"]) {
+        self.pokeButton.selected = self.note.isPoked;
+    } else if ([keyPath isEqualToString:@"pokeCount"]) {
+        if (self.note.pokeCount) {
+            [self.pokeButton setTitle:@(self.note.pokeCount).stringValue forState:UIControlStateNormal];
+        } else {
+            [self.pokeButton setTitle:@"" forState:UIControlStateNormal];
+        }
+    }
+}
+
+- (void)dealloc
+{
+    [self removeObserver];
 }
 
 @end
