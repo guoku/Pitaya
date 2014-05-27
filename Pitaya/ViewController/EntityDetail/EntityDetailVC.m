@@ -201,6 +201,13 @@
     }
 }
 
+- (IBAction)tapEntityImage:(id)sender
+{
+    if (self.priceButton.enabled) {
+        [self tapPriceButton:nil];
+    }
+}
+
 - (IBAction)tapPriceButton:(id)sender
 {
     GKPurchase * purchase = self.entity.purchaseArray.firstObject;
@@ -379,6 +386,7 @@
         __weak __typeof(&*self)weakSelf = self;
         [GKDataManager getEntityDetailWithEntityId:self.entity.entityId success:^(GKEntity *entity, NSArray *likeUserArray, NSArray *noteArray) {
             weakSelf.hasLoadData = YES;
+            weakSelf.priceButton.enabled = YES;
             
             weakSelf.entity = entity;
             weakSelf.likeUserArray = [likeUserArray mutableCopy];
