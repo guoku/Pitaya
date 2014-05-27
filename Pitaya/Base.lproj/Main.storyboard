@@ -795,10 +795,17 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="button_icon_Refresh" id="F9f-yg-Lot">
-                            <connections>
-                                <action selector="tapRefreshButton:" destination="w2V-Ya-NJL" id="3C9-gW-ES2"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="GuX-B4-Mus">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Tvi-MB-jEr">
+                                <rect key="frame" x="692" y="7" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="button_icon_Refresh">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapRefreshButton:" destination="w2V-Ya-NJL" eventType="touchUpInside" id="g1X-Jq-vIf"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -961,10 +968,17 @@
                                 <action selector="tapSegmentedControl:" destination="Blb-Bu-ubv" eventType="valueChanged" id="FSC-jF-XL7"/>
                             </connections>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" image="button_icon_Refresh" id="UDy-Qe-Ocl">
-                            <connections>
-                                <action selector="tapRefreshButton:" destination="Blb-Bu-ubv" id="u1o-1I-nFm"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="HAt-rg-9z6">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ndk-TZ-tvz">
+                                <rect key="frame" x="692" y="7" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="button_icon_Refresh">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapRefreshButton:" destination="Blb-Bu-ubv" eventType="touchUpInside" id="OZz-Op-LbW"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -1532,10 +1546,17 @@
                     </view>
                     <navigationItem key="navigationItem" title="消息" id="G80-QK-6S8">
                         <barButtonItem key="backBarButtonItem" title=" " id="wF8-XA-gCV"/>
-                        <barButtonItem key="rightBarButtonItem" image="button_icon_Refresh" id="nsi-YW-iLi">
-                            <connections>
-                                <action selector="tapRefreshButton:" destination="vZU-wL-b6P" id="xQH-Ny-V4q"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="ETz-yV-3nu">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8OB-X0-cw5">
+                                <rect key="frame" x="692" y="7" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="button_icon_Refresh">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapRefreshButton:" destination="vZU-wL-b6P" eventType="touchUpInside" id="7zx-aK-Kxd"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -2218,10 +2239,17 @@
                     </view>
                     <navigationItem key="navigationItem" title="首页" id="iJy-wU-WCX">
                         <barButtonItem key="backBarButtonItem" title=" " id="UvW-0w-PFc"/>
-                        <barButtonItem key="rightBarButtonItem" image="button_icon_Refresh" id="UxY-Wh-yfX">
-                            <connections>
-                                <action selector="tapRefreshButton:" destination="rcC-GH-cgb" id="MHM-aB-6bV"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="bcc-8y-JBh">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MMh-Z3-AyH">
+                                <rect key="frame" x="692" y="7" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="button_icon_Refresh">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapRefreshButton:" destination="rcC-GH-cgb" eventType="touchUpInside" id="GGH-1S-8TB"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -3657,10 +3685,17 @@
                     </collectionView>
                     <navigationItem key="navigationItem" title="动态" id="XzF-K0-vJZ">
                         <barButtonItem key="backBarButtonItem" title=" " id="xFA-Eu-Bbm"/>
-                        <barButtonItem key="rightBarButtonItem" image="button_icon_Refresh" id="7XE-XM-eQK">
-                            <connections>
-                                <action selector="tapRefreshButton:" destination="AvC-3r-xx0" id="9ZA-67-GPd"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="TxK-Sz-ffU">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jjf-6w-PiH">
+                                <rect key="frame" x="692" y="7" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="button_icon_Refresh">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapRefreshButton:" destination="AvC-3r-xx0" eventType="touchUpInside" id="ywN-Us-csM"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -4990,7 +5025,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="p0H-nL-S1o"/>
-        <segue reference="Khu-wf-qNG"/>
+        <segue reference="YkR-n5-LgI"/>
         <segue reference="cAE-bU-MJB"/>
     </inferredMetricsTieBreakers>
 </document>

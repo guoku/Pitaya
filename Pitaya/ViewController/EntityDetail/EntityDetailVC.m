@@ -51,6 +51,7 @@
     }
     
     [self.likeButton setTitle:[NSString stringWithFormat:@"喜爱 %d", self.entity.likeCount] forState:UIControlStateNormal];
+    [self.priceButton setBackgroundImage:[UIImage imageWithColor:UIColorFromRGB(0xA1BFE0)] forState:UIControlStateDisabled];
     [self.priceButton setTitle:[NSString stringWithFormat:@"¥%.2f", self.entity.lowestPrice] forState:UIControlStateNormal];
     GKEntityCategory *category = [GKEntityCategory modelFromDictionary:@{@"categoryId":@(self.entity.categoryId)}];
     NSString *categoryName = [category.categoryName componentsSeparatedByString:@"-"].firstObject;
