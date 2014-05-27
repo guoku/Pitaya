@@ -795,10 +795,17 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="button_icon_Refresh" id="F9f-yg-Lot">
-                            <connections>
-                                <action selector="tapRefreshButton:" destination="w2V-Ya-NJL" id="3C9-gW-ES2"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="GuX-B4-Mus">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Tvi-MB-jEr">
+                                <rect key="frame" x="692" y="7" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="button_icon_Refresh">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapRefreshButton:" destination="w2V-Ya-NJL" eventType="touchUpInside" id="g1X-Jq-vIf"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -961,10 +968,17 @@
                                 <action selector="tapSegmentedControl:" destination="Blb-Bu-ubv" eventType="valueChanged" id="FSC-jF-XL7"/>
                             </connections>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" image="button_icon_Refresh" id="UDy-Qe-Ocl">
-                            <connections>
-                                <action selector="tapRefreshButton:" destination="Blb-Bu-ubv" id="u1o-1I-nFm"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="HAt-rg-9z6">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ndk-TZ-tvz">
+                                <rect key="frame" x="692" y="7" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="button_icon_Refresh">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapRefreshButton:" destination="Blb-Bu-ubv" eventType="touchUpInside" id="OZz-Op-LbW"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -1532,10 +1546,17 @@
                     </view>
                     <navigationItem key="navigationItem" title="消息" id="G80-QK-6S8">
                         <barButtonItem key="backBarButtonItem" title=" " id="wF8-XA-gCV"/>
-                        <barButtonItem key="rightBarButtonItem" image="button_icon_Refresh" id="nsi-YW-iLi">
-                            <connections>
-                                <action selector="tapRefreshButton:" destination="vZU-wL-b6P" id="xQH-Ny-V4q"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="ETz-yV-3nu">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8OB-X0-cw5">
+                                <rect key="frame" x="692" y="7" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="button_icon_Refresh">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapRefreshButton:" destination="vZU-wL-b6P" eventType="touchUpInside" id="7zx-aK-Kxd"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -2218,10 +2239,17 @@
                     </view>
                     <navigationItem key="navigationItem" title="首页" id="iJy-wU-WCX">
                         <barButtonItem key="backBarButtonItem" title=" " id="UvW-0w-PFc"/>
-                        <barButtonItem key="rightBarButtonItem" image="button_icon_Refresh" id="UxY-Wh-yfX">
-                            <connections>
-                                <action selector="tapRefreshButton:" destination="rcC-GH-cgb" id="MHM-aB-6bV"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="bcc-8y-JBh">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MMh-Z3-AyH">
+                                <rect key="frame" x="692" y="7" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="button_icon_Refresh">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapRefreshButton:" destination="rcC-GH-cgb" eventType="touchUpInside" id="GGH-1S-8TB"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -2271,12 +2299,14 @@
                                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhA-B7-MfT">
                                                     <rect key="frame" x="169" y="20" width="330" height="330"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="330" id="I8I-n2-kdM"/>
                                                         <constraint firstAttribute="height" constant="330" id="TBB-zx-hi9"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="delegate" destination="C9Z-0J-GF4" id="YOp-e8-s6L"/>
+                                                        <outletCollection property="gestureRecognizers" destination="p77-8s-XcC" appends="YES" id="pbU-cj-UUN"/>
                                                     </connections>
                                                 </scrollView>
                                                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="5od-dk-PM5">
@@ -2309,7 +2339,7 @@
                                                         <action selector="tapLikeButton:" destination="C9Z-0J-GF4" eventType="touchUpInside" id="yqN-ps-Qmy"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qd6-e0-789">
+                                                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qd6-e0-789">
                                                     <rect key="frame" x="503" y="379" width="145" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.25882352941176473" green="0.49411764705882355" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
@@ -2638,6 +2668,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wes-Yb-3Fi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="p77-8s-XcC">
+                    <connections>
+                        <action selector="tapEntityImage:" destination="C9Z-0J-GF4" id="4CQ-9I-hka"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2250" y="626"/>
         </scene>
@@ -2657,8 +2692,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="698"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="separatorColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <color key="separatorColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="separatorInset" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="y4X-Dr-hD9" customClass="NoteDetailHeaderView">
                                     <rect key="frame" x="0.0" y="44" width="768" height="150"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2683,6 +2718,9 @@
                                                             <integer key="value" value="20"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="tapAvatarButton:" destination="y4X-Dr-hD9" eventType="touchUpInside" id="llS-em-nHF"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxS-Ea-4dD">
                                                     <rect key="frame" x="48" y="20" width="28" height="40"/>
@@ -2722,8 +2760,15 @@
                                                         <color key="titleColor" red="0.53725490200000003" green="0.53725490200000003" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="selected" image="detail_icon_poke"/>
-                                                    <state key="highlighted" image="detail_icon_poke_highlighted"/>
+                                                    <state key="selected" image="detail_icon_poke_highlighted">
+                                                        <color key="titleColor" red="0.25882352941176473" green="0.49411764705882355" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <state key="highlighted" image="detail_icon_poke_highlighted">
+                                                        <color key="titleColor" red="0.25882352941176473" green="0.49411764705882355" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="tapPokeButton:" destination="y4X-Dr-hD9" eventType="touchUpInside" id="KTB-wf-88b"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2014.12.30" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJ0-Gv-fQZ">
                                                     <rect key="frame" x="605" y="120" width="63" height="15"/>
@@ -2763,9 +2808,9 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZ2-o0-BfL">
-                                            <rect key="frame" x="0.0" y="149" width="768" height="1"/>
+                                            <rect key="frame" x="20" y="150" width="748" height="1"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="j2l-cs-iNd"/>
                                             </constraints>
@@ -2774,10 +2819,10 @@
                                     <constraints>
                                         <constraint firstItem="8Jx-ml-7Jk" firstAttribute="top" secondItem="y4X-Dr-hD9" secondAttribute="top" id="1th-we-kWu"/>
                                         <constraint firstAttribute="trailing" secondItem="YZ2-o0-BfL" secondAttribute="trailing" id="74e-E9-Lx7"/>
-                                        <constraint firstItem="YZ2-o0-BfL" firstAttribute="leading" secondItem="y4X-Dr-hD9" secondAttribute="leading" id="9PW-aU-5Ui"/>
+                                        <constraint firstItem="YZ2-o0-BfL" firstAttribute="leading" secondItem="y4X-Dr-hD9" secondAttribute="leading" constant="20" id="9PW-aU-5Ui"/>
                                         <constraint firstAttribute="centerX" secondItem="8Jx-ml-7Jk" secondAttribute="centerX" id="Dyq-o7-lAq"/>
                                         <constraint firstAttribute="bottom" secondItem="8Jx-ml-7Jk" secondAttribute="bottom" id="Joy-8L-ZoR"/>
-                                        <constraint firstAttribute="bottom" secondItem="YZ2-o0-BfL" secondAttribute="bottom" id="j26-pO-JI2"/>
+                                        <constraint firstAttribute="bottom" secondItem="YZ2-o0-BfL" secondAttribute="bottom" constant="-1" id="j26-pO-JI2"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="avatarButton" destination="JlC-HX-a3I" id="Rmi-3f-JIq"/>
@@ -2792,7 +2837,22 @@
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Qpn-Ek-JKa">
                                     <rect key="frame" x="0.0" y="395" width="768" height="1"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ux9-CX-Epe">
+                                            <rect key="frame" x="20" y="0.0" width="748" height="1"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="XBi-Yt-qa9"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="Ux9-CX-Epe" firstAttribute="top" secondItem="Qpn-Ek-JKa" secondAttribute="top" id="2DV-KU-V9d"/>
+                                        <constraint firstAttribute="trailing" secondItem="Ux9-CX-Epe" secondAttribute="trailing" id="Hye-2i-KcG"/>
+                                        <constraint firstItem="Ux9-CX-Epe" firstAttribute="leading" secondItem="Qpn-Ek-JKa" secondAttribute="leading" constant="20" id="lja-rK-Nh1"/>
+                                    </constraints>
                                 </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="200" id="tEl-Kf-a6a" customClass="CommentCell">
@@ -2844,7 +2904,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzb-uB-fAK">
-                                                            <rect key="frame" x="624" y="45" width="44" height="44"/>
+                                                            <rect key="frame" x="624" y="78" width="44" height="44"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="44" id="YuT-8j-GgT"/>
@@ -2897,12 +2957,12 @@
                                                         <constraint firstItem="DpX-t7-oka" firstAttribute="top" secondItem="vGs-hY-lvj" secondAttribute="bottom" constant="15" id="KcB-93-4YE"/>
                                                         <constraint firstItem="Vxq-Ea-bWv" firstAttribute="top" secondItem="czW-D1-GiP" secondAttribute="top" constant="10" id="OKw-9s-z24"/>
                                                         <constraint firstItem="Vxq-Ea-bWv" firstAttribute="leading" secondItem="nUm-Kc-DBZ" secondAttribute="trailing" constant="8" id="ada-sc-XLg"/>
-                                                        <constraint firstItem="wzb-uB-fAK" firstAttribute="top" secondItem="czW-D1-GiP" secondAttribute="top" constant="45" id="arp-bP-1NB"/>
                                                         <constraint firstItem="7Hb-Zv-Dwd" firstAttribute="leading" secondItem="czW-D1-GiP" secondAttribute="leading" constant="10" id="cK7-KU-A6i"/>
                                                         <constraint firstAttribute="trailing" secondItem="MJZ-dl-WUY" secondAttribute="trailing" id="f1R-iG-HSM"/>
                                                         <constraint firstItem="vGs-hY-lvj" firstAttribute="top" secondItem="czW-D1-GiP" secondAttribute="top" constant="10" id="fEe-Bo-7lm"/>
                                                         <constraint firstItem="nUm-Kc-DBZ" firstAttribute="leading" secondItem="7Hb-Zv-Dwd" secondAttribute="trailing" constant="8" id="mLR-Rf-pkb"/>
                                                         <constraint firstItem="vGs-hY-lvj" firstAttribute="leading" secondItem="Vxq-Ea-bWv" secondAttribute="trailing" constant="8" id="pwY-zw-Bk0"/>
+                                                        <constraint firstAttribute="centerY" secondItem="wzb-uB-fAK" secondAttribute="centerY" id="rNJ-n6-T1z"/>
                                                         <constraint firstAttribute="width" constant="668" id="tH6-7N-QlQ"/>
                                                         <constraint firstItem="nUm-Kc-DBZ" firstAttribute="leading" secondItem="DpX-t7-oka" secondAttribute="leading" id="wXx-3W-Qsq"/>
                                                         <constraint firstAttribute="trailing" secondItem="wzb-uB-fAK" secondAttribute="trailing" id="xZJ-Aa-Mvz"/>
@@ -3625,10 +3685,17 @@
                     </collectionView>
                     <navigationItem key="navigationItem" title="动态" id="XzF-K0-vJZ">
                         <barButtonItem key="backBarButtonItem" title=" " id="xFA-Eu-Bbm"/>
-                        <barButtonItem key="rightBarButtonItem" image="button_icon_Refresh" id="7XE-XM-eQK">
-                            <connections>
-                                <action selector="tapRefreshButton:" destination="AvC-3r-xx0" id="9ZA-67-GPd"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="TxK-Sz-ffU">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jjf-6w-PiH">
+                                <rect key="frame" x="692" y="7" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="button_icon_Refresh">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapRefreshButton:" destination="AvC-3r-xx0" eventType="touchUpInside" id="ywN-Us-csM"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -3907,8 +3974,12 @@
                                                         <color key="titleColor" red="0.53725490196078429" green="0.53725490196078429" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="selected" image="detail_icon_poke_highlighted"/>
-                                                    <state key="highlighted" image="detail_icon_poke_highlighted"/>
+                                                    <state key="selected" image="detail_icon_poke_highlighted">
+                                                        <color key="titleColor" red="0.25882352941176473" green="0.49411764705882355" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <state key="highlighted" image="detail_icon_poke_highlighted">
+                                                        <color key="titleColor" red="0.25882352941176473" green="0.49411764705882355" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="tapPokeButton:" destination="jJI-45-gxt" eventType="touchUpInside" id="rhU-ll-LoZ"/>
                                                     </connections>
@@ -4927,7 +4998,7 @@
     </scenes>
     <resources>
         <image name="Personal_icon_male" width="14" height="14"/>
-        <image name="button_icon_Refresh" width="29" height="29"/>
+        <image name="button_icon_Refresh" width="32" height="24"/>
         <image name="detail_icon_comment" width="21" height="21"/>
         <image name="detail_icon_poke" width="21" height="21"/>
         <image name="detail_icon_poke_highlighted" width="21" height="21"/>
@@ -4954,7 +5025,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="p0H-nL-S1o"/>
-        <segue reference="Khu-wf-qNG"/>
+        <segue reference="YkR-n5-LgI"/>
         <segue reference="cAE-bU-MJB"/>
     </inferredMetricsTieBreakers>
 </document>

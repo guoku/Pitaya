@@ -51,6 +51,7 @@
     }
     
     [self.likeButton setTitle:[NSString stringWithFormat:@"喜爱 %d", self.entity.likeCount] forState:UIControlStateNormal];
+    [self.priceButton setBackgroundImage:[UIImage imageWithColor:UIColorFromRGB(0xA1BFE0)] forState:UIControlStateDisabled];
     [self.priceButton setTitle:[NSString stringWithFormat:@"¥%.2f", self.entity.lowestPrice] forState:UIControlStateNormal];
     GKEntityCategory *category = [GKEntityCategory modelFromDictionary:@{@"categoryId":@(self.entity.categoryId)}];
     NSString *categoryName = [category.categoryName componentsSeparatedByString:@"-"].firstObject;
@@ -198,6 +199,13 @@
         } failure:^(NSInteger stateCode) {
             [BBProgressHUD showErrorWithText:@"喜爱失败"];
         }];
+    }
+}
+
+- (IBAction)tapEntityImage:(id)sender
+{
+    if (self.priceButton.enabled) {
+        [self tapPriceButton:nil];
     }
 }
 
@@ -379,6 +387,7 @@
         __weak __typeof(&*self)weakSelf = self;
         [GKDataManager getEntityDetailWithEntityId:self.entity.entityId success:^(GKEntity *entity, NSArray *likeUserArray, NSArray *noteArray) {
             weakSelf.hasLoadData = YES;
+            weakSelf.priceButton.enabled = YES;
             
             weakSelf.entity = entity;
             weakSelf.likeUserArray = [likeUserArray mutableCopy];
@@ -444,7 +453,7 @@
 
 - (void)addObserver
 {
-    [self.entity addObserver:self forKeyPath:@"liked" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+    [self.entity addObserver:self forKeyPath:@"liked" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew|NSKeyValueObservingOptionInitial context:nil];
     [self.entity addObserver:self forKeyPath:@"likeCount" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
 }
 

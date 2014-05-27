@@ -40,7 +40,7 @@
     switch (index) {
         case 0:
         {
-            [GKDataManager getEntityListWithCategoryId:self.category.categoryId sort:@"" reverse:YES offset:0 count:kRequestSize success:^(NSArray *entityArray) {
+            [GKDataManager getEntityListWithCategoryId:self.category.categoryId sort:@"like" reverse:NO offset:0 count:kRequestSize success:^(NSArray *entityArray) {
                 [weakSelf.collectionView.infiniteScrollingView stopAnimating];
                 [weakSelf.activityIndicatorView stopAnimating];
                 
@@ -99,7 +99,7 @@
     switch (index) {
         case 0:
         {
-            [GKDataManager getEntityListWithCategoryId:self.category.categoryId sort:@"" reverse:YES offset:((NSMutableArray *)self.dataArray[index]).count count:kRequestSize success:^(NSArray *entityArray) {
+            [GKDataManager getEntityListWithCategoryId:self.category.categoryId sort:@"like" reverse:NO offset:((NSMutableArray *)self.dataArray[index]).count count:kRequestSize success:^(NSArray *entityArray) {
                 [weakSelf.collectionView.infiniteScrollingView stopAnimating];
                 
                 [weakSelf.dataArray[index] addObjectsFromArray:entityArray];

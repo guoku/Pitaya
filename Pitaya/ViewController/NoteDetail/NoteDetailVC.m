@@ -114,6 +114,13 @@
 
 #pragma mark - NoteDetailHeaderViewDelegate
 
+- (void)headerView:(NoteDetailHeaderView *)headerView didSelectUser:(GKUser *)user
+{
+    UserVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UserVC"];
+    vc.user = user;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 - (void)headerView:(NoteDetailHeaderView *)headerView didSelectTag:(NSString *)tag fromUser:(GKUser *)user
 {
     TagVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"TagVC"];
