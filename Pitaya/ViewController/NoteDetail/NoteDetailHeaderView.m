@@ -41,6 +41,13 @@ static CGFloat const kNoteLabelTextFontSize = 15.f;
 
 #pragma mark - Selecotr Method
 
+- (IBAction)tapAvatarButton:(id)sender
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(headerView:didSelectUser:)]) {
+        [self.delegate headerView:self didSelectUser:self.note.creator];
+    }
+}
+
 - (IBAction)tapCategoryButton:(id)sender
 {
     if (_delegate && [_delegate respondsToSelector:@selector(headerView:didSelectCategory:)]) {
