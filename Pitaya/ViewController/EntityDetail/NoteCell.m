@@ -96,12 +96,12 @@ static CGFloat const kNoteCellTextFontSize = 15.f;
     
     // 左右边线
     CALayer *leftLinelayer = [CALayer layer];
-    leftLinelayer.backgroundColor = UIColorFromRGB(0xF6F6F6).CGColor;
+    leftLinelayer.backgroundColor = UIColorFromRGB(0xF1F1F1).CGColor;
     leftLinelayer.frame = CGRectMake(0.f, 0.f, 1.f, CGRectGetHeight(self.backView.bounds));
     [self.backView.layer addSublayer:leftLinelayer];
     
     CALayer *rightLinelayer = [CALayer layer];
-    rightLinelayer.backgroundColor = UIColorFromRGB(0xF6F6F6).CGColor;
+    rightLinelayer.backgroundColor = UIColorFromRGB(0xF1F1F1).CGColor;
     rightLinelayer.frame = CGRectMake((CGRectGetWidth(self.backView.bounds) - 1.f), 0.f, 1.f, CGRectGetHeight(self.backView.bounds));
     [self.backView.layer addSublayer:rightLinelayer];
     

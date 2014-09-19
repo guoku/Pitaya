@@ -78,7 +78,7 @@
 {
     [super layoutSubviews];
     
-    self.layer.borderColor = UIColorFromRGB(0xF6F6F6).CGColor;
+    self.layer.borderColor = UIColorFromRGB(0xF1F1F1).CGColor;
     
     // 商品图
     [self.activityIndicatorView startAnimating];

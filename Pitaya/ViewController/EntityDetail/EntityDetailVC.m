@@ -362,7 +362,7 @@
     self.navigationItem.rightBarButtonItems = @[moreButtonItem, noteButtonItem];
     
     // headerView
-    self.headerView.layer.borderColor = UIColorFromRGB(0xF6F6F6).CGColor;
+    self.headerView.layer.borderColor = UIColorFromRGB(0xF1F1F1).CGColor;
     [self refreshHeaderView];
     
     [self addObserver];

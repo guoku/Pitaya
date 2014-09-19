@@ -57,7 +57,7 @@
         
         UIButton *entityButton = [[UIButton alloc] initWithFrame:frame];
         entityButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        entityButton.layer.borderColor = UIColorFromRGB(0xF6F6F6).CGColor;
+        entityButton.layer.borderColor = UIColorFromRGB(0xF1F1F1).CGColor;
         entityButton.layer.borderWidth = 1.f;
         entityButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
         entityButton.adjustsImageWhenHighlighted = NO;

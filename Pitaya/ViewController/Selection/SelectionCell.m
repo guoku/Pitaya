@@ -120,7 +120,7 @@ static CGFloat const kSelectionCellTextFontSize = 14.f;
 {
     [super layoutSubviews];
     
-    self.layer.borderColor = UIColorFromRGB(0xF6F6F6).CGColor;
+    self.layer.borderColor = UIColorFromRGB(0xF1F1F1).CGColor;
     
     if (!(self.entity && self.note && self.date)) {
         return;
