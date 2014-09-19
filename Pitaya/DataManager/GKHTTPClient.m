@@ -133,9 +133,9 @@
 {
     NSInteger stateCode = operation.response.statusCode;
     NSString *urlString = operation.response.URL.absoluteString;
-    DDLogVerbose(@"Success! State Code:%d URL:%@", stateCode, urlString);
+    DDLogInfo(@"Success! State Code:%d URL:%@", stateCode, urlString);
     
-    DDLogInfo(@"成功!JSON:%@", [responseObject JSONString]);
+    DDLogCVerbose(@"成功!JSON:%@", [responseObject JSONString]);
 }
 
 - (void)failureLogWithOperation:(AFHTTPRequestOperation *)operation responseObject:(NSError *)error

@@ -24,14 +24,66 @@
 - (void)setBannerArray:(NSMutableArray *)bannerArray
 {
     _bannerArray = bannerArray;
-    
+    [self.banner reloadData];
     [self setNeedsLayout];
 }
 
 - (void)setHotCategoryArray:(NSMutableArray *)hotCategoryArray
 {
     _hotCategoryArray = hotCategoryArray;
+    [self.hotCategoryView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        UIButton *hotCategoryButton = (UIButton *)[self viewWithTag:kHotCategoryButtonTag + idx];
+        [hotCategoryButton removeFromSuperview];
+    }];
     
+    [self.hotCategoryArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if (idx < 9) {
+            CGRect frame;
+            frame.origin.x = (110.f + 28.f) * (idx % 5);
+            frame.origin.y = (110.f + 28.f) * (idx / 5);
+            frame.size = CGSizeMake(110.f, 110.f);
+            
+            UIButton *button = [[UIButton alloc] initWithFrame:frame];
+            button.backgroundColor = UIColorFromRGB(0xF8F8F8);
+            button.imageEdgeInsets = UIEdgeInsetsMake(20.f, 32.5f, 45.f, 32.5f);
+            button.titleEdgeInsets = UIEdgeInsetsMake(80.f, -87.5f, 10.f, 0.f);
+            button.tag = kHotCategoryButtonTag + idx;
+            GKEntityCategory *category = self.hotCategoryArray[idx];
+            
+            [button setImage:nil forState:UIControlStateNormal];
+            [button setImageWithURL:category.iconURL forState:UIControlStateNormal];
+            
+            button.titleLabel.font = [UIFont appFontWithSize:14.f];
+            [button setTitleColor:UIColorFromRGB(0xA9A9A9) forState:UIControlStateNormal];
+            NSString *categoryName = [category.categoryName componentsSeparatedByString:@"-"].firstObject;;
+            [button setTitle:categoryName forState:UIControlStateNormal];
+            [button addTarget:self action:@selector(tapHotCategoryButton:) forControlEvents:UIControlEventTouchUpInside];
+            [self.hotCategoryView addSubview:button];
+        }
+        
+        if (idx == self.hotCategoryArray.count - 1 || idx == 8) {
+            *stop = YES;
+            idx++;
+            CGRect frame;
+            frame.origin.x = (110.f + 28.f) * (idx % 5);
+            frame.origin.y = (110.f + 28.f) * (idx / 5);
+            frame.size = CGSizeMake(110.f, 110.f);
+            
+            if (!self.allCategoryButton) {
+                _allCategoryButton = [[UIButton alloc] init];
+                self.allCategoryButton.backgroundColor = UIColorFromRGB(0xF8F8F8);
+                self.allCategoryButton.imageEdgeInsets = UIEdgeInsetsMake(25.f, 39.f, 45.f, 39.f);
+                self.allCategoryButton.titleEdgeInsets = UIEdgeInsetsMake(80.f, -29.f, 10.f, 0.f);
+                self.allCategoryButton.titleLabel.font = [UIFont appFontWithSize:14.f];
+                [self.allCategoryButton setTitleColor:UIColorFromRGB(0xA9A9A9) forState:UIControlStateNormal];
+                [self.allCategoryButton setTitle:@"更多品类" forState:UIControlStateNormal];
+                [self.allCategoryButton setImage:[UIImage imageNamed:@"icon_homepage_more"] forState:UIControlStateNormal];
+                [self.allCategoryButton addTarget:self action:@selector(tapHotCategoryButton:) forControlEvents:UIControlEventTouchUpInside];
+                [self.hotCategoryView addSubview:self.allCategoryButton];
+            }
+            self.allCategoryButton.frame = frame;
+        }
+    }];
     [self setNeedsLayout];
 }
 
@@ -116,58 +168,9 @@
 {
     [super layoutSubviews];
     
-    [self.banner reloadData];
+//    [self.banner reloadData];
     
-    [self.hotCategoryView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        UIButton *hotCategoryButton = (UIButton *)[self viewWithTag:kHotCategoryButtonTag + idx];
-        [hotCategoryButton removeFromSuperview];
-    }];
-    
-    [self.hotCategoryArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if (idx < 9) {
-            CGRect frame;
-            frame.origin.x = (110.f + 28.f) * (idx % 5);
-            frame.origin.y = (110.f + 28.f) * (idx / 5);
-            frame.size = CGSizeMake(110.f, 110.f);
-            
-            UIButton *button = [[UIButton alloc] initWithFrame:frame];
-            button.backgroundColor = UIColorFromRGB(0xF8F8F8);
-            button.imageEdgeInsets = UIEdgeInsetsMake(20.f, 32.5f, 45.f, 32.5f);
-            button.titleEdgeInsets = UIEdgeInsetsMake(80.f, -87.5f, 10.f, 0.f);
-            button.tag = kHotCategoryButtonTag + idx;
-            GKEntityCategory *category = self.hotCategoryArray[idx];
-            [button setImageWithURL:category.iconURL forState:UIControlStateNormal];
-            button.titleLabel.font = [UIFont appFontWithSize:14.f];
-            [button setTitleColor:UIColorFromRGB(0xA9A9A9) forState:UIControlStateNormal];
-            NSString *categoryName = [category.categoryName componentsSeparatedByString:@"-"].firstObject;;
-            [button setTitle:categoryName forState:UIControlStateNormal];
-            [button addTarget:self action:@selector(tapHotCategoryButton:) forControlEvents:UIControlEventTouchUpInside];
-            [self.hotCategoryView addSubview:button];
-        }
-        
-        if (idx == self.hotCategoryArray.count - 1 || idx == 8) {
-            *stop = YES;
-            idx++;
-            CGRect frame;
-            frame.origin.x = (110.f + 28.f) * (idx % 5);
-            frame.origin.y = (110.f + 28.f) * (idx / 5);
-            frame.size = CGSizeMake(110.f, 110.f);
-            
-            if (!self.allCategoryButton) {
-                _allCategoryButton = [[UIButton alloc] init];
-                self.allCategoryButton.backgroundColor = UIColorFromRGB(0xF8F8F8);
-                self.allCategoryButton.imageEdgeInsets = UIEdgeInsetsMake(25.f, 39.f, 45.f, 39.f);
-                self.allCategoryButton.titleEdgeInsets = UIEdgeInsetsMake(80.f, -29.f, 10.f, 0.f);
-                self.allCategoryButton.titleLabel.font = [UIFont appFontWithSize:14.f];
-                [self.allCategoryButton setTitleColor:UIColorFromRGB(0xA9A9A9) forState:UIControlStateNormal];
-                [self.allCategoryButton setTitle:@"更多品类" forState:UIControlStateNormal];
-                [self.allCategoryButton setImage:[UIImage imageNamed:@"icon_homepage_more"] forState:UIControlStateNormal];
-                [self.allCategoryButton addTarget:self action:@selector(tapHotCategoryButton:) forControlEvents:UIControlEventTouchUpInside];
-                [self.hotCategoryView addSubview:self.allCategoryButton];
-            }
-            self.allCategoryButton.frame = frame;
-        }
-    }];
+
 }
 
 @end
