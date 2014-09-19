@@ -106,7 +106,7 @@ static CGFloat const kNoteCellTextFontSize = 15.f;
     [self.backView.layer addSublayer:rightLinelayer];
     
     // 头像
-    [self.avatarButton setImageWithURL:self.note.creator.avatarURL forState:UIControlStateNormal];
+    [self.avatarButton sd_setImageWithURL:self.note.creator.avatarURL forState:UIControlStateNormal];
     
     // 昵称
     [self.nicknameButton setTitle:self.note.creator.nickname forState:UIControlStateNormal];

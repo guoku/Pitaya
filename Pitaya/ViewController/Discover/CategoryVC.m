@@ -370,7 +370,7 @@
     [self.navTitleButton setTitle:title forState:UIControlStateNormal];
     self.navTitleButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     if (self.category.iconURL) {
-        [self.navTitleButton setImageWithURL:self.category.iconURL forState:UIControlStateNormal];
+        [self.navTitleButton sd_setImageWithURL:self.category.iconURL forState:UIControlStateNormal];
     } else {
         self.navTitleButton.titleEdgeInsets = UIEdgeInsetsZero;
         [self.navTitleButton setImage:nil forState:UIControlStateNormal];

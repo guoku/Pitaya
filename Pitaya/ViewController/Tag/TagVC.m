@@ -105,7 +105,7 @@
     self.navigationItem.title = [NSString stringWithFormat:@"#%@", self.tagName];
     
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0.f, 0.f, 30.f, 30.f)];
-    [button setImageWithURL:self.user.avatarURL forState:UIControlStateNormal];
+    [button sd_setImageWithURL:self.user.avatarURL forState:UIControlStateNormal];
     button.imageView.layer.cornerRadius = 15.f;
     button.imageView.layer.masksToBounds = YES;
     [button addTarget:self action:@selector(tapUserButton) forControlEvents:UIControlEventTouchUpInside];

@@ -72,7 +72,7 @@
     }
     
     // 商品图
-    [self.imageView setImageWithURL:self.entity.imageURL_310x310];
+    [self.imageView sd_setImageWithURL:self.entity.imageURL_310x310];
     
     // 喜爱按钮
     [self.likeButton setTitle:[NSString stringWithFormat:@"喜爱 %d", self.entity.likeCount] forState:UIControlStateNormal];

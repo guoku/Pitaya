@@ -49,7 +49,7 @@
         [self removeObserver];
         _user = user;
         
-        [self.avatarImageView setImageWithURL:self.user.avatarURL];
+        [self.avatarImageView sd_setImageWithURL:self.user.avatarURL];
         self.nicknameLabel.text = self.user.nickname;
         self.bioLabel.text = self.user.bio;
         [self.friendButton setTitle:[NSString stringWithFormat:@"%d 关注", self.user.followingCount] forState:UIControlStateNormal];
@@ -101,7 +101,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if ([keyPath isEqualToString:@"avatarURL"]) {
-        [self.avatarImageView setImageWithURL:self.user.avatarURL];
+        [self.avatarImageView sd_setImageWithURL:self.user.avatarURL];
     } else if ([keyPath isEqualToString:@"nickname"]) {
         self.nicknameLabel.text = self.user.nickname;
     } else if ([keyPath isEqualToString:@"bio"]) {

@@ -15,7 +15,7 @@
     [super layoutSubviews];
     
     if (k_isLogin) {
-        [self.avatarButton setImageWithURL:[Passport sharedInstance].user.avatarURL_s forState:UIControlStateNormal];
+        [self.avatarButton sd_setImageWithURL:[Passport sharedInstance].user.avatarURL_s forState:UIControlStateNormal];
         [self.nicknameButton setTitle:[Passport sharedInstance].user.nickname forState:UIControlStateNormal];
     } else {
         [self.avatarButton setImage:[UIImage imageNamed:@"menu_icon_tuzi"] forState:UIControlStateNormal];

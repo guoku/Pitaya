@@ -71,7 +71,7 @@ static CGFloat const kCommentCellTextFontSize = 15.f;
     
     GKUser *user = self.comment.creator;
     
-    [self.avatarButton setImageWithURL:user.avatarURL_s forState:UIControlStateNormal];
+    [self.avatarButton sd_setImageWithURL:user.avatarURL_s forState:UIControlStateNormal];
     
     self.nicknameLabel.text = user.nickname;
     

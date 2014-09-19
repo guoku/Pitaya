@@ -51,7 +51,7 @@
             GKEntityCategory *category = self.hotCategoryArray[idx];
             
             [button setImage:nil forState:UIControlStateNormal];
-            [button setImageWithURL:category.iconURL forState:UIControlStateNormal];
+            [button sd_setImageWithURL:category.iconURL forState:UIControlStateNormal];
             
             button.titleLabel.font = [UIFont appFontWithSize:14.f];
             [button setTitleColor:UIColorFromRGB(0xA9A9A9) forState:UIControlStateNormal];
@@ -125,7 +125,7 @@
     }
     
     NSURL *imageURL = self.bannerArray[index][@"img"];
-    [((UIImageView *)view) setImageWithURL:imageURL placeholderImage:[UIImage imageWithColor:UIColorFromRGB(0xF6F6F6) andSize:view.frame.size]];
+    [((UIImageView *)view) sd_setImageWithURL:imageURL placeholderImage:[UIImage imageWithColor:UIColorFromRGB(0xF6F6F6) andSize:view.frame.size]];
     
     return view;
 }

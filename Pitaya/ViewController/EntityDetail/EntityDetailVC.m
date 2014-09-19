@@ -86,7 +86,7 @@
         imageView.tag = 100;
         imageView.center = CGPointMake(scrollViewWidth * idx + scrollViewWidth/2,  scrollViewHeight/2);
         imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [imageView setImageWithURL:imageURL placeholderImage:imageView.image];
+        [imageView sd_setImageWithURL:imageURL placeholderImage:imageView.image];
         [self.imageScrollView addSubview:imageView];
     }];
     
@@ -116,7 +116,7 @@
         avatarButton.layer.cornerRadius = buttonLength / 2;
         avatarButton.layer.masksToBounds = YES;
         avatarButton.tag = user.userId;
-        [avatarButton setImageWithURL:user.avatarURL forState:UIControlStateNormal];
+        [avatarButton sd_setImageWithURL:user.avatarURL forState:UIControlStateNormal];
         [avatarButton addTarget:self action:@selector(tapLikeUserButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.likeUserView addSubview:avatarButton];
     }];

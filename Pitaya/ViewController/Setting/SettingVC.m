@@ -212,7 +212,7 @@ static NSInteger const LogoutButtonTag = 999;
         {
             // 头像
             self.avatarImageView = (UIImageView *)[cell viewWithTag:AvatarImageViewTag];
-            [self.avatarImageView setImageWithURL:[Passport sharedInstance].user.avatarURL_s];
+            [self.avatarImageView sd_setImageWithURL:[Passport sharedInstance].user.avatarURL_s];
         }
             
         case 2:
@@ -507,7 +507,7 @@ static NSInteger const LogoutButtonTag = 999;
 {
     if ([keyPath isEqualToString:@"avatarURL"]) {
         GKUser *user = (GKUser *)object;
-        [self.avatarImageView setImageWithURL:user.avatarURL_s];
+        [self.avatarImageView sd_setImageWithURL:user.avatarURL_s];
     } else if ([keyPath isEqualToString:@"nickname"]) {
         GKUser *user = (GKUser *)object;
         self.nicknameLabel.text = user.nickname;

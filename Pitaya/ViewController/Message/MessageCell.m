@@ -198,7 +198,7 @@ static CGFloat labelWidth = 600.f;
     self.label.text = [NSString stringWithFormat:@"<a href='user:%u'><font face='Helvetica-Bold' color='^555555' size=14>%@ </font></a><font face='Helvetica' color='^777777' size=14>评论了你对 </font><a href='entity:%@'><font face='Helvetica-Bold' color='^555555' size=14>%@</font></a><font face='Helvetica' color='^777777' size=14> 的点评</font>", user.userId, user.nickname ,note.entityId,note.title];
     self.label.deFrameHeight = self.label.optimumSize.height + 5.f;
     
-    [self.photoImageButton setImageWithURL:note.entityChiefImage forState:UIControlStateNormal];
+    [self.photoImageButton sd_setImageWithURL:note.entityChiefImage forState:UIControlStateNormal];
     self.photoImageButton.deFrameTop = self.label.deFrameBottom + 10.f;
     self.photoImageButton.hidden = NO;
     
@@ -230,7 +230,7 @@ static CGFloat labelWidth = 600.f;
     self.label.text = [NSString stringWithFormat:@"<a href='user:%u'><font face='Helvetica-Bold' color='^555555' size=14>%@ </font></a><font face='Helvetica' color='^777777' size=14>赞了你对 </font><a href='entity:%@'><font face='Helvetica-Bold' color='^555555' size=14>%@</font></a><font face='Helvetica' color='^777777' size=14> 的点评</font>", user.userId, user.nickname ,note.entityId,note.title];
     self.label.deFrameHeight = self.label.optimumSize.height + 5.f;
     
-    [self.photoImageButton setImageWithURL:note.entityChiefImage forState:UIControlStateNormal];
+    [self.photoImageButton sd_setImageWithURL:note.entityChiefImage forState:UIControlStateNormal];
     self.photoImageButton.deFrameTop = self.label.deFrameBottom + 10.f;
     self.photoImageButton.hidden = NO;
 }
@@ -247,7 +247,7 @@ static CGFloat labelWidth = 600.f;
     self.label.text = [NSString stringWithFormat:@"<a href='user:%u'><font face='Helvetica-Bold' color='^555555' size=14>%@ </font></a><font face='Helvetica' color='^777777' size=14>点评了你推荐的商品</font>", user.userId, user.nickname];
     self.label.deFrameHeight = self.label.optimumSize.height + 5.f;
     
-    [self.photoImageButton setImageWithURL:entity.imageURL_240x240 forState:UIControlStateNormal];
+    [self.photoImageButton sd_setImageWithURL:entity.imageURL_240x240 forState:UIControlStateNormal];
     self.photoImageButton.deFrameTop = self.label.deFrameBottom + 10.f;
     self.photoImageButton.hidden = NO;
     
@@ -268,7 +268,7 @@ static CGFloat labelWidth = 600.f;
     self.label.text = [NSString stringWithFormat:@"<a href='user:%u'><font face='Helvetica-Bold' color='^555555' size=14>%@ </font></a><font face='Helvetica' color='^777777' size=14>喜爱了你推荐的商品</font>", user.userId, user.nickname];
     self.label.deFrameHeight = self.label.optimumSize.height + 5.f;
     
-    [self.photoImageButton setImageWithURL:entity.imageURL_240x240 forState:UIControlStateNormal];
+    [self.photoImageButton sd_setImageWithURL:entity.imageURL_240x240 forState:UIControlStateNormal];
     self.photoImageButton.deFrameTop = self.label.deFrameBottom + 10.f;
     self.photoImageButton.hidden = NO;
 }
@@ -283,7 +283,7 @@ static CGFloat labelWidth = 600.f;
     self.label.text = [NSString stringWithFormat:@"<font face=\'Helvetica\' color=\'^777777\' size=14>你添加的商品被收录精选</font>"];
     self.label.deFrameHeight = self.label.optimumSize.height + 5.f;
     
-    [self.photoImageButton setImageWithURL:entity.imageURL_240x240 forState:UIControlStateNormal];
+    [self.photoImageButton sd_setImageWithURL:entity.imageURL_240x240 forState:UIControlStateNormal];
     self.photoImageButton.deFrameTop = self.label.deFrameBottom + 10.f;
     self.photoImageButton.hidden = NO;
 }

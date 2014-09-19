@@ -167,7 +167,7 @@
 {
     [super layoutSubviews];
     
-    [self.avatarImageView setImageWithURL:self.user.avatarURL_s];
+    [self.avatarImageView sd_setImageWithURL:self.user.avatarURL_s];
     
     self.nicknameLabel.text = self.user.nickname;
     
@@ -201,7 +201,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if ([keyPath isEqualToString:@"avatarURL"]) {
-        [self.avatarImageView setImageWithURL:self.user.avatarURL];
+        [self.avatarImageView sd_setImageWithURL:self.user.avatarURL];
     } else if ([keyPath isEqualToString:@"nickname"]) {
         self.nicknameLabel.text = self.user.nickname;
     } else if ([keyPath isEqualToString:@"followingCount"]) {

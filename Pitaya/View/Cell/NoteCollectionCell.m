@@ -111,7 +111,7 @@ static CGFloat const kNoteCollectionCellTextFontSize = 15.f;
     [super layoutSubviews];
     
     // 头像
-    [self.avatarButton setImageWithURL:self.note.creator.avatarURL_s forState:UIControlStateNormal];
+    [self.avatarButton sd_setImageWithURL:self.note.creator.avatarURL_s forState:UIControlStateNormal];
     
     // 昵称
     [self.nicknameButton setTitle:self.note.creator.nickname forState:UIControlStateNormal];
@@ -129,7 +129,7 @@ static CGFloat const kNoteCollectionCellTextFontSize = 15.f;
     }
     
     // 商品图
-    [self.entityImageView setImageWithURL:self.entity.imageURL_240x240];
+    [self.entityImageView sd_setImageWithURL:self.entity.imageURL_240x240];
     
     // 品牌 名称
     if (self.entity.brand.length > 0) {

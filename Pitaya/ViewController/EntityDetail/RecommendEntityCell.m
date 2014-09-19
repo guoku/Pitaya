@@ -61,7 +61,7 @@
         entityButton.layer.borderWidth = 1.f;
         entityButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
         entityButton.adjustsImageWhenHighlighted = NO;
-        [entityButton setImageWithURL:entity.imageURL_640x640 forState:UIControlStateNormal];
+        [entityButton sd_setImageWithURL:entity.imageURL_640x640 forState:UIControlStateNormal];
         entityButton.tag = i;
         [entityButton addTarget:self action:@selector(tapRecommendEntityButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.backView addSubview:entityButton];

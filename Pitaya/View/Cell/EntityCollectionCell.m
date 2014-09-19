@@ -83,7 +83,7 @@
     // 商品图
     [self.activityIndicatorView startAnimating];
     __weak __typeof(self)weakSelf = self;
-    [self.imageView setImageWithURL:self.entity.imageURL_310x310 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+    [self.imageView sd_setImageWithURL:self.entity.imageURL_310x310 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL * imageURL) {
         [weakSelf.activityIndicatorView stopAnimating];
     }];
     

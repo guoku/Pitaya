@@ -53,7 +53,7 @@
     
     // 商品主图
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20.f, titleLabel.deFrameBottom + 10.f, 600.f, 600.f)];
-    [imageView setImageWithURL:self.entity.imageURL];
+    [imageView sd_setImageWithURL:self.entity.imageURL];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     [entityView addSubview:imageView];
     
@@ -70,7 +70,7 @@
         avatarImageView.backgroundColor = UIColorFromRGB(0xf6f6f6);
         avatarImageView.layer.cornerRadius = CGRectGetWidth(avatarImageView.bounds)/2;
         avatarImageView.layer.masksToBounds = YES;
-        [avatarImageView setImageWithURL:note.creator.avatarURL placeholderImage:nil options:SDWebImageRetryFailed ];
+        [avatarImageView sd_setImageWithURL:note.creator.avatarURL placeholderImage:nil options:SDWebImageRetryFailed ];
         [noteListView addSubview:avatarImageView];
         
         UILabel *nameLabel = [[UILabel alloc] init];

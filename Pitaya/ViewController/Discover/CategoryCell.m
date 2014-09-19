@@ -35,7 +35,7 @@
 {
     [super layoutSubviews];
     
-    [self.imageView setImageWithURL:self.category.iconURL];
+    [self.imageView sd_setImageWithURL:self.category.iconURL];
     self.titleLabel.text = [self.category.categoryName componentsSeparatedByString:@"-"].firstObject;
     
     [self setNeedsUpdateConstraints];

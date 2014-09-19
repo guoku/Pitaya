@@ -86,7 +86,7 @@ static CGFloat const kNoteLabelTextFontSize = 15.f;
     GKEntity *entity = [GKEntity modelFromDictionary:@{@"entityId":self.note.entityId}];
     GKEntityCategory *category = [GKEntityCategory modelFromDictionary:@{@"categoryId":@(entity.categoryId)}];
     
-    [self.avatarButton setImageWithURL:user.avatarURL_s forState:UIControlStateNormal];
+    [self.avatarButton sd_setImageWithURL:user.avatarURL_s forState:UIControlStateNormal];
 
     self.nicknameLabel.text = user.nickname;
     

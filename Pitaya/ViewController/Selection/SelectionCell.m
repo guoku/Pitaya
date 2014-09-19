@@ -129,7 +129,7 @@ static CGFloat const kSelectionCellTextFontSize = 14.f;
     // 商品图
     [self.activityIndicatorView startAnimating];
     __weak __typeof(self)weakSelf = self;
-    [self.imageView setImageWithURL:self.entity.imageURL_640x640 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+    [self.imageView sd_setImageWithURL:self.entity.imageURL_640x640 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType ,NSURL * imageURL) {
         [weakSelf.activityIndicatorView stopAnimating];
     }];
     
@@ -156,7 +156,7 @@ static CGFloat const kSelectionCellTextFontSize = 14.f;
     }
     
     // 用户头像
-    [self.avatarButton setImageWithURL:self.note.creator.avatarURL_s forState:UIControlStateNormal];
+    [self.avatarButton sd_setImageWithURL:self.note.creator.avatarURL_s forState:UIControlStateNormal];
     
     // 时间
     self.dateLabel.text = [self.date stringWithDefaultFormat];
