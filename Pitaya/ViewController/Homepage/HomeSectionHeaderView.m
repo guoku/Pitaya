@@ -120,8 +120,8 @@
         //UIView设置阴影
         view.layer.shadowOffset = CGSizeMake(0, 0);
         view.layer.shadowRadius = 10.f;
-        view.layer.shadowOpacity = 0.8;
-        view.layer.shadowColor = UIColorFromRGB(0x999999).CGColor;
+        view.layer.shadowOpacity = 0.6;
+        view.layer.shadowColor = UIColorFromRGB(0xcccccc).CGColor;
     }
     
     NSURL *imageURL = self.bannerArray[index][@"img"];

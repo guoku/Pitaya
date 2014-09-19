@@ -77,11 +77,6 @@
 		B6603BED188CE7AE00F52946 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6603BEC188CE7AE00F52946 /* AppDelegate.m */; };
 		B6603BF0188CE7AE00F52946 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6603BEE188CE7AE00F52946 /* Main.storyboard */; };
 		B6603BF5188CE7AE00F52946 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6603BF4188CE7AE00F52946 /* Images.xcassets */; };
-		B6603BFC188CE7AE00F52946 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6603BFB188CE7AE00F52946 /* XCTest.framework */; };
-		B6603BFD188CE7AE00F52946 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6603BDC188CE7AE00F52946 /* Foundation.framework */; };
-		B6603BFE188CE7AE00F52946 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6603BE0188CE7AE00F52946 /* UIKit.framework */; };
-		B6603C06188CE7AE00F52946 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B6603C04188CE7AE00F52946 /* InfoPlist.strings */; };
-		B6603C08188CE7AE00F52946 /* PitayaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B6603C07188CE7AE00F52946 /* PitayaTests.m */; };
 		B6603C28188CEBA200F52946 /* UIView+DEFrameAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B6603C14188CEBA200F52946 /* UIView+DEFrameAdditions.m */; };
 		B6603C2A188CEBA200F52946 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6603C1C188CEBA200F52946 /* BaseViewController.m */; };
 		B6603C2B188CEBA200F52946 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6603C1F188CEBA200F52946 /* DetailViewController.m */; };
@@ -178,16 +173,6 @@
 		B7B9F54419CC747C00B870FB /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B9F53419CC747C00B870FB /* UIView+WebCacheOperation.m */; };
 		B7B9F54619CC75AA00B870FB /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B9F54519CC75AA00B870FB /* ImageIO.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		B6603BFF188CE7AE00F52946 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B6603BD1188CE7AE00F52946 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B6603BD8188CE7AE00F52946;
-			remoteInfo = Pitaya;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		B600CA0B18D81C0E00AB8FD7 /* UserVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserVC.h; sourceTree = "<group>"; };
@@ -320,11 +305,6 @@
 		B6603BEC188CE7AE00F52946 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B6603BEF188CE7AE00F52946 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B6603BF4188CE7AE00F52946 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B6603BFA188CE7AE00F52946 /* PitayaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PitayaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B6603BFB188CE7AE00F52946 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		B6603C03188CE7AE00F52946 /* PitayaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PitayaTests-Info.plist"; sourceTree = "<group>"; };
-		B6603C05188CE7AE00F52946 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		B6603C07188CE7AE00F52946 /* PitayaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PitayaTests.m; sourceTree = "<group>"; };
 		B6603C13188CEBA200F52946 /* UIView+DEFrameAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+DEFrameAdditions.h"; sourceTree = "<group>"; };
 		B6603C14188CEBA200F52946 /* UIView+DEFrameAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+DEFrameAdditions.m"; sourceTree = "<group>"; };
 		B6603C15188CEBA200F52946 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
@@ -542,16 +522,6 @@
 				B6603BE1188CE7AE00F52946 /* UIKit.framework in Frameworks */,
 				B6603BDD188CE7AE00F52946 /* Foundation.framework in Frameworks */,
 				B692F7B8192C6FC300677417 /* libGoogleAnalyticsServices.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B6603BF7188CE7AE00F52946 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B6603BFC188CE7AE00F52946 /* XCTest.framework in Frameworks */,
-				B6603BFE188CE7AE00F52946 /* UIKit.framework in Frameworks */,
-				B6603BFD188CE7AE00F52946 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -872,7 +842,6 @@
 			isa = PBXGroup;
 			children = (
 				B6603BE2188CE7AE00F52946 /* Pitaya */,
-				B6603C01188CE7AE00F52946 /* PitayaTests */,
 				B6603BDB188CE7AE00F52946 /* Frameworks */,
 				B6603BDA188CE7AE00F52946 /* Products */,
 			);
@@ -882,7 +851,6 @@
 			isa = PBXGroup;
 			children = (
 				B6603BD9188CE7AE00F52946 /* Pitaya.app */,
-				B6603BFA188CE7AE00F52946 /* PitayaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -899,7 +867,6 @@
 				B6603BDC188CE7AE00F52946 /* Foundation.framework */,
 				B6603BDE188CE7AE00F52946 /* CoreGraphics.framework */,
 				B6603BE0188CE7AE00F52946 /* UIKit.framework */,
-				B6603BFB188CE7AE00F52946 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -932,24 +899,6 @@
 				B6603BE5188CE7AE00F52946 /* InfoPlist.strings */,
 				B6603BE8188CE7AE00F52946 /* main.m */,
 				B6603BEA188CE7AE00F52946 /* Pitaya-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		B6603C01188CE7AE00F52946 /* PitayaTests */ = {
-			isa = PBXGroup;
-			children = (
-				B6603C07188CE7AE00F52946 /* PitayaTests.m */,
-				B6603C02188CE7AE00F52946 /* Supporting Files */,
-			);
-			path = PitayaTests;
-			sourceTree = "<group>";
-		};
-		B6603C02188CE7AE00F52946 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				B6603C03188CE7AE00F52946 /* PitayaTests-Info.plist */,
-				B6603C04188CE7AE00F52946 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1428,24 +1377,6 @@
 			productReference = B6603BD9188CE7AE00F52946 /* Pitaya.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B6603BF9188CE7AE00F52946 /* PitayaTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B6603C0E188CE7AE00F52946 /* Build configuration list for PBXNativeTarget "PitayaTests" */;
-			buildPhases = (
-				B6603BF6188CE7AE00F52946 /* Sources */,
-				B6603BF7188CE7AE00F52946 /* Frameworks */,
-				B6603BF8188CE7AE00F52946 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B6603C00188CE7AE00F52946 /* PBXTargetDependency */,
-			);
-			name = PitayaTests;
-			productName = PitayaTests;
-			productReference = B6603BFA188CE7AE00F52946 /* PitayaTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1457,9 +1388,6 @@
 				TargetAttributes = {
 					B6603BD8188CE7AE00F52946 = {
 						DevelopmentTeam = 4W26QSGX3M;
-					};
-					B6603BF9188CE7AE00F52946 = {
-						TestTargetID = B6603BD8188CE7AE00F52946;
 					};
 				};
 			};
@@ -1485,7 +1413,6 @@
 			projectRoot = "";
 			targets = (
 				B6603BD8188CE7AE00F52946 /* Pitaya */,
-				B6603BF9188CE7AE00F52946 /* PitayaTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1504,14 +1431,6 @@
 				B605ACFC191632A600A22E58 /* blueArrow.png in Resources */,
 				B6603CB9188D151800F52946 /* SVProgressHUD.bundle in Resources */,
 				B605AD17191632A600A22E58 /* UMFeedbackViewController.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B6603BF8188CE7AE00F52946 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B6603C06188CE7AE00F52946 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1668,23 +1587,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B6603BF6188CE7AE00F52946 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B6603C08188CE7AE00F52946 /* PitayaTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B6603C00188CE7AE00F52946 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B6603BD8188CE7AE00F52946 /* Pitaya */;
-			targetProxy = B6603BFF188CE7AE00F52946 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B6603BE5188CE7AE00F52946 /* InfoPlist.strings */ = {
@@ -1701,14 +1604,6 @@
 				B6603BEF188CE7AE00F52946 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		B6603C04188CE7AE00F52946 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B6603C05188CE7AE00F52946 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1796,7 +1691,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pitaya/Pitaya-Prefix.pch";
 				INFOPLIST_FILE = "Pitaya/Pitaya-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pitaya/ThirdParty/UMeng/Feedback",
@@ -1829,7 +1724,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pitaya/Pitaya-Prefix.pch";
 				INFOPLIST_FILE = "Pitaya/Pitaya-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pitaya/ThirdParty/UMeng/Feedback",
@@ -1851,46 +1746,6 @@
 			};
 			name = Release;
 		};
-		B6603C0F188CE7AE00F52946 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Pitaya.app/Pitaya";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pitaya/Pitaya-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "PitayaTests/PitayaTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		B6603C10188CE7AE00F52946 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Pitaya.app/Pitaya";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pitaya/Pitaya-Prefix.pch";
-				INFOPLIST_FILE = "PitayaTests/PitayaTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1908,15 +1763,6 @@
 			buildConfigurations = (
 				B6603C0C188CE7AE00F52946 /* Debug */,
 				B6603C0D188CE7AE00F52946 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B6603C0E188CE7AE00F52946 /* Build configuration list for PBXNativeTarget "PitayaTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B6603C0F188CE7AE00F52946 /* Debug */,
-				B6603C10188CE7AE00F52946 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

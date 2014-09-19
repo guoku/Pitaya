@@ -41,7 +41,7 @@
     
     self.backgroundColor = [UIColor clearColor];
     
-    self.titleLabel.textColor = self.isSelected ? UIColorFromRGB(0x427EC0) : UIColorFromRGB(0x959595);
+    self.titleLabel.textColor = self.isSelected ? UIColorFromRGB(0x427EC0) : UIColorFromRGB(0x777777);
     
     NSDictionary *dict = @{
                            @"首页":@"menu_icon_homepage",
@@ -53,11 +53,19 @@
                            @"设置":@"menu_icon_setting",
                            };
     
+
     NSString *imageName = dict[self.titleLabel.text];
+    UIImage * image =[[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.iconImageView.image = image;
     if (self.isSelected) {
-        imageName = [imageName stringByAppendingString:@"_press"];
+        self.iconImageView.tintColor = UIColorFromRGB(0x427ec0);
     }
-    self.iconImageView.image = [UIImage imageNamed:imageName];
+    else
+    {
+        self.iconImageView.tintColor = UIColorFromRGB(0x777777);
+    }
+    
+
     
     if ([self.titleLabel.text isEqualToString:@"精选"]) {
         self.countImageView.hidden = (self.count == 0);
