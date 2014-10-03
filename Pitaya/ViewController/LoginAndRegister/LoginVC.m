@@ -32,6 +32,11 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)tapAgreementButton:(id)sender
+{
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"http://guoku.com/agreement/"]];
+}
+
 - (IBAction)tapLoginButton:(id)sender
 {
     NSString *email = self.emailTextField.text;

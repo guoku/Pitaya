@@ -28,6 +28,11 @@
     [actionSheet showInView:self.view];
 }
 
+- (IBAction)tapAgreementButton:(id)sender
+{
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"http://guoku.com/agreement/"]];
+}
+
 - (IBAction)tapRegisterButton:(id)sender
 {
     NSString *email = self.emailTextField.text;
