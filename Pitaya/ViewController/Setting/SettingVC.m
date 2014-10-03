@@ -93,12 +93,10 @@ static NSInteger const LogoutButtonTag = 999;
 - (void)tapLogoutButton
 {
     if (k_isLogin) {
-        [UIAlertView bk_showAlertViewWithTitle:nil message:@"确定退出登录？" cancelButtonTitle:@"取消" otherButtonTitles:@[@"确定"] handler:^(UIAlertView *alertView, NSInteger buttonIndex) {
-            if (buttonIndex == 1) {
-                [Passport logout];
-                [self.tableView reloadData];
-            }
-        }];
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"" message:@"确定退出登录？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        alertView.tag = 2002;
+        [alertView show];
     }
 }
 
@@ -136,7 +134,7 @@ static NSInteger const LogoutButtonTag = 999;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 14;
+    return 13;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -173,20 +171,22 @@ static NSInteger const LogoutButtonTag = 999;
         case 8:
             CellIdentifier = @"SettingCell20";
             break;
+            /*
         case 9:
             CellIdentifier = @"SettingCell21";
             break;
-        case 10:
+             */
+        case 9:
             CellIdentifier = @"SettingCell22";
             break;
-        case 11:
+        case 10:
             CellIdentifier = @"SettingCell23";
             break;
-        case 12:
+        case 11:
             CellIdentifier = @"SettingCell24";
             break;
         // 注销登录
-        case 13:
+        case 12:
             CellIdentifier = @"SettingCell30";
             break;
     }
@@ -197,7 +197,7 @@ static NSInteger const LogoutButtonTag = 999;
         UIView *separatorView = [cell viewWithTag:111];
         if (!separatorView) {
             CGRect frame = CGRectMake(15.f, 49.f, 758.f, 1.f);
-            if (indexPath.row == 0 || indexPath.row == 5 || indexPath.row == 8 || indexPath.row == 13) {
+            if (indexPath.row == 0 || indexPath.row == 5 || indexPath.row == 8 || indexPath.row == 12) {
                 frame.origin.y += 10.f;
             }
             separatorView = [[UIView alloc] initWithFrame:frame];
@@ -231,7 +231,7 @@ static NSInteger const LogoutButtonTag = 999;
             break;
         }
             
-        case 12:
+        case 11:
         {
             // 版本
             self.versionLabel = (UILabel *)[cell viewWithTag:VersionLabelTag];
@@ -239,7 +239,7 @@ static NSInteger const LogoutButtonTag = 999;
             break;
         }
             
-        case 13:
+        case 12:
         {
             // 注销
             self.logoutButton = (UIButton *)[cell viewWithTag:LogoutButtonTag];
@@ -259,11 +259,11 @@ static NSInteger const LogoutButtonTag = 999;
         return 0.f;
     }
     
-    if (!k_isLogin && indexPath.row == 13) {
+    if (!k_isLogin && indexPath.row == 12) {
         return 0.f;
     }
     
-    if (indexPath.row == 0 || indexPath.row == 5 || indexPath.row == 8 || indexPath.row == 13) {
+    if (indexPath.row == 0 || indexPath.row == 5 || indexPath.row == 8 || indexPath.row == 12) {
         // section header or logout button
         return 60.f;
     } else {
@@ -304,6 +304,7 @@ static NSInteger const LogoutButtonTag = 999;
             
             break;
         }
+            /*
         case 9:
         {
             // 应用推荐
@@ -311,7 +312,8 @@ static NSInteger const LogoutButtonTag = 999;
             [self.navigationController pushViewController:controller animated:YES];
             break;
         }
-        case 10:
+             */
+        case 9:
         {
             // 意见反馈
             UMFeedbackViewController *feedbackViewController = [[UMFeedbackViewController alloc] initWithNibName:@"UMFeedbackViewController" bundle:nil];
@@ -320,10 +322,11 @@ static NSInteger const LogoutButtonTag = 999;
             
             break;
         }
-        case 11:
+        case 10:
         {
             // 清除图片缓存
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"" message:@"是否清除图片缓存?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认清除", nil];
+            alertView.tag = 2001;
             [alertView show];
             break;
         }
@@ -334,12 +337,16 @@ static NSInteger const LogoutButtonTag = 999;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 1) {
+    if (buttonIndex == 1 && alertView.tag == 2001) {
         [BBProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
         [[SDImageCache sharedImageCache] clearMemory];
         [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
             [BBProgressHUD showSuccessWithText:@"清除完成"];
         }];
+    }
+    if (buttonIndex == 1  && alertView.tag == 2002) {
+        [Passport logout];
+        [self.tableView reloadData];
     }
 }
 
